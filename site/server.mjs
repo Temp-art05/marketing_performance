@@ -263,7 +263,13 @@ export function createServer() {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = Number(process.env.PORT || 4321);
-  createServer().listen(port, '127.0.0.1', () => {
+  const server = createServer();
+  server.on('error', e => {
+    if (e.code === 'EADDRINUSE') { console.log(`Cổng ${port} đang được dùng — web có thể đã chạy sẵn: http://localhost:${port}`); process.exit(0); }
+    throw e;
+  });
+  server.listen(port, '127.0.0.1', () => {
     console.log(`Knowledge web: http://localhost:${port}  (repo: ${root()})`);
+    console.log('Ctrl+C để dừng. Lưu trên web sẽ tự commit + push.');
   });
 }
