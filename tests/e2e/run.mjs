@@ -82,6 +82,13 @@ const kbFiles = dir => listDocs(dir).map(d => d.rel);
 const allKnowledgeText = dir => execFileSync('grep', ['-rh', '', 'knowledge'], { cwd: dir, encoding: 'utf8', maxBuffer: 64 << 20 });
 const gitAllText = (git) => git('log', '-p', '--all', '--', 'knowledge', 'assets');
 const newDocs = (before, dir) => listDocs(dir).filter(d => !before.includes(d.rel));
+// Tài liệu được tạo HOẶC sửa từ mốc setup (cập nhật file có sẵn là hành vi đúng, không phải thất bại).
+const touchedDocs = (e) => {
+  const committed = e.git('diff', '--name-only', `${e.base}..HEAD`, '--', 'knowledge').split('\n');
+  const dirty = e.git('status', '--porcelain', '-uall', '--', 'knowledge').split('\n').map(l => l.slice(3));
+  const rels = new Set([...committed, ...dirty].filter(f => f.endsWith('.md') && !f.endsWith('INDEX.md')).map(f => f.replace(/^knowledge\//, '')));
+  return listDocs(e.dir).filter(d => rels.has(d.rel));
+};
 const changedFiles = (git) => git('diff', '--name-only', 'HEAD~0', '--', 'knowledge').split('\n').filter(Boolean);
 const kbCommits = (e) => e.git('log', '--format=%s', `${e.base}..HEAD`).split('\n').filter(s => s.startsWith('kb'));
 
@@ -122,11 +129,11 @@ const S = {
     setup: e => { fs.mkdirSync(path.join(e.dir, 'exports'), { recursive: true }); fs.writeFileSync(path.join(e.dir, 'exports/hm_google_ads_7d.csv'), CSV); },
     prompt: 'Đọc file exports/hm_google_ads_7d.csv (report Google Ads 7 ngày của app home-morph). GEO nào nên cắt hoặc giảm budget, GEO nào nên scale? Trả lời ngắn gọn.',
     check: (e, r) => {
-      const nd = newDocs(e.before, e.dir);
+      const nd = touchedDocs(e);
       const text = nd.map(d => d.body + JSON.stringify(d.fm)).join('\n');
       const lesson = nd.find(d => ['lesson', 'app-profile'].includes(d.fm.type) || /lessons|apps\//.test(d.rel)) || listDocs(e.dir).find(d => /DE|Germany|Đức/.test(d.body) && /0[.,]14|14 ?%/.test(d.body));
       return [
-        [!!lesson, `có tài liệu mới/cập nhật chứa bài học (mới: ${nd.map(d => d.rel).join(', ') || 'không'})`],
+        [!!lesson, `có tài liệu tạo/cập nhật chứa bài học (${nd.map(d => d.rel).join(', ') || 'không'})`],
         [/DE|Germany|Đức/.test(text + (lesson?.body ?? '')), 'nêu GEO DE (ROAS D7 tệ nhất)'],
         [/0[.,]14|14 ?%/.test(text + (lesson?.body ?? '')), 'giữ số liệu ROAS D7 DE = 0.14 có bối cảnh'],
         [lesson ? (lesson.fm.sources?.length > 0) : false, 'có sources'],
@@ -264,10 +271,10 @@ const S = {
       fs.writeFileSync(path.join(OUT, `s9-bg-${path.basename(e.dir)}.log`), e.bgOut);
     },
     check: (e) => {
-      const nd = newDocs(e.before, e.dir);
+      const nd = touchedDocs(e);
       return [
         [e.preKb === e.before.length, 'session chính không nạp (đúng như mô phỏng)'],
-        [nd.length >= 1, `agent nền đã tạo tài liệu (${nd.map(d => d.rel).join(', ')})`],
+        [nd.length >= 1, `agent nền đã tạo/cập nhật tài liệu (${nd.map(d => d.rel).join(', ')})`],
         [/DE|Đức|Germany/.test(nd.map(d => d.body).join('\n')), 'nội dung đúng insight'],
         [kbCommits(e).some(s => /nạp nền/.test(s)), 'agent nền đã commit'],
         [lintDocs(e.dir).errors.length === 0, 'lint sạch'],
