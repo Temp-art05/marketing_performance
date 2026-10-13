@@ -41,3 +41,6 @@ node_modules/
 
 # Office lock files
 ~$*
+
+# Knowledge system — state cục bộ của hook (checkpoint, log, digest)
+.claude/state/

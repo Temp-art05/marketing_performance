@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/session-start.mjs\"", "timeout": 30 }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Write|Edit|MultiEdit", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/post-tool-use.mjs\"", "timeout": 30 }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/stop.mjs\"", "timeout": 30 }] }
+    ],
+    "PreCompact": [
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/session-end.mjs\"", "timeout": 10 }] }
+    ],
+    "SessionEnd": [
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/session-end.mjs\"" }] }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/kb/cli.mjs:*)",
+      "Bash(npm run kb:*)",
+      "Bash(npm test:*)",
+      "Edit(knowledge/**)",
+      "Write(knowledge/**)"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "marketing-performance-kb",
+  "private": true,
+  "type": "module",
+  "description": "Kho kiến thức UA marketing — CLI quản lý knowledge, hooks Claude Code và web app local",
+  "scripts": {
+    "kb": "node scripts/kb/cli.mjs",
+    "kb:index": "node scripts/kb/cli.mjs index",
+    "kb:lint": "node scripts/kb/cli.mjs lint",
+    "web": "node site/server.mjs",
+    "test": "node --test \"tests/{unit,hooks,web}/*.test.mjs\"",
+    "test:e2e": "node tests/e2e/run.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.17",
+    "marked": "^18.1.1",
+    "minisearch": "^7.2.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.0"
+  }
+}
