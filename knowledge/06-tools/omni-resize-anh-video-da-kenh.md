@@ -4,12 +4,17 @@ type: reference
 topic: 06-tools
 tags: [creative, resize, aspect-ratio, video, image, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-246 - Omni  Resize Image & Video/OMNI_ Resize Image & Video.docx (đọc 2026-10-14)", "AI Knownledge/APR-246 - Omni  Resize Image & Video/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-246 - Omni  Resize Image & Video/OMNI_ Resize Image & Video.docx (đọc 2026-10-14)
+  - AI Knownledge/APR-246 - Omni  Resize Image & Video/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related: [01-pre-marketing/creative-assets-google-app-campaigns.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md, 06-tools/cat-outro-watermark-video-hang-loat.md]
+related:
+  - 01-pre-marketing/creative-assets-google-app-campaigns.md
+  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+  - 06-tools/cat-outro-watermark-video-hang-loat.md
 summary: Notebook Colab nhận nhiều ảnh/video, xuất đồng thời 3 tỉ lệ 1:1, 9:16, 16:9 bằng fit & pad (thu nhỏ + đệm nền trắng/đen, không crop), đặt hậu tố _1-1/_9-16/_16-9, gói 1 file ZIP.
 ---
 

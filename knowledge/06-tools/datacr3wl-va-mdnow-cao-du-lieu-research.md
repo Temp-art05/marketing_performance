@@ -4,16 +4,15 @@ type: reference
 topic: 06-tools
 tags: [tool, skill, crawl, research, competitor, markdown]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-032 - DataCr3wl/README.md, CAPABILITIES.md, DEMO_OUTPUT.md, skill/SKILL.md, skill/references/recipes.md, mcp-auth.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-054 - mdnow — Từ URL đến file, tất cả thành Markdown/repo/README.vi.md (đọc 2026-10-14)"
-  - "https://github.com/longlee218/mdnow"
+  - AI Knownledge/APR-032 - DataCr3wl/README.md, CAPABILITIES.md, DEMO_OUTPUT.md, skill/SKILL.md, skill/references/recipes.md, mcp-auth.md (đọc 2026-10-14)
+  - AI Knownledge/APR-054 - mdnow — Từ URL đến file, tất cả thành Markdown/repo/README.vi.md (đọc 2026-10-14)
+  - https://github.com/longlee218/mdnow
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/market-research-tam-sam-som-go-no-go.md
+related: [01-pre-marketing/market-research-tam-sam-som-go-no-go.md]
 summary: Hai công cụ local — DataCr3wl (Claude skill trên Crawl4AI cào trang JS/anti-bot/cần login, capture XHR, nén token ~54%) và mdnow (URL/site/PDF/Office/YouTube → Markdown sạch, crawl cả site ra llms.txt).
 ---
 

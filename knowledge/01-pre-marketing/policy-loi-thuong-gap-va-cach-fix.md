@@ -4,13 +4,13 @@ type: reference
 topic: 01-pre-marketing
 tags: [policy, google-play, app-store, aso, store-listing, ads-policy, subscription, appeal]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/PRD.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html, mảng KB 45 lỗi + DOCS link gốc (đọc 2026-10-14)"
-  - "https://support.google.com/googleplay/android-developer/topic/9858052"
-  - "https://developer.apple.com/app-store/review/guidelines/"
+  - AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html, mảng KB 45 lỗi + DOCS link gốc (đọc 2026-10-14)
+  - https://support.google.com/googleplay/android-developer/topic/9858052
+  - https://developer.apple.com/app-store/review/guidelines/
 created: 2026-10-14
 updated: 2026-10-14
 related:

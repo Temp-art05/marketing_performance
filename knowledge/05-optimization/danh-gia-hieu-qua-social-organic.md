@@ -4,20 +4,16 @@ type: concept
 topic: 05-optimization
 tags: [social, organic, engagement-rate, facebook, tiktok, linkedin, meta-business-suite, graph-api, content]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-076 - Report Social Media/PRD.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-076 - Report Social Media/apero-social-report-agent.zip → .claude/skills/apero-social-branding-evaluator/SKILL.md + references/hessbic_framework.md, cart_framework.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-076 - Report Social Media/apero-social-report-agent.zip → memory/memory.md (mục LỖI SỐ QUAN TRỌNG) (đọc 2026-10-14)"
+  - AI Knownledge/APR-076 - Report Social Media/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-076 - Report Social Media/apero-social-report-agent.zip → .claude/skills/apero-social-branding-evaluator/SKILL.md + references/hessbic_framework.md, cart_framework.md (đọc 2026-10-14)
+  - AI Knownledge/APR-076 - Report Social Media/apero-social-report-agent.zip → memory/memory.md (mục LỖI SỐ QUAN TRỌNG) (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 06-tools/apero-social-report-agent.md
-  - 06-tools/social-tracker-tiktok.md
-  - 00-overview/glossary-chi-so.md
-  - 06-tools/apero-comment-tool-facebook.md
-summary: "Công thức ER theo mẫu số riêng của Facebook/LinkedIn/TikTok, cách chấm bài so trung vị 3 tháng (loại bài boosted), phễu chẩn đoán reach→tương tác→share/save, và bẫy cột export Meta Business Suite bị thổi ~3 lần."
+related: [06-tools/apero-social-report-agent.md, 06-tools/social-tracker-tiktok.md, 00-overview/glossary-chi-so.md, 06-tools/apero-comment-tool-facebook.md]
+summary: Công thức ER theo mẫu số riêng của Facebook/LinkedIn/TikTok, cách chấm bài so trung vị 3 tháng (loại bài boosted), phễu chẩn đoán reach→tương tác→share/save, và bẫy cột export Meta Business Suite bị thổi ~3 lần.
 ---
 
 # Đánh giá hiệu quả bài social organic

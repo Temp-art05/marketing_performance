@@ -4,12 +4,19 @@ type: reference
 topic: 04-measurement
 tags: [ga4, bigquery, retention, dau, engagement, stickiness, firebase]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-211 - Police-product/report/report.py (đọc 2026-10-14) — SQL và luật nhận xét", "AI Knownledge/APR-211 - Police-product/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-211 - Police-product/.claude/agents/police-product.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-211 - Police-product/report/report.py (đọc 2026-10-14) — SQL và luật nhận xét
+  - AI Knownledge/APR-211 - Police-product/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-211 - Police-product/.claude/agents/police-product.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related: [00-overview/glossary-chi-so.md, 04-measurement/firebase-events-cho-ua.md, 06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md, 05-optimization/hau-kiem-version-app-nguong-verdict.md]
+related:
+  - 00-overview/glossary-chi-so.md
+  - 04-measurement/firebase-events-cho-ua.md
+  - 06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
 summary: Cách tính DAU, new users, sessions, engagement rate, retention D1/D7 (cohort first_open), DAU/MAU từ bảng GA4 export events_*; quy tắc count→%, rate→pp; so d/7d/~2 tuần; ngưỡng cờ nội bộ.
 ---
 

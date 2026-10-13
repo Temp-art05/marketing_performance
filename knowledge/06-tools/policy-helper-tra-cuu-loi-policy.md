@@ -4,16 +4,14 @@ type: reference
 topic: 06-tools
 tags: [tool, policy, aso, google-play, app-store, apps-script, gemini, ocr]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/PRD.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html, apps-script/HUONG-DAN-DEPLOY.txt (đọc 2026-10-14)"
+  - AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html, apps-script/HUONG-DAN-DEPLOY.txt (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
-  - 01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md
+related: [01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md, 01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md]
 summary: "Tool chat của team ASO Apero: gõ mô tả lỗi, mã guideline hoặc dán ảnh thông báo policy → trả loại lỗi, cách team đã fix, link policy gốc. Bản local 1 file HTML (OCR offline) và bản Apps Script + Gemini."
 ---
 

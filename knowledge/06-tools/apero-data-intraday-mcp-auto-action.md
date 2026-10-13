@@ -4,13 +4,14 @@ type: reference
 topic: 06-tools
 tags: [meta-ads, facebook, automation, mcp, rule, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-209 - MCP tool tra cứu auto action/huong_dan_su_dung.md (đọc 2026-10-14)", "AI Knownledge/APR-209 - MCP tool tra cứu auto action/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-209 - MCP tool tra cứu auto action/huong_dan_su_dung.md (đọc 2026-10-14)
+  - AI Knownledge/APR-209 - MCP tool tra cứu auto action/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 06-tools/meta-ads-dashboard.md
+related: [06-tools/meta-ads-dashboard.md]
 summary: MCP server (team data) cho Claude Desktop/Code — hỏi tiếng Việt lịch sử action auto-ads intraday (tăng/giảm budget, pause), vì sao action fail, vì sao rule không match. Chỉ đọc, giờ UTC+7.
 ---
 

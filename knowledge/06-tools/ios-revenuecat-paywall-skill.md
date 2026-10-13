@@ -4,13 +4,16 @@ type: reference
 topic: 06-tools
 tags: [revenuecat, paywall, subscription, iap, remote-config, ios, hybrid-monetization, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/README.md (đọc 2026-10-14)", "AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/references/revenuecat-api-cheatsheet.md (đọc 2026-10-14)", "AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/templates/paywall-spec.example.yaml (đọc 2026-10-14)", "https://swiftpackageindex.com/revenuecat/purchases-ios/5.15.1/documentation/revenuecat"]
+sources:
+  - AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/README.md (đọc 2026-10-14)
+  - AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/references/revenuecat-api-cheatsheet.md (đọc 2026-10-14)
+  - AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/templates/paywall-spec.example.yaml (đọc 2026-10-14)
+  - https://swiftpackageindex.com/revenuecat/purchases-ios/5.15.1/documentation/revenuecat
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 03-monetization/paywall-subscription-checklist-policy.md
+related: [03-monetization/paywall-subscription-checklist-policy.md]
 summary: Claude Code skill dựng paywall RevenueCat (SDK 5.15.x) vào app Swift — manager, PaywallView, điều hướng, paywall mặc định offline, gate theo placement + remote flag; có chế độ hỏi đáp cho PO/PM.
 ---
 

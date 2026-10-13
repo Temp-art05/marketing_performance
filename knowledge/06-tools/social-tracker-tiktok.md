@@ -4,11 +4,11 @@ type: reference
 topic: 06-tools
 tags: [tool, creative-research, tiktok, trend, organic, spy, yt-dlp, playwright]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-067 - Social Tracker/social-tracker-prd.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-067 - Social Tracker/_info.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-067 - Social Tracker/social-tracker-prd.md (đọc 2026-10-14)
+  - AI Knownledge/APR-067 - Social Tracker/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -17,7 +17,7 @@ related:
   - 05-optimization/danh-gia-hieu-qua-social-organic.md
   - 01-pre-marketing/nghien-cuu-trend-cho-creative.md
   - playbooks/san-xuat-creative-hang-loat-bang-ai.md
-summary: "Tool local (Flask + yt-dlp + Playwright) của UA Apero quét danh sách account TikTok chuyên content AI photo/video, lọc video mới theo view/ngôn ngữ, tự mở rộng account qua gợi ý TikTok, export Google Sheets/Excel."
+summary: Tool local (Flask + yt-dlp + Playwright) của UA Apero quét danh sách account TikTok chuyên content AI photo/video, lọc video mới theo view/ngôn ngữ, tự mở rộng account qua gợi ý TikTok, export Google Sheets/Excel.
 ---
 
 # Social Tracker (TikTok)

@@ -4,12 +4,18 @@ type: reference
 topic: 06-tools
 tags: [aso, screenshot, store-listing, gemini, ai-image, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-225 - Tool Web tạo bộ ảnh Screenshot đơn giản giành cho những app mới cần nhanh. chỉ đ/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-225 - Tool Web tạo bộ ảnh Screenshot đơn giản giành cho những app mới cần nhanh. chỉ đ/HUONG_DAN_SU_DUNG.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-225 - Tool Web tạo bộ ảnh Screenshot đơn giản giành cho những app mới cần nhanh. chỉ đ/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-225 - Tool Web tạo bộ ảnh Screenshot đơn giản giành cho những app mới cần nhanh. chỉ đ/HUONG_DAN_SU_DUNG.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related: [01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md, 06-tools/aso-screenshot-google-flow.md, 06-tools/app-store-screenshot-studio.md, 06-tools/cpp-generator-screenshot-tool.md]
+related:
+  - 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md
+  - 06-tools/aso-screenshot-google-flow.md
+  - 06-tools/app-store-screenshot-studio.md
+  - 06-tools/cpp-generator-screenshot-tool.md
 summary: Web Next.js chạy local — upload ≤10 ảnh UI + file mô tả .docx/.txt → Gemini 2.5 Flash viết headline/subtext theo mạch Hook→Solution→Features→Social Proof→CTA, Flux tạo nền, ghép mockup, xuất ZIP 1080×1920.
 ---
 

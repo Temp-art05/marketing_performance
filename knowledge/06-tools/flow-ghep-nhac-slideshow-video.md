@@ -4,9 +4,11 @@ type: reference
 topic: 06-tools
 tags: [creative, google-flow, slideshow, video, audio, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: low
-sources: ["AI Knownledge/APR-250 - Tool tạo slide template cho video/BẢNG MÔ TẢ SẢN PHẨM/PRD_Tool_Xuat_Video_LinhPL.md (đọc 2026-10-14)", "AI Knownledge/APR-250 - Tool tạo slide template cho video/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-250 - Tool tạo slide template cho video/BẢNG MÔ TẢ SẢN PHẨM/PRD_Tool_Xuat_Video_LinhPL.md (đọc 2026-10-14)
+  - AI Knownledge/APR-250 - Tool tạo slide template cho video/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [playbooks/san-xuat-creative-hang-loat-bang-ai.md]

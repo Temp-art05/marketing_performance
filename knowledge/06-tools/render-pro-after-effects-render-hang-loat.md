@@ -4,9 +4,12 @@ type: reference
 topic: 06-tools
 tags: [after-effects, video, creative, batch-render, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-160 - After Effect Render Pro/RENDER_PRO_PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-160 - After Effect Render Pro/_info.md (đọc 2026-10-14)", "AI Knownledge/APR-171 - One And Only/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-160 - After Effect Render Pro/RENDER_PRO_PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-160 - After Effect Render Pro/_info.md (đọc 2026-10-14)
+  - AI Knownledge/APR-171 - One And Only/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [06-tools/leave-the-text-alone-dich-text-after-effects.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md]

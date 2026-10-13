@@ -4,11 +4,11 @@ type: reference
 topic: 06-tools
 tags: [tool, meta-ads, facebook-ads, roas, auto-rules, budget, marketing-api, subscription]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-138 - Meta Sub Dashboard/PRD.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-138 - Meta Sub Dashboard/meta-ads-dashboard-main.zip → README.md, src/lib/meta-api.ts, src/lib/rules-engine.ts (đọc 2026-10-14)"
+  - AI Knownledge/APR-138 - Meta Sub Dashboard/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-138 - Meta Sub Dashboard/meta-ads-dashboard-main.zip → README.md, src/lib/meta-api.ts, src/lib/rules-engine.ts (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -16,7 +16,7 @@ related:
   - 03-monetization/paywall-subscription-checklist-policy.md
   - 06-tools/apero-data-intraday-mcp-auto-action.md
   - 06-tools/apero-comment-tool-facebook.md
-summary: "Web app Next.js của UA Apero (Giang Nguyễn) gọi Meta Marketing API v21 — cây Product→Channel→Campaign→Country, cột ROAS×0.7 hôm nay và T-1/T-2/T-3, sửa budget/pause tại bảng, auto rules chạy mỗi 30 phút."
+summary: Web app Next.js của UA Apero (Giang Nguyễn) gọi Meta Marketing API v21 — cây Product→Channel→Campaign→Country, cột ROAS×0.7 hôm nay và T-1/T-2/T-3, sửa budget/pause tại bảng, auto rules chạy mỗi 30 phút.
 ---
 
 # Meta Ads Dashboard

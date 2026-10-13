@@ -4,22 +4,30 @@ type: playbook
 topic: 01-pre-marketing
 tags: [aso, screenshot, store-listing, creative, ai-image, custom-store-listing, localization, policy, cvr]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-065 - CPP generator - Screenshot tool/Screenshot Tool byngoclm.zip → PRD.md, app-store-screenshots-main/skills/app-store-screenshots/style-prompts/_QUALITY_BAR.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-052 - App Store Screenshot Studio/screenshot-studio.zip → app/lib/screenshotSkill.js (đọc 2026-10-14)"
-  - "AI Knownledge/APR-225 - Tool Web tạo bộ ảnh Screenshot…/PRD.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/Tamvm-ASO-Phone-Screenshots-Tool.md (đọc 2026-10-14)"
-  - "https://github.com/ParthJadhav/app-store-screenshots (skill mã nguồn mở được đóng gói trong APR-065)"
+  - AI Knownledge/APR-065 - CPP generator - Screenshot tool/Screenshot Tool byngoclm.zip → PRD.md, app-store-screenshots-main/skills/app-store-screenshots/style-prompts/_QUALITY_BAR.md (đọc 2026-10-14)
+  - AI Knownledge/APR-052 - App Store Screenshot Studio/screenshot-studio.zip → app/lib/screenshotSkill.js (đọc 2026-10-14)
+  - AI Knownledge/APR-225 - Tool Web tạo bộ ảnh Screenshot…/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/Tamvm-ASO-Phone-Screenshots-Tool.md (đọc 2026-10-14)
+  - https://github.com/ParthJadhav/app-store-screenshots (skill mã nguồn mở được đóng gói trong APR-065)
   - "Play Console Help — Metadata policy: https://support.google.com/googleplay/android-developer/answer/9898842 (WebFetch 2026-10-14)"
   - "Play Console Help — Custom store listings: https://support.google.com/googleplay/android-developer/answer/9867158 (truy cập 2026-10-14)"
   - "Apple — Screenshot specifications: https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications/ (truy cập 2026-10-14)"
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-screenshot-studio-demo-slide1-1.png]
-related: [01-pre-marketing/aso-google-play-store-listing.md, 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md, 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md, 06-tools/app-store-screenshot-studio.md, 06-tools/cpp-generator-screenshot-tool.md, 06-tools/terasofts-graphic-pro-tao-screenshot-store.md, 06-tools/aso-screenshot-google-flow.md, 06-tools/tong-quan-cong-cu-ai-marketing.md]
-summary: Dựng bộ 4–8 screenshot bán hàng (hook → khác biệt → tính năng → chốt), quality bar, chọn tool AI nội bộ, checklist Play (2:1, text ≤20%, cấm #1/award/giá) và vì sao ảnh iOS 1242×2688 không upload được.
+related:
+  - 01-pre-marketing/aso-google-play-store-listing.md
+  - 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md
+  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+  - 06-tools/app-store-screenshot-studio.md
+  - 06-tools/cpp-generator-screenshot-tool.md
+  - 06-tools/terasofts-graphic-pro-tao-screenshot-store.md
+  - 06-tools/aso-screenshot-google-flow.md
+  - 06-tools/tong-quan-cong-cu-ai-marketing.md
+summary: Dựng bộ 4–8 screenshot bán hàng (hook → khác biệt → tính năng → chốt), quality bar, chọn tool AI nội bộ, checklist Play (2:1, text ≤20%, cấm
 ---
 
 # Thiết kế screenshot store

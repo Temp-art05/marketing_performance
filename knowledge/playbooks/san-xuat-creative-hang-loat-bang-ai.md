@@ -4,20 +4,39 @@ type: playbook
 topic: playbooks
 tags: [creative, video-ads, ai-image, ai-video, localization, resize, after-effects, tiktok, google-flow, workflow, policy-check]
 app: general
-status: draft
+status: verified
 confidence: low
 sources:
-  - "AI Knownledge/APR-160, APR-170, APR-171, APR-195, APR-196, APR-246, APR-247, APR-250, APR-255, APR-262 (đọc 2026-10-14) — tài liệu các tool creative nội bộ Apero"
-  - "AI Knownledge/APR-067 - Social Tracker/social-tracker-prd.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-146 - Khung mẫu tạo prompt ảnh chính xác/Khung tạo prompt ảnh.txt (đọc 2026-10-14)"
-  - "AI Knownledge/APR-114 - XPrompt/Docs/huong-dan-su-dung.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-075 - Genius Easy Creative/3 - skill.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-127 - Tool cắt ghép outro hàng loạt siêu nhanh gọn/HUONG_DAN_SU_DUNG.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-015 - Visual prompting, APR-030 - Tool ghép outro hàng loạt, APR-006 - Auto upload video Youtube, APR-094 - URender (đọc 2026-10-14)"
+  - AI Knownledge/APR-160, APR-170, APR-171, APR-195, APR-196, APR-246, APR-247, APR-250, APR-255, APR-262 (đọc 2026-10-14) — tài liệu các tool creative nội bộ Apero
+  - AI Knownledge/APR-067 - Social Tracker/social-tracker-prd.md (đọc 2026-10-14)
+  - AI Knownledge/APR-146 - Khung mẫu tạo prompt ảnh chính xác/Khung tạo prompt ảnh.txt (đọc 2026-10-14)
+  - AI Knownledge/APR-114 - XPrompt/Docs/huong-dan-su-dung.md (đọc 2026-10-14)
+  - AI Knownledge/APR-075 - Genius Easy Creative/3 - skill.md (đọc 2026-10-14)
+  - AI Knownledge/APR-127 - Tool cắt ghép outro hàng loạt siêu nhanh gọn/HUONG_DAN_SU_DUNG.md (đọc 2026-10-14)
+  - AI Knownledge/APR-015 - Visual prompting, APR-030 - Tool ghép outro hàng loạt, APR-006 - Auto upload video Youtube, APR-094 - URender (đọc 2026-10-14)
   - "KB: 01-pre-marketing/creative-assets-google-app-campaigns.md (spec chính thức)"
 created: 2026-10-14
 updated: 2026-10-14
-related: [01-pre-marketing/creative-assets-google-app-campaigns.md, 01-pre-marketing/nghien-cuu-trend-cho-creative.md, 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md, 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md, 06-tools/tong-quan-cong-cu-ai-marketing.md, 06-tools/social-tracker-tiktok.md, 06-tools/xprompt.md, 06-tools/genius-easy-creative.md, 06-tools/cat-outro-watermark-video-hang-loat.md, 06-tools/render-pro-after-effects-render-hang-loat.md, 06-tools/tiktok-creative-mcp-avatar-dubbing-image-to-video.md, 06-tools/omni-resize-anh-video-da-kenh.md, 06-tools/youtube-auto-uploader.md, 06-tools/flow-ghep-nhac-slideshow-video.md, 06-tools/hanh-creative-google-flow-nhan-vat-nhat-quan.md, 06-tools/ka-tool-bulk-google-flow.md, 06-tools/leave-the-text-alone-dich-text-after-effects.md, 06-tools/urender-ghep-video-ugc.md, 06-tools/visual-prompting-skill-anh-video.md]
+related:
+  - 01-pre-marketing/creative-assets-google-app-campaigns.md
+  - 01-pre-marketing/nghien-cuu-trend-cho-creative.md
+  - 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md
+  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+  - 06-tools/tong-quan-cong-cu-ai-marketing.md
+  - 06-tools/social-tracker-tiktok.md
+  - 06-tools/xprompt.md
+  - 06-tools/genius-easy-creative.md
+  - 06-tools/cat-outro-watermark-video-hang-loat.md
+  - 06-tools/render-pro-after-effects-render-hang-loat.md
+  - 06-tools/tiktok-creative-mcp-avatar-dubbing-image-to-video.md
+  - 06-tools/omni-resize-anh-video-da-kenh.md
+  - 06-tools/youtube-auto-uploader.md
+  - 06-tools/flow-ghep-nhac-slideshow-video.md
+  - 06-tools/hanh-creative-google-flow-nhan-vat-nhat-quan.md
+  - 06-tools/ka-tool-bulk-google-flow.md
+  - 06-tools/leave-the-text-alone-dich-text-after-effects.md
+  - 06-tools/urender-ghep-video-ugc.md
+  - 06-tools/visual-prompting-skill-anh-video.md
 summary: Dây chuyền 9 bước ghép tool AI nội bộ — trend → concept → ảnh/video nguồn → render hàng loạt → hậu kỳ outro → localize → đủ tỉ lệ → soát spec/policy → upload YouTube; kèm chỗ tool còn thiếu.
 ---
 

@@ -4,18 +4,15 @@ type: reference
 topic: 06-tools
 tags: [tool, creative, ai-image, prompt, qwen, gemini, claude, identity-transfer, ai-photo]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-114 - XPrompt/Docs/huong-dan-su-dung.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-114 - XPrompt/_info.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-114 - XPrompt/Docs/huong-dan-su-dung.md (đọc 2026-10-14)
+  - AI Knownledge/APR-114 - XPrompt/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md
-  - 06-tools/genius-easy-creative.md
-  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
-summary: "App macOS/Windows (Lâm Hoàng Văn) chạy vòng phân tích ảnh ref → viết prompt → Qwen sinh ảnh với ảnh nhân vật → Claude chấm 4 tiêu chí → sửa prompt, dừng khi điểm ≥ ngưỡng; hợp làm ảnh concept cho creative app AI photo."
+related: [01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md, 06-tools/genius-easy-creative.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md]
+summary: App macOS/Windows (Lâm Hoàng Văn) chạy vòng phân tích ảnh ref → viết prompt → Qwen sinh ảnh với ảnh nhân vật → Claude chấm 4 tiêu chí → sửa prompt, dừng khi điểm ≥ ngưỡng; hợp làm ảnh concept cho creative app AI photo.
 ---
 
 # XPrompt

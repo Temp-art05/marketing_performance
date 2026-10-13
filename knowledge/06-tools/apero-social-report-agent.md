@@ -4,17 +4,16 @@ type: reference
 topic: 06-tools
 tags: [tool, agent, claude-code, social, facebook, linkedin, tiktok, reporting, graph-api, employer-branding]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-076 - Report Social Media/PRD.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-076 - Report Social Media/README.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-076 - Report Social Media/apero-social-report-agent.zip → .claude/skills/*, memory/memory.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-076 - Report Social Media/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-076 - Report Social Media/README.md (đọc 2026-10-14)
+  - AI Knownledge/APR-076 - Report Social Media/apero-social-report-agent.zip → .claude/skills/*, memory/memory.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 05-optimization/danh-gia-hieu-qua-social-organic.md
-summary: "Agent Claude Code của team Branding (Thu Hiền): thả file export Meta Business Suite và nhắn \"làm báo cáo tuần\" → script Python tính ER, sub-agent kiểm số, skill chấm so trung vị 3 tháng → Excel nhiều sheet + đề xuất."
+related: [05-optimization/danh-gia-hieu-qua-social-organic.md]
+summary: 'Agent Claude Code của team Branding (Thu Hiền): thả file export Meta Business Suite và nhắn "làm báo cáo tuần" → script Python tính ER, sub-agent kiểm số, skill chấm so trung vị 3 tháng → Excel nhiều sheet + đề xuất.'
 ---
 
 # Apero Social Report Agent

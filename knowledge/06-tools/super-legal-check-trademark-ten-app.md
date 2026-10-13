@@ -4,10 +4,10 @@ type: reference
 topic: 06-tools
 tags: [tool, legal, trademark, app-name, aso]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-055 - Super Legal/_info.md, 1-ASSET-super-legal.md.docx (đọc 2026-10-14)"
+  - AI Knownledge/APR-055 - Super Legal/_info.md, 1-ASSET-super-legal.md.docx (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

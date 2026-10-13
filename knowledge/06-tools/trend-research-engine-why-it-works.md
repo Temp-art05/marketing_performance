@@ -4,9 +4,12 @@ type: reference
 topic: 06-tools
 tags: [research, trend, competitor, creative-brief, app-store, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/README.md (đọc 2026-10-14)", "AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/TECHNICAL.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/README.md (đọc 2026-10-14)
+  - AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/TECHNICAL.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [01-pre-marketing/nghien-cuu-trend-cho-creative.md]

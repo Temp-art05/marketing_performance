@@ -4,12 +4,18 @@ type: reference
 topic: 06-tools
 tags: [aso, screenshot, store-listing, localization, google-flow, nano-banana, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/Tamvm-ASO-Phone-Screenshots-Tool.md (đọc 2026-10-14)", "AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/Tamvm-ASO-Phone-Screenshots-Tool.md (đọc 2026-10-14)
+  - AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related: [01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md, 06-tools/terasofts-graphic-pro-tao-screenshot-store.md, 06-tools/app-store-screenshot-studio.md, 06-tools/cpp-generator-screenshot-tool.md]
+related:
+  - 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md
+  - 06-tools/terasofts-graphic-pro-tao-screenshot-store.md
+  - 06-tools/app-store-screenshot-studio.md
+  - 06-tools/cpp-generator-screenshot-tool.md
 summary: Shared tool Google Flow (Nano Banana Pro) — raw screenshot + caption → bộ 5–10 screenshot có khung thiết bị, headline, đúng kích thước App Store/Play, localize nhiều ngôn ngữ.
 ---
 

@@ -4,16 +4,14 @@ type: reference
 topic: 06-tools
 tags: [tool, firebase, remote-config, mcp, claude-code, monetization]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-007 - Update remote config hàng loạt cho ver 1.0.0 sử dụng mcp firebase/Trận AI firebase.zip → GUIDELINE.md, rc_apply.js, image 1.png, image 2.png (đọc 2026-10-14)"
+  - AI Knownledge/APR-007 - Update remote config hàng loạt cho ver 1.0.0 sử dụng mcp firebase/Trận AI firebase.zip → GUIDELINE.md, rc_apply.js, image 1.png, image 2.png (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-rc-apply-diff-2floor-ve-build-1.png]
-related:
-  - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
-  - 04-measurement/firebase-setup-link-google-ads-admob.md
+related: [03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md, 04-measurement/firebase-setup-link-google-ads-admob.md]
 summary: Claude Code + Firebase MCP đọc template Remote Config live, rc_apply.js merge an toàn theo phase (build/normal/twofloor) hoặc từng key, hiện diff để duyệt rồi publish; không cần service account key.
 ---
 

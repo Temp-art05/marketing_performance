@@ -4,10 +4,10 @@ type: reference
 topic: 06-tools
 tags: [tool, skill, creative, ai-image, ai-video, prompt]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-015 - Visual prompting/image - skill/SKILL.md, video - skill/SKILL.md, _info.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-015 - Visual prompting/image - skill/SKILL.md, video - skill/SKILL.md, _info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

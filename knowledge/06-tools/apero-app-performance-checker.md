@@ -4,12 +4,12 @@ type: reference
 topic: 06-tools
 tags: [tool, chrome-extension, version-compare, mktpro, admob, ga4, funnel, rollout, ad-unit]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/Huong-dan-su-dung-Apero-Performance-Checker.docx (đọc 2026-10-14)"
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/Demo-ket-qua-Apero-Performance-Checker.docx (đọc 2026-10-14)"
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/tool-extension.zip → README.md, src/lib/verdict.js (đọc 2026-10-14)"
+  - AI Knownledge/APR-101 - Apero App Performance Checker/Huong-dan-su-dung-Apero-Performance-Checker.docx (đọc 2026-10-14)
+  - AI Knownledge/APR-101 - Apero App Performance Checker/Demo-ket-qua-Apero-Performance-Checker.docx (đọc 2026-10-14)
+  - AI Knownledge/APR-101 - Apero App Performance Checker/tool-extension.zip → README.md, src/lib/verdict.js (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-aip806-dashboard-hau-kiem-version-1.png]
@@ -18,7 +18,7 @@ related:
   - 03-monetization/quy-tac-dat-quang-cao-in-app-apero.md
   - 06-tools/stum-weekly-report.md
   - 06-tools/admob-revenue-report-so-sanh-version.md
-summary: "Extension Chrome (Trần Thị Ngọc Oanh) bắt số từ mktpro compare-app-version, mktpro Admob Report và GA4 Funnel khi đang mở trang, dựng dashboard so 2 version theo ad unit và ra verdict tăng/không tăng rollout."
+summary: Extension Chrome (Trần Thị Ngọc Oanh) bắt số từ mktpro compare-app-version, mktpro Admob Report và GA4 Funnel khi đang mở trang, dựng dashboard so 2 version theo ad unit và ra verdict tăng/không tăng rollout.
 ---
 
 # Apero App Performance Checker

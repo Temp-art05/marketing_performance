@@ -4,14 +4,13 @@ type: reference
 topic: 06-tools
 tags: [tool, skill, market-research, sensortower, slides]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-017 - Create Beautful Slide From Research Market result/_info.md, market-research.zip, Create beautiful slide.xlsx (đọc 2026-10-14)"
+  - AI Knownledge/APR-017 - Create Beautful Slide From Research Market result/_info.md, market-research.zip, Create beautiful slide.xlsx (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/market-research-tam-sam-som-go-no-go.md
+related: [01-pre-marketing/market-research-tam-sam-som-go-no-go.md]
 summary: Claude skill market-research (TAM/SAM/SOM, why-now, persona, benchmark, rubric Go/No-Go dùng SensorTower MCP) kèm bộ prompt GPT dựng slide báo cáo theo brandkit.
 ---
 

@@ -4,9 +4,11 @@ type: reference
 topic: 06-tools
 tags: [after-effects, localization, video, creative, translate, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-170 - Leave The Text Alone/Leave the text alone.md (đọc 2026-10-14)", "AI Knownledge/APR-170 - Leave The Text Alone/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-170 - Leave The Text Alone/Leave the text alone.md (đọc 2026-10-14)
+  - AI Knownledge/APR-170 - Leave The Text Alone/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [06-tools/render-pro-after-effects-render-hang-loat.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md]

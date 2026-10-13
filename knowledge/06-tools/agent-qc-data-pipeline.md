@@ -4,17 +4,15 @@ type: reference
 topic: 06-tools
 tags: [tool, agent, data-pipeline, airflow, bigquery, clickhouse, data-quality, measurement]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-135 - Agent QC Data pipeline/README.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-135 - Agent QC Data pipeline/PRD.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-135 - Agent QC Data pipeline/README.md (đọc 2026-10-14)
+  - AI Knownledge/APR-135 - Agent QC Data pipeline/PRD.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
-  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
-summary: "Agent Claude Code read-only của team Data (Bùi Anh Độ) điều tra pipeline Airflow + dbt + BigQuery → ClickHouse bằng câu hỏi tiếng Việt (\"revenue hôm nay có sự cố không?\"), trả lời hỏng ở đâu và ảnh hưởng báo cáo nào."
+related: [05-optimization/doc-chi-so-theo-moc-thoi-gian.md, 05-optimization/hau-kiem-version-app-nguong-verdict.md]
+summary: Agent Claude Code read-only của team Data (Bùi Anh Độ) điều tra pipeline Airflow + dbt + BigQuery → ClickHouse bằng câu hỏi tiếng Việt ("revenue hôm nay có sự cố không?"), trả lời hỏng ở đâu và ảnh hưởng báo cáo nào.
 ---
 
 # Agent QC Data pipeline

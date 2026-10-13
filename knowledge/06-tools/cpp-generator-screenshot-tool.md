@@ -4,10 +4,10 @@ type: reference
 topic: 06-tools
 tags: [tool, aso, screenshot, custom-product-page, custom-store-listing, ai-image]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-065 - CPP generator - Screenshot tool/_info.md, Screenshot Tool byngoclm.zip → PRD.md, SPEC.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-065 - CPP generator - Screenshot tool/_info.md, Screenshot Tool byngoclm.zip → PRD.md, SPEC.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

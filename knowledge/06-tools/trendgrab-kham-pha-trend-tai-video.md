@@ -4,9 +4,11 @@ type: reference
 topic: 06-tools
 tags: [trend, tiktok, youtube, google-trends, creative, research, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-255 - TrendGrab/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-255 - TrendGrab/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-255 - TrendGrab/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-255 - TrendGrab/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-trendgrab-demo-output-1.png]

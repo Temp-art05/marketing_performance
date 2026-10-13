@@ -4,15 +4,13 @@ type: reference
 topic: 06-tools
 tags: [tool, skill, policy, legal, google-play, app-store, compliance]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/PRD (3).MD, legal-and-platform-policy-research.md, Demo output.xlsx (đọc 2026-10-14)"
+  - AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/PRD (3).MD, legal-and-platform-policy-research.md, Demo output.xlsx (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md
-  - 06-tools/super-legal-check-trademark-ten-app.md
+related: [01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md, 06-tools/super-legal-check-trademark-ten-app.md]
 summary: Skill của Legal Apero (v1.1) chuẩn hoá research luật (US/EU/VN) và policy Apple/Google theo SOP LR01–LR07, xuất Excel có hiện trạng, mục tiêu, bảng policy, rủi ro, nguồn hyperlink và đề xuất của Legal.
 ---
 

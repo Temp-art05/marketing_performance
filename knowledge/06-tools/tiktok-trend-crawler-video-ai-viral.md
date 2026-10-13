@@ -5,9 +5,11 @@ topic: 06-tools
 tags: [tiktok, trend, creative, research, photo-video-app, tool-noi-bo]
 app: general
 geo: [US, LATAM, BR, ES]
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-196 - Tiktok Crawl Trend/PRD_TikTok_Trend.md (đọc 2026-10-14)", "AI Knownledge/APR-196 - Tiktok Crawl Trend/TikTok_Trend_Tool.zip: README_CHAY_TOOL.md, hashtags.json, backend/crawl_today.py (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-196 - Tiktok Crawl Trend/PRD_TikTok_Trend.md (đọc 2026-10-14)
+  - "AI Knownledge/APR-196 - Tiktok Crawl Trend/TikTok_Trend_Tool.zip: README_CHAY_TOOL.md, hashtags.json, backend/crawl_today.py (đọc 2026-10-14)"
 created: 2026-10-14
 updated: 2026-10-14
 related: [01-pre-marketing/nghien-cuu-trend-cho-creative.md, 06-tools/trendgrab-kham-pha-trend-tai-video.md]

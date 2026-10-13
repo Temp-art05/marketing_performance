@@ -4,13 +4,13 @@ type: reference
 topic: 01-pre-marketing
 tags: [creative, ai-image, ai-video, prompt, gpt-image-2, nano-banana, seedance, kling, veo, ugc]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-015 - Visual prompting/image - skill/SKILL.md + references/models.md, gpt-image.md, nano-banana.md, golden-rules.md, patterns/ui-social.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-015 - Visual prompting/video - skill/SKILL.md + references/universal-rules.md, patterns-and-genres.md, seedance.md, kling.md, veo.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-146 - Khung mẫu tạo prompt ảnh chính xác/Khung tạo prompt ảnh.txt, _info.md (owner Hiếu Hoàng Minh) (đọc 2026-10-14)"
-  - "AI Knownledge/APR-114 - XPrompt/Docs/huong-dan-su-dung.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-015 - Visual prompting/image - skill/SKILL.md + references/models.md, gpt-image.md, nano-banana.md, golden-rules.md, patterns/ui-social.md (đọc 2026-10-14)
+  - AI Knownledge/APR-015 - Visual prompting/video - skill/SKILL.md + references/universal-rules.md, patterns-and-genres.md, seedance.md, kling.md, veo.md (đọc 2026-10-14)
+  - AI Knownledge/APR-146 - Khung mẫu tạo prompt ảnh chính xác/Khung tạo prompt ảnh.txt, _info.md (owner Hiếu Hoàng Minh) (đọc 2026-10-14)
+  - AI Knownledge/APR-114 - XPrompt/Docs/huong-dan-su-dung.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

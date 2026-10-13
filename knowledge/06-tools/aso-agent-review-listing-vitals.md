@@ -4,15 +4,13 @@ type: reference
 topic: 06-tools
 tags: [tool, aso, review, store-listing, android-vitals, sensortower]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-013 - ASO Agent - Auto Reply/ASO-Agent-L2-package.zip → PRD-ASO-Agent.md, README-GOI-L2.md, ASO-Agent-source-v2.11.1.zip (đọc 2026-10-14)"
+  - AI Knownledge/APR-013 - ASO Agent - Auto Reply/ASO-Agent-L2-package.zip → PRD-ASO-Agent.md, README-GOI-L2.md, ASO-Agent-source-v2.11.1.zip (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/tra-loi-review-google-play.md
-  - 01-pre-marketing/aso-google-play-store-listing.md
+related: [01-pre-marketing/tra-loi-review-google-play.md, 01-pre-marketing/aso-google-play-store-listing.md]
 summary: Web tool nội bộ (v2.11.1) quản lý portfolio app Google Play — gợi ý reply review bằng AI theo Tier/P1–P4, auto-reply review khen, Risk Inbox, sửa listing đa ngôn ngữ, Vitals crash/ANR theo version.
 ---
 

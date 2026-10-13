@@ -4,18 +4,15 @@ type: playbook
 topic: 01-pre-marketing
 tags: [aso, review, rating, google-play, policy, android-vitals]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-013 - ASO Agent - Auto Reply/ASO-Agent-L2-package.zip → PRD-ASO-Agent.md, ASO-Agent-source-v2.11.1.zip → llm.js, autoreply.js (đọc 2026-10-14)"
-  - "https://developers.google.com/android-publisher/reply-to-reviews (truy cập 2026-10-14)"
-  - "https://developer.android.com/topic/performance/vitals (truy cập 2026-10-14)"
+  - AI Knownledge/APR-013 - ASO Agent - Auto Reply/ASO-Agent-L2-package.zip → PRD-ASO-Agent.md, ASO-Agent-source-v2.11.1.zip → llm.js, autoreply.js (đọc 2026-10-14)
+  - https://developers.google.com/android-publisher/reply-to-reviews (truy cập 2026-10-14)
+  - https://developer.android.com/topic/performance/vitals (truy cập 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/aso-google-play-store-listing.md
-  - 06-tools/aso-agent-review-listing-vitals.md
-  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+related: [01-pre-marketing/aso-google-play-store-listing.md, 06-tools/aso-agent-review-listing-vitals.md, 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md]
 summary: Quy tắc reply review Play — routing P1–P4 theo sao + nội dung, 5 nhóm review rủi ro tài khoản (refund/scam/privacy/ad/false-ad), cấu trúc reply 4 bước, điều cấm, giới hạn API và ngưỡng Vitals.
 ---
 

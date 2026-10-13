@@ -4,15 +4,23 @@ type: reference
 topic: 06-tools
 tags: [tool, creative, video-ads, outro, watermark, resize, ffmpeg, opencv, batch]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-127 - Tool cắt ghép outro hàng loạt siêu nhanh gọn/HUONG_DAN_SU_DUNG.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-111 - Video Studio/prd-video-studio.md, video-studio-skill.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-030 - Tool ghép outro hàng loạt/README.md, server.js, _info.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-127 - Tool cắt ghép outro hàng loạt siêu nhanh gọn/HUONG_DAN_SU_DUNG.md (đọc 2026-10-14)
+  - AI Knownledge/APR-111 - Video Studio/prd-video-studio.md, video-studio-skill.md (đọc 2026-10-14)
+  - AI Knownledge/APR-030 - Tool ghép outro hàng loạt/README.md, server.js, _info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related: [06-tools/genius-easy-creative.md, 06-tools/social-tracker-tiktok.md, 06-tools/urender-ghep-video-ugc.md, 06-tools/omni-resize-anh-video-da-kenh.md, 01-pre-marketing/creative-assets-google-app-campaigns.md, 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md, 06-tools/youtube-auto-uploader.md]
+related:
+  - 06-tools/genius-easy-creative.md
+  - 06-tools/social-tracker-tiktok.md
+  - 06-tools/urender-ghep-video-ugc.md
+  - 06-tools/omni-resize-anh-video-da-kenh.md
+  - 01-pre-marketing/creative-assets-google-app-campaigns.md
+  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+  - 06-tools/youtube-auto-uploader.md
 summary: Ba tool nội bộ cùng làm hậu kỳ video ads hàng loạt — Creative Editor (Windows, cắt outro đối thủ + chèn outro mình + watermark), Video Studio (web local, detect outro), Outro Tool (ghép outro + resize 4 tỉ lệ).
 ---
 

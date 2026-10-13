@@ -4,12 +4,12 @@ type: reference
 topic: 01-pre-marketing
 tags: [policy, google-play, app-store, data-safety, ai-generated-content, trademark, app-name]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/Demo output.xlsx (Legal Apero, cập nhật 07/2026; đọc 2026-10-14)"
-  - "AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/legal-and-platform-policy-research.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-055 - Super Legal/1-ASSET-super-legal.md.docx (đọc 2026-10-14)"
+  - AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/Demo output.xlsx (Legal Apero, cập nhật 07/2026; đọc 2026-10-14)
+  - AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/legal-and-platform-policy-research.md (đọc 2026-10-14)
+  - AI Knownledge/APR-055 - Super Legal/1-ASSET-super-legal.md.docx (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

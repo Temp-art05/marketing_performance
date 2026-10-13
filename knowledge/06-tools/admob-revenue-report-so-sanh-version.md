@@ -4,9 +4,11 @@ type: reference
 topic: 06-tools
 tags: [admob, ecpm, app-version, monetization, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-161 - Tool hậu kiểm ads 2 ver/3. Ban mo ta san pham (PRD)/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-161 - Tool hậu kiểm ads 2 ver/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-161 - Tool hậu kiểm ads 2 ver/3. Ban mo ta san pham (PRD)/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-161 - Tool hậu kiểm ads 2 ver/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-admob-report-tool-bien-dong-nhan-xet-1.png]

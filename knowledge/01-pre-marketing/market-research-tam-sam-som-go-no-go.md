@@ -4,10 +4,10 @@ type: playbook
 topic: 01-pre-marketing
 tags: [market-research, sensortower, tam-sam-som, competitor, go-no-go]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-017 - Create Beautful Slide From Research Market result/market-research.zip → SKILL.md, references/sizing-frameworks.md, scoring-rubric.md, data-sources.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-017 - Create Beautful Slide From Research Market result/market-research.zip → SKILL.md, references/sizing-frameworks.md, scoring-rubric.md, data-sources.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

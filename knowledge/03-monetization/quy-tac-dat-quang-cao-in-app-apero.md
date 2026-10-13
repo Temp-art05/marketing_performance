@@ -4,14 +4,14 @@ type: reference
 topic: 03-monetization
 tags: [admob, ad-placement, interstitial, native, banner, rewarded, app-open, remote-config, high-floor, policy, qa]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-108 - Tester Workflow Toolkit/Skill Q&A review/File skill-qa-reviewer/references/ad-policy.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-092 - Skill gen Q&A và Testcase từ tài liệu đặc tả/Skill gen testcase/vanptu-skill-gen-testcase.md — mục § ADS CHECKLIST, § SUB CHECKLIST (đọc 2026-10-14)"
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/Demo-ket-qua-Apero-Performance-Checker.docx — ảnh bảng ad unit theo version (đọc 2026-10-14)"
-  - "https://support.google.com/admob/answer/6201362 (WebFetch 2026-10-14)"
-  - "https://support.google.com/admob/answer/6329638"
+  - AI Knownledge/APR-108 - Tester Workflow Toolkit/Skill Q&A review/File skill-qa-reviewer/references/ad-policy.md (đọc 2026-10-14)
+  - AI Knownledge/APR-092 - Skill gen Q&A và Testcase từ tài liệu đặc tả/Skill gen testcase/vanptu-skill-gen-testcase.md — mục § ADS CHECKLIST, § SUB CHECKLIST (đọc 2026-10-14)
+  - AI Knownledge/APR-101 - Apero App Performance Checker/Demo-ket-qua-Apero-Performance-Checker.docx — ảnh bảng ad unit theo version (đọc 2026-10-14)
+  - https://support.google.com/admob/answer/6201362 (WebFetch 2026-10-14)
+  - https://support.google.com/admob/answer/6329638
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-aip806-ecpm-theo-ad-unit-brazil-1.png]
@@ -24,7 +24,7 @@ related:
   - 03-monetization/paywall-subscription-checklist-policy.md
   - 01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md
   - 06-tools/apero-app-performance-checker.md
-summary: "49 quy tắc đặt ad nội bộ Apero (inter, app open, banner, native, reward) dùng khi review spec, cùng mô hình ad unit primary + 2ID/high-floor bật tắt bằng Remote Config, jump frequency, sub gate."
+summary: 49 quy tắc đặt ad nội bộ Apero (inter, app open, banner, native, reward) dùng khi review spec, cùng mô hình ad unit primary + 2ID/high-floor bật tắt bằng Remote Config, jump frequency, sub gate.
 ---
 
 # Quy tắc đặt quảng cáo in-app của Apero

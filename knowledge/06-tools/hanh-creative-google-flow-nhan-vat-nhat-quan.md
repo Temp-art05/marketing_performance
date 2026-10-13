@@ -4,9 +4,12 @@ type: reference
 topic: 06-tools
 tags: [creative, google-flow, nano-banana, veo, ai-image, ai-video, localization, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-247 - Tool Gen Ảnh Video Hàng Loạt/hanh-creative-image-video.md (đọc 2026-10-14)", "AI Knownledge/APR-247 - Tool Gen Ảnh Video Hàng Loạt/PRD_HanhPT_Creative_Image_Video.md.docx (đọc 2026-10-14)", "https://support.google.com/googleone/answer/16287445 (tra 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-247 - Tool Gen Ảnh Video Hàng Loạt/hanh-creative-image-video.md (đọc 2026-10-14)
+  - AI Knownledge/APR-247 - Tool Gen Ảnh Video Hàng Loạt/PRD_HanhPT_Creative_Image_Video.md.docx (đọc 2026-10-14)
+  - https://support.google.com/googleone/answer/16287445 (tra 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [06-tools/ka-tool-bulk-google-flow.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md, 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md]

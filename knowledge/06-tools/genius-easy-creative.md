@@ -4,12 +4,12 @@ type: reference
 topic: 06-tools
 tags: [tool, creative, video-ads, batch, tiktok, reels, ai-photo, puppeteer, ffmpeg]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-075 - Genius Easy Creative/3 - skill.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-075 - Genius Easy Creative/4 - PRD.pdf (đọc 2026-10-14)"
-  - "AI Knownledge/APR-075 - Genius Easy Creative/(PHẢI ĐỌC) HƯỚNG DẪN CÀI ĐẶT.pdf (đọc 2026-10-14)"
+  - AI Knownledge/APR-075 - Genius Easy Creative/3 - skill.md (đọc 2026-10-14)
+  - AI Knownledge/APR-075 - Genius Easy Creative/4 - PRD.pdf (đọc 2026-10-14)
+  - AI Knownledge/APR-075 - Genius Easy Creative/(PHẢI ĐỌC) HƯỚNG DẪN CÀI ĐẶT.pdf (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -20,7 +20,7 @@ related:
   - playbooks/san-xuat-creative-hang-loat-bang-ai.md
   - 06-tools/urender-ghep-video-ugc.md
   - 06-tools/xprompt.md
-summary: "Tool của team UA (AnhLD1) ghép bộ ảnh AI thành hàng loạt video ads 1080×1920 30fps (hook → fake app UI → kết quả → nhạc → overlay → outro); 7 template, mặc định 25 video/persona, chạy local Mac/Win."
+summary: Tool của team UA (AnhLD1) ghép bộ ảnh AI thành hàng loạt video ads 1080×1920 30fps (hook → fake app UI → kết quả → nhạc → overlay → outro); 7 template, mặc định 25 video/persona, chạy local Mac/Win.
 ---
 
 # Genius Easy Creative

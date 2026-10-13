@@ -4,9 +4,11 @@ type: reference
 topic: 06-tools
 tags: [tiktok, creative, ai-avatar, dubbing, image-to-video, localization, mcp, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-195 - Tiktok Gen AI MCP/asset.rar: 01-noi-dung-asset.md, 02-huong-dan-su-dung.md (đọc 2026-10-14)", "AI Knownledge/APR-195 - Tiktok Gen AI MCP/_info.md (đọc 2026-10-14)"]
+sources:
+  - "AI Knownledge/APR-195 - Tiktok Gen AI MCP/asset.rar: 01-noi-dung-asset.md, 02-huong-dan-su-dung.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-195 - Tiktok Gen AI MCP/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [playbooks/san-xuat-creative-hang-loat-bang-ai.md]

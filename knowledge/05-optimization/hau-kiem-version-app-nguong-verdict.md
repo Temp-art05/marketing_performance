@@ -4,18 +4,20 @@ type: playbook
 topic: 05-optimization
 tags: [version-compare, rollout, ltv, retention, churn, match-rate, show-rate, ecpm, mktpro, tier, ga4-funnel, admob, ad-unit, app-version]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/Huong-dan-su-dung-Apero-Performance-Checker.docx (đọc 2026-10-14)"
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/Demo-ket-qua-Apero-Performance-Checker.docx (đọc 2026-10-14)"
-  - "AI Knownledge/APR-101 - Apero App Performance Checker/tool-extension.zip → src/lib/verdict.js, src/popup/popup.js (đọc 2026-10-14)"
-  - "AI Knownledge/APR-099 - stum-weekly-report/MO-TA-SAN-PHAM.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-099 - stum-weekly-report/Stum-Tool.zip → src/tiers.js, src/config.js, src/format.js (đọc 2026-10-14)"
-  - "AI Knownledge/APR-161 - Tool hậu kiểm ads 2 ver/3. Ban mo ta san pham (PRD)/PRD.md + screenshots/ (đọc 2026-10-14) — quy trình và công thức của đội Ad Monetization"
+  - AI Knownledge/APR-101 - Apero App Performance Checker/Huong-dan-su-dung-Apero-Performance-Checker.docx (đọc 2026-10-14)
+  - AI Knownledge/APR-101 - Apero App Performance Checker/Demo-ket-qua-Apero-Performance-Checker.docx (đọc 2026-10-14)
+  - AI Knownledge/APR-101 - Apero App Performance Checker/tool-extension.zip → src/lib/verdict.js, src/popup/popup.js (đọc 2026-10-14)
+  - AI Knownledge/APR-099 - stum-weekly-report/MO-TA-SAN-PHAM.md (đọc 2026-10-14)
+  - AI Knownledge/APR-099 - stum-weekly-report/Stum-Tool.zip → src/tiers.js, src/config.js, src/format.js (đọc 2026-10-14)
+  - AI Knownledge/APR-161 - Tool hậu kiểm ads 2 ver/3. Ban mo ta san pham (PRD)/PRD.md + screenshots/ (đọc 2026-10-14) — quy trình và công thức của đội Ad Monetization
 created: 2026-10-14
 updated: 2026-10-14
-images: [assets/screenshots/2026-10/2026-10-14-aip806-dashboard-hau-kiem-version-1.png, assets/screenshots/2026-10/2026-10-14-admob-report-tool-phan-nhom-ad-unit-1.png]
+images:
+  - assets/screenshots/2026-10/2026-10-14-aip806-dashboard-hau-kiem-version-1.png
+  - assets/screenshots/2026-10/2026-10-14-admob-report-tool-phan-nhom-ad-unit-1.png
 related:
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
   - 05-optimization/unit-economics-ads-only-theo-tier.md

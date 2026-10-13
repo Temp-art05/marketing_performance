@@ -4,14 +4,16 @@ type: reference
 topic: 06-tools
 tags: [seasonality, holiday, geo, content-planning, google-sheets, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-284 - GLOBAL HOLIDAY MAP/_info.md (đọc 2026-10-14)", "AI Knownledge/APR-284 - GLOBAL HOLIDAY MAP/Tool.zip: README.md, docs/data-strategy.md, docs/product-requirements.md (đọc 2026-10-14)", "https://date.nager.at", "https://www.npmjs.com/package/date-holidays"]
+sources:
+  - AI Knownledge/APR-284 - GLOBAL HOLIDAY MAP/_info.md (đọc 2026-10-14)
+  - "AI Knownledge/APR-284 - GLOBAL HOLIDAY MAP/Tool.zip: README.md, docs/data-strategy.md, docs/product-requirements.md (đọc 2026-10-14)"
+  - https://date.nager.at
+  - https://www.npmjs.com/package/date-holidays
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 01-pre-marketing/nghien-cuu-trend-cho-creative.md
-  - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
+related: [01-pre-marketing/nghien-cuu-trend-cho-creative.md, 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md]
 summary: Web app bản đồ 3D chọn nhiều nước → ngày lễ 2025–2030 tách 3 lớp (nghỉ chính thức / văn hoá-tôn giáo / observance), có nguồn + trạng thái xác minh, xuất .ics/.csv và Google Sheets theo tháng.
 ---
 

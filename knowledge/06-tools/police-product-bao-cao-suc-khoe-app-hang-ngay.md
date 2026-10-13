@@ -4,9 +4,12 @@ type: reference
 topic: 06-tools
 tags: [ga4, bigquery, retention, dau, discord, agent, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-211 - Police-product/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-211 - Police-product/report/report.py (đọc 2026-10-14)", "AI Knownledge/APR-211 - Police-product/.claude/agents/police-product.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-211 - Police-product/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-211 - Police-product/report/report.py (đọc 2026-10-14)
+  - AI Knownledge/APR-211 - Police-product/.claude/agents/police-product.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related: [04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md]

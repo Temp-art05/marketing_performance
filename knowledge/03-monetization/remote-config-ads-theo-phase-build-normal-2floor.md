@@ -4,12 +4,12 @@ type: reference
 topic: 03-monetization
 tags: [remote-config, firebase, high-floor, 2-floor, ad-placement, splash, onboarding, lfo]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-007 - Update remote config hàng loạt cho ver 1.0.0 sử dụng mcp firebase/Trận AI firebase.zip → Auto test Ads - Template - Remote Config.csv (đọc 2026-10-14)"
-  - "AI Knownledge/APR-007 - Update remote config hàng loạt cho ver 1.0.0 sử dụng mcp firebase/Trận AI firebase.zip → GUIDELINE.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-092 - Skill gen Q&A và Testcase từ tài liệu đặc tả/Skill gen testcase/vanptu-skill-gen-testcase.md — § ADS CHECKLIST (mô hình primary/2ID) (đọc 2026-10-14)"
+  - AI Knownledge/APR-007 - Update remote config hàng loạt cho ver 1.0.0 sử dụng mcp firebase/Trận AI firebase.zip → Auto test Ads - Template - Remote Config.csv (đọc 2026-10-14)
+  - AI Knownledge/APR-007 - Update remote config hàng loạt cho ver 1.0.0 sử dụng mcp firebase/Trận AI firebase.zip → GUIDELINE.md (đọc 2026-10-14)
+  - AI Knownledge/APR-092 - Skill gen Q&A và Testcase từ tài liệu đặc tả/Skill gen testcase/vanptu-skill-gen-testcase.md — § ADS CHECKLIST (mô hình primary/2ID) (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:

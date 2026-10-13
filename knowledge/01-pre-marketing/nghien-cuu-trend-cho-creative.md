@@ -5,12 +5,25 @@ topic: 01-pre-marketing
 tags: [trend, creative, research, tiktok, hashtag, competitor, photo-video-app]
 app: general
 geo: [US, LATAM, BR, ES]
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-196 - Tiktok Crawl Trend/TikTok_Trend_Tool.zip: hashtags.json, crawl_today.py (đọc 2026-10-14)", "AI Knownledge/APR-255 - TrendGrab/PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/PRD.md, TECHNICAL.md (đọc 2026-10-14)", "AI Knownledge/APR-258 - Video Download/repo/README.md (đọc 2026-10-14)"]
+sources:
+  - "AI Knownledge/APR-196 - Tiktok Crawl Trend/TikTok_Trend_Tool.zip: hashtags.json, crawl_today.py (đọc 2026-10-14)"
+  - AI Knownledge/APR-255 - TrendGrab/PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/PRD.md, TECHNICAL.md (đọc 2026-10-14)
+  - AI Knownledge/APR-258 - Video Download/repo/README.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related: [01-pre-marketing/creative-assets-google-app-campaigns.md, 06-tools/tiktok-trend-crawler-video-ai-viral.md, 06-tools/trendgrab-kham-pha-trend-tai-video.md, 06-tools/trend-research-engine-why-it-works.md, 06-tools/video-download-tai-video-hang-loat.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md, 06-tools/social-tracker-tiktok.md, 06-tools/global-holiday-map-lich-ngay-le.md, 06-tools/tong-quan-cong-cu-ai-marketing.md]
+related:
+  - 01-pre-marketing/creative-assets-google-app-campaigns.md
+  - 06-tools/tiktok-trend-crawler-video-ai-viral.md
+  - 06-tools/trendgrab-kham-pha-trend-tai-video.md
+  - 06-tools/trend-research-engine-why-it-works.md
+  - 06-tools/video-download-tai-video-hang-loat.md
+  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+  - 06-tools/social-tracker-tiktok.md
+  - 06-tools/global-holiday-map-lich-ngay-le.md
+  - 06-tools/tong-quan-cong-cu-ai-marketing.md
 summary: Phương pháp nội bộ tìm idea creative — crawl TikTok theo hashtag AI (EN/ES/PT) lọc 48h xếp theo view, gom video đối thủ từ Ads Library, phân tích 13 chiều Why-It-Works, chấm điểm app bằng công thức App Store minh bạch.
 ---
 

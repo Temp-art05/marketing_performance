@@ -4,13 +4,18 @@ type: reference
 topic: 06-tools
 tags: [creative, google-flow, ai-image, ai-video, face-template, batch, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: medium
-sources: ["AI Knownledge/APR-262 - Tool gen ảnh và video hàng loạt/PRD/KA_Tool_Bulk_PRD.md (đọc 2026-10-14)", "AI Knownledge/APR-262 - Tool gen ảnh và video hàng loạt/_info.md (đọc 2026-10-14)"]
+sources:
+  - AI Knownledge/APR-262 - Tool gen ảnh và video hàng loạt/PRD/KA_Tool_Bulk_PRD.md (đọc 2026-10-14)
+  - AI Knownledge/APR-262 - Tool gen ảnh và video hàng loạt/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-ka-tool-bulk-anh-goc-1.jpg, assets/screenshots/2026-10/2026-10-14-ka-tool-bulk-anh-template-1.jpg]
-related: [06-tools/hanh-creative-google-flow-nhan-vat-nhat-quan.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md, 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md]
+related:
+  - 06-tools/hanh-creative-google-flow-nhan-vat-nhat-quan.md
+  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+  - 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md
 summary: Applet Google Flow xử lý lô N ảnh gốc theo 4 chế độ — Face Template, Prompt Single, Bulk Prompt (ảnh i ↔ prompt i), Tạo Video — thay cho thao tác từng ảnh; hợp làm template ảnh/video cho app AI photo.
 ---
 

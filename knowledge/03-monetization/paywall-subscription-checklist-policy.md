@@ -4,14 +4,14 @@ type: reference
 topic: 03-monetization
 tags: [subscription, iap, paywall, free-trial, policy, google-play, app-store, hybrid-monetization]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-108 - Tester Workflow Toolkit/Skill Q&A review/File skill-qa-reviewer/references/sub-iap-policy.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html (lỗi Subscriptions, 3.1.2, 2.1, Code of Conduct) (đọc 2026-10-14)"
-  - "AI Knownledge/APR-092 - Skill gen Q&A và Testcase từ tài liệu đặc tả/Skill gen testcase/vanptu-skill-gen-testcase.md (§ SUB CHECKLIST) (đọc 2026-10-14)"
-  - "https://support.google.com/googleplay/android-developer/answer/9900533"
-  - "AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/README.md, references/revenuecat-api-cheatsheet.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-108 - Tester Workflow Toolkit/Skill Q&A review/File skill-qa-reviewer/references/sub-iap-policy.md (đọc 2026-10-14)
+  - AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html (lỗi Subscriptions, 3.1.2, 2.1, Code of Conduct) (đọc 2026-10-14)
+  - AI Knownledge/APR-092 - Skill gen Q&A và Testcase từ tài liệu đặc tả/Skill gen testcase/vanptu-skill-gen-testcase.md (§ SUB CHECKLIST) (đọc 2026-10-14)
+  - https://support.google.com/googleplay/android-developer/answer/9900533
+  - AI Knownledge/APR-268 - IOS Apply RevenueCat SDK/README.md, references/revenuecat-api-cheatsheet.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -21,7 +21,7 @@ related:
   - 06-tools/meta-ads-dashboard.md
   - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
   - 03-monetization/admob-co-ban.md
-summary: "10 quy tắc paywall nội bộ Apero (4 thông tin bắt buộc, cách trình bày free trial, sale, cancel anytime, PP/ToS, nút Cancel sub Android, Restore iOS) kèm lỗi policy thật đã gặp và rule mặc định \"mua Sub → tắt mọi ads\"."
+summary: 10 quy tắc paywall nội bộ Apero (4 thông tin bắt buộc, cách trình bày free trial, sale, cancel anytime, PP/ToS, nút Cancel sub Android, Restore iOS) kèm lỗi policy thật đã gặp và rule mặc định "mua Sub → tắt mọi ads".
 ---
 
 # Checklist paywall / subscription đúng policy

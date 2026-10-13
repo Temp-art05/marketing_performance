@@ -4,17 +4,15 @@ type: reference
 topic: 06-tools
 tags: [tool, reporting, mktpro, ltv, retention, version-compare, google-sheets, playwright]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-099 - stum-weekly-report/MO-TA-SAN-PHAM.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-099 - stum-weekly-report/Stum-Tool.zip → README.md, HUONG-DAN.md, src/config.js, src/tiers.js, src/format.js (đọc 2026-10-14)"
+  - AI Knownledge/APR-099 - stum-weekly-report/MO-TA-SAN-PHAM.md (đọc 2026-10-14)
+  - AI Knownledge/APR-099 - stum-weekly-report/Stum-Tool.zip → README.md, HUONG-DAN.md, src/config.js, src/tiers.js, src/format.js (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
-  - 06-tools/apero-app-performance-checker.md
-summary: "Tool Node.js + Playwright (My Nguyễn Thảo) chạy Chủ Nhật 15:00, lấy LTV D0, R1, churn D0, session, time, crash từ mktpro cho top 3 country theo revenue, lọc ngày \"đủ số\" theo tier, so 2 version rồi ghi vào Google Sheet."
+related: [05-optimization/hau-kiem-version-app-nguong-verdict.md, 06-tools/apero-app-performance-checker.md]
+summary: Tool Node.js + Playwright (My Nguyễn Thảo) chạy Chủ Nhật 15:00, lấy LTV D0, R1, churn D0, session, time, crash từ mktpro cho top 3 country theo revenue, lọc ngày "đủ số" theo tier, so 2 version rồi ghi vào Google Sheet.
 ---
 
 # Stum Weekly Report

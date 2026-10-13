@@ -4,9 +4,12 @@ type: reference
 topic: 06-tools
 tags: [creative, research, tiktok, meta-ads, ad-library, competitor, tool-noi-bo]
 app: general
-status: draft
+status: verified
 confidence: high
-sources: ["AI Knownledge/APR-258 - Video Download/repo/README.md (đọc 2026-10-14)", "AI Knownledge/APR-258 - Video Download/repo/plans/260914-1412-tool-len-mini-va-domain/plan.md (đọc 2026-10-14)", "https://github.com/namhd-SG/video-download"]
+sources:
+  - AI Knownledge/APR-258 - Video Download/repo/README.md (đọc 2026-10-14)
+  - AI Knownledge/APR-258 - Video Download/repo/plans/260914-1412-tool-len-mini-va-domain/plan.md (đọc 2026-10-14)
+  - https://github.com/namhd-SG/video-download
 created: 2026-10-14
 updated: 2026-10-14
 related: [06-tools/trendgrab-kham-pha-trend-tai-video.md, 01-pre-marketing/nghien-cuu-trend-cho-creative.md]

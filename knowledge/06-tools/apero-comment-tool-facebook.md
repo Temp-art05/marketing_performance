@@ -4,17 +4,15 @@ type: reference
 topic: 06-tools
 tags: [tool, facebook, comment, community, meta-ads, gemini, graph-api, social]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-155 - Tool tự động trả lời cmt facebook/Apero Comment Tool — Hệ thống tự động trả lời bình luận Facebook bằng AI.docx (đọc 2026-10-14)"
-  - "AI Knownledge/APR-155 - Tool tự động trả lời cmt facebook/_info.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-155 - Tool tự động trả lời cmt facebook/Apero Comment Tool — Hệ thống tự động trả lời bình luận Facebook bằng AI.docx (đọc 2026-10-14)
+  - AI Knownledge/APR-155 - Tool tự động trả lời cmt facebook/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 06-tools/meta-ads-dashboard.md
-  - 05-optimization/danh-gia-hieu-qua-social-organic.md
-summary: "Web app (Thảo Phạm Thị) cho team UA/Marketing trả lời bình luận trên bài và bài ads của nhiều Fanpage bằng Gemini, đúng ngôn ngữ từng người, quản lý theo app, có phân quyền Admin/Marketer và lịch sử trả lời."
+related: [06-tools/meta-ads-dashboard.md, 05-optimization/danh-gia-hieu-qua-social-organic.md]
+summary: Web app (Thảo Phạm Thị) cho team UA/Marketing trả lời bình luận trên bài và bài ads của nhiều Fanpage bằng Gemini, đúng ngôn ngữ từng người, quản lý theo app, có phân quyền Admin/Marketer và lịch sử trả lời.
 ---
 
 # Apero Comment Tool (Facebook)

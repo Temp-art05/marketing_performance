@@ -4,14 +4,21 @@ type: overview
 topic: 06-tools
 tags: [tool, overview, roadmap, workflow, ai]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/ (kho asset Apero Knowledge Hub, 127 project triage, 38 tài liệu tool) (đọc 2026-10-14)"
+  - AI Knownledge/ (kho asset Apero Knowledge Hub, 127 project triage, 38 tài liệu tool) (đọc 2026-10-14)
   - "KB: 00-overview/roadmap.md"
 created: 2026-10-14
 updated: 2026-10-14
-related: [00-overview/roadmap.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md, 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md, 05-optimization/hau-kiem-version-app-nguong-verdict.md, 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md, 01-pre-marketing/nghien-cuu-trend-cho-creative.md, 05-optimization/doc-chi-so-theo-moc-thoi-gian.md]
+related:
+  - 00-overview/roadmap.md
+  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+  - 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
+  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+  - 01-pre-marketing/nghien-cuu-trend-cho-creative.md
+  - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
 summary: Bản đồ ~40 tool AI nội bộ Apero theo bước roadmap (ASO/creative → launch → đo lường/tối ưu → monetization → policy/legal → research/social), mỗi tool 1 dòng, kèm hướng dẫn chọn tool nào khi nào.
 ---
 

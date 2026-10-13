@@ -4,11 +4,11 @@ type: reference
 topic: 06-tools
 tags: [tool, aso, screenshot, ai-image, fal-ai, gpt-image-2, nano-banana]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
-  - "AI Knownledge/APR-052 - App Store Screenshot Studio/screenshot-studio.zip → README.md, app/lib/screenshotSkill.js, app/lib/imageSize.js (đọc 2026-10-14)"
-  - "AI Knownledge/APR-052 - App Store Screenshot Studio/Demo Output/1.png–6.png (xem 2026-10-14)"
+  - AI Knownledge/APR-052 - App Store Screenshot Studio/screenshot-studio.zip → README.md, app/lib/screenshotSkill.js, app/lib/imageSize.js (đọc 2026-10-14)
+  - AI Knownledge/APR-052 - App Store Screenshot Studio/Demo Output/1.png–6.png (xem 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 images: [assets/screenshots/2026-10/2026-10-14-screenshot-studio-demo-slide1-1.png]

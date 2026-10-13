@@ -4,17 +4,14 @@ type: reference
 topic: 06-tools
 tags: [tool, creative, ugc, video-ads, subtitle, ffmpeg, language-learning]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-094 - URender/TOOL_OVERVIEW.md (đọc 2026-10-14)"
-  - "AI Knownledge/APR-094 - URender/_info.md (đọc 2026-10-14)"
+  - AI Knownledge/APR-094 - URender/TOOL_OVERVIEW.md (đọc 2026-10-14)
+  - AI Knownledge/APR-094 - URender/_info.md (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
-related:
-  - 06-tools/cat-outro-watermark-video-hang-loat.md
-  - 06-tools/genius-easy-creative.md
-  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+related: [06-tools/cat-outro-watermark-video-hang-loat.md, 06-tools/genius-easy-creative.md, playbooks/san-xuat-creative-hang-loat-bang-ai.md]
 summary: "App desktop ghép video AI tutor + learner thành MP4 1080×1920: chỉ co giãn khoảng lặng để khớp thoại, 5 layout, phụ đề 2 màu (cả Indic/CJK); cho video UGC app học ngôn ngữ."
 ---
 

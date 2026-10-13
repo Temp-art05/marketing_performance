@@ -4,10 +4,10 @@ type: reference
 topic: 06-tools
 tags: [tool, youtube, video, google-ads, creative]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "AI Knownledge/APR-006 - Auto upload video Youtube/_info.md, Link & HDSD.docx (đọc 2026-10-14)"
+  - AI Knownledge/APR-006 - Auto upload video Youtube/_info.md, Link & HDSD.docx (đọc 2026-10-14)
 created: 2026-10-14
 updated: 2026-10-14
 related:
