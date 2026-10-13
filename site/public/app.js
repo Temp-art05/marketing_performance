@@ -34,8 +34,8 @@ async function api(method, url, body, headers = {}) {
 }
 
 async function load() {
-  const [meta, docs, images] = await Promise.all([api('GET', '/api/meta'), api('GET', '/api/docs?full=1'), api('GET', '/api/images')]);
-  S.meta = meta; S.images = images;
+  const [meta, docs, images, sugg] = await Promise.all([api('GET', '/api/meta'), api('GET', '/api/docs?full=1'), api('GET', '/api/images'), api('GET', '/api/suggestions').catch(() => null)]);
+  S.meta = meta; S.images = images; S.sugg = sugg;
   S.docs = docs.filter(d => !d.error).sort((a, b) => String(b.fm.updated).localeCompare(String(a.fm.updated)) || b.mtime - a.mtime);
   S.broken = docs.filter(d => d.error);
   S.byRel = new Map(S.docs.map(d => [d.rel, d]));
@@ -192,6 +192,7 @@ function renderSidebar(active = '') {
   $('#side-nav').innerHTML = `
     <div class="side-group">
       ${item('#/', 'home', 'Trang chủ')}
+      ${item('#/suggestions', 'tips_and_updates', 'Gợi ý', S.sugg ? (S.sugg.followups.due.length + S.sugg.issues.filter(i => i.severity === 'warn').length) || null : null)}
       ${item('#/browse', 'description', 'Tài liệu', S.docs.length)}
       ${item('#/browse?status=draft', 'edit_note', 'Draft cần duyệt', drafts)}
       ${item('#/gallery', 'photo_library', 'Ảnh chụp', S.images.length)}
@@ -221,6 +222,7 @@ pages.home = () => {
       ${[['#/browse', 'description', S.docs.length, 'tài liệu'], ['#/browse?status=draft', 'edit_note', drafts.length, 'draft cần duyệt'], ['#/timeline', 'lightbulb', lessons.length, 'bài học'], ['#/gallery', 'photo_library', S.images.length, 'ảnh chụp màn hình']]
         .map(([href, icon, n, l]) => `<a class="card stat" href="${href}"><span class="tile">${ic(icon, 'fill')}</span><div><div class="n">${n}</div><div class="l">${l}</div></div></a>`).join('')}
     </div>
+    ${S.sugg?.followups.due.length ? `<a class="warn-box" href="#/suggestions">${ic('alarm')}<span><strong>${S.sugg.followups.due.length} mốc theo dõi đến hạn</strong> — ${S.sugg.followups.due.slice(0, 3).map(f => esc(`${f.app}: ${f.text}`)).join(' · ')}</span></a>` : ''}
     ${S.broken.length ? `<div class="err-box">${ic('error')}<span>${S.broken.length} file lỗi frontmatter, không hiển thị được: ${S.broken.map(b => esc(b.rel)).join(', ')}</span></div>` : ''}
     <div class="grid two-col">
       <div class="card" id="cs"><div class="card-head"><h2>Trạng thái hiện tại</h2>${cs ? `<a class="btn ghost sm" href="#/edit/${encodeURI(cs.rel)}">${ic('edit')}Sửa</a>` : ''}</div></div>
@@ -244,6 +246,7 @@ pages.doc = async (rel) => {
     <div class="crumbs">${crumbs}</div>
     ${head(esc(fm.title), { extra: `<div class="head-badges">${badges(fm)}</div>`, actions: `
         ${fm.status === 'draft' ? `<button class="btn sm" id="verify">${ic('check')}Duyệt</button>` : ''}
+        <a class="btn sm" href="#/suggestions?app=${encodeURIComponent(fm.app || 'general')}&text=${encodeURIComponent('Xem lại: ' + fm.title)}" title="Đặt mốc xem lại tài liệu này">${ic('add_alarm')}Đặt mốc</a>
         <a class="btn primary sm" href="#/edit/${encodeURI(rel)}">${ic('edit')}Sửa</a>
         <button class="btn ghost sm" id="del" title="Xoá">${ic('delete')}</button>` })}
     ${d.error ? `<div class="err-box">${esc(d.error)}</div>` : ''}
@@ -360,6 +363,106 @@ pages.timeline = () => {
   renderSidebar();
 };
 
+// kind → [icon, nhãn, cách sửa]
+const ISSUE_LABEL = {
+  'stale-draft': ['hourglass_bottom', 'Draft để lâu chưa duyệt', 'Đọc lại, sửa nếu cần rồi bấm Duyệt — hoặc đánh dấu lỗi thời.'],
+  conflict: ['report', 'Mâu thuẫn chưa xử lý', 'Kiểm tra số liệu nào đúng, sửa bài và xoá mục "⚠️ Mâu thuẫn".'],
+  'outdated-no-replacement': ['history', 'Lỗi thời nhưng chưa có bài thay thế', 'Thêm bài mới vào "Liên quan" để người đọc biết xem ở đâu.'],
+  'app-missing-profile': ['smartphone', 'App thiếu hồ sơ', 'Tạo apps/<app>/profile.md: package, ID tài khoản, ai giữ quyền gì.'],
+  'current-state-long': ['notes', 'Trạng thái hiện tại quá dài', 'File này nạp vào mọi session Claude — rút còn ≤ 40 dòng.'],
+  'low-confidence': ['help', 'Độ tin cậy thấp', 'Cần số liệu thật của app hoặc nguồn chính thức để xác nhận.'],
+  'orphan-image': ['image_not_supported', 'Ảnh chưa gắn tài liệu', 'Chèn ảnh vào bài liên quan hoặc xoá nếu không cần.'],
+  'one-way-related': ['link', 'Liên kết một chiều', 'Bài A trỏ tới B nhưng B không trỏ lại — bấm "Thêm liên kết ngược".'],
+};
+const WHEN = [['7d', '+7 ngày'], ['14d', '+14 ngày'], ['1m', '+1 tháng'], ['4m', '+4 tháng'], ['6m', '+6 tháng']];
+
+// Duyệt draft không cần mở trang sửa: đọc bản mới nhất rồi chỉ đổi status.
+async function verifyDoc(rel) {
+  const d = await api('GET', `/api/doc?rel=${encodeURIComponent(rel)}`);
+  await api('PUT', '/api/doc', { rel, fm: { ...d.fm, status: 'verified' }, body: d.body, baseHash: d.hash });
+}
+
+pages.suggestions = async (params) => {
+  let dx, fus;
+  try { [dx, fus] = await Promise.all([api('GET', '/api/suggestions'), api('GET', '/api/followups')]); S.sugg = dx; }
+  catch (e) { main.innerHTML = empty('error', esc(e.message)); renderSidebar(); return; }
+  // completeFollowup đánh số theo thứ tự mốc đang mở trong file (1-based).
+  const open = fus.filter(f => !f.done).map((f, i) => ({ ...f, sel: i + 1 }));
+  const in7 = new Date(`${dx.today}T00:00:00`); in7.setDate(in7.getDate() + 7);
+  const horizon = in7.toISOString().slice(0, 10);
+  const byDate = [...open].sort((a, b) => a.date.localeCompare(b.date));
+  const fuGroups = [['Đến hạn', byDate.filter(f => f.due)], ['7 ngày tới', byDate.filter(f => !f.due && f.date <= horizon)], ['Sau đó', byDate.filter(f => f.date > horizon)]].filter(([, l]) => l.length);
+  const fuRow = f => `<li class="fu-row${f.overdue ? ' overdue' : f.due ? ' due' : ''}">
+    <span class="fu-date">${esc(f.date.slice(8))}/${esc(f.date.slice(5, 7))}</span>
+    <div class="fu-main"><div>${esc(f.text)}</div><div class="m">${f.app !== 'general' ? `<a class="badge" href="#/browse?app=${encodeURIComponent(f.app)}">${ic('smartphone')}${esc(f.app)}</a>` : ''}${f.overdue ? '<span class="badge outdated">quá hạn</span>' : f.due ? '<span class="badge draft">hôm nay</span>' : ''}</div></div>
+    <button class="btn sm" data-done="${f.sel}" title="Đánh dấu đã xem lại">${ic('check')}Xong</button></li>`;
+  const groups = {};
+  for (const i of dx.issues) (groups[i.kind] ??= []).push(i);
+  const issueLink = i => i.rel.endsWith('.md') && S.byRel.has(i.rel) ? `<a href="${docHref(i.rel)}">${esc(S.byRel.get(i.rel).fm.title)}</a>`
+    : i.rel.startsWith('assets/') ? `<a href="/${esc(i.rel)}" data-img="${esc(i.rel)}">${esc(i.rel.split('/').pop())}</a>` : `<code>${esc(i.rel)}</code>`;
+  const issueAction = i => {
+    if (i.kind === 'one-way-related') { const to = /tới (\S+\.md)/.exec(i.msg)?.[1]; return to && S.byRel.has(to) ? `<button class="btn ghost sm" data-backlink="${esc(to)}" data-from="${esc(i.rel)}">${ic('add_link')}Thêm liên kết ngược</button>` : ''; }
+    if (i.kind === 'app-missing-profile') { const app = i.rel.split('/')[1]; return `<a class="btn ghost sm" href="#/new?topic=apps/${encodeURIComponent(app)}&type=app-profile">${ic('add')}Tạo hồ sơ</a>`; }
+    if (i.kind === 'stale-draft') return `<button class="btn ghost sm" data-verify="${esc(i.rel)}">${ic('check')}Duyệt</button>`;
+    return '';
+  };
+  const issueHtml = Object.entries(groups).map(([k, list]) => {
+    const [icon, label, hint] = ISSUE_LABEL[k] || ['info', k, ''];
+    const warn = list[0].severity === 'warn';
+    return `<details class="card issue${warn ? ' warn' : ''}" ${warn ? 'open' : ''}><summary><span class="issue-ic">${ic(icon)}</span><span class="issue-t"><strong>${esc(label)}</strong>${hint ? `<span class="s">${esc(hint)}</span>` : ''}</span><span class="count">${list.length}</span>${ic('expand_more', 'chev')}</summary>
+      <ul class="doc-list">${list.map(i => `<li class="issue-row"><div><div class="t">${issueLink(i)}</div><div class="s">${esc(i.msg)}</div></div>${issueAction(i)}</li>`).join('')}</ul></details>`;
+  }).join('');
+  const warnN = dx.issues.filter(i => i.severity === 'warn').length;
+  const apps = ['general', ...S.meta.apps];
+  const pre = { app: params.get('app') || '', text: params.get('text') || '' };
+  main.innerHTML = `
+    ${head('Gợi ý', { icon: 'tips_and_updates', sub: 'Mốc cần xem lại, draft chờ duyệt và chỗ knowledge còn yếu — Claude cũng nhắc những mục này đầu mỗi session.' })}
+    <div class="grid stats">
+      ${[['alarm', dx.followups.due.length, 'mốc đến hạn'], ['event_upcoming', dx.followups.upcoming.length, 'mốc trong 7 ngày'], ['edit_note', dx.drafts.length, 'draft chờ duyệt'], ['healing', warnN, 'vấn đề cần sửa']]
+        .map(([icon, n, l]) => `<div class="card stat${icon === 'alarm' && n ? ' hot' : ''}"><span class="tile">${ic(icon, 'fill')}</span><div><div class="n">${n}</div><div class="l">${l}</div></div></div>`).join('')}
+    </div>
+    <div class="grid two-col">
+      <div class="card"><div class="card-head"><h2>Mốc theo dõi</h2><a class="btn ghost sm" href="${docHref(dx.watchlist)}">${ic('list')}Mở watchlist</a></div>
+        ${fuGroups.length ? fuGroups.map(([t, l]) => `<div class="fu-group">${t}</div><ul class="fu-list">${l.map(fuRow).join('')}</ul>`).join('') : '<p class="muted">Chưa có mốc nào đang mở. Thêm mốc mỗi khi launch, đổi bid/budget/creative.</p>'}
+        <form id="fu-add" class="fu-add" autocomplete="off">
+          <div class="fu-add-row"><input name="text" required placeholder="Xem lại gì? vd: ROAS D7 campaign X (target ≥ 40%)" value="${esc(pre.text)}"></div>
+          <div class="fu-add-row">
+            <div class="seg" role="radiogroup" aria-label="Khi nào">${WHEN.map(([v, l], i) => `<label><input type="radio" name="when" value="${v}" ${i === 0 ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div>
+            <select name="app" aria-label="App">${apps.map(a => `<option ${a === pre.app ? 'selected' : ''}>${esc(a)}</option>`).join('')}</select>
+            <button class="btn primary sm">${ic('add_alarm')}Thêm mốc</button>
+          </div>
+        </form></div>
+      <div class="card"><div class="card-head"><h2>Draft chờ duyệt</h2><a class="btn ghost sm" href="#/browse?status=draft">Tất cả ${dx.drafts.length}</a></div>
+        ${dx.drafts.length ? `<ul class="doc-list">${dx.drafts.slice(0, 8).map(d => `<li class="issue-row"><div><a class="t" href="${docHref(d.rel)}">${esc(d.title)}</a><div class="s">${d.age != null ? (d.age ? `${d.age} ngày trước` : 'hôm nay') : ''}</div></div><button class="btn ghost sm" data-verify="${esc(d.rel)}">${ic('check')}Duyệt</button></li>`).join('')}</ul>` : '<p class="muted">Không có draft nào.</p>'}</div>
+    </div>
+    <div class="section-title">Sức khoẻ knowledge</div>
+    ${issueHtml || empty('verified', 'Không có vấn đề nào')}`;
+
+  const busy = async (btn, fn, ok) => { btn.disabled = true; try { await fn(); toast(ok); await refresh(); } catch (e) { btn.disabled = false; toast(e.message, true); } };
+  $$('[data-done]').forEach(b => b.addEventListener('click', () => {
+    const note = prompt('Kết quả khi xem lại? (vd: ROAS D7 = 48%, giữ bid) — để trống cũng được', '');
+    if (note === null) return;
+    busy(b, () => api('POST', '/api/followup/done', { selector: b.dataset.done, note }), 'Đã đánh dấu xong — nhớ nạp kết quả thành bài học');
+  }));
+  $$('[data-verify]').forEach(b => b.addEventListener('click', () => busy(b, () => verifyDoc(b.dataset.verify), 'Đã duyệt')));
+  $$('[data-backlink]').forEach(b => b.addEventListener('click', () => busy(b, async () => {
+    const rel = b.dataset.backlink, d = await api('GET', `/api/doc?rel=${encodeURIComponent(rel)}`);
+    const related = [...new Set([...(d.fm.related || []), b.dataset.from])];
+    await api('PUT', '/api/doc', { rel, fm: { ...d.fm, related }, body: d.body, baseHash: d.hash });
+  }, 'Đã thêm liên kết ngược')));
+  $$('[data-img]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openLightbox([{ src: '/' + a.dataset.img, alt: a.dataset.img }], 0); }));
+  $('#fu-add').addEventListener('submit', async e => {
+    e.preventDefault();
+    const f = e.target;
+    try {
+      const r = await api('POST', '/api/followup', { when: f.when.value, app: f.app.value, text: f.text.value });
+      toast(r.duplicate ? 'Mốc này đã có' : 'Đã thêm mốc — sẽ tự commit');
+      if (params.toString()) location.hash = '#/suggestions'; else await refresh();
+    } catch (err) { toast(err.message, true); }
+  });
+  renderSidebar();
+};
+
 pages.roadmap = async () => {
   const rel = '00-overview/roadmap.md';
   const d = S.byRel.get(rel);
@@ -389,7 +492,7 @@ pages.edit = async (rel, params) => {
   const opts = (values, cur, labels = {}) => values.map(v => `<option value="${esc(v)}" ${v === cur ? 'selected' : ''}>${esc(labels[v] || v)}</option>`).join('');
   main.innerHTML = `
     ${head(isNew ? 'Tạo tài liệu' : `Sửa: ${esc(fm.title)}`, { icon: isNew ? 'note_add' : 'edit_document', actions: isNew ? '' : `<button class="btn ghost sm" id="raw-toggle">${ic('code')}Sửa nguyên văn (raw)</button>` })}
-    <div id="errors"></div>
+    <div id="errors"></div>${isNew ? '<div id="dup"></div>' : ''}
     <form class="editor" id="ed" autocomplete="off">
       <div class="form-grid">
         <div class="field wide"><label>Tiêu đề *</label><input name="title" required value="${esc(fm.title)}" placeholder="vd: Launch tCPA First_Open cho app X ở US"></div>
@@ -434,7 +537,19 @@ pages.edit = async (rel, params) => {
   form.summary.addEventListener('input', sumN);
   form.addEventListener('input', () => { S.dirty = true; $('#save-state').textContent = 'Chưa lưu'; });
   ta.addEventListener('input', updatePreview);
-  if (isNew) form.topic.addEventListener('change', updatePreview);
+  if (isNew) {
+    form.topic.addEventListener('change', updatePreview);
+    // CLAUDE.md: tìm bài cùng chủ đề trước khi tạo mới → gợi ý cập nhật bài cũ thay vì tạo trùng.
+    let rt;
+    const checkDup = () => { clearTimeout(rt); rt = setTimeout(async () => {
+      const hits = await api('GET', `/api/recall?q=${encodeURIComponent(`${form.title.value} ${form.summary.value}`)}`).catch(() => []);
+      const box = $('#dup'); if (!box) return; // đã rời trang trong lúc chờ
+      box.innerHTML = hits.length ? `<div class="warn-box dup-warn">${ic('content_copy')}<div><strong>Có thể đã có tài liệu cùng chủ đề</strong> — cân nhắc cập nhật bài cũ thay vì tạo mới:
+        <ul>${hits.map(h => `<li><a href="${docHref(h.rel)}" target="_blank">${esc(h.title)}</a></li>`).join('')}</ul></div></div>` : '';
+    }, 400); };
+    form.title.addEventListener('input', checkDup);
+    form.summary.addEventListener('input', checkDup);
+  }
 
   const insertAtCursor = (text) => {
     const s = ta.selectionStart, e = ta.selectionEnd;
@@ -583,6 +698,7 @@ async function route() {
     case 'gallery': pages.gallery(params); break;
     case 'timeline': pages.timeline(); break;
     case 'roadmap': await pages.roadmap(); break;
+    case 'suggestions': await pages.suggestions(params); break;
     default: main.innerHTML = empty('explore_off', 'Không có trang này'); renderSidebar();
   }
   document.title = `${$('h1', main)?.textContent?.trim() || 'UA Knowledge'} · UA Knowledge`;

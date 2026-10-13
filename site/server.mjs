@@ -12,6 +12,7 @@ import {
   TOPICS, TYPES, STATUSES, CONFIDENCES, KNOWLEDGE_DIR, SCREENSHOT_DIR, STATE_DIR, readJSON,
 } from '../scripts/kb/lib.mjs';
 import { saveImage, mdImagePath } from '../scripts/kb/images.mjs';
+import { extraRoutes } from './api-extra.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(HERE, 'public');
@@ -233,6 +234,8 @@ const routes = {
   },
   'POST /api/commit': () => { scheduleCommit('kb(web): commit thủ công'); return [200, { ok: true }]; },
 };
+// Gợi ý, mốc theo dõi, recall (site/api-extra.mjs)
+Object.assign(routes, extraRoutes({ scheduleCommit, readJsonBody }));
 
 async function serveStatic(res, file) {
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not found', 'text/plain');

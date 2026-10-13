@@ -30,6 +30,7 @@ const { createServer } = await import('../../site/server.mjs');
 
 let server, base, browser = null, page;
 const errors = [];
+let nextPrompt = null; // câu trả lời cho prompt() kế tiếp (mặc định: mô tả ảnh)
 // Khởi động ngay ở top-level: `skip` của từng test được tính lúc khai báo.
 if (chromium) { try { browser = await chromium.launch({ channel: 'chrome' }); } catch { browser = null; } }
 before(async () => {
@@ -40,7 +41,7 @@ before(async () => {
   page = await browser.newPage({ viewport: { width: 1360, height: 900 } });
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
-  page.on('dialog', d => d.accept(d.type() === 'prompt' ? 'Dashboard AdMob' : undefined));
+  page.on('dialog', d => d.accept(d.type() === 'prompt' ? (nextPrompt ?? 'Dashboard AdMob') : undefined));
 });
 after(async () => { await browser?.close(); server?.close(); console.log(`# screenshots: ${shotsDir}`); });
 
@@ -162,9 +163,69 @@ test('timeline + roadmap tick lưu vào file', { skip: skip() }, async () => {
   await shot('roadmap');
 });
 
+test('gợi ý: mốc đến hạn hiện trên trang chủ + trang Gợi ý; thêm mốc và bấm Xong lưu vào watchlist', { skip: skip() }, async () => {
+  const { addFollowup } = await import('../../scripts/kb/followups.mjs');
+  addFollowup({ date: '2020-01-01', app: 'home-morph', text: 'Xem ROAS D7 campaign UI' }, repo.root);
+  await page.goto(base + '/#/');
+  await page.waitForSelector('a.warn-box');
+  assert.match(await page.textContent('a.warn-box'), /1 mốc theo dõi đến hạn/);
+  await page.click('a.warn-box');
+  await page.waitForSelector('#fu-add');
+  assert.match(await page.textContent('.fu-list'), /Xem ROAS D7 campaign UI/);
+  assert.match(await page.textContent('.fu-row.overdue'), /quá hạn/);
+  const wl = () => fs.readFileSync(path.join(repo.root, 'knowledge/00-overview/watchlist.md'), 'utf8');
+  const until = async re => { for (let i = 0; i < 30 && !re.test(wl()); i++) await page.waitForTimeout(100); };
+  await page.fill('#fu-add input[name=text]', 'Xem eCPM sau khi đổi mediation');
+  await page.click('#fu-add .seg label:has-text("+1 tháng")');
+  await page.click('#fu-add button');
+  await until(/Xem eCPM sau khi đổi mediation/);
+  assert.match(wl(), /- \[ \] \d{4}-\d{2}-\d{2} · general · Xem eCPM sau khi đổi mediation/);
+  await page.waitForSelector('.fu-row:has-text("Xem eCPM")');
+  assert.match(await page.textContent('.fu-group >> nth=-1'), /Sau đó/);
+  nextPrompt = 'ROAS D7 = 45%';
+  await page.click('.fu-row:has-text("Xem ROAS D7 campaign UI") [data-done]');
+  await until(/\[x\] 2020-01-01/);
+  nextPrompt = null;
+  assert.match(wl(), /- \[x\] 2020-01-01 · home-morph · Xem ROAS D7 campaign UI — ROAS D7 = 45%/);
+  assert.match(wl(), /- \[ \] \d{4}-\d{2}-\d{2} · general · Xem eCPM/, 'mốc còn lại không bị đánh dấu nhầm');
+  await shot('suggestions');
+});
+
+test('gợi ý: duyệt draft, sửa liên kết một chiều bằng 1 nút', { skip: skip() }, async () => {
+  await page.goto(base + '/#/suggestions');
+  await page.waitForSelector('details.issue');
+  // playbooks/launch.md trỏ tới do-luong-firebase.md nhưng không có chiều ngược lại
+  assert.ok(await page.$('[data-backlink="04-measurement/do-luong-firebase.md"][data-from="playbooks/launch.md"]'), 'phải có nút thêm liên kết ngược');
+  await page.click('details.issue:has([data-backlink]) > summary'); // nhóm mức info mặc định thu gọn
+  const target = await page.getAttribute('[data-backlink]', 'data-backlink');
+  const from = await page.getAttribute('[data-backlink]', 'data-from');
+  await page.click('[data-backlink]');
+  const linked = () => /^related:.*playbooks\/launch\.md/m.test(file(target));
+  for (let i = 0; i < 30 && !linked(); i++) await page.waitForTimeout(100);
+  assert.equal(from, 'playbooks/launch.md');
+  assert.ok(linked(), file(target));
+  const draftRel = await page.getAttribute('.card [data-verify]', 'data-verify');
+  await page.click(`.card [data-verify="${draftRel}"]`);
+  for (let i = 0; i < 30 && !/status: verified/.test(file(draftRel)); i++) await page.waitForTimeout(100);
+  assert.match(file(draftRel), /status: verified/);
+});
+
+test('trang tài liệu: nút Đặt mốc điền sẵn form; tạo mới cảnh báo tài liệu trùng', { skip: skip() }, async () => {
+  await page.goto(base + '/#/doc/lessons/2026-10-roas.md');
+  await page.click('a:has-text("Đặt mốc")');
+  await page.waitForSelector('#fu-add');
+  assert.equal(await page.inputValue('#fu-add input[name=text]'), 'Xem lại: ROAS D7 thấp ở EU');
+  assert.equal(await page.inputValue('#fu-add select[name=app]'), 'home-morph');
+  await page.goto(base + '/#/new');
+  await page.fill('input[name=title]', 'Đo lường Firebase cho first_open');
+  await page.fill('input[name=summary]', 'Sự kiện first_open ad_impression Firebase');
+  await page.waitForSelector('#dup .dup-warn', { timeout: 3000 });
+  assert.match(await page.textContent('#dup'), /Đo lường bằng Firebase/);
+});
+
 test('mobile 390px: không tràn ngang, menu mở sidebar; font tự host load được', { skip: skip() }, async () => {
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const h of ['#/', '#/doc/lessons/2026-10-roas.md', '#/gallery', '#/edit/playbooks/launch.md', '#/browse']) {
+  for (const h of ['#/', '#/doc/lessons/2026-10-roas.md', '#/gallery', '#/edit/playbooks/launch.md', '#/browse', '#/suggestions']) {
     await page.goto(base + '/' + h);
     await page.waitForTimeout(300);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
