@@ -1,6 +1,6 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 20 tài liệu (20 draft), cập nhật gần nhất 2026-10-14.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 21 tài liệu (20 draft), cập nhật gần nhất 2026-10-14.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
@@ -8,6 +8,7 @@
 - `00-overview/current-state.md` — Ảnh chụp nhanh "đang ở đâu" — app nào đang chạy, campaign nào, vấn đề đang mở. Cập nhật mỗi khi có thay đổi lớn. `[overview · draft · 2026-10-14]`
 - `00-overview/glossary-chi-so.md` — Định nghĩa + công thức + cách đọc + bẫy của các chỉ số UA (CPI, CPA, CTR, CVR, IPM, ROAS, payback) và monetization (LTV, ARPU, ARPDAU, eCPM, match/show rate, imps/DAU, retention). `[reference · draft · 2026-10-14]`
 - `00-overview/roadmap.md` — Lộ trình 3 giai đoạn — Pre-Marketing (ASO, creative, Firebase) → Launch campaign (tCPA First_Open → ROAS) → Đo lường & tối ưu (Ads, AdMob, Firebase). `[overview · draft · 2026-10-14]`
+- `00-overview/watchlist.md` — Danh sách mốc cần xem lại (ROAS D7, 1 tháng, 4 tháng…) theo app — Claude nhắc khi đến hạn. `[overview · verified · 2026-10-14]`
 
 ## 01-pre-marketing — Chuẩn bị trước khi chạy: ASO, store listing, creative, Firebase/SDK
 
