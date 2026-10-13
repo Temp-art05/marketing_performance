@@ -29,6 +29,7 @@ export const TOPICS = {
   '03-monetization': 'Monetization: AdMob, MAX, mediation, ad format/placement, eCPM',
   '04-measurement': 'Đo lường: Firebase events, MMP, attribution',
   '05-optimization': 'Đọc chỉ số và tối ưu: ROAS/CPI/retention theo mốc, quy tắc scale/cut',
+  '06-tools': 'Công cụ & workflow AI phục vụ marketing (nội bộ Apero + bên ngoài): làm gì, dùng ở bước nào, cách chạy',
   'playbooks': 'Checklist từng bước cho các việc lặp lại',
   'lessons': 'Bài học rút ra từ data/việc thật (có ngày, bối cảnh)',
   'decisions': 'Quyết định đã chốt và lý do',
