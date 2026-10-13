@@ -218,6 +218,8 @@ test('UserPromptSubmit: prompt liên quan → chèn knowledge; prompt vặt / l�
   assert.equal(ctx.hookEventName, 'UserPromptSubmit');
   assert.match(ctx.additionalContext, /knowledge\/lessons\/2026-10-de\.md/);
   assert.equal(hook('user-prompt-submit', { prompt: 'cảm ơn nhé' }, { root }).stdout, '');
+  assert.equal(hook('user-prompt-submit', { prompt: '[SYSTEM NOTIFICATION - NOT USER INPUT] <task-notification> E2E tROAS Đức ROAS D7 </task-notification>' }, { root }).stdout, '');
+  assert.equal(hook('user-prompt-submit', { prompt: '<cross-session-message from="x">scale tROAS ở Đức ROAS D7</cross-session-message>' }, { root }).stdout, '');
   assert.equal(hook('user-prompt-submit', { prompt: '/compact tóm tắt ROAS Đức' }, { root }).stdout, '');
   assert.equal(hook('user-prompt-submit', { prompt: 'scale campaign tROAS ở Đức được không' }, { root, env: { KB_BACKGROUND: '1' } }).stdout, '');
 });
