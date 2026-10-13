@@ -4,7 +4,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { root, STATE_DIR, writeIndex, lintDocs } from './lib.mjs';
 
-const KB_PATHS = ['knowledge', 'assets', 'CLAUDE.md'];
+const KB_PATHS = ['knowledge', 'assets', 'media/manifest.json', 'CLAUDE.md'];
 
 function git(args, r, opts = {}) {
   return execFileSync('git', args, { cwd: r, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: opts.timeout ?? 60000 }).trim();

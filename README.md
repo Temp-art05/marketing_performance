@@ -48,6 +48,11 @@ tests/                  unit, hooks, web (API + Chrome), e2e (Claude thật)
   - `node scripts/kb/cli.mjs doctor`: mốc đến hạn, draft chờ duyệt, mâu thuẫn chưa xử lý, ảnh mồ côi, app thiếu hồ sơ.
   - Hỏi Claude "nên làm gì tiếp / review app X" → skill `kb-advise` tổng hợp gợi ý từ roadmap + bài học + mốc.
 - **Xem / sửa trên web**: `npm install` (lần đầu) rồi `npm run web` → http://localhost:4321. Có tìm kiếm có/không dấu, duyệt theo chủ đề/app/GEO, gallery ảnh, timeline bài học, roadmap tick được, trình sửa có dán/kéo thả ảnh. Lưu là tự commit + push.
+- **Media nặng (video, ảnh gốc, file mẫu)** nằm ở `media/` — **không lên git** (chỉ `media/manifest.json` được commit). Chuyển sang máy khác:
+  - Máy cũ: `node scripts/kb/cli.mjs media export --out media.tar` → chép file .tar (USB / Drive / AirDrop).
+  - Máy mới (sau `git pull`): `node scripts/kb/cli.mjs media import media.tar` (kiểm sha, không chép đè). `media status` xem còn thiếu gì.
+  - Thêm media: `node scripts/kb/cli.mjs media add <file> --slug <tên> --doc <topic/file.md>` → in sẵn link markdown. Video hiển thị và tua được trên web.
+  - Screenshot nhỏ đã nén (≤1600px) vẫn ở `assets/screenshots/` trong git.
 - **CLI**: `node scripts/kb/cli.mjs help` (index, lint, search, new, images, commit, skip).
 - **Test**: `npm test` (unit + hooks + web; cần Chrome cho UI test). `npm run test:e2e -- --runs 3` chạy Claude thật trên bản sao tạm (tốn token).
 - Log và trạng thái hook: `.claude/state/` (không commit).

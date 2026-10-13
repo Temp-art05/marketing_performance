@@ -68,6 +68,15 @@ const docHref = rel => `#/doc/${encodeURI(rel)}`;
 // ---------- markdown ----------
 marked.setOptions({ gfm: true, breaks: false });
 
+const VIDEO_RE = /\.(mp4|m4v|mov|webm)(\?|#|$)/i;
+function videoEl(src, title = '') {
+  const v = document.createElement('video');
+  v.src = src; v.controls = true; v.preload = 'metadata'; v.playsInline = true; v.className = 'kb-video'; v.title = title;
+  // Media chưa import trên máy này → báo rõ thay vì khung đen
+  v.addEventListener('error', () => { const n = document.createElement('div'); n.className = 'warn-box'; n.textContent = `Video chưa có trên máy này: ${src} — chạy "node scripts/kb/cli.mjs media import <gói export>"`; v.replaceWith(n); }, { once: true });
+  return v;
+}
+
 function renderMarkdown(body, rel, { interactive = false } = {}) {
   const html = DOMPurify.sanitize(marked.parse(body || ''), { ADD_ATTR: ['target'] });
   const box = document.createElement('div');
@@ -78,6 +87,14 @@ function renderMarkdown(body, rel, { interactive = false } = {}) {
     const src = img.getAttribute('src') || '';
     if (!/^(https?:|data:|\/)/.test(src)) img.src = '/' + resolvePath(base, decodeURI(src));
     img.loading = 'lazy';
+    // ![mô tả](...mp4) → video phát ngay trong bài
+    if (VIDEO_RE.test(src)) img.replaceWith(videoEl(img.getAttribute('src'), img.alt));
+  }
+  // [▶ mô tả](...mp4) → link + video nhúng
+  for (const a of $$('a', box)) {
+    const href = a.getAttribute('href') || '';
+    if (!VIDEO_RE.test(href) || /^https?:/.test(href)) continue;
+    a.after(videoEl('/' + resolvePath(base, decodeURI(href)), a.textContent));
   }
   for (const a of $$('a', box)) {
     const href = a.getAttribute('href') || '';
@@ -323,7 +340,7 @@ pages.search = (params) => {
 
 function renderShots(container, shots) {
   container.innerHTML = shots.map((s, i) => `<figure class="shot" data-i="${i}">
-    <img src="/${esc(s.path)}" alt="${esc(s.path)}" loading="lazy">
+    ${s.kind === 'video' ? `<video src="/${esc(s.path)}#t=0.5" muted preload="metadata" playsinline></video><span class="vid-badge">${ic('play_circle')}</span>` : `<img src="/${esc(s.path)}" alt="${esc(s.path)}" loading="lazy">`}
     <figcaption class="cap">${s.docs.length ? s.docs.map(d => esc(d.title)).join(', ') : '<span class="muted">Chưa gắn tài liệu</span>'}<div class="muted">${esc(s.date || '')}</div></figcaption></figure>`).join('');
   $$('.shot', container).forEach(el => el.addEventListener('click', () => openLightbox(shots.map(s => ({ src: '/' + s.path, alt: s.path, shot: s })), Number(el.dataset.i))));
 }
@@ -632,10 +649,10 @@ function drawLightbox() {
   const s = it.shot;
   $('#lightbox').innerHTML = `<button class="lb-close" aria-label="Đóng">${ic('close')}</button>
     ${lb.items.length > 1 ? `<button class="lb-nav lb-prev" aria-label="Trước">${ic('chevron_left')}</button><button class="lb-nav lb-next" aria-label="Sau">${ic('chevron_right')}</button>` : ''}
-    <img src="${esc(it.src)}" alt="${esc(it.alt)}">
+    ${VIDEO_RE.test(it.src) ? `<video src="${esc(it.src)}" controls autoplay playsinline></video>` : `<img src="${esc(it.src)}" alt="${esc(it.alt)}">`}
     <div class="lb-bar"><span>${lb.i + 1}/${lb.items.length}</span>${s ? `<span>${esc(s.date || '')}</span>${s.docs.map(d => `<a href="${docHref(d.rel)}">${esc(d.title)}</a>`).join('')}${s.source ? `<span class="muted">nguồn: ${esc(s.source)}</span>` : ''}` : `<span>${esc(it.alt)}</span>`}<a href="${esc(it.src)}" target="_blank">Mở ảnh gốc ↗</a></div>`;
   $('.lb-close').onclick = closeLightbox;
-  $('#lightbox img').onclick = closeLightbox;
+  const lbImg = $('#lightbox img'); if (lbImg) lbImg.onclick = closeLightbox;
   const prev = $('.lb-prev'), next = $('.lb-next');
   if (prev) prev.onclick = () => { lb.i = (lb.i - 1 + lb.items.length) % lb.items.length; drawLightbox(); };
   if (next) next.onclick = () => { lb.i = (lb.i + 1) % lb.items.length; drawLightbox(); };

@@ -11,6 +11,7 @@ import { commitKnowledge } from './git.mjs';
 import { addFollowup, listFollowups, completeFollowup, ensureWatchlist } from './followups.mjs';
 import { diagnose } from './doctor.mjs';
 import { recall } from './recall.mjs';
+import { addMedia, mediaStatus, exportMedia, importMedia } from './media.mjs';
 
 const HELP = `kb — quản lý knowledge base
 
@@ -35,6 +36,12 @@ const HELP = `kb — quản lý knowledge base
   followup done <số|từ khoá> [--note "kết quả"]
                                 Đánh dấu xong (chuyển sang "Đã xong", kèm kết quả)
   doctor [--json]               Sức khoẻ knowledge: mốc đến hạn, draft cũ, mâu thuẫn, ảnh mồ côi...
+  media add <file...> --slug S [--doc rel] [--source "..."]
+                                Đưa video/ảnh lớn/file mẫu vào media/ (ngoài git, có manifest)
+  media status [--verify]       So media/ trên máy với manifest (thiếu / thừa / hỏng)
+  media export [--out file.tar] Đóng gói media để chép sang máy khác
+  media import <file.tar|thư mục>
+                                Nhập media từ gói export hoặc từ repo/media của máy khác
   recall "<câu hỏi>"            Tài liệu liên quan nhất tới câu hỏi (dùng như hook UserPromptSubmit)
 `;
 
@@ -192,6 +199,43 @@ const commands = {
     console.log(`Draft chờ duyệt: ${dx.drafts.length}${dx.drafts.length ? ` (cũ nhất ${dx.drafts[0].age} ngày: ${dx.drafts[0].rel})` : ''}`);
     if (!dx.issues.length) console.log('Không có vấn đề nào');
     for (const i of dx.issues) console.log(`  ${i.severity === 'warn' ? '!' : '·'} [${i.kind}] ${i.rel}: ${i.msg}`);
+  },
+
+  media(args) {
+    const [sub, ...a] = args;
+    const { values, positionals } = opts(a, { slug: { type: 'string' }, doc: { type: 'string' }, source: { type: 'string' }, out: { type: 'string' }, verify: { type: 'boolean' }, date: { type: 'string' } });
+    const mb = b => `${(b / 1048576).toFixed(1)}MB`;
+    if (sub === 'add') {
+      if (!positionals.length) fail('Cần đường dẫn file');
+      for (const f of positionals) {
+        const r = addMedia(f, { slug: values.slug, source: values.source ?? path.basename(f), date: values.date });
+        console.log(`${r.duplicate ? 'ĐÃ CÓ (trùng)' : 'Đã thêm'}: ${r.path}`);
+        if (values.doc) console.log(`  markdown: ${/\.(mp4|mov|webm|m4v)$/i.test(r.path) ? '[▶ mô tả video]' : '![mô tả]'}(${mdImagePath(r.path, values.doc)})`);
+      }
+      return;
+    }
+    if (sub === 'status' || !sub) {
+      const s = mediaStatus({ verify: values.verify });
+      console.log(`Manifest: ${s.total} file, ${mb(s.bytes)}`);
+      console.log(`Thiếu trên máy này: ${s.missing.length}${s.missing.length ? ' → chạy kb media import <gói export>' : ''}`);
+      for (const p of s.missing.slice(0, 20)) console.log(`  - ${p}`);
+      if (s.untracked.length) { console.log(`Có trên đĩa nhưng chưa vào manifest: ${s.untracked.length}`); for (const p of s.untracked.slice(0, 20)) console.log(`  ? ${p}`); }
+      if (s.corrupt.length) { console.log(`Hỏng (sha lệch): ${s.corrupt.length}`); for (const p of s.corrupt) console.log(`  ✗ ${p}`); }
+      return;
+    }
+    if (sub === 'export') {
+      const out = values.out || `media-export-${new Date().toISOString().slice(0, 10)}.tar`;
+      const r = exportMedia(out);
+      console.log(`Đã đóng gói ${r.files} file (${mb(r.bytes)}) → ${r.out}\nSang máy khác: node scripts/kb/cli.mjs media import ${path.basename(r.out)}`);
+      return;
+    }
+    if (sub === 'import') {
+      if (!positionals[0]) fail('Cần file .tar hoặc thư mục');
+      const r = importMedia(positionals[0]);
+      console.log(`Đã chép ${r.copied} file, bỏ qua ${r.skipped} file đã có${r.bad.length ? `, ${r.bad.length} file sha lệch (không chép): ${r.bad.join(', ')}` : ''}`);
+      return;
+    }
+    fail(`media: lệnh con không hợp lệ "${sub}"`);
   },
 
   recall(args) {

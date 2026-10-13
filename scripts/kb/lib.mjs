@@ -157,8 +157,15 @@ export function topicOf(rel) {
 
 // ---------- lint ----------
 
+const _manifests = new Map();
+function mediaInManifest(r, rel) {
+  if (!_manifests.has(r)) _manifests.set(r, readJSON(path.join(r, 'media/manifest.json'), { files: {} }));
+  return Boolean(_manifests.get(r).files?.[rel]);
+}
+
 // Trả về { errors: [{file, msg}], warnings: [...] }.
 export function lintDocs(r = root(), onlyRels = null) {
+  _manifests.delete(r);
   const docs = listDocs(r);
   const errors = [], warnings = [];
   const E = (file, msg) => errors.push({ file, msg });
@@ -193,10 +200,21 @@ export function lintDocs(r = root(), onlyRels = null) {
       const url = m[1];
       if (/^https?:/.test(url)) continue;
       const resolved = path.posix.normalize(path.posix.join('knowledge', path.posix.dirname(d.rel), decodeURI(url)));
-      if (!fs.existsSync(path.join(r, resolved))) E(f, `Ảnh không tồn tại: ${url}`);
+      if (!fs.existsSync(path.join(r, resolved))) {
+        // media/ không nằm trong git: máy này có thể chưa import → chỉ cảnh báo nếu manifest có file đó
+        if (resolved.startsWith('media/') && mediaInManifest(r, resolved)) W(f, `Media chưa có trên máy này (chạy kb media import): ${resolved}`);
+        else E(f, `Ảnh không tồn tại: ${url}`);
+      }
       else if (!imgs.has(resolved)) W(f, `Ảnh ${resolved} có trong bài nhưng thiếu trong field images`);
     }
-    for (const img of imgs) if (!fs.existsSync(path.join(r, img))) E(f, `images: file không tồn tại ${img}`);
+    for (const img of imgs) if (!fs.existsSync(path.join(r, img)) && !(img.startsWith('media/') && mediaInManifest(r, img))) E(f, `images: file không tồn tại ${img}`);
+
+    // Link tới media/ (video, file mẫu): phải có trong manifest
+    for (const m of d.body.matchAll(/(?<!!)\[[^\]]*\]\(([^)\s#]*media\/[^)\s#]+)\)/g)) {
+      const resolved = path.posix.normalize(path.posix.join('knowledge', path.posix.dirname(d.rel), decodeURI(m[1])));
+      if (!mediaInManifest(r, resolved)) E(f, `Media chưa đăng ký trong media/manifest.json: ${resolved} (dùng kb media add)`);
+      else if (!fs.existsSync(path.join(r, resolved))) W(f, `Media chưa có trên máy này (chạy kb media import): ${resolved}`);
+    }
 
     // Link nội bộ .md phải tồn tại.
     for (const m of d.body.matchAll(/(?<!!)\[[^\]]*\]\(([^)\s#]+\.md)(#[^)]*)?\)/g)) {

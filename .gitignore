@@ -44,3 +44,8 @@ node_modules/
 
 # Knowledge system — state cục bộ của hook (checkpoint, log, digest)
 .claude/state/
+
+# Media nặng (video, ảnh gốc lớn, file mẫu) — không đưa lên git; chỉ commit manifest.
+# Chuyển giữa máy: node scripts/kb/cli.mjs media export / media import
+media/*
+!media/manifest.json

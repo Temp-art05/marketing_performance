@@ -32,7 +32,7 @@ const VENDOR = {
   'purify.js': 'dompurify/dist/purify.es.mjs',
   'minisearch.js': 'minisearch/dist/es/index.js',
 };
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.mp4': 'video/mp4', '.m4v': 'video/mp4', '.mov': 'video/quicktime', '.webm': 'video/webm', '.pdf': 'application/pdf', '.zip': 'application/zip' };
 
 const hash = s => crypto.createHash('sha1').update(s).digest('hex').slice(0, 12);
 
@@ -114,10 +114,20 @@ function allImages() {
   }
   const manifest = readJSON(path.join(root(), 'assets/manifest.json'), {});
   const bySavedPath = new Map(Object.values(manifest).map(m => [m.path, m]));
-  return walk(path.join(root(), SCREENSHOT_DIR), p => /\.(png|jpe?g|gif|webp)$/i.test(p)).map(abs => {
+  // Link thường tới video/file trong media/ cũng tính là được dùng
+  for (const d of docs) for (const m of d.body.matchAll(/(?<!!)\[[^\]]*\]\(([^)\s#]*media\/[^)\s#]+)\)/g)) {
+    const r = path.posix.normalize(path.posix.join('knowledge', path.posix.dirname(d.rel), decodeURI(m[1])));
+    if (!usage.has(r)) usage.set(r, []); usage.get(r).push({ rel: d.rel, title: d.fm.title, app: d.fm.app, topic: d.fm.topic });
+  }
+  const mediaManifest = readJSON(path.join(root(), 'media/manifest.json'), { files: {} }).files ?? {};
+  const files = [
+    ...walk(path.join(root(), SCREENSHOT_DIR), p => /\.(png|jpe?g|gif|webp)$/i.test(p)),
+    ...walk(path.join(root(), 'media'), p => /\.(png|jpe?g|gif|webp|mp4|m4v|mov|webm)$/i.test(p)),
+  ];
+  return files.map(abs => {
     const rel = path.relative(root(), abs).split(path.sep).join('/');
     const m = /(\d{4}-\d{2}-\d{2})-/.exec(path.basename(abs));
-    return { path: rel, date: m?.[1] ?? null, bytes: fs.statSync(abs).size, docs: usage.get(rel) ?? [], source: bySavedPath.get(rel)?.source ?? null };
+    return { path: rel, date: m?.[1] ?? null, bytes: fs.statSync(abs).size, kind: /\.(mp4|m4v|mov|webm)$/i.test(rel) ? 'video' : 'image', inGit: rel.startsWith('assets/'), docs: usage.get(rel) ?? [], source: bySavedPath.get(rel)?.source ?? mediaManifest[rel]?.source ?? null };
   }).sort((a, b) => String(b.date).localeCompare(String(a.date)) || b.path.localeCompare(a.path));
 }
 
@@ -237,9 +247,20 @@ const routes = {
 // Gợi ý, mốc theo dõi, recall (site/api-extra.mjs)
 Object.assign(routes, extraRoutes({ scheduleCommit, readJsonBody }));
 
-async function serveStatic(res, file) {
+// Hỗ trợ Range (video tua được trên Safari/Chrome).
+async function serveStatic(res, file, req) {
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return send(res, 404, 'Not found', 'text/plain');
-  res.writeHead(200, { 'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
+  const size = fs.statSync(file).size;
+  const type = MIME[path.extname(file).toLowerCase()] || 'application/octet-stream';
+  const m = /^bytes=(\d*)-(\d*)$/.exec(req?.headers?.range || '');
+  if (m) {
+    const start = m[1] ? Number(m[1]) : Math.max(0, size - Number(m[2]));
+    const end = m[1] && m[2] ? Math.min(Number(m[2]), size - 1) : size - 1;
+    if (start >= size || start > end) { res.writeHead(416, { 'Content-Range': `bytes */${size}` }); return res.end(); }
+    res.writeHead(206, { 'Content-Type': type, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Accept-Ranges': 'bytes', 'Content-Length': end - start + 1, 'Cache-Control': 'no-cache' });
+    return fs.createReadStream(file, { start, end }).pipe(res);
+  }
+  res.writeHead(200, { 'Content-Type': type, 'Content-Length': size, 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-cache' });
   fs.createReadStream(file).pipe(res);
 }
 
@@ -264,10 +285,11 @@ export function createServer() {
         const abs = dir && path.resolve(dir, rest.join('/'));
         return abs && abs.startsWith(dir + path.sep) ? serveStatic(res, abs) : send(res, 404, 'Not found', 'text/plain');
       }
-      if (p.startsWith('/assets/')) {
+      for (const dir of ['assets', 'media']) {
+        if (!p.startsWith(`/${dir}/`)) continue;
         const abs = path.resolve(root(), '.' + p);
-        if (!abs.startsWith(path.join(root(), 'assets') + path.sep)) return send(res, 403, 'Forbidden', 'text/plain');
-        return serveStatic(res, abs);
+        if (!abs.startsWith(path.join(root(), dir) + path.sep)) return send(res, 403, 'Forbidden', 'text/plain');
+        return serveStatic(res, abs, req);
       }
       const file = path.resolve(PUBLIC, '.' + (p === '/' ? '/index.html' : p));
       if (!file.startsWith(PUBLIC + path.sep)) return send(res, 403, 'Forbidden', 'text/plain');
