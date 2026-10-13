@@ -29,7 +29,7 @@ if (active || a.captured) {
 
 if (needsCapture(a)) {
   saveState(id, { ...state, checkpoint: a.lastLine, reminders: (state.reminders || 0) + 1 });
-  const what = [a.images && `${a.images} ảnh`, a.mcp && `${a.mcp} lần gọi MCP`, a.substantive && `${a.substantive} thao tác`].filter(Boolean).join(', ');
+  const what = [a.images && `${a.images} ảnh`, a.dataReads && `${a.dataReads} lần đọc file dữ liệu`, a.mcp && `${a.mcp} lần gọi MCP`, a.substantive && `${a.substantive} thao tác`, a.userChars >= 600 && 'thông tin user kể chi tiết'].filter(Boolean).join(', ');
   const reason = `[KB] Trước khi kết thúc lượt này: từ lần nạp gần nhất session đã có ${what} nhưng chưa nạp knowledge. `
     + 'Rà lại phần việc vừa làm theo tiêu chí trong skill kb-capture: '
     + 'nếu có bài học / số liệu có bối cảnh / bước setup / quyết định / bẫy platform / screenshot đáng giữ → nạp ngay theo skill kb-capture (cập nhật file có sẵn nếu cùng chủ đề, lưu ảnh, rồi kb commit). '

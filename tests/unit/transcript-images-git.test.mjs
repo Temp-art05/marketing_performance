@@ -37,7 +37,7 @@ test('analyzeWork/needsCapture: chat thuần và chỉ đọc knowledge → khô
 
 test('analyzeWork/needsCapture: làm việc thật → cần nạp; có ảnh/MCP → cần nạp ngay', () => {
   const t = new Transcript(path.join(tmpDir(), 's.jsonl'));
-  t.user('đọc data').tool('Bash', { command: 'python3 analyze.py exports/a.csv' }).tool('Read', { file_path: '/r/exports/a.csv' });
+  t.user('xem code').tool('Bash', { command: 'git log -5' }).tool('Read', { file_path: '/r/src/App.kt' });
   assert.equal(needsCapture(analyzeWork(t.file)), false, '2 thao tác chưa đủ ngưỡng');
   t.tool('WebFetch', { url: 'https://support.google.com' });
   assert.equal(needsCapture(analyzeWork(t.file)), true);
@@ -195,4 +195,18 @@ test('projectSlug đi theo realpath (symlink /var → /private/var trên macOS)'
   const link = real + '-link';
   fs.symlinkSync(real, link);
   assert.equal(projectSlug(link), projectSlug(real));
+});
+
+test('needsCapture: đọc 1 file data (csv/exports) hoặc user kể dài → cần nạp', () => {
+  const t = new Transcript(path.join(tmpDir(), 's.jsonl'));
+  t.user('đọc report').tool('Read', { file_path: '/r/exports/hm_7d.csv' }).assistant('DE tệ nhất');
+  const a = analyzeWork(t.file);
+  assert.equal(a.dataReads, 1);
+  assert.equal(needsCapture(a), true);
+  const t2 = new Transcript(path.join(tmpDir(), 's.jsonl'));
+  t2.user('Hôm nay setup campaign tCPA, gặp lỗi No recent conversions. '.repeat(12)).assistant('ok');
+  assert.equal(needsCapture(analyzeWork(t2.file)), true);
+  const t3 = new Transcript(path.join(tmpDir(), 's.jsonl'));
+  t3.user('CPI là gì?').tool('Read', { file_path: '/r/src/main.kt' }).assistant('...');
+  assert.equal(needsCapture(analyzeWork(t3.file)), false, 'đọc code 1 lần, hỏi ngắn → không');
 });

@@ -98,7 +98,7 @@ test('Stop: chat thuần / hỏi đáp → không chặn; việc nhỏ tích lu�
   assert.equal(hook('stop', input, { root }).stdout.trim(), '');
   t.user('chạy giúp lệnh').tool('Bash', { command: 'a' }).assistant('xong');
   assert.equal(hook('stop', input, { root }).stdout.trim(), '');
-  t.user('thêm').tool('Bash', { command: 'b' }).tool('Read', { file_path: '/x/exports/r.csv' }).assistant('xong');
+  t.user('thêm').tool('Bash', { command: 'b' }).tool('Read', { file_path: '/x/src/r.kt' }).assistant('xong');
   assert.equal(JSON.parse(hook('stop', input, { root }).stdout).decision, 'block');
 });
 

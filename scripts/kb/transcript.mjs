@@ -83,6 +83,8 @@ const KB_PATH_RE = /(^|\/)(knowledge|assets\/screenshots)\//;
 const KB_CMD_RE = /scripts\/kb\/|npm run kb|\bkb(:index|:lint)?\b/;
 // Lệnh đánh dấu đã xử lý phần nạp knowledge.
 const CAPTURE_CMD_RE = /scripts\/kb\/cli\.mjs\s+(skip|commit|images\s+save|images\s+import|new)\b|npm run kb\s+--\s+(skip|commit|new)\b/;
+// File dữ liệu (report export, bảng tính, PDF) — đọc 1 lần cũng thường ra insight đáng nạp.
+const DATA_RE = /(^|[\s\/'"])(exports|raw)\/|\.(csv|tsv|xlsx?|pdf)\b/i;
 const TRIVIAL_TOOLS = new Set(['TodoWrite', 'ToolSearch', 'Skill', 'AskUserQuestion', 'ExitPlanMode', 'EnterPlanMode', 'ListAgents', 'ScheduleWakeup']);
 
 function toolPath(input) {
@@ -92,13 +94,14 @@ function toolPath(input) {
 // Phân tích các entry có line > fromLine.
 // Trả về { substantive, images, mcp, captured, skipped, tools: [...] }.
 export function analyzeWork(file, fromLine = 0) {
-  const r = { substantive: 0, images: 0, mcp: 0, captured: false, tools: [], lastLine: fromLine };
+  const r = { substantive: 0, images: 0, mcp: 0, dataReads: 0, userChars: 0, captured: false, tools: [], lastLine: fromLine };
   for (const { line, entry } of readEntries(file)) {
     r.lastLine = Math.max(r.lastLine, line);
     if (line <= fromLine) continue;
     if (entry.isSidechain) continue;
     for (const b of contentBlocks(entry)) {
       if (entry.type === 'user' && b.type === 'image') r.images++;
+      if (entry.type === 'user' && b.type === 'text' && !b.text.startsWith('<')) r.userChars += b.text.replace(/\[Image[^\]]*\]/g, '').trim().length;
       if (entry.type !== 'assistant' || b.type !== 'tool_use') continue;
       const name = b.name, input = b.input ?? {};
       const p = toolPath(input);
@@ -111,6 +114,7 @@ export function analyzeWork(file, fromLine = 0) {
       if (TRIVIAL_TOOLS.has(name)) continue;
       if (['Read', 'Grep', 'Glob'].includes(name) && (KB_PATH_RE.test(p) || /knowledge/.test(String(input.pattern ?? '') + p))) continue;
       if (name.startsWith('mcp__')) r.mcp++;
+      if (DATA_RE.test(p) || (name === 'Bash' && DATA_RE.test(String(input.command ?? '')))) r.dataReads++;
       r.substantive++;
       r.tools.push(name);
     }
@@ -119,9 +123,10 @@ export function analyzeWork(file, fromLine = 0) {
 }
 
 // Có cần nhắc nạp knowledge không.
-export function needsCapture(a, { minTools = 3 } = {}) {
+// userChars: user kể một đoạn dài (bối cảnh, số liệu, diễn biến) cũng thường chứa điều đáng nạp.
+export function needsCapture(a, { minTools = 3, minUserChars = 600 } = {}) {
   if (a.captured) return false;
-  return a.images > 0 || a.mcp > 0 || a.substantive >= minTools;
+  return a.images > 0 || a.mcp > 0 || a.dataReads > 0 || a.substantive >= minTools || a.userChars >= minUserChars;
 }
 
 // ---------- digest ----------
