@@ -41,6 +41,11 @@ Mục tiêu: mỗi điều học được trong session thành tài liệu Markd
 
 Nếu rà xong thấy không có gì đáng nạp: `node scripts/kb/cli.mjs skip "<lý do>"`.
 
+### Mốc theo dõi
+Việc vừa làm cần xem lại kết quả sau một thời gian (launch campaign, đổi bid/budget/GEO/creative, sửa tracking...) →
+`node scripts/kb/cli.mjs followup add --when <7d|1m|YYYY-MM-DD> --app <slug> --text "<xem gì, tiêu chí đánh giá>"`.
+Campaign mới: mặc định thêm 7d (ROAS D7, CPI, CR), 1m, 4m, 6m theo roadmap. Ghi vào campaigns.md của app ngày launch và cấu hình.
+
 ## 3. Khung tài liệu
 
 ```markdown

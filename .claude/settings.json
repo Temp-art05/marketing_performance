@@ -1,19 +1,70 @@
 {
   "hooks": {
     "SessionStart": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-start", "timeout": 150 }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-start",
+            "timeout": 150
+          }
+        ]
+      }
     ],
     "PostToolUse": [
-      { "matcher": "Write|Edit|MultiEdit", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" post-tool-use", "timeout": 30 }] }
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" post-tool-use",
+            "timeout": 30
+          }
+        ]
+      }
     ],
     "Stop": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" stop", "timeout": 30 }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" stop",
+            "timeout": 30
+          }
+        ]
+      }
     ],
     "PreCompact": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-end", "timeout": 10 }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-end",
+            "timeout": 10
+          }
+        ]
+      }
     ],
     "SessionEnd": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-end" }] }
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-end"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" user-prompt-submit",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   },
   "permissions": {

@@ -208,6 +208,9 @@ export function lintDocs(r = root(), onlyRels = null) {
     }
 
     for (const s of findSecrets(d.body + '\n' + JSON.stringify(fm))) E(f, `Nghi là credential (${s.name}) — không được lưu vào knowledge`);
+    if (d.rel === '00-overview/watchlist.md') {
+      for (const line of d.body.split('\n')) if (/^\s*- \[( |x|X)\] /.test(line) && !/^\s*- \[( |x|X)\] \d{4}-\d{2}-\d{2} · [a-z0-9-]+ · .+/.test(line)) E(f, `Mốc sai định dạng: "${line.trim().slice(0, 80)}" — cần "- [ ] YYYY-MM-DD · app-slug · việc cần làm"`);
+    }
 
     if (fm.title) {
       if (titles.has(fm.title)) W(f, `Trùng title với knowledge/${titles.get(fm.title)} — có nên gộp?`);

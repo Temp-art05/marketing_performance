@@ -4,6 +4,7 @@ import { readInput, isBackground, loadState, saveState, log } from './common.mjs
 import { writeIndex, listDocs } from '../lib.mjs';
 import { quickPull } from '../git.mjs';
 import { lineCount } from '../transcript.mjs';
+import { sessionSummary } from '../doctor.mjs';
 
 const input = await readInput();
 const { session_id: id, transcript_path: transcript, source } = input;
@@ -30,6 +31,7 @@ const lines = [
   `[KB] Knowledge base: ${docs.length} tài liệu (${drafts} draft). Bản đồ đầy đủ ở knowledge/INDEX.md (đã nạp qua CLAUDE.md).`,
   '[KB] Khi gặp điều đáng nạp (bài học từ data, số liệu có bối cảnh, bước setup đúng/sai, quyết định, bẫy của platform, screenshot quan trọng) → dùng skill kb-capture ngay, không đợi cuối session.',
 ];
+try { lines.push(...sessionSummary()); } catch (e) { log('hooks', `doctor lỗi: ${e.message}`); }
 if (source === 'compact') {
   lines.push('[KB] Context vừa được nén. Phần hội thoại trước khi nén đang được agent nền rà và nạp knowledge (không cần nạp lại). Tiếp tục nạp những gì phát sinh từ giờ.');
 }

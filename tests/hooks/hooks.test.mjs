@@ -210,3 +210,23 @@ test('run.mjs: mọi hook đi qua bootstrap đều chạy thật và KHÔNG gọ
   run(path.join(HOOKS, 'run.mjs'), ['session-start'], { root, env, input: { session_id: 'rb', source: 'startup' } });
   assert.ok(!fs.existsSync(marker), 'không được chạy npm khi node_modules đã có');
 });
+
+test('UserPromptSubmit: prompt liên quan → chèn knowledge; prompt vặt / lệnh slash / agent nền → im lặng', () => {
+  const { root } = makeRepo({ docs: { 'lessons/2026-10-de.md': doc({ topic: 'lessons', type: 'lesson', title: 'Germany ROAS D7 thấp', summary: 'tROAS ở Đức ROAS D7 14%' }) } });
+  const r1 = run(path.join(HOOKS, 'run.mjs'), ['user-prompt-submit'], { root, input: { prompt: 'scale campaign tROAS ở Đức được không, ROAS D7 sao rồi' } });
+  const ctx = JSON.parse(r1.stdout).hookSpecificOutput;
+  assert.equal(ctx.hookEventName, 'UserPromptSubmit');
+  assert.match(ctx.additionalContext, /knowledge\/lessons\/2026-10-de\.md/);
+  assert.equal(hook('user-prompt-submit', { prompt: 'cảm ơn nhé' }, { root }).stdout, '');
+  assert.equal(hook('user-prompt-submit', { prompt: '/compact tóm tắt ROAS Đức' }, { root }).stdout, '');
+  assert.equal(hook('user-prompt-submit', { prompt: 'scale campaign tROAS ở Đức được không' }, { root, env: { KB_BACKGROUND: '1' } }).stdout, '');
+});
+
+test('SessionStart: mốc theo dõi đến hạn được đưa vào context', async () => {
+  const { root } = makeRepo();
+  const { addFollowup } = await import('../../scripts/kb/followups.mjs');
+  addFollowup({ date: '2020-01-01', app: 'home-morph', text: 'Xem ROAS D7 HM_tROAS' }, root);
+  const ctx = JSON.parse(hook('session-start', { session_id: 'd1', source: 'startup' }, { root }).stdout).hookSpecificOutput.additionalContext;
+  assert.match(ctx, /ĐẾN HẠN/);
+  assert.match(ctx, /home-morph · Xem ROAS D7 HM_tROAS/);
+});

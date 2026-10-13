@@ -8,6 +8,9 @@ import { root, writeIndex, lintDocs, listDocs, newDoc, foldVi, STATE_DIR, TOPICS
 import { resolveTranscript, listImages, digest } from './transcript.mjs';
 import { saveImage, importImageFile, mdImagePath } from './images.mjs';
 import { commitKnowledge } from './git.mjs';
+import { addFollowup, listFollowups, completeFollowup, ensureWatchlist } from './followups.mjs';
+import { diagnose } from './doctor.mjs';
+import { recall } from './recall.mjs';
 
 const HELP = `kb — quản lý knowledge base
 
@@ -26,6 +29,13 @@ const HELP = `kb — quản lý knowledge base
   digest [--transcript F] [--from N]
                                 In transcript dạng text (không base64)
   topics                        Liệt kê nhánh topic và type hợp lệ
+  followup add --when 7d|YYYY-MM-DD --app slug --text "..."
+                                Thêm mốc theo dõi vào knowledge/00-overview/watchlist.md
+  followup list [--all]         Mốc đang mở (đánh số), đến hạn/quá hạn được đánh dấu
+  followup done <số|từ khoá> [--note "kết quả"]
+                                Đánh dấu xong (chuyển sang "Đã xong", kèm kết quả)
+  doctor [--json]               Sức khoẻ knowledge: mốc đến hạn, draft cũ, mâu thuẫn, ảnh mồ côi...
+  recall "<câu hỏi>"            Tài liệu liên quan nhất tới câu hỏi (dùng như hook UserPromptSubmit)
 `;
 
 const [cmd, ...rest] = process.argv.slice(2);
@@ -141,6 +151,53 @@ const commands = {
     const t = resolveTranscript(values.transcript);
     if (!t) fail('Không tìm thấy transcript');
     console.log(digest(t, { fromLine: Number(values.from || 0) }));
+  },
+
+  followup(args) {
+    const [sub, ...a] = args;
+    const { values, positionals } = opts(a, { when: { type: 'string' }, date: { type: 'string' }, app: { type: 'string' }, text: { type: 'string' }, note: { type: 'string' }, all: { type: 'boolean' } });
+    if (sub === 'add') {
+      const when = values.when || values.date;
+      if (!when || !values.text) fail('Cần --when (7d, 1m, YYYY-MM-DD) và --text');
+      const r = addFollowup({ date: when, app: values.app || 'general', text: values.text });
+      console.log(r.duplicate ? `Đã có: ${r.item}` : `Đã thêm: ${r.item}`);
+      return;
+    }
+    if (sub === 'done') {
+      if (!positionals.length) fail('Cần số thứ tự (theo followup list) hoặc từ khoá');
+      const f = completeFollowup(positionals.join(' '), { note: values.note });
+      console.log(`Xong: ${f.date} · ${f.app} · ${f.text}`);
+      return;
+    }
+    if (sub === 'list' || !sub) {
+      ensureWatchlist();
+      const all = listFollowups();
+      const open = all.filter(f => !f.done);
+      if (!open.length) console.log('Không có mốc nào đang mở');
+      open.forEach((f, i) => console.log(`${String(i + 1).padStart(2)}. ${f.overdue ? '⚠ QUÁ HẠN ' : f.due ? '⏰ HÔM NAY ' : ''}${f.date} · ${f.app} · ${f.text}`));
+      if (values.all) for (const f of all.filter(f => f.done)) console.log(`    ✓ ${f.date} · ${f.app} · ${f.text}`);
+      return;
+    }
+    fail(`followup: lệnh con không hợp lệ "${sub}"`);
+  },
+
+  doctor(args) {
+    const { values } = opts(args, { json: { type: 'boolean' } });
+    const dx = diagnose();
+    if (values.json) { console.log(JSON.stringify(dx, null, 2)); return; }
+    const { due, upcoming } = dx.followups;
+    console.log(`Mốc theo dõi: ${due.length} đến hạn, ${upcoming.length} trong 7 ngày tới`);
+    for (const f of due) console.log(`  ⏰ ${f.date}${f.overdue ? ' (quá hạn)' : ''} · ${f.app} · ${f.text}`);
+    for (const f of upcoming) console.log(`  · ${f.date} · ${f.app} · ${f.text}`);
+    console.log(`Draft chờ duyệt: ${dx.drafts.length}${dx.drafts.length ? ` (cũ nhất ${dx.drafts[0].age} ngày: ${dx.drafts[0].rel})` : ''}`);
+    if (!dx.issues.length) console.log('Không có vấn đề nào');
+    for (const i of dx.issues) console.log(`  ${i.severity === 'warn' ? '!' : '·'} [${i.kind}] ${i.rel}: ${i.msg}`);
+  },
+
+  recall(args) {
+    const hits = recall(args.join(' '));
+    if (!hits.length) console.log('Không có tài liệu nào đủ liên quan');
+    for (const h of hits) console.log(`knowledge/${h.rel}  (${h.score}; ${h.terms.join(', ')})\n    ${h.title} — ${h.summary}`);
   },
 
   topics() {
