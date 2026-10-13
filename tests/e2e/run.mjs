@@ -241,16 +241,27 @@ const S = {
   },
 
   s9_safety_net: {
-    desc: 'Session bị đóng khi chưa nạp (Stop hook không kịp) → agent nền SessionEnd tự nạp',
-    setup: e => { fs.mkdirSync(path.join(e.dir, 'exports'), { recursive: true }); fs.writeFileSync(path.join(e.dir, 'exports/hm_google_ads_7d.csv'), CSV); },
-    // KB_BACKGROUND=1 tắt Stop hook + SessionEnd tự động → mô phỏng session chết giữa chừng; sau đó gọi background-capture thủ công như SessionEnd sẽ gọi.
+    desc: 'Session chính quên nạp (mô phỏng) → agent nền SessionEnd tự nạp bù',
+    // Mô phỏng "Claude quên": gỡ skill kb-capture + mục knowledge trong CLAUDE.md, tắt hook (KB_BACKGROUND=1)
+    // cho session chính; trả lại trước khi chạy agent nền giống như SessionEnd sẽ gọi.
+    setup: e => {
+      fs.mkdirSync(path.join(e.dir, 'exports'), { recursive: true });
+      fs.writeFileSync(path.join(e.dir, 'exports/hm_google_ads_7d.csv'), CSV);
+      e.saved = { claude: fs.readFileSync(path.join(e.dir, 'CLAUDE.md'), 'utf8') };
+      fs.renameSync(path.join(e.dir, '.claude/skills'), path.join(e.dir, '..', `${path.basename(e.dir)}-skills`));
+      fs.writeFileSync(path.join(e.dir, 'CLAUDE.md'), '# CLAUDE.md\n\nRepo kiến thức UA marketing. Trả lời bằng tiếng Việt.\n');
+    },
     env: { KB_BACKGROUND: '1' },
-    prompt: 'Đọc exports/hm_google_ads_7d.csv của app home-morph, chỉ trả lời trong chat (không ghi file): GEO nào ROAS D7 thấp nhất, GEO nào tốt nhất?',
+    prompt: 'Đọc exports/hm_google_ads_7d.csv của app home-morph: GEO nào ROAS D7 thấp nhất, GEO nào tốt nhất? Trả lời ngắn.',
     after: async (e, r) => {
-      const t = transcriptOf(e.dir, r.sessionId);
       e.preKb = kbFiles(e.dir).length;
-      execFileSync(process.execPath, [path.join(e.dir, 'scripts/kb/background-capture.mjs'), '--session', r.sessionId, '--transcript', t, '--mode', 'end'],
-        { cwd: e.dir, env: { ...process.env, KB_NO_PUSH: '1', KB_BACKGROUND: '' }, stdio: 'pipe', timeout: 20 * 60 * 1000 });
+      fs.renameSync(path.join(e.dir, '..', `${path.basename(e.dir)}-skills`), path.join(e.dir, '.claude/skills'));
+      fs.writeFileSync(path.join(e.dir, 'CLAUDE.md'), e.saved.claude);
+      e.git('add', '-A', 'CLAUDE.md', '.claude'); e.git('commit', '-qm', 'e2e: trả lại skill + CLAUDE.md');
+      const t = transcriptOf(e.dir, r.sessionId);
+      e.bgOut = execFileSync(process.execPath, [path.join(e.dir, 'scripts/kb/background-capture.mjs'), '--session', r.sessionId, '--transcript', t, '--mode', 'end'],
+        { cwd: e.dir, env: { ...process.env, KB_NO_PUSH: '1', KB_BACKGROUND: '' }, encoding: 'utf8', timeout: 20 * 60 * 1000 });
+      fs.writeFileSync(path.join(OUT, `s9-bg-${path.basename(e.dir)}.log`), e.bgOut);
     },
     check: (e) => {
       const nd = newDocs(e.before, e.dir);
