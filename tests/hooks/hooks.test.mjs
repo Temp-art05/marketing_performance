@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { makeRepo, doc, makePng, Transcript, tmpDir, hook } from '../helpers.mjs';
+import { makeRepo, doc, makePng, Transcript, tmpDir, hook, run, HOOKS } from '../helpers.mjs';
 
 const stateOf = (root, id) => JSON.parse(fs.readFileSync(path.join(root, '.claude/state/sessions', `${id}.json`), 'utf8'));
 const waitFor = async (fn, ms = 15000) => { const s = Date.now(); while (Date.now() - s < ms) { if (fn()) return true; await new Promise(r => setTimeout(r, 200)); } return false; };
@@ -181,4 +181,13 @@ test('PreCompact rồi SessionEnd: cùng một đoạn transcript chỉ được
   const log = path.join(root, '.claude/state/logs/background-capture.log');
   assert.ok(await waitFor(() => fs.existsSync(log) && (fs.readFileSync(log, 'utf8').match(/\] (không cần nạp|claude exit)/g) || []).length >= 2, 20000), 'cả 2 tiến trình phải chạy xong');
   assert.equal(fs.readFileSync(counter, 'utf8'), 'x', 'claude chỉ được gọi 1 lần');
+});
+
+test('run.mjs: chuyển tiếp tới hook thật; tên hook lạ → bỏ qua an toàn', () => {
+  const { root } = makeRepo();
+  const ok = run(path.join(HOOKS, 'run.mjs'), ['session-start'], { root, input: { session_id: 'r1', source: 'compact' } });
+  assert.match(JSON.parse(ok.stdout).hookSpecificOutput.additionalContext, /Context vừa được nén/);
+  const bad = run(path.join(HOOKS, 'run.mjs'), ['../../evil'], { root, input: {} });
+  assert.equal(bad.code, 0);
+  assert.equal(bad.stdout, '');
 });

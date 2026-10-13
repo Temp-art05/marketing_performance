@@ -129,7 +129,8 @@ a.badge:hover { text-decoration: none; filter: brightness(.96); }
 .prose th, .prose td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
 .prose th { background: var(--surface-2); }
 .prose blockquote { margin: 1em 0; padding: 4px 16px; border-left: 3px solid var(--accent); color: var(--muted); background: var(--surface-2); border-radius: 0 8px 8px 0; }
-.prose ul.contains-task-list, .prose li.task-list-item { list-style: none; }
+.prose ul.contains-task-list, .prose li.task-list-item, .prose li:has(> input[type=checkbox]) { list-style: none; }
+.prose ul:has(> li > input[type=checkbox]) { padding-left: 6px; }
 .prose ul.contains-task-list { padding-left: 4px; }
 .prose li.task-list-item ul { padding-left: 22px; }
 .prose input[type=checkbox] { margin-right: 8px; transform: scale(1.15); accent-color: var(--accent); cursor: pointer; }

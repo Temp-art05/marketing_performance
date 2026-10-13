@@ -1,19 +1,19 @@
 {
   "hooks": {
     "SessionStart": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/session-start.mjs\"", "timeout": 30 }] }
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-start", "timeout": 150 }] }
     ],
     "PostToolUse": [
-      { "matcher": "Write|Edit|MultiEdit", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/post-tool-use.mjs\"", "timeout": 30 }] }
+      { "matcher": "Write|Edit|MultiEdit", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" post-tool-use", "timeout": 30 }] }
     ],
     "Stop": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/stop.mjs\"", "timeout": 30 }] }
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" stop", "timeout": 30 }] }
     ],
     "PreCompact": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/session-end.mjs\"", "timeout": 10 }] }
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-end", "timeout": 10 }] }
     ],
     "SessionEnd": [
-      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/session-end.mjs\"" }] }
+      { "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/scripts/kb/hooks/run.mjs\" session-end" }] }
     ]
   },
   "permissions": {
