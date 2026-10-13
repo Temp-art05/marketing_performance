@@ -210,3 +210,10 @@ test('needsCapture: đọc 1 file data (csv/exports) hoặc user kể dài → c
   t3.user('CPI là gì?').tool('Read', { file_path: '/r/src/main.kt' }).assistant('...');
   assert.equal(needsCapture(analyzeWork(t3.file)), false, 'đọc code 1 lần, hỏi ngắn → không');
 });
+
+test('needsCapture: tin nhắn tự động / cross-session / phản hồi hook không tính là user kể', () => {
+  const t = new Transcript(path.join(tmpDir(), 's.jsonl'));
+  t.user('<cross-session-message from="x">' + 'Redesign site đã xong, commit rồi. '.repeat(40) + '</cross-session-message>');
+  t.user('Stop hook feedback:\n[KB] Trước khi kết thúc lượt này ' + 'x '.repeat(400));
+  assert.equal(analyzeWork(t.file).userChars, 0);
+});

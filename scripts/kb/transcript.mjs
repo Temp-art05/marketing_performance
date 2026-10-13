@@ -85,6 +85,8 @@ const KB_CMD_RE = /scripts\/kb\/|npm run kb|\bkb(:index|:lint)?\b/;
 const CAPTURE_CMD_RE = /scripts\/kb\/cli\.mjs\s+(skip|commit|images\s+save|images\s+import|new)\b|npm run kb\s+--\s+(skip|commit|new)\b/;
 // File dữ liệu (report export, bảng tính, PDF) — đọc 1 lần cũng thường ra insight đáng nạp.
 const DATA_RE = /(^|[\s\/'"])(exports|raw)\/|\.(csv|tsv|xlsx?|pdf)\b/i;
+// Thông báo tự động / tin nhắn giữa các session / phản hồi hook — không phải user kể.
+const AUTOMATED_RE = /\[Cross-session [a-z ]*notice\]|<task-notification|\[SYSTEM NOTIFICATION|<cross-session-message|<agent-message|Stop hook feedback|\[KB\]/;
 const TRIVIAL_TOOLS = new Set(['TodoWrite', 'ToolSearch', 'Skill', 'AskUserQuestion', 'ExitPlanMode', 'EnterPlanMode', 'ListAgents', 'ScheduleWakeup']);
 
 function toolPath(input) {
@@ -101,7 +103,7 @@ export function analyzeWork(file, fromLine = 0) {
     if (entry.isSidechain) continue;
     for (const b of contentBlocks(entry)) {
       if (entry.type === 'user' && b.type === 'image') r.images++;
-      if (entry.type === 'user' && b.type === 'text' && !b.text.startsWith('<')) r.userChars += b.text.replace(/\[Image[^\]]*\]/g, '').trim().length;
+      if (entry.type === 'user' && b.type === 'text' && !b.text.startsWith('<') && !AUTOMATED_RE.test(b.text)) r.userChars += b.text.replace(/\[Image[^\]]*\]/g, '').trim().length;
       if (entry.type !== 'assistant' || b.type !== 'tool_use') continue;
       const name = b.name, input = b.input ?? {};
       const p = toolPath(input);
