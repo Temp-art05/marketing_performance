@@ -1,0 +1,43 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Claude Code — local settings và plan làm việc không commit
+.claude/settings.local.json
+docs/plans/*
+!docs/plans/.gitkeep
+
+# Secrets — token ad network, MMP, API key
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.keystore
+credentials*.json
+service-account*.json
+
+# Dữ liệu thô export từ dashboard (AppsFlyer, Adjust, AdMob, Google Ads, Meta...)
+# Chỉ commit bản đã tóm tắt/ẩn danh vào knowledge; raw export để ở đây
+raw/
+exports/
+*.xlsx
+*.xls
+*.csv
+!**/samples/*.csv
+
+# Script / notebook phân tích
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+node_modules/
+
+# Office lock files
+~$*
