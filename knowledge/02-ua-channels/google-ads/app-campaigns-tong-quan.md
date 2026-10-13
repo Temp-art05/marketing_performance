@@ -17,14 +17,20 @@ sources:
   - "Google Ads Help — Acquire high-value app users at scale with Target ROAS bidding: https://support.google.com/google-ads/answer/10617884 (truy cập 2026-10-14)"
   - "Google Ads Help — About tROAS for ad revenue (ARO): https://support.google.com/google-ads/answer/13799577 (truy cập 2026-10-14)"
   - "Google Ads Help — Duration of the learning period: https://support.google.com/google-ads/answer/13020501 (truy cập 2026-10-14)"
+  - "Google Ads Help — About view-through conversion optimized bidding for App campaigns: https://support.google.com/google-ads/answer/16257907 (truy cập 2026-10-14)"
+  - "session 2026-09-18 (als001 def570ce): setup campaign Home Morph 1 — màn VTC/Data feed/Dates và Bidding"
 created: 2026-10-14
 updated: 2026-10-14
+images:
+  - assets/screenshots/2026-09/2026-09-18-google-ads-app-vtc-datafeed-dates-1.png
 related:
   - 00-overview/roadmap.md
   - playbooks/launch-google-app-campaign-tcpa-den-roas.md
   - 01-pre-marketing/creative-assets-google-app-campaigns.md
   - 04-measurement/firebase-events-cho-ua.md
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
+  - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
+  - apps/home-morph/campaigns.md
 summary: Tổng quan App campaigns (ACi/ACe/ACpre), các bid strategy tCPI/tCPA/tROAS, tỉ lệ budget/bid chính thức (50×/10×/15×), learning period, quy tắc đổi bid/budget, cấu trúc ad group.
 ---
 
@@ -98,6 +104,27 @@ Chính thức:
 - Ad group nên theo **chủ đề/thông điệp** (vd mỗi tính năng chính 1 ad group) để đọc được asset report. Deep link trả về đúng màn hình theo chủ đề ad group (14104492).
 - Thêm ad group mới là "composition change" nên có thể kích hoạt learning (13020501). Tránh thêm khi campaign chưa ổn định.
 - Chi tiết asset: [creative-assets-google-app-campaigns](../../01-pre-marketing/creative-assets-google-app-campaigns.md).
+
+## 5b. Các setting khi tạo campaign: VTC, Data feed, ngày, bidding UI
+
+(Bổ sung 2026-10-14 từ việc setup Home Morph 1 ngày 18/09/2026, chưa duyệt.)
+
+![Campaign settings: View-through conversion optimization đang tick, Data feed trống, Start date Sep 17 2026, End date None](../../../assets/screenshots/2026-09/2026-09-18-google-ads-app-vtc-datafeed-dates-1.png)
+
+Ảnh trên: ba khối cuối của Campaign settings trong App campaign (UI 09/2026). "Turn on view-through conversions" **đang được tick sẵn** khi tạo campaign mới; Data feed không gắn; End date = None.
+
+- **View-through conversion (VTC) optimization** ✅ (16257907): đưa tín hiệu view-through vào bidding cho campaign install, tăng view/VTC trên một số format ở Display (AdMob) và YouTube; **chỉ cho app Android**. View = ≥ 50% pixel hiển thị ≥ 1 giây (video ≥ 2 giây); VTC đếm khi conversion khớp một view trong **24 giờ**. VTC được tính bid sẽ nằm trong cột Conversions (segment theo ad event type = "Impression"), không nằm ở cột VTC. Bật/tắt được lúc tạo hoặc sửa campaign; Google không đưa khuyến nghị bật/tắt.
+  - 🧪 Session khuyên **tắt** khi đang validate với budget nhỏ và không có MMP: VTC có thể gộp cả install vốn là organic → CPI báo cáo trông rẻ hơn, làm nhiễu D0 ROAS cần đo. Đây là đánh đổi chưa kiểm chứng; nếu bật thì nhớ khi đọc số phải tách theo ad event type.
+  - 🧪 Quyết định trước khi publish; theo session, đổi giữa chừng có thể kích hoạt lại learning (Google không nói rõ trong 16257907).
+- **Data feed**: chỉ dùng khi app có catalog sản phẩm (e-commerce, travel…) để ad hiện item cụ thể. App tool không có catalog thì để trống.
+- **Start/End date**: 🧪 không đặt End date cho campaign UA chạy liên tục (tránh campaign tự tắt giữa lúc đo).
+- **Bidding UI (focus Install volume)**: chọn "How do you want to track install volume?" = Firebase **First open** thay vì Google Play install để chỉ trả cho user thật sự mở app (xem [firebase-events-cho-ua](../../04-measurement/firebase-events-cho-ua.md)). Ô *Target cost per install* có gợi ý "A typical cost per install for other apps targeting your selected area is …" + nút APPLY; UI báo campaign dùng bid strategy **Target CPA** (tCPI là biến thể của tCPA). Ví dụ thật: [Home Morph 1](../../apps/home-morph/campaigns.md).
+- 🧪 Đặt tCPI thấp hơn nhiều so với gợi ý để "tiết kiệm" thì dễ không tiêu hết budget, ít conversion, kẹt learning.
+
+### Targeting: cái không điều khiển được
+
+- App campaign không có keyword, placement (6247380); session nêu thêm: không có target tuổi/giới/sở thích (🧪 khớp với danh sách control ở mục 1, chưa tìm câu chính thức).
+- 🧪 Đòn bẩy thay thế: **creative chính là targeting** (concept video khác nhau → Google tự tìm nhóm user khác nhau), đổi conversion event sang in-app action sâu hơn khi đủ data, location xuống cấp thành phố.
 
 ## 6. Measurement
 

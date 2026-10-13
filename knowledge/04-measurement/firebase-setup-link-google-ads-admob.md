@@ -17,6 +17,7 @@ sources:
   - "Google Ads Help — Best practices for App campaigns: https://support.google.com/google-ads/answer/14104492 (truy cập 2026-10-14)"
   - "Google Ads Help — Set up an App campaign for installs: https://support.google.com/google-ads/answer/12575501 (truy cập 2026-10-14)"
   - "Google Ads Help — Set a recommended initial Target ROAS for your App campaigns: https://support.google.com/google-ads/answer/15995101 (truy cập 2026-10-14)"
+  - "session 2026-09-17 (als001 e3e3ea4c): link AdMob ↔ Google Ads của Home Morph khi 2 bên khác tài khoản Google"
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -25,7 +26,8 @@ related:
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
   - playbooks/launch-google-app-campaign-tcpa-den-roas.md
   - 03-monetization/admob-co-ban.md
-summary: Các bước tích hợp Firebase SDK Android, link Firebase/GA4 với Google Ads và AdMob (quyền cần có), bật impression-level ad revenue, import first_open làm conversion và các lỗi hay gặp.
+  - lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md
+summary: Các bước tích hợp Firebase SDK Android, link Firebase/GA4 với Google Ads và AdMob (quyền cần có, cả khi khác tài khoản Google), bật impression-level ad revenue, import first_open làm conversion và các lỗi hay gặp.
 ---
 
 # Firebase: tích hợp SDK, link Google Ads, link AdMob, import first_open
@@ -78,6 +80,19 @@ AdMob → **Settings → Linked services** → mở dòng app → bật toggle F
 - Lợi ích: dữ liệu Analytics dùng được trong AdMob (user metrics, cohort). **Doanh thu AdMob chảy vào Analytics**, nên `ad_impression` có value để Google Ads tối ưu tROAS.
 - ⚠️ **Bắt buộc bật Impression-level ad revenue** trước khi đẩy ad revenue sang Firebase/Google Ads: AdMob → Settings → Account → *Account controls* → **Impression-level ad revenue** → bật → Save. Nếu không bật, Google cảnh báo dữ liệu ad revenue trong Firebase A/B test, **Google Ads tROAS** và báo cáo GA có thể bị gián đoạn (answer/6383165, 11322405). SDK tối thiểu: Google Mobile Ads Android 21.1.0. Firebase docs ghi Firebase Android SDK v17.6.0+ cho tự động đo ad revenue.
 - Nếu monetization qua **AppLovin MAX** thay vì AdMob thì phải log `ad_impression` thủ công, xem [firebase-events-cho-ua](firebase-events-cho-ua.md).
+
+## Khi AdMob/Firebase và Google Ads ở hai tài khoản Google khác nhau
+
+(Bổ sung 2026-10-14 từ việc thật ngày 17/09/2026, chưa duyệt. Diễn biến: [lesson](../lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md).)
+
+- Không cần gộp tài khoản. Mỗi mắt xích chỉ cần **một** tài khoản có đủ quyền ở cả hai đầu lúc bấm link:
+  - AdMob ↔ Firebase: AdMob Administrator + quyền tạo link Firebase + GA4 Editor/Administrator (xem Bước 3). Theo session, mắt xích này **không có luồng gửi request/duyệt** nên bắt buộc 1 tài khoản đủ cả ba quyền (🧪 nhận định từ session, khớp với yêu cầu quyền ở 6383165).
+  - GA4 ↔ Google Ads: GA4 Editor/Administrator + Google Ads Admin; thiếu quyền Ads thì có thể gửi request cho admin Google Ads (9379420).
+- **Firebase Owner không tự có quyền trên GA4 property.** Kiểm tra ở GA4 → Admin → Property access management.
+- Lấy đúng Property ID từ Firebase → Project settings → **Integrations → Google Analytics** (tài khoản kia có thể có property rỗng khác mặc định hiện ra).
+- Hướng mời gọn nhất: mời tài khoản đang giữ AdMob/Firebase/GA4 làm **Admin** Google Ads (Admin → Access and security → Users → +). Google Ads có thể bắt xác nhận danh tính (2FA) trước khi gửi lời mời.
+- Mục **Google Ads** trong AdMob → Settings → Linked services là để chạy *house ads / direct sold*, **không** phải đường đi ad revenue cho tROAS.
+- Nếu trang Google Ads/AdMob hiện trắng hoặc thiếu nút: tắt ad blocker cho domain đó ([lesson AdBlock](../lessons/2026-09-google-ads-ad-group-trong-do-adblock.md)).
 
 ## Bước 4: Import `first_open` vào Google Ads làm conversion
 
