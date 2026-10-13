@@ -20,6 +20,7 @@ related:
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
   - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
+  - lessons/2026-09-google-ads-ad-group-trong-do-adblock.md
 summary: Nhật ký campaign Google Ads của Home Morph — campaign đầu "Home Morph 1" (ACi, ID+PH+VN, first_open, tCPI ₫2.125, ₫200k/ngày) dựng 17–18/09/2026; chưa có kết quả.
 ---
 

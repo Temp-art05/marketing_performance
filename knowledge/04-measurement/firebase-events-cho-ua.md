@@ -23,6 +23,8 @@ related:
   - playbooks/launch-google-app-campaign-tcpa-den-roas.md
   - 03-monetization/mediation-admob-vs-applovin-max.md
   - 00-overview/glossary-chi-so.md
+  - 04-measurement/mmp-tong-quan.md
+  - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
 summary: Ý nghĩa và điều kiện của first_open, ad_impression (AdMob tự log / MAX log thủ công qua ILRD), app_remove, user_engagement, in_app_purchase và event nào dùng cho tCPI/tCPA/tROAS.
 ---
 

@@ -31,6 +31,8 @@ related:
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
   - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
   - apps/home-morph/campaigns.md
+  - 04-measurement/firebase-setup-link-google-ads-admob.md
+  - lessons/2026-09-google-ads-ad-group-trong-do-adblock.md
 summary: Tổng quan App campaigns (ACi/ACe/ACpre), các bid strategy tCPI/tCPA/tROAS, tỉ lệ budget/bid chính thức (50×/10×/15×), learning period, quy tắc đổi bid/budget, cấu trúc ad group.
 ---
 
