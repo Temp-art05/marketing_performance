@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UA Knowledge</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232f6fed'/><path d='M8 22V10l8 6 8-6v12' stroke='white' stroke-width='3' fill='none' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="/styles.css">
+  <script>try { const t = localStorage.getItem('kb-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn only-mobile" id="menu-btn" aria-label="Mở menu">☰</button>
+    <a href="#/" class="brand"><span class="logo">M</span><span>UA Knowledge</span></a>
+    <div class="search-wrap">
+      <input id="q" type="search" placeholder="Tìm kiếm (có/không dấu)…  /" autocomplete="off" aria-label="Tìm kiếm">
+      <div id="q-results" class="dropdown" hidden></div>
+    </div>
+    <nav class="topnav">
+      <a href="#/browse">Duyệt</a>
+      <a href="#/gallery">Ảnh</a>
+      <a href="#/timeline">Timeline</a>
+      <a href="#/roadmap">Roadmap</a>
+    </nav>
+    <a href="#/new" class="btn primary small">+ Tạo</a>
+    <span id="git-pill" class="pill" title="Trạng thái git"></span>
+    <button class="icon-btn" id="theme-btn" aria-label="Đổi giao diện sáng/tối">◐</button>
+  </header>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar"></aside>
+    <main id="main" class="main" tabindex="-1"></main>
+  </div>
+  <div id="lightbox" class="lightbox" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
