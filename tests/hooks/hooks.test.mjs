@@ -191,3 +191,22 @@ test('run.mjs: chuyển tiếp tới hook thật; tên hook lạ → bỏ qua an
   assert.equal(bad.code, 0);
   assert.equal(bad.stdout, '');
 });
+
+test('run.mjs: mọi hook đi qua bootstrap đều chạy thật và KHÔNG gọi npm khi đã có node_modules', () => {
+  const { root } = makeRepo();
+  // npm giả: nếu bị gọi sẽ để lại dấu vết
+  const bin = tmpDir();
+  const marker = path.join(bin, 'npm-called');
+  fs.writeFileSync(path.join(bin, 'npm'), `#!/bin/sh\ntouch ${marker}\n`);
+  fs.chmodSync(path.join(bin, 'npm'), 0o755);
+  const env = { PATH: `${bin}:${process.env.PATH}` };
+  const t = workSession(root, { tools: 4 });
+  const stop = run(path.join(HOOKS, 'run.mjs'), ['stop'], { root, env, input: { session_id: 'rb', transcript_path: t.file } });
+  assert.equal(JSON.parse(stop.stdout).decision, 'block', 'Stop qua run.mjs phải chạy thật');
+  const f = path.join(root, 'knowledge/lessons/x.md');
+  fs.mkdirSync(path.dirname(f), { recursive: true });
+  fs.writeFileSync(f, '---\ntitle: X\n---\nb');
+  assert.equal(run(path.join(HOOKS, 'run.mjs'), ['post-tool-use'], { root, env, input: { tool_input: { file_path: f } } }).code, 2, 'PostToolUse qua run.mjs phải chạy thật');
+  run(path.join(HOOKS, 'run.mjs'), ['session-start'], { root, env, input: { session_id: 'rb', source: 'startup' } });
+  assert.ok(!fs.existsSync(marker), 'không được chạy npm khi node_modules đã có');
+});

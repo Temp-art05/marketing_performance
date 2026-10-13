@@ -6,7 +6,7 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const repo = path.resolve(here, '../..');
+const repo = path.resolve(here, '../../..'); // scripts/kb/hooks → gốc repo
 const name = process.argv[2];
 if (!/^[a-z-]+$/.test(name ?? '') || !fs.existsSync(path.join(here, `${name}.mjs`))) process.exit(0);
 
