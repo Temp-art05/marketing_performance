@@ -16,6 +16,9 @@ User dùng Claude trong repo này để làm việc marketing thật (setup camp
 - Nguồn sự thật: `knowledge/` (Markdown + frontmatter), ảnh ở `assets/screenshots/`. Bản đồ toàn bộ tài liệu ở cuối file này (INDEX, sinh tự động).
 - **Trả lời câu hỏi chuyên môn / trước khi làm việc**: tra knowledge trước (skill `kb-search`), dẫn file nguồn.
 - **Nạp liên tục**: ngay khi có bài học, số liệu có bối cảnh, bước setup, quyết định, bẫy platform, screenshot đáng giữ → skill `kb-capture`. Không đợi cuối session. Hook `Stop` sẽ nhắc nếu quên; khi session đóng có agent nền rà lại.
+- **Chủ động dùng knowledge**: hook `UserPromptSubmit` chèn "Knowledge liên quan" vào mỗi yêu cầu — nếu có bài học/quyết định/số liệu cũ áp dụng được, mở đầu câu trả lời bằng 1–3 lưu ý ngắn kèm file nguồn (vd: "Lần trước DE ROAS D7 chỉ 14% — `lessons/...`"). Không liên quan thì bỏ qua, không nhắc.
+- **Mốc theo dõi** (`knowledge/00-overview/watchlist.md`): khi launch / đổi bid / đổi budget / đổi creative / bật tính năng tracking → thêm mốc xem lại theo roadmap (`node scripts/kb/cli.mjs followup add --when 7d --app <slug> --text "..."`; thường 7d, 1m, 4m, 6m cho campaign mới). Đầu session nếu có mốc đến hạn (hook báo) → nhắc user ngay câu đầu. Xem xong → `followup done <n> --note "<kết quả>"` và nạp kết quả như một lesson.
+- **Gợi ý cải thiện**: khi user hỏi "nên làm gì tiếp", "review app X", "có gì cần chú ý" → skill `kb-advise`.
 - Được phép **tự commit và push thẳng `main`** cho thay đổi knowledge (`node scripts/kb/cli.mjs commit -m "kb: ..."`), không cần PR, không cần hỏi.
 - Repo private: được ghi số liệu thật, tên app, ID tài khoản, screenshot nguyên bản. Chỉ cấm credential.
 - CLI: `node scripts/kb/cli.mjs help`. Web xem/sửa knowledge: `npm run web` → http://localhost:4321.
