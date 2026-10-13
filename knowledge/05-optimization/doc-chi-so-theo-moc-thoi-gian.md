@@ -24,6 +24,10 @@ related:
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
   - 03-monetization/admob-co-ban.md
   - 04-measurement/firebase-events-cho-ua.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
+  - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
+  - 06-tools/tong-quan-cong-cu-ai-marketing.md
+  - 06-tools/agent-qc-data-pipeline.md
 summary: Khung đọc Google Ads, AdMob, Firebase ở các mốc 7 ngày, 1, 4, 6 tháng — xem gì, hỏi gì, làm gì; ngưỡng để trống chờ số liệu thực tế của app.
 ---
 
@@ -107,3 +111,8 @@ ROAS cohort D0/D7/D30:
 Thay đổi đã làm trong kỳ (ngày, nội dung):
 Kết luận + việc tiếp theo:
 ```
+
+## Bổ sung (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+- Ngoài đọc theo mốc thời gian campaign, khi app ra **version mới** hãy so 2 version theo ngưỡng nội bộ Apero (P0/P1: R1 −5pp, churn D0 +10pp, LTV D7 −20%, match rate < 50%…) trước khi tăng rollout: [hậu kiểm version app](hau-kiem-version-app-nguong-verdict.md). Các ngưỡng này là quy ước nội bộ, có thể dùng làm điểm khởi đầu cho các ô ngưỡng đang để trống ở trên.
+- Ghi lại **phase Remote Config** đang chạy (build/normal/2-floor) và ngày đổi phase — đổi phase làm đổi eCPM/ARPDAU, nếu không ghi sẽ đọc sai trước/sau ([Remote Config theo phase](../03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md)).

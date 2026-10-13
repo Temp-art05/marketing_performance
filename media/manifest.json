@@ -1,1 +1,152 @@
-{"version":1,"files":{}}
+{
+  "version": 1,
+  "files": {
+    "media/2026-10/2026-10-14-youtube-auto-uploader-demo-1.mp4": {
+      "sha256": "4ed105561f89e81ff09ac166256c063ad6bbcfcd50706d074f9de706cbbea65d",
+      "bytes": 78899458,
+      "kind": "video",
+      "source": "AI Knownledge/APR-006 - Auto upload video Youtube/ThuyTT output_YouTube Auto Uploader.mp4",
+      "addedAt": "2026-10-13T19:30:11.860Z"
+    },
+    "media/2026-10/2026-10-14-aso-agent-auto-reply-demo-1.mp4": {
+      "sha256": "c9055d0ae4dc620619c9869fd4eab73e887ebeda7f612c9344535acc69315b8c",
+      "bytes": 180494799,
+      "kind": "video",
+      "source": "AI Knownledge/APR-013 - ASO Agent - Auto Reply/Auto-Reply Recording 2026-07-06 001058.mp4",
+      "addedAt": "2026-10-13T19:30:12.068Z"
+    },
+    "media/2026-10/2026-10-14-outro-tool-output-mau-1.mp4": {
+      "sha256": "7d6fa9066877021ab15c8c5827d3a649ca4abd6e5b7e4bac2214a0cd994875db",
+      "bytes": 6672971,
+      "kind": "video",
+      "source": "AI Knownledge/APR-030 - Tool ghép outro hàng loạt/Demo video output/25-06-2026_012.mp4",
+      "addedAt": "2026-10-13T19:30:12.132Z"
+    },
+    "media/2026-10/2026-10-14-legal-policy-research-skill-demo-1.mp4": {
+      "sha256": "912ded2c5c798c88c8babe8aa2b8e471fa55f5a48a2d0ecaabe6c120d4431965",
+      "bytes": 24079166,
+      "kind": "video",
+      "source": "AI Knownledge/APR-037 - Skill research quy định của pháp luật, policy nền tảng/Video demo skill research (1).mp4",
+      "addedAt": "2026-10-13T19:30:12.202Z"
+    },
+    "media/2026-10/2026-10-14-super-legal-demo-1.webm": {
+      "sha256": "0323cae3b7d326c99233a8e402ca299ce9a7a1588c7ebe4aaca0aec641d14ac5",
+      "bytes": 3930149,
+      "kind": "video",
+      "source": "AI Knownledge/APR-055 - Super Legal/2-Demo flow sử dụng Super Legal (WebM không đuôi)",
+      "addedAt": "2026-10-13T19:30:12.257Z"
+    },
+    "media/2026-10/2026-10-14-social-tracker-demo-1.mp4": {
+      "sha256": "1c921b59b283dce4d9812178eb5d8a3dcdf87387a5709d9a7e5ef7fd2090997e",
+      "bytes": 1137993,
+      "kind": "video",
+      "source": "AI Knownledge/APR-067 - Social Tracker/Social Tracker.mp4",
+      "addedAt": "2026-10-13T19:30:12.306Z"
+    },
+    "media/2026-10/2026-10-14-genius-easy-creative-output-couple-1.mp4": {
+      "sha256": "15189bd16d0c7608a33d7ddeba8cf41d1fda4e3a14567a166b4eae3e97c9e728",
+      "bytes": 14115882,
+      "kind": "video",
+      "source": "AI Knownledge/APR-075 - Genius Easy Creative/Demo Ouput/07.02.2026 Couple Rain Love1.mp4",
+      "addedAt": "2026-10-13T19:30:12.374Z"
+    },
+    "media/2026-10/2026-10-14-social-report-agent-demo-1.mp4": {
+      "sha256": "399446ddf85a6b6e1080b2df46284822fabf0047741fcec5ad45b488382f42ea",
+      "bytes": 19616109,
+      "kind": "video",
+      "source": "AI Knownledge/APR-076 - Report Social Media/Demo_HienNT2.mp4",
+      "addedAt": "2026-10-13T19:30:12.447Z"
+    },
+    "media/2026-10/2026-10-14-stum-weekly-report-demo-1.mp4": {
+      "sha256": "ba6f2ac995cc0cd9ae500b6239ebd536b843d4e6a42682c7a24bfae9fb634045",
+      "bytes": 60152659,
+      "kind": "video",
+      "source": "AI Knownledge/APR-099 - stum-weekly-report/Recording 2026-07-03 150156.mp4",
+      "addedAt": "2026-10-13T19:30:12.543Z"
+    },
+    "media/2026-10/2026-10-14-policy-helper-demo-1.mp4": {
+      "sha256": "42fe65c90fde06275e7c995f0b22612c98d1ddf6c61562f03816096276382995",
+      "bytes": 136009571,
+      "kind": "video",
+      "source": "AI Knownledge/APR-107 - Policy Killer Tool…/Policy-Helper-Video-Demo.mp4",
+      "addedAt": "2026-10-13T19:30:12.718Z"
+    },
+    "media/2026-10/2026-10-14-creative-editor-cat-outro-demo-1.mp4": {
+      "sha256": "fe46738f2f53edf32fda5efb15455380996209155399a50b88750eb09b4f0f64",
+      "bytes": 20553474,
+      "kind": "video",
+      "source": "AI Knownledge/APR-127 - Tool cắt ghép outro hàng loạt siêu nhanh gọn/video demo.mp4",
+      "addedAt": "2026-10-13T19:30:12.791Z"
+    },
+    "media/2026-10/2026-10-14-meta-ads-dashboard-ket-qua-1.mp4": {
+      "sha256": "9c1d415a64845cabe9a7fad87643c6835e0466cd9bde989f14430c062a00c457",
+      "bytes": 12354513,
+      "kind": "video",
+      "source": "AI Knownledge/APR-138 - Meta Sub Dashboard/Result.mp4",
+      "addedAt": "2026-10-13T19:30:12.858Z"
+    },
+    "media/2026-10/2026-10-14-khung-prompt-anh-ref-demo-1.mp4": {
+      "sha256": "93bb6e8db357fca75c5b876a143ad61717065dfcb0cdfc2909a35c0181b926ab",
+      "bytes": 10376669,
+      "kind": "video",
+      "source": "AI Knownledge/APR-146 - Khung mẫu tạo prompt ảnh chính xác/Video Demo + HDSD.mp4",
+      "addedAt": "2026-10-13T19:30:12.916Z"
+    },
+    "media/2026-10/2026-10-14-leave-the-text-alone-demo-1.mp4": {
+      "sha256": "00ce8dba369469d22daa55e2128dfe33208498d006e55003eaebd8c216d6b33c",
+      "bytes": 8814027,
+      "kind": "video",
+      "source": "AI Knownledge/APR-170 - Leave The Text Alone/Video Demo.mp4",
+      "addedAt": "2026-10-13T19:30:12.973Z"
+    },
+    "media/2026-10/2026-10-14-tiktok-creative-mcp-demo-1.mp4": {
+      "sha256": "0361ec6b2e8f3f216772d3ec4f4a24b6ed1aba432481e191d35d6edaebdaa981",
+      "bytes": 17278111,
+      "kind": "video",
+      "source": "AI Knownledge/APR-195 - Tiktok Gen AI MCP/asset.rar → video_demo/Tiktok_AI_Gen.mp4",
+      "addedAt": "2026-10-13T19:30:13.041Z"
+    },
+    "media/2026-10/2026-10-14-mcp-auto-action-demo-1.mp4": {
+      "sha256": "1af6903f7a484f8f1a5a948593a5c454b3be02286a4a41bc5923d0a773810322",
+      "bytes": 18698335,
+      "kind": "video",
+      "source": "AI Knownledge/APR-209 - MCP tool tra cứu auto action/demo-mcp-auto-action.mp4",
+      "addedAt": "2026-10-13T19:30:13.116Z"
+    },
+    "media/2026-10/2026-10-14-trend-research-engine-demo-1.mp4": {
+      "sha256": "ca7e51e92103eb4d88bc71e5736910e80eed772ef64f5ed6a38614ac486f4a69",
+      "bytes": 14975838,
+      "kind": "video",
+      "source": "AI Knownledge/APR-231 - reseach sản phẩm/Trend Research Engine - Cốc Cốc 2026-07-06 17-12-31.mp4",
+      "addedAt": "2026-10-13T19:30:13.181Z"
+    },
+    "media/2026-10/2026-10-14-omniresize-tutorial-anh-1.mp4": {
+      "sha256": "1fc1b7eed0741e4b0c587f303f4f867b3e34d2a2c7a87eab9521dcf303d5301c",
+      "bytes": 50306817,
+      "kind": "video",
+      "source": "AI Knownledge/APR-246 - Omni  Resize Image & Video/Tutorial_Resize Image.mp4",
+      "addedAt": "2026-10-13T19:30:13.281Z"
+    },
+    "media/2026-10/2026-10-14-hanh-creative-tutorial-1.mov": {
+      "sha256": "72f614adae71536f2dc99582b3e1d1d879e55c96d9bebb770f99bac0128f8f10",
+      "bytes": 19028714,
+      "kind": "video",
+      "source": "AI Knownledge/APR-247 - Tool Gen Ảnh Video Hàng Loạt/Hanh Creative - Video Tutorial.mov",
+      "addedAt": "2026-10-13T19:30:13.354Z"
+    },
+    "media/2026-10/2026-10-14-flow-slideshow-output-mau-1.mp4": {
+      "sha256": "f03b9595fab7d271622a67adfff30142073f619a59f0bf5516271f93ec4f7933",
+      "bytes": 21811295,
+      "kind": "video",
+      "source": "AI Knownledge/APR-250 - Tool tạo slide template cho video/FILE SẢN PHẨM/OUTPUT/LINHPL_OUTPUT 1.mp4",
+      "addedAt": "2026-10-13T19:30:13.426Z"
+    },
+    "media/2026-10/2026-10-14-aso-screenshot-flow-tutorial-1.mp4": {
+      "sha256": "ee72035f79a0b11aa152cdef19ca214d887506d18891b448fd158ebe42f8648e",
+      "bytes": 14808207,
+      "kind": "video",
+      "source": "AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/Tamvm_ASO Screenshots_Video tutorial.mp4",
+      "addedAt": "2026-10-13T19:30:13.496Z"
+    }
+  }
+}

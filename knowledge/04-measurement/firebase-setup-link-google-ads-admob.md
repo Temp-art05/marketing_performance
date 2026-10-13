@@ -28,6 +28,7 @@ related:
   - 03-monetization/admob-co-ban.md
   - lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md
   - 04-measurement/mmp-tong-quan.md
+  - 06-tools/firebase-remote-config-mcp-rc-apply.md
 summary: Các bước tích hợp Firebase SDK Android, link Firebase/GA4 với Google Ads và AdMob (quyền cần có, cả khi khác tài khoản Google), bật impression-level ad revenue, import first_open làm conversion và các lỗi hay gặp.
 ---
 

@@ -25,6 +25,8 @@ related:
   - 00-overview/glossary-chi-so.md
   - 04-measurement/mmp-tong-quan.md
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
+  - 04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md
+  - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
 summary: Ý nghĩa và điều kiện của first_open, ad_impression (AdMob tự log / MAX log thủ công qua ILRD), app_remove, user_engagement, in_app_purchase và event nào dùng cho tCPI/tCPA/tROAS.
 ---
 
@@ -101,6 +103,10 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 
 - Event đánh dấu "user đã trải nghiệm core feature" (vd `feature_used`, `level_complete`). Có thể dùng làm tCPA event chất lượng hơn `first_open` khi volume đủ. Google khuyên tCPA ACe đủ cao để "drive more than 100 conversions".
 - Event về ad placement (vd `ad_show_failed`) để soi show rate theo màn hình.
+
+## 5. Tính chỉ số từ BigQuery export (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+Khi đã bật GA4 → BigQuery export, các event ở trên (kể cả `first_open`, `ad_impression` có `value`) truy vấn được trực tiếp trên bảng `events_*`: DAU, new users, retention D1/D7 theo cohort `first_open`, engagement, và **ARPDAU = tổng `value` của `ad_impression` ÷ DAU** cho app ads-only. SQL và quy tắc đọc: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](ga4-bigquery-chi-so-suc-khoe-san-pham.md). Template agent tự báo cáo hằng ngày: [Police-product](../06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md).
 
 ## Bẫy hay gặp
 

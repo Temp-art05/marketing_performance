@@ -10,11 +10,19 @@ sources:
   - "Play Console Help — Add preview assets to showcase your app: https://support.google.com/googleplay/android-developer/answer/9866151 (truy cập 2026-10-14)"
   - "Play Console Help — Best practice for your store listing: https://support.google.com/googleplay/android-developer/answer/13393723 (truy cập 2026-10-14)"
   - "Play Console Help — Metadata policy: https://support.google.com/googleplay/android-developer/answer/9898842 (truy cập 2026-10-14)"
+  - "Play Console Help — Custom store listings: https://support.google.com/googleplay/android-developer/answer/9867158 (truy cập 2026-10-14)"
 created: 2026-10-14
 updated: 2026-10-14
 related:
   - 00-overview/roadmap.md
   - 01-pre-marketing/creative-assets-google-app-campaigns.md
+  - 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md
+  - 01-pre-marketing/tra-loi-review-google-play.md
+  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+  - 01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md
+  - 06-tools/super-legal-check-trademark-ten-app.md
+  - 06-tools/aso-agent-review-listing-vitals.md
+  - 06-tools/youtube-auto-uploader.md
 summary: Giới hạn ký tự title/short/full description, spec icon, feature graphic, screenshot, preview video và quy tắc keyword/metadata của Google Play, kèm checklist ASO theo roadmap.
 ---
 
@@ -75,7 +83,14 @@ Roadmap muốn "nhấn mạnh main keywords (chức năng app) trong full descri
 - [ ] Localize text + screenshot cho các GEO chính sẽ chạy UA.
 - [ ] Sau khi có traffic: dùng Store listing experiments / custom store listings của Play Console để A/B test. *Chưa tổng hợp chi tiết, cần bổ sung.*
 
+## 5. Bổ sung (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+- **Metadata policy áp cho cả screenshot và ảnh quảng bá** (WebFetch 9898842, 2026-10-14): cấm ảnh/chữ thể hiện xếp hạng/thành tích ("App of the year", "Best of Play", "Popular", icon giải thưởng), giá/khuyến mãi ("10% off"), chương trình Google Play ("Editor's choice"); screenshot/video phải *"reflect your app's actual experience"*. Tool AI nội bộ hay sinh slide "social proof" vi phạm — xem mục 4 của [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md).
+- **Ảnh iOS 1242×2688 không upload được lên Play** (tỉ lệ 2,16 > 2:1). Hai tool nội bộ mặc định xuất kích thước này — luôn xuất 1080×1920 cho Android.
+- **Custom store listings**: tối đa 50 listing; target theo quốc gia, Google Ads campaign, URL, search keyword, user không hoạt động/đã gỡ (Play Console Help 9867158). Dùng để khớp screenshot với thông điệp từng ad group — xem mục 7 của [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md).
+- Cách dựng bộ screenshot (narrative arc, quality bar) và chọn tool AI: [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md). Rating/review và trả lời review: [trả lời review Google Play](tra-loi-review-google-play.md). Lỗi policy listing đã gặp (Metadata, Impersonation, Misleading Claims): [lỗi policy thường gặp](policy-loi-thuong-gap-va-cach-fix.md). Check trademark tên app trước khi đặt title: [Super Legal](../06-tools/super-legal-check-trademark-ten-app.md).
+
 ## Việc tiếp theo
 
-- Bổ sung tài liệu về Store listing experiments và custom store listings (Play Console).
+- Bổ sung tài liệu về Store listing experiments (custom store listings đã có tóm tắt ở mục 5).
 - Ghi lại CVR store listing trước/sau mỗi lần đổi asset vào `lessons/`.

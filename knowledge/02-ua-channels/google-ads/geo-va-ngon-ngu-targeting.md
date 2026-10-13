@@ -21,6 +21,7 @@ related:
   - 05-optimization/unit-economics-ads-only-theo-tier.md
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
   - apps/home-morph/campaigns.md
+  - 06-tools/global-holiday-map-lich-ngay-le.md
 summary: Cách nhập danh sách nước hàng loạt, EU-27 vs "Europe", gom nước theo CPI vào campaign, Location options (Presence), chọn ngôn ngữ khớp asset và ad group theo ngôn ngữ cho App campaigns.
 ---
 

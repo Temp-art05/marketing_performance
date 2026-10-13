@@ -16,6 +16,8 @@ related:
   - 00-overview/glossary-chi-so.md
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
   - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
+  - 01-pre-marketing/market-research-tam-sam-som-go-no-go.md
 summary: Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp).
 ---
 
@@ -73,3 +75,7 @@ Số CPI theo từng nước Tier 3 mà Claude đưa ra trong session (vd India 
 ## Việc tiếp theo
 
 - Thay bảng benchmark bằng eCPM theo country/format từ AdMob và D0/D7 ROAS thật khi Home Morph có ≥ 7 ngày data.
+
+## Ghi chú về bảng tier (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+"Tier" trong bài này là cách chia theo eCPM/CPI để quyết định GEO. Báo cáo nội bộ Apero dùng một bảng tier khác (cho ngưỡng "đủ số" khi so version; ID/PH/PT ở Tier 2, VN/IN ở Tier 3) — xem [hậu kiểm version app](hau-kiem-version-app-nguong-verdict.md). Không trộn hai bảng.

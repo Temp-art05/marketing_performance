@@ -22,6 +22,8 @@ related:
   - 04-measurement/firebase-events-cho-ua.md
   - 04-measurement/mmp-tong-quan.md
   - 00-overview/glossary-chi-so.md
+  - 03-monetization/quy-tac-dat-quang-cao-in-app-apero.md
+  - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
 summary: Mediation là gì, waterfall vs bidding (unified auction), so sánh AdMob mediation với AppLovin MAX ở góc độ UA/đo lường, và impression-level revenue (ILRD) của từng bên để đẩy về Firebase/MMP.
 ---
 

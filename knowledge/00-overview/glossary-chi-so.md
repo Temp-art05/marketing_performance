@@ -21,6 +21,9 @@ related:
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
   - 03-monetization/admob-co-ban.md
   - 04-measurement/firebase-events-cho-ua.md
+  - 04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md
+  - 05-optimization/danh-gia-hieu-qua-social-organic.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
 summary: Định nghĩa + công thức + cách đọc + bẫy của các chỉ số UA (CPI, CPA, CTR, CVR, IPM, ROAS, payback) và monetization (LTV, ARPU, ARPDAU, eCPM, match/show rate, imps/DAU, retention).
 ---
 
@@ -91,6 +94,13 @@ ROAS Dn = LTV Dn / CPI
 ```
 
 Công thức LTV là xấp xỉ (giả định ARPDAU của user mới ≈ ARPDAU trung bình). Dùng để biết cần kéo cần gạt nào (CPI ↓, retention ↑, ad load ↑, eCPM ↑), không dùng thay số đo cohort.
+
+## 5. Bổ sung (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+- **% hay điểm %**: với chỉ số dạng tỉ lệ (retention, match rate, show rate, churn, crash-free) nói thay đổi bằng **điểm phần trăm (pp)**; với số đếm/tiền (DAU, installs, LTV, eCPM) dùng **% tương đối**. Retention 8% → 6,4% là **−1,6 pp**, không phải −20%. Đây là quy ước của các tool nội bộ (Police-product, App Performance Checker) và cũng là cách đọc đúng nói chung.
+- **Retention bằng SQL trên GA4 BigQuery** (cohort `first_open`, active đúng ngày X+n — khớp định nghĩa classic ở mục 3), cùng DAU, engagement rate, DAU/MAU: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](../04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md).
+- **Churn D0** (mktpro nội bộ): tỉ lệ user mới không quay lại sau ngày cài — dùng khi so version, xem [hậu kiểm version app](../05-optimization/hau-kiem-version-app-nguong-verdict.md). Định nghĩa chính xác theo mktpro chưa có tài liệu.
+- **ER (engagement rate) social organic** — mỗi nền tảng một mẫu số: Facebook Page = (reactions + comments + shares) ÷ **reach**; LinkedIn = (… + clicks/follows) ÷ **impressions**; TikTok = (likes + comments + shares + saves) ÷ **views**. Không so ER giữa các kênh. Chi tiết và bẫy export Meta Business Suite: [đánh giá social organic](../05-optimization/danh-gia-hieu-qua-social-organic.md).
 
 ## Việc tiếp theo
 

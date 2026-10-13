@@ -17,6 +17,7 @@ related:
   - apps/home-morph/profile.md
   - 05-optimization/unit-economics-ads-only-theo-tier.md
   - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
 summary: Quyết định 18/09/2026 cho Home Morph — giữ ads-only, paid UA chỉ ở Tier 2/3 (bắt đầu ID+PH+VN, ₫200k/ngày), Tier 1 US/EU lấy bằng organic; ngưỡng scale D0 ROAS ≥ 25%. Dựa trên benchmark, chưa có số thật.
 ---
 
@@ -52,3 +53,10 @@ summary: Quyết định 18/09/2026 cho Home Morph — giữ ads-only, paid UA c
 
 - Sau 7 ngày chạy: nếu cả 3 nước D0 ROAS < 15% → tắt, sửa app trước. Nếu có số thật (ARPDAU, D1/D7, imps/user) → tính lại toàn bộ và cập nhật quyết định này.
 - Khi có IAP/sub → xem lại Tier 1.
+
+## Ghi chú: có hai bảng tier khác nhau (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+Quyết định ở trên **không đổi**. Ghi chú để tránh nhầm khi bàn GEO:
+- Bảng tier của quyết định này (Tier 1 = US, CA, UK, AU, NZ, IE, DE, AT, CH, FR, BE, NL, ES, **PT**, IT, Nordics; ID+PH+VN gọi chung "Tier 2/3") là bảng **định giá GEO cho UA**, dựa trên benchmark eCPM/CPI.
+- Bảng tier nội bộ Apero trong tool stum-weekly-report (APR-099, `src/tiers.js`) dùng cho **ngưỡng "đủ số" khi so version** (Tier 1/2/3 ↔ 100/300/1000 new user/ngày): Tier 1 có 19 nước (thêm LU; **không có PT**), **Portugal, Indonesia, Philippines ở Tier 2**, **Vietnam, India ở Tier 3**. Chi tiết: [hậu kiểm version app](../05-optimization/hau-kiem-version-app-nguong-verdict.md).
+- Hai bảng khác mục đích nên không bên nào sai. Khi so số của Home Morph với báo cáo nội bộ Apero, nói rõ đang dùng bảng nào.

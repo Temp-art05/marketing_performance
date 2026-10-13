@@ -14,6 +14,7 @@ sources:
   - "AdMob Help — Interstitial ad guidance: https://support.google.com/admob/answer/6066980 (truy cập 2026-10-14)"
   - "AdMob Help — Disallowed interstitial implementations: https://support.google.com/admob/answer/6201362 (truy cập 2026-10-14)"
   - "AdMob Help — Rewarded ads policy: https://support.google.com/admob/answer/7313578 (truy cập 2026-10-14)"
+  - "AI Knownledge/APR-108 - Tester Workflow Toolkit (ad-policy.md), APR-007 (Remote Config template), APR-161 (PRD hậu kiểm ads 2 ver) (đọc 2026-10-14)"
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -21,6 +22,12 @@ related:
   - 03-monetization/mediation-admob-vs-applovin-max.md
   - 04-measurement/firebase-setup-link-google-ads-admob.md
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
+  - 03-monetization/quy-tac-dat-quang-cao-in-app-apero.md
+  - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
+  - 05-optimization/hau-kiem-version-app-nguong-verdict.md
+  - 03-monetization/paywall-subscription-checklist-policy.md
+  - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
+  - 06-tools/admob-revenue-report-so-sanh-version.md
 summary: 6 ad format của AdMob và khi nào dùng, định nghĩa chính thức requests/match rate/show rate/impressions/eCPM/ARPU/imps per user, cách đọc phễu, và các policy dễ bị phạt (invalid traffic, interstitial, rewarded).
 ---
 
@@ -104,6 +111,17 @@ Các chiều nên xem: **ad unit**, **format**, **country (top GEO)**, **ad sour
 
 ### Chung (6128543)
 - AdMob áp dụng AdSense Program policies + Google Publisher Policies. Google có quyền tắt ad serving hoặc đóng tài khoản khi vi phạm.
+
+## 4. Chuẩn nội bộ Apero và chỗ lệch với policy (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+- Chuẩn đặt ad chi tiết theo format (49 rule của QA Apero), mô hình ad unit **primary + 2ID (high floor)** bật/tắt bằng Remote Config: [quy tắc đặt quảng cáo in-app Apero](quy-tac-dat-quang-cao-in-app-apero.md). Template ~50 key RC theo phase build/normal/2-floor: [Remote Config theo phase](remote-config-ads-theo-phase-build-normal-2floor.md).
+- Khi đọc report theo ad unit, tách unit high floor (`_2ID`, `_2fl`, `_high`) khỏi unit thường; so 2 app version theo ad unit (tách user First Open/Home): [hậu kiểm version app](../05-optimization/hau-kiem-version-app-nguong-verdict.md).
+
+### ⚠️ Mâu thuẫn: interstitial ngay sau splash
+- **Nội bộ** (APR-108 rule #9): chuẩn "Open app → splash → **inter** → main"; app thật có placement `inter_splash` / `inter_splash_high`, template RC bật `fo_inter_splash` ở phase normal và 2-floor.
+- **AdMob 6201362** (WebFetch lại 2026-10-14): *"Do not place interstitial ads on app load and when exiting apps"*; *"We recommend placing an app open ad when loading an app or switching back to it."* — khớp mục 3 bài này.
+- **Verdict**: theo nguồn chính thức. Inter lúc mở app là rủi ro policy; dùng App open ad. Chưa sửa gì ở tài liệu nội bộ — cần team monetization xác nhận Apero có ngoại lệ hay đang chấp nhận rủi ro (đã đặt mốc trong watchlist).
+- **Tần suất**: nội bộ flag "> 1 ad/phút"; AdMob: *"no more than one interstitial ad after every two user actions"* (áp cả nút Back). Hai thước đo khác nhau — áp cả hai.
 
 ## Việc tiếp theo
 

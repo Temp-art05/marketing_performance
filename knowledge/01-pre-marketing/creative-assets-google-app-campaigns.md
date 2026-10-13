@@ -20,6 +20,14 @@ related:
   - 01-pre-marketing/aso-google-play-store-listing.md
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
   - playbooks/launch-google-app-campaign-tcpa-den-roas.md
+  - playbooks/san-xuat-creative-hang-loat-bang-ai.md
+  - 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md
+  - 06-tools/youtube-auto-uploader.md
+  - 06-tools/omni-resize-anh-video-da-kenh.md
+  - 06-tools/cat-outro-watermark-video-hang-loat.md
+  - 01-pre-marketing/nghien-cuu-trend-cho-creative.md
+  - 06-tools/genius-easy-creative.md
+  - 06-tools/visual-prompting-skill-anh-video.md
 summary: Spec asset cho Google App campaigns (headline 30/description 90 ký tự, ảnh 1:1·1.91:1·4:5, video YouTube 3 hướng, HTML5 zip ≤5MB), số lượng tối đa mỗi ad group và đối chiếu với yêu cầu creative trong roadmap.
 ---
 
@@ -86,6 +94,12 @@ Kết luận: bộ creative trong roadmap **đủ để đạt mức đa dạng 
 - *Chưa kiểm chứng*: 3 giây đầu video nên là hook (kết quả hoặc vấn đề), sau đó demo tính năng. Text trên video đặt trong vùng an toàn vì UI YouTube/Play che mép.
 - *Chưa kiểm chứng*: mỗi đợt làm creative nên giữ 1 biến, ví dụ cùng hook khác nhạc, để đọc được asset report.
 - Đặt tên file/asset có quy ước (ngày_chủ-đề_tỉ-lệ_độ-dài) để sau tra lại được trong asset report.
+
+## 5. Công cụ nội bộ để làm đủ bộ asset (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+- Dây chuyền tool AI nội bộ (trend → ảnh/video nguồn → render hàng loạt → outro → localize → resize → upload): [sản xuất creative hàng loạt](../playbooks/san-xuat-creative-hang-loat-bang-ai.md). Kỹ thuật viết prompt ảnh/video: [viết prompt AI](prompt-ai-tao-anh-video-quang-cao.md).
+- **Lỗ hổng tỉ lệ**: [OmniResize](../06-tools/omni-resize-anh-video-da-kenh.md) chỉ xuất 1:1 / 9:16 / 16:9 — **thiếu 1.91:1 (1200×628) và 4:5 (1200×1500)** mà App campaigns cần cho ảnh; 16:9 không thay được 1.91:1. Ảnh 2 tỉ lệ này phải crop/dựng riêng. [Outro Tool](../06-tools/cat-outro-watermark-video-hang-loat.md) có 4:5 cho video (pad viền đen).
+- Video phải lên YouTube: [YouTube Auto Uploader](../06-tools/youtube-auto-uploader.md) upload hàng loạt; kiểm video không ở chế độ Private.
 
 ## Việc tiếp theo
 

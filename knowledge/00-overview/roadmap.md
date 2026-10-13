@@ -10,6 +10,8 @@ sources:
   - ROADMAP UA MARKETING.xlsx (thư mục cha của repo), đọc 2026-10-14
 created: 2026-10-14
 updated: 2026-10-14
+related:
+  - 06-tools/tong-quan-cong-cu-ai-marketing.md
 summary: Lộ trình 3 giai đoạn — Pre-Marketing (ASO, creative, Firebase) → Launch campaign (tCPA First_Open → ROAS) → Đo lường & tối ưu (Ads, AdMob, Firebase).
 ---
 
@@ -48,3 +50,7 @@ Mốc theo dõi campaign ROAS: **7 ngày · 1 tháng · 4 tháng · 6 tháng**.
 - [ ] Google Ads: CPI, CR (conversion rate), Cost, ROAS
 - [ ] AdMob: request/impression, eCPM, match rate, theo ad unit, top quốc gia
 - [ ] Firebase: retention, `first_open`, `app_remove`, nguồn traffic, crash/bug
+
+## Công cụ hỗ trợ từng bước (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+
+Bản đồ ~40 tool AI nội bộ Apero xếp theo đúng 3 giai đoạn trên (ASO, creative, launch, đo lường, monetization, policy): [tổng quan công cụ AI marketing](../06-tools/tong-quan-cong-cu-ai-marketing.md). Quy trình ghép tool cho creative: [sản xuất creative hàng loạt](../playbooks/san-xuat-creative-hang-loat-bang-ai.md).

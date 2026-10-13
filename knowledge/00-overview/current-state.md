@@ -6,7 +6,7 @@ tags: [status]
 app: general
 status: verified
 confidence: medium
-sources: ["setup repo 2026-10-14", "session 2026-09-17→18 (als001 def570ce, e3e3ea4c)"]
+sources: ["setup repo 2026-10-14", "session 2026-09-17→18 (als001 def570ce, e3e3ea4c)", "AI Knownledge/ (kho asset Apero, rà 2026-10-14)"]
 created: 2026-10-14
 updated: 2026-10-14
 summary: Ảnh chụp nhanh "đang ở đâu" — app nào đang chạy, campaign nào, vấn đề đang mở. Cập nhật mỗi khi có thay đổi lớn.
@@ -26,5 +26,9 @@ summary: Ảnh chụp nhanh "đang ở đâu" — app nào đang chạy, campaig
 
 ## Vấn đề / việc đang mở
 
-- Nạp knowledge ban đầu từ các session cũ (claude-station; als001 đã nạp 2 session 09/2026).
+- Nạp knowledge ban đầu từ các session cũ (claude-station; als001 đã nạp 2 session 09/2026). 2026-10-14: đã nạp kho AI Knownledge (≈55 bài draft, chủ yếu `06-tools/`) — chờ duyệt.
+- ⚠️ Bảo mật kho AI Knownledge (không chép giá trị vào KB): APR-284 `Tool.zip` chứa file `.env` thật + thư mục `.git` → báo owner xoay vòng secret, gỡ khỏi hub.
+- ⚠️ APR-155 (Comment Tool Facebook): docx ghi link + tài khoản/mật khẩu đăng nhập chung → báo owner đổi mật khẩu.
+- ⚠️ APR-099 (stum-weekly-report): token mặc định của Apps Script Web App nằm thẳng trong `src/config.js` → báo owner bỏ default, dùng `settings.js`.
+- Xin quyền truy cập APR-261 Ad Copy Skill và APR-252 Analytics Agent (liên quan UA nhưng chưa tải được).
 - Home Morph: xác nhận GA4 ↔ Google Ads đã link, bật Impression-level ad revenue, kiểm tra event `generation_completed`/`rewarded_ad_completed`; lấy số 7 ngày đầu.
