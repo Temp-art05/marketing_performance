@@ -18,12 +18,20 @@ const PUBLIC = path.join(HERE, 'public');
 const NODE_MODULES = path.resolve(HERE, '..', 'node_modules');
 const CLI = path.resolve(HERE, '..', 'scripts/kb/cli.mjs');
 
+// Font tự host (giống Claude Station) — web chạy offline, không gọi CDN.
+const FONTS = {
+  'outfit': '@fontsource-variable/outfit',
+  'plus-jakarta-sans': '@fontsource-variable/plus-jakarta-sans',
+  'jetbrains-mono': '@fontsource-variable/jetbrains-mono',
+  'material-symbols': '@material-symbols/font-400',
+};
+
 const VENDOR = {
   'marked.js': 'marked/lib/marked.esm.js',
   'purify.js': 'dompurify/dist/purify.es.mjs',
   'minisearch.js': 'minisearch/dist/es/index.js',
 };
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.webp': 'image/webp', '.ico': 'image/x-icon' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 
 const hash = s => crypto.createHash('sha1').update(s).digest('hex').slice(0, 12);
 
@@ -246,6 +254,12 @@ export function createServer() {
       if (p.startsWith('/vendor/')) {
         const v = VENDOR[p.slice(8)];
         return v ? serveStatic(res, path.join(NODE_MODULES, v)) : send(res, 404, 'Not found', 'text/plain');
+      }
+      if (p.startsWith('/fonts/')) {
+        const [pkg, ...rest] = p.slice(7).split('/');
+        const dir = FONTS[pkg] && path.join(NODE_MODULES, FONTS[pkg]);
+        const abs = dir && path.resolve(dir, rest.join('/'));
+        return abs && abs.startsWith(dir + path.sep) ? serveStatic(res, abs) : send(res, 404, 'Not found', 'text/plain');
       }
       if (p.startsWith('/assets/')) {
         const abs = path.resolve(root(), '.' + p);

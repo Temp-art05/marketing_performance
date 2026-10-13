@@ -3,32 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a1a1b">
   <title>UA Knowledge</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232f6fed'/><path d='M8 22V10l8 6 8-6v12' stroke='white' stroke-width='3' fill='none' stroke-linejoin='round'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233fd898'/><path d='M8 22V10l8 6 8-6v12' stroke='%2305261a' stroke-width='3' fill='none' stroke-linejoin='round'/></svg>">
+  <link rel="stylesheet" href="/fonts/outfit/index.css">
+  <link rel="stylesheet" href="/fonts/plus-jakarta-sans/index.css">
+  <link rel="stylesheet" href="/fonts/jetbrains-mono/index.css">
+  <link rel="stylesheet" href="/fonts/material-symbols/rounded.css">
   <link rel="stylesheet" href="/styles.css">
-  <script>try { const t = localStorage.getItem('kb-theme'); if (t) document.documentElement.dataset.theme = t; } catch {}</script>
 </head>
 <body>
-  <header class="topbar">
-    <button class="icon-btn only-mobile" id="menu-btn" aria-label="Mở menu">☰</button>
-    <a href="#/" class="brand"><span class="logo">M</span><span>UA Knowledge</span></a>
-    <div class="search-wrap">
-      <input id="q" type="search" placeholder="Tìm kiếm (có/không dấu)…  /" autocomplete="off" aria-label="Tìm kiếm">
-      <div id="q-results" class="dropdown" hidden></div>
-    </div>
-    <nav class="topnav">
-      <a href="#/browse">Duyệt</a>
-      <a href="#/gallery">Ảnh</a>
-      <a href="#/timeline">Timeline</a>
-      <a href="#/roadmap">Roadmap</a>
-    </nav>
-    <a href="#/new" class="btn primary small">+ Tạo</a>
-    <span id="git-pill" class="pill" title="Trạng thái git"></span>
-    <button class="icon-btn" id="theme-btn" aria-label="Đổi giao diện sáng/tối">◐</button>
-  </header>
-  <div class="layout">
-    <aside id="sidebar" class="sidebar"></aside>
-    <main id="main" class="main" tabindex="-1"></main>
+  <div class="shell">
+    <aside id="sidebar" class="sidebar glass">
+      <a href="#/" class="brand">
+        <span class="logo"><span class="ms fill">menu_book</span></span>
+        <span class="brand-text"><span class="brand-name">UA Knowledge</span><span class="brand-sub">marketing performance</span></span>
+      </a>
+      <div id="side-nav" class="side-scroll"></div>
+      <div class="side-foot"><span id="git-pill" class="pill" title="Trạng thái git"></span></div>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+    <main id="main-wrap" class="main-wrap glass-flat">
+      <header class="topbar">
+        <button class="icon-btn only-mobile" id="menu-btn" aria-label="Mở menu"><span class="ms">menu</span></button>
+        <div class="search-wrap">
+          <span class="ms search-ic">search</span>
+          <input id="q" type="search" placeholder="Tìm kiếm (có/không dấu)" autocomplete="off" aria-label="Tìm kiếm">
+          <kbd class="kbd">/</kbd>
+          <div id="q-results" class="dropdown glass-raised" hidden></div>
+        </div>
+        <a href="#/new" class="btn primary sm"><span class="ms">add</span><span class="hide-sm">Tạo</span></a>
+      </header>
+      <div id="main" class="main" tabindex="-1"></div>
+    </main>
   </div>
   <div id="lightbox" class="lightbox" hidden></div>
   <div id="toast" class="toast" hidden></div>

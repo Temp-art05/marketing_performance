@@ -162,7 +162,7 @@ test('timeline + roadmap tick lưu vào file', { skip: skip() }, async () => {
   await shot('roadmap');
 });
 
-test('mobile 390px: không tràn ngang, menu mở sidebar; dark mode', { skip: skip() }, async () => {
+test('mobile 390px: không tràn ngang, menu mở sidebar; font tự host load được', { skip: skip() }, async () => {
   await page.setViewportSize({ width: 390, height: 844 });
   for (const h of ['#/', '#/doc/lessons/2026-10-roas.md', '#/gallery', '#/edit/playbooks/launch.md', '#/browse']) {
     await page.goto(base + '/' + h);
@@ -174,12 +174,11 @@ test('mobile 390px: không tràn ngang, menu mở sidebar; dark mode', { skip: s
   await page.click('#menu-btn');
   assert.equal(await page.isVisible('#sidebar'), true);
   await shot('mobile-menu');
+  await page.click('#scrim', { position: { x: 375, y: 400 } });
+  assert.equal(await page.isVisible('#sidebar'), false);
   await page.setViewportSize({ width: 1360, height: 900 });
-  await page.click('#theme-btn');
-  const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  await shot('dark');
-  await page.click('#theme-btn');
-  const bg2 = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
-  assert.notEqual(bg, bg2);
+  await page.evaluate(() => document.fonts.ready);
+  const fonts = await page.evaluate(() => ['Outfit Variable', 'Plus Jakarta Sans Variable', 'Material Symbols Rounded'].map(f => document.fonts.check(`16px "${f}"`, 'Aệ')));
+  assert.deepEqual(fonts, [true, true, true], 'font phải tải từ /fonts/ (không CDN)');
   assert.deepEqual(errors, []);
 });
