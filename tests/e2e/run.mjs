@@ -247,6 +247,51 @@ const S = {
     ],
   },
 
+  s10_followup: {
+    desc: 'Launch campaign → Claude tự đặt mốc theo dõi (7 ngày…) trong watchlist',
+    prompt: 'Hôm nay (14/10/2026) tao vừa launch campaign HM_tROAS_ID cho app home-morph trên Google Ads: tROAS 30%, budget 500k VND/ngày, GEO Indonesia, tối ưu ad_impression có value. Ghi nhận giúp tao.',
+    check: (e) => {
+      const wl = path.join(e.dir, 'knowledge/00-overview/watchlist.md');
+      const text = fs.existsSync(wl) ? fs.readFileSync(wl, 'utf8') : '';
+      const items = text.split('\n').filter(l => /^- \[ \] \d{4}-\d{2}-\d{2} · home-morph · /.test(l));
+      return [
+        [items.length >= 1, `có mốc theo dõi cho home-morph (${items.length}): ${items.join(' | ').slice(0, 300)}`],
+        [items.some(l => /2026-10-2[01]/.test(l)), 'có mốc ~7 ngày sau launch (20–21/10)'],
+        [/HM_tROAS_ID/.test(allKnowledgeText(e.dir)), 'ghi nhận campaign vào knowledge (campaigns.md)'],
+        [lintDocs(e.dir).errors.length === 0, 'lint sạch'],
+        [kbCommits(e).length > 0, 'đã commit'],
+      ];
+    },
+  },
+
+  s11_proactive_recall: {
+    desc: 'Hỏi việc mới liên quan bài học cũ → Claude tự nhắc bài học (không được hỏi về nó)',
+    setup: e => writeDoc(e.dir, 'lessons/2026-10-hm-de-roas-thap.md', {
+      title: 'home-morph: Đức (DE) lỗ nặng trong campaign tROAS', type: 'lesson', topic: 'lessons', tags: ['google-ads', 'troas', 'geo', 'germany'], app: 'home-morph', geo: ['DE'], status: 'verified', confidence: 'high', sources: ['session 2026-10-08: report Google Ads 7 ngày'], created: '2026-10-08', updated: '2026-10-08',
+      summary: 'HM_tROAS_Global 1–7/10/2026: Đức (DE) CPI $1.51, ROAS D7 chỉ 14% — đã loại DE khỏi targeting.',
+    }, '# Đức lỗ nặng\n\nCPI $1.51, ROAS D7 14% (thấp nhất). Quyết định: loại DE khỏi các campaign tROAS của home-morph.\n'),
+    prompt: 'Tao định mở campaign tROAS mới cho home-morph nhắm các nước châu Âu giàu: Đức, Pháp, Hà Lan, Thuỵ Điển. Budget 50$/ngày. Mày thấy sao? Trả lời ngắn.',
+    check: (e, r) => [
+      [/14 ?%|0[.,]14|lỗ|ROAS D7/i.test(r.result) && /Đức|DE\b|Germany/.test(r.result), `nhắc bài học DE ROAS D7 14% (trả lời: ${r.result.slice(0, 250)})`],
+      [/lessons\/|2026-10-hm-de-roas-thap|knowledge\//.test(r.result), 'dẫn file nguồn'],
+    ],
+  },
+
+  s12_due_reminder: {
+    desc: 'Mốc theo dõi đã đến hạn → Claude nhắc user ngay khi bắt đầu session',
+    setup: e => {
+      const wl = path.join(e.dir, 'knowledge/00-overview/watchlist.md');
+      const base = fs.existsSync(wl) ? fs.readFileSync(wl, 'utf8') : null;
+      if (!base) execFileSync(process.execPath, ['scripts/kb/cli.mjs', 'followup', 'list'], { cwd: e.dir, stdio: 'ignore' });
+      execFileSync(process.execPath, ['scripts/kb/cli.mjs', 'followup', 'add', '--when', '2026-10-10', '--app', 'home-morph', '--text', 'Xem ROAS D7 của campaign HM_tROAS_Global (target ≥ 40%)'], { cwd: e.dir, stdio: 'ignore' });
+    },
+    prompt: 'Chào, hôm nay làm gì trước nhỉ? Trả lời ngắn.',
+    check: (e, r) => [
+      [/HM_tROAS_Global|ROAS D7/.test(r.result), `nhắc mốc đến hạn (trả lời: ${r.result.slice(0, 250)})`],
+      [/quá hạn|đến hạn|10\/10|2026-10-10|hạn/i.test(r.result), 'nói rõ là đã đến/quá hạn'],
+    ],
+  },
+
   s9_safety_net: {
     desc: 'Session chính quên nạp (mô phỏng) → agent nền SessionEnd tự nạp bù',
     // Mô phỏng "Claude quên": gỡ skill kb-capture + mục knowledge trong CLAUDE.md, tắt hook (KB_BACKGROUND=1)
