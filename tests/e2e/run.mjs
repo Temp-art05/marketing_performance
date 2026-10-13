@@ -21,9 +21,10 @@ const ALLOWED = ['Read', 'Write', 'Edit', 'Glob', 'Grep', 'Skill', 'Bash(node sc
 // ---------- môi trường ----------
 
 function makeCopy(name) {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), `kbe2e-${name}-`));
+  const dir = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), `kbe2e-${name}-`)));
   execFileSync('rsync', ['-a', '--exclude', 'node_modules', '--exclude', '.git', '--exclude', '.claude/state', '--exclude', 'docs/plans', `${REPO}/`, `${dir}/`]);
-  fs.symlinkSync(path.join(REPO, 'node_modules'), path.join(dir, 'node_modules'));
+  // node_modules riêng cho mỗi bản sao: dùng chung qua symlink thì một lần cài lại sẽ làm hỏng mọi session đang chạy
+  execFileSync('cp', ['-R', path.join(REPO, 'node_modules'), path.join(dir, 'node_modules')]);
   const g = (...a) => execFileSync('git', a, { cwd: dir, stdio: 'pipe', encoding: 'utf8' });
   g('init', '-q', '-b', 'main'); g('config', 'user.email', 'e2e@test'); g('config', 'user.name', 'e2e');
   g('add', '-A'); g('commit', '-qm', 'e2e base');
@@ -67,10 +68,10 @@ async function waitBackground(dir, sessionId, timeoutMs = 15 * 60 * 1000) {
   const tag = `[${String(sessionId).slice(0, 8)} `;
   const start = Date.now();
   while (Date.now() - start < timeoutMs) {
-    if (fs.existsSync(log)) {
-      const lines = fs.readFileSync(log, 'utf8').split('\n').filter(l => l.includes(tag));
-      if (lines.some(l => /không cần nạp|\] commit|commit lỗi/.test(l)) || lines.some(l => /thiếu session/.test(l))) return lines.join('\n');
-    }
+    const lines = fs.existsSync(log) ? fs.readFileSync(log, 'utf8').split('\n').filter(l => l.includes(tag)) : [];
+    if (lines.some(l => /không cần nạp|\] commit|commit lỗi|thiếu session/.test(l))) return lines.join('\n');
+    // SessionEnd không spawn agent nền trong 90s → coi như không chạy (sẽ được ghi vào báo cáo)
+    if (!lines.length && Date.now() - start > 90000) return 'KHÔNG có log agent nền (SessionEnd hook không chạy?)';
     await new Promise(r => setTimeout(r, 2000));
   }
   return 'TIMEOUT chờ background-capture';

@@ -5,8 +5,11 @@ import os from 'node:os';
 import path from 'node:path';
 import { root } from './lib.mjs';
 
+// Claude Code đặt tên theo realpath (vd /var → /private/var trên macOS).
 export function projectSlug(dir) {
-  return path.resolve(dir).replace(/[^A-Za-z0-9]/g, '-');
+  let p = path.resolve(dir);
+  try { p = fs.realpathSync(p); } catch { /* chưa tồn tại */ }
+  return p.replace(/[^A-Za-z0-9]/g, '-');
 }
 
 export function projectTranscriptDir(dir = root()) {

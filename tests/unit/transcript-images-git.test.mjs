@@ -189,3 +189,10 @@ test('commitKnowledge: thư mục assets/ rỗng chưa track không làm hỏng 
   assert.equal(commitKnowledge('kb: a', { r: root, push: false }).committed, true);
   assert.equal(git('log', '-1', '--format=%s').trim(), 'kb: a');
 });
+
+test('projectSlug đi theo realpath (symlink /var → /private/var trên macOS)', () => {
+  const real = fs.realpathSync(tmpDir());
+  const link = real + '-link';
+  fs.symlinkSync(real, link);
+  assert.equal(projectSlug(link), projectSlug(real));
+});
