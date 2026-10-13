@@ -4,7 +4,7 @@ type: playbook
 topic: playbooks
 tags: [google-ads, app-campaigns, launch, tcpa, tcpi, troas, ad-impression, checklist]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Roadmap của user: knowledge/00-overview/roadmap.md (ROADMAP UA MARKETING.xlsx, đọc 2026-10-14)"

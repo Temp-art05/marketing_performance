@@ -4,7 +4,7 @@ type: lesson
 topic: lessons
 tags: [admob, google-ads, firebase, ga4, permissions, linking, troas]
 app: home-morph
-status: draft
+status: verified
 confidence: medium
 sources:
   - "session 2026-09-17 (als001 e3e3ea4c): link AdMob (chi2911bs) với Google Ads 252-691-1237 (dinhngocthe.start) cho Home Morph, Claude đọc UI qua osascript"

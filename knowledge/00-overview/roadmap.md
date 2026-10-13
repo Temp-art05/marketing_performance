@@ -4,7 +4,7 @@ type: overview
 topic: 00-overview
 tags: [roadmap, checklist]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - ROADMAP UA MARKETING.xlsx (thư mục cha của repo), đọc 2026-10-14

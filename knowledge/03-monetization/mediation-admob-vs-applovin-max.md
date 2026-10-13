@@ -4,7 +4,7 @@ type: concept
 topic: 03-monetization
 tags: [mediation, admob, applovin-max, bidding, waterfall, ilrd, ad-revenue]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "AdMob Help — Guide to AdMob Mediation (bidding & waterfall): https://support.google.com/admob/answer/13420272 (truy cập 2026-10-14)"

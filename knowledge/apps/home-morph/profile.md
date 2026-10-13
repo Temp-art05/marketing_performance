@@ -4,7 +4,7 @@ type: app-profile
 topic: apps/home-morph
 tags: [home-morph, app-profile, firebase, admob, google-ads, ga4]
 app: home-morph
-status: draft
+status: verified
 confidence: medium
 sources:
   - "session 2026-09-17 (als001 e3e3ea4c): link AdMob ↔ Google Ads khác tài khoản — đọc google-services.json, AdMob Linked services, Firebase Integrations"

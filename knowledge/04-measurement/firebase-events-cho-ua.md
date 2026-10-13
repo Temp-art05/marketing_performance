@@ -4,7 +4,7 @@ type: reference
 topic: 04-measurement
 tags: [firebase, ga4, events, ad-impression, first-open, troas, tcpa, applovin-max]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Firebase Help — Automatically collected events: https://support.google.com/firebase/answer/9234069 (truy cập 2026-10-14)"

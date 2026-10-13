@@ -4,7 +4,7 @@ type: reference
 topic: 03-monetization
 tags: [admob, ad-format, ecpm, match-rate, show-rate, policy]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
   - "AdMob Help — Ad units, ad formats, and ad types: https://support.google.com/admob/answer/6128738 (truy cập 2026-10-14)"

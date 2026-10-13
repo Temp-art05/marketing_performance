@@ -4,7 +4,7 @@ type: overview
 topic: 00-overview
 tags: [status]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources: ["setup repo 2026-10-14", "session 2026-09-17→18 (als001 def570ce, e3e3ea4c)"]
 created: 2026-10-14

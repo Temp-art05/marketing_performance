@@ -4,7 +4,7 @@ type: reference
 topic: 00-overview
 tags: [glossary, kpi, cpi, roas, ltv, ecpm, retention]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "AdMob Help — Reports glossary: https://support.google.com/admob/table/9462111 (truy cập 2026-10-14)"

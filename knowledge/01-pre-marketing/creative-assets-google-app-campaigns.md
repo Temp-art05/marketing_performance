@@ -4,7 +4,7 @@ type: reference
 topic: 01-pre-marketing
 tags: [google-ads, app-campaigns, creative, asset, video, html5]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
   - "Google Ads Help — Asset types for App campaigns: https://support.google.com/google-ads/answer/9948381 (truy cập 2026-10-14)"

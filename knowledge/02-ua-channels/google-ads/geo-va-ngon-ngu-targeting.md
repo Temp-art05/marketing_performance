@@ -5,7 +5,7 @@ topic: 02-ua-channels/google-ads
 tags: [google-ads, app-campaigns, geo, tier, language, location-options, localization]
 app: general
 geo: [EU, US]
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Google Ads Help — Set up an App campaign for installs: https://support.google.com/google-ads/answer/12575501 (truy cập 2026-10-14)"

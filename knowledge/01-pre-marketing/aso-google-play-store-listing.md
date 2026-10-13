@@ -4,7 +4,7 @@ type: reference
 topic: 01-pre-marketing
 tags: [aso, google-play, store-listing, screenshot, video]
 app: general
-status: draft
+status: verified
 confidence: high
 sources:
   - "Play Console Help — Add preview assets to showcase your app: https://support.google.com/googleplay/android-developer/answer/9866151 (truy cập 2026-10-14)"

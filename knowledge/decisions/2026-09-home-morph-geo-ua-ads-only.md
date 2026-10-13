@@ -5,7 +5,7 @@ topic: decisions
 tags: [home-morph, geo, tier, ads-only, d0-roas, google-ads, unit-economics]
 app: home-morph
 geo: [ID, PH, VN, US, EU]
-status: draft
+status: verified
 confidence: low
 sources:
   - "session 2026-09-17→18 (als001 def570ce): thảo luận tier/GEO, unit economics ads-only, chốt campaign đầu"

@@ -4,7 +4,7 @@ type: concept
 topic: 05-optimization
 tags: [unit-economics, ads-only, tier, d0-roas, ecpm, cpi, ltv, geo]
 app: general
-status: draft
+status: verified
 confidence: low
 sources:
   - "session 2026-09-17→18 (als001 def570ce): Claude dựng công thức + bảng ước lượng cho Home Morph"

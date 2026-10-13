@@ -4,7 +4,7 @@ type: lesson
 topic: lessons
 tags: [google-ads, app-campaigns, ui, adblock, troubleshooting]
 app: home-morph
-status: draft
+status: verified
 confidence: high
 sources:
   - "session 2026-09-18 (als001 def570ce): màn Ad group của campaign Home Morph 1 không hiện, Claude soi DOM qua osascript, user tắt AdBlock là chạy"

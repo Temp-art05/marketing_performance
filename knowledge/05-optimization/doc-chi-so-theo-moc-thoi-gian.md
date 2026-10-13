@@ -4,7 +4,7 @@ type: playbook
 topic: 05-optimization
 tags: [optimization, kpi, roas, cpi, ecpm, retention, review-cadence]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Roadmap của user: knowledge/00-overview/roadmap.md (ROADMAP UA MARKETING.xlsx, đọc 2026-10-14)"

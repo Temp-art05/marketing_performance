@@ -4,7 +4,7 @@ type: concept
 topic: 02-ua-channels/google-ads
 tags: [google-ads, app-campaigns, tcpi, tcpa, troas, budget, learning-period, ad-group]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Google Ads Help — About App campaigns: https://support.google.com/google-ads/answer/6247380 (truy cập 2026-10-14)"

@@ -4,7 +4,7 @@ type: concept
 topic: 04-measurement
 tags: [mmp, appsflyer, adjust, attribution, san, srn, firebase]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "AppsFlyer Help — Types of media sources: https://support.appsflyer.com/hc/en-us/articles/212188826 (truy cập 2026-10-14)"

@@ -5,7 +5,7 @@ topic: apps/home-morph
 tags: [home-morph, google-ads, app-campaigns, tcpi, first-open, geo]
 app: home-morph
 geo: [ID, PH, VN]
-status: draft
+status: verified
 confidence: medium
 sources:
   - "session 2026-09-17→18 (als001 def570ce): setup campaign 'Home Morph 1' trên Google Ads, 5 screenshot cấu hình"

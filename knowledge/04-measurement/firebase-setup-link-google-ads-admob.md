@@ -4,7 +4,7 @@ type: playbook
 topic: 04-measurement
 tags: [firebase, ga4, google-ads, admob, first-open, setup]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Firebase docs — Add Firebase to your Android project: https://firebase.google.com/docs/android/setup (truy cập 2026-10-14)"
