@@ -11,7 +11,7 @@ import { commitKnowledge } from './git.mjs';
 import { addFollowup, listFollowups, completeFollowup, ensureWatchlist } from './followups.mjs';
 import { diagnose } from './doctor.mjs';
 import { recall } from './recall.mjs';
-import { addMedia, mediaStatus, exportMedia, importMedia } from './media.mjs';
+import { addMedia, mediaStatus, exportMedia, importMedia, addSecret, listSecrets } from './media.mjs';
 
 const HELP = `kb — quản lý knowledge base
 
@@ -42,6 +42,9 @@ const HELP = `kb — quản lý knowledge base
   media export [--out file.tar] Đóng gói media để chép sang máy khác
   media import <file.tar|thư mục>
                                 Nhập media từ gói export hoặc từ repo/media của máy khác
+  secret add <slug> (--file F | --text "...") [--title T] [--source S]
+                                Lưu credential nội bộ vào media/secrets/ (ngoài git, đi theo media export)
+  secret list                   Liệt kê credential đã lưu (không in giá trị)
   recall "<câu hỏi>"            Tài liệu liên quan nhất tới câu hỏi (dùng như hook UserPromptSubmit)
 `;
 
@@ -236,6 +239,25 @@ const commands = {
       return;
     }
     fail(`media: lệnh con không hợp lệ "${sub}"`);
+  },
+
+  secret(args) {
+    const [sub, ...a] = args;
+    const { values, positionals } = opts(a, { file: { type: 'string' }, text: { type: 'string' }, title: { type: 'string' }, source: { type: 'string' } });
+    if (sub === 'add') {
+      if (!positionals[0] || (!values.file && !values.text)) fail('Cần <slug> và --file hoặc --text');
+      const content = values.file ? fs.readFileSync(values.file, 'utf8') : values.text;
+      const r = addSecret(positionals[0], content, { source: values.source, title: values.title });
+      console.log(`Đã lưu: ${r.path} (ngoài git). Link từ tài liệu: [🔑 credential](../../${r.path}) — đường dẫn tương đối tuỳ vị trí tài liệu`);
+      return;
+    }
+    if (sub === 'list' || !sub) {
+      const all = listSecrets();
+      if (!all.length) console.log('Chưa có credential nào');
+      for (const s of all) console.log(`${s.present ? '🔑' : '⚠ thiếu trên máy này'} ${s.path}  (nguồn: ${s.source ?? '-'})`);
+      return;
+    }
+    fail(`secret: lệnh con không hợp lệ "${sub}"`);
   },
 
   recall(args) {

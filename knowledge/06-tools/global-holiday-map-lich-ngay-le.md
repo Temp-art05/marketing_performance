@@ -43,3 +43,7 @@ Next.js + Prisma/PostgreSQL (Docker) + Auth.js Google OAuth. `npm install`, `cp 
 - Độ phủ observance/văn hoá không đều giữa các nước; ngày âm lịch có thể là ước tính → kiểm tra nguồn chính thức cho quyết định quan trọng.
 - Tool cho biết **ngày**, không cho biết **tác động** lên CPI/eCPM/retention — phải đối chiếu số thật của app.
 - ⚠️ `Tool.zip` trong archive có kèm file `.env` thật — không phân phối lại file zip; đã ghi cảnh báo ở [trạng thái hiện tại](../00-overview/current-state.md).
+
+## Credential (kho nội bộ)
+
+[🔑 file `.env` đầy đủ của Tool (DB, auth, API key)](../../media/secrets/apr-284-global-holiday-map-env.md) — lưu trong `media/secrets/` trên máy (không lên git; chuyển máy bằng `kb media export/import`). Xem trên web hoặc `cat media/secrets/apr-284-global-holiday-map-env.md`.

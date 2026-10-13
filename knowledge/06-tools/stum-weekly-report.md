@@ -58,3 +58,7 @@ US: đủ số 5 ngày 23/06–27/06
 
 ## Media
 [▶ Demo chạy tool và kết quả điền vào Google Sheet (60 MB)](../../media/2026-10/2026-10-14-stum-weekly-report-demo-1.mp4)
+
+## Credential (kho nội bộ)
+
+[🔑 baseUrl mktpro, webAppToken mặc định, đường dẫn service account](../../media/secrets/apr-099-stum-weekly-report-config.md) — lưu trong `media/secrets/` trên máy (không lên git; chuyển máy bằng `kb media export/import`). Xem trên web hoặc `cat media/secrets/apr-099-stum-weekly-report-config.md`.

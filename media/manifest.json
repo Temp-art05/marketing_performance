@@ -147,6 +147,27 @@
       "kind": "video",
       "source": "AI Knownledge/APR-257 - AI Tool  ASO Phone Screenshots/Tamvm_ASO Screenshots_Video tutorial.mp4",
       "addedAt": "2026-10-13T19:30:13.496Z"
+    },
+    "media/secrets/apr-284-global-holiday-map-env.md": {
+      "sha256": "a6f5b43c30c1ffec61265a1ef3a9dd569786ec480580038a0c84a13deece4f06",
+      "bytes": 3550,
+      "kind": "secret",
+      "source": "AI Knownledge/APR-284 - GLOBAL HOLIDAY MAP/Tool.zip → Tool/.env",
+      "addedAt": "2026-10-13T19:49:11.285Z"
+    },
+    "media/secrets/apr-155-fb-comment-tool-login.md": {
+      "sha256": "08917f39abda16ccdbc1825d61651b5cfad2394e30a056c29d4cf45363c4f730",
+      "bytes": 356,
+      "kind": "secret",
+      "source": "AI Knownledge/APR-155/Apero Comment Tool…docx (dòng 1)",
+      "addedAt": "2026-10-13T19:49:31.947Z"
+    },
+    "media/secrets/apr-099-stum-weekly-report-config.md": {
+      "sha256": "d4b2ecd496070f118fa64659411bd5918bfb330ac1ba9759772194519658ac97",
+      "bytes": 703,
+      "kind": "secret",
+      "source": "AI Knownledge/APR-099/Stum-Tool.zip → src/config.js dòng 9–12, 56–61",
+      "addedAt": "2026-10-13T19:50:01.356Z"
     }
   }
 }

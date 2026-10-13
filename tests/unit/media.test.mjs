@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { addMedia, mediaStatus, exportMedia, importMedia, loadManifest } from '../../scripts/kb/media.mjs';
+import { addMedia, mediaStatus, exportMedia, importMedia, loadManifest, addSecret, listSecrets } from '../../scripts/kb/media.mjs';
 import { lintDocs } from '../../scripts/kb/lib.mjs';
 import { makeRepo, doc, tmpDir, cli } from '../helpers.mjs';
 
@@ -89,4 +89,22 @@ test('CLI media add/status/export/import', () => {
   assert.match(cli(['media', 'export', '--out', out], { root: A }).stdout, /Đã đóng gói 1 file/);
   assert.match(cli(['media', 'import', out], { root: B }).stdout, /Đã chép 1 file/);
   assert.match(cli(['media', 'status'], { root: B }).stdout, /Thiếu trên máy này: 0/);
+});
+
+test('secret: lưu vào media/secrets (ngoài git, có manifest kind=secret), tài liệu link tới được lint chấp nhận, đi theo export', () => {
+  const A = makeRepo().root, B = makeRepo().root;
+  const r = addSecret('APR-284 env', 'DATABASE_URL=postgres://u:p@h/db', { source: 'AI Knownledge/APR-284/Tool.zip', r: A });
+  assert.equal(r.path, 'media/secrets/apr-284-env.md');
+  assert.equal(listSecrets(A)[0].present, true);
+  assert.equal((fs.statSync(path.join(A, r.path)).mode & 0o777), 0o600);
+  fs.mkdirSync(path.join(A, 'knowledge/06-tools'), { recursive: true });
+  fs.writeFileSync(path.join(A, 'knowledge/06-tools/t.md'), doc({ topic: '06-tools', type: 'reference', body: `[🔑 credential](../../${r.path})\n` }));
+  assert.deepEqual(lintDocs(A).errors, []);
+  const out = path.join(tmpDir(), 's.tar');
+  exportMedia(out, { r: A });
+  importMedia(out, { r: B });
+  assert.match(fs.readFileSync(path.join(B, r.path), 'utf8'), /DATABASE_URL=postgres/);
+  // máy chưa import: link vẫn chỉ cảnh báo
+  fs.rmSync(path.join(A, r.path));
+  assert.deepEqual(lintDocs(A).errors, []);
 });

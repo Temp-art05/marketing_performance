@@ -52,6 +52,7 @@ tests/                  unit, hooks, web (API + Chrome), e2e (Claude thật)
   - Máy cũ: `node scripts/kb/cli.mjs media export --out media.tar` → chép file .tar (USB / Drive / AirDrop).
   - Máy mới (sau `git pull`): `node scripts/kb/cli.mjs media import media.tar` (kiểm sha, không chép đè). `media status` xem còn thiếu gì.
   - Thêm media: `node scripts/kb/cli.mjs media add <file> --slug <tên> --doc <topic/file.md>` → in sẵn link markdown. Video hiển thị và tua được trên web.
+  - Credential nội bộ (token, mật khẩu tool...): `node scripts/kb/cli.mjs secret add|list` → `media/secrets/`, cũng ngoài git và đi theo gói export.
   - Screenshot nhỏ đã nén (≤1600px) vẫn ở `assets/screenshots/` trong git.
 - **CLI**: `node scripts/kb/cli.mjs help` (index, lint, search, new, images, commit, skip).
 - **Test**: `npm test` (unit + hooks + web; cần Chrome cho UI test). `npm run test:e2e -- --runs 3` chạy Claude thật trên bản sao tạm (tốn token).

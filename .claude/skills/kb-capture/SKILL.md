@@ -18,7 +18,7 @@ Mục tiêu: mỗi điều học được trong session thành tài liệu Markd
 - Thông tin app (package, ad units, mediation, event) và lịch sử campaign của từng app.
 - Screenshot làm rõ một cấu hình, một biểu đồ, một lỗi.
 
-**Không nạp:** chat vặt; câu hỏi đã có đáp án trong knowledge (trừ khi có thông tin mới); dữ liệu thô (bảng CSV dài — chỉ tóm tắt insight); **credential** (token, API key, dev key, password, private key) — repo private nên số liệu, tên app, email, ID tài khoản được phép ghi.
+**Không nạp:** chat vặt; câu hỏi đã có đáp án trong knowledge (trừ khi có thông tin mới); dữ liệu thô (bảng CSV dài — chỉ tóm tắt insight); **credential** (token, API key, dev key, password, private key) vào knowledge/ — repo private nên số liệu, tên app, email, ID tài khoản được phép ghi. Credential cần giữ để dùng nội bộ → `node scripts/kb/cli.mjs secret add <slug> --file <f> | --text "..." --source "..."` (lưu `media/secrets/`, ngoài git) rồi link từ tài liệu: `[🔑 mô tả](../../media/secrets/<slug>.md)`.
 
 ## 2. Quy trình
 

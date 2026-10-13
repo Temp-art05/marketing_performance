@@ -218,7 +218,7 @@ export function lintDocs(r = root(), onlyRels = null) {
 
     // Link nội bộ .md phải tồn tại.
     for (const m of d.body.matchAll(/(?<!!)\[[^\]]*\]\(([^)\s#]+\.md)(#[^)]*)?\)/g)) {
-      if (/^https?:/.test(m[1])) continue;
+      if (/^https?:/.test(m[1]) || /(^|\/)media\//.test(m[1])) continue; // media/ (kể cả secrets) kiểm ở trên
       const target = path.join(r, 'knowledge', path.posix.dirname(d.rel), decodeURI(m[1]));
       if (!fs.existsSync(target)) E(f, `Link hỏng: ${m[1]}`);
     }

@@ -20,7 +20,7 @@ User dùng Claude trong repo này để làm việc marketing thật (setup camp
 - **Mốc theo dõi** (`knowledge/00-overview/watchlist.md`): khi launch / đổi bid / đổi budget / đổi creative / bật tính năng tracking → thêm mốc xem lại theo roadmap (`node scripts/kb/cli.mjs followup add --when 7d --app <slug> --text "..."`; thường 7d, 1m, 4m, 6m cho campaign mới). Đầu session nếu có mốc đến hạn (hook báo) → nhắc user ngay câu đầu. Xem xong → `followup done <n> --note "<kết quả>"` và nạp kết quả như một lesson.
 - **Gợi ý cải thiện**: khi user hỏi "nên làm gì tiếp", "review app X", "có gì cần chú ý" → skill `kb-advise`.
 - Được phép **tự commit và push thẳng `main`** cho thay đổi knowledge (`node scripts/kb/cli.mjs commit -m "kb: ..."`), không cần PR, không cần hỏi.
-- Repo private: được ghi số liệu thật, tên app, ID tài khoản, screenshot nguyên bản. Chỉ cấm credential.
+- Repo private: được ghi số liệu thật, tên app, ID tài khoản, screenshot nguyên bản. Credential (token, key, mật khẩu) KHÔNG vào knowledge/git mà vào kho nội bộ `media/secrets/` qua `kb secret add` (user muốn giữ để dùng nội bộ), tài liệu chỉ link tới.
 - CLI: `node scripts/kb/cli.mjs help`. Web xem/sửa knowledge: `npm run web` → http://localhost:4321.
 
 ## Trạng thái hiện tại

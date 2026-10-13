@@ -96,3 +96,24 @@ export function importMedia(src, { r = root() } = {}) {
   if (tmp) fs.rmSync(tmp, { recursive: true, force: true });
   return res;
 }
+
+// ---------- kho bí mật (credential nội bộ) ----------
+// Nằm trong media/secrets/ → KHÔNG lên git, đi theo gói media export/import. Tài liệu knowledge chỉ link tới đây.
+export const SECRETS_DIR = 'media/secrets';
+
+export function addSecret(slug, content, { source = null, title = null, r = root() } = {}) {
+  const s = slugify(slug);
+  const rel = `${SECRETS_DIR}/${s}.md`;
+  const abs = path.join(r, rel);
+  fs.mkdirSync(path.dirname(abs), { recursive: true });
+  const head = `# ${title || s}\n\n> 🔑 Credential nội bộ — KHÔNG đưa vào knowledge/ hay git. Nguồn: ${source ?? '-'} · cập nhật ${today()}\n\n`;
+  fs.writeFileSync(abs, head + String(content).trimEnd() + '\n', { mode: 0o600 });
+  const m = loadManifest(r);
+  m.files[rel] = { sha256: sha256File(abs), bytes: fs.statSync(abs).size, kind: 'secret', source, addedAt: new Date().toISOString() };
+  saveManifest(r, m);
+  return { path: rel };
+}
+
+export function listSecrets(r = root()) {
+  return Object.entries(loadManifest(r).files).filter(([, v]) => v.kind === 'secret').map(([p, v]) => ({ path: p, source: v.source, present: fs.existsSync(path.join(r, p)) }));
+}

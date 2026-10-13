@@ -36,3 +36,7 @@ summary: Web app (Thảo Phạm Thị) cho team UA/Marketing trả lời bình l
 - ⚠️ File docx gốc có **ghi thẳng link + tài khoản/mật khẩu đăng nhập chung** của tool. Không chép vào KB; nên báo owner đổi mật khẩu.
 - Trả lời tự động bằng AI có thể nói sai về tính năng/giá. Prompt riêng từng app phải cập nhật theo version, và nên có người duyệt các comment tiêu cực/khiếu nại.
 - Trả lời hàng loạt, giống nhau có rủi ro bị Meta coi là spam/hành vi không chân thực. Cần giới hạn tốc độ (chưa thấy mô tả trong nguồn).
+
+## Credential (kho nội bộ)
+
+[🔑 link tool + tài khoản đăng nhập chung](../../media/secrets/apr-155-fb-comment-tool-login.md) — lưu trong `media/secrets/` trên máy (không lên git; chuyển máy bằng `kb media export/import`). Xem trên web hoặc `cat media/secrets/apr-155-fb-comment-tool-login.md`.

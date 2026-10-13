@@ -99,6 +99,7 @@ function renderMarkdown(body, rel, { interactive = false } = {}) {
   for (const a of $$('a', box)) {
     const href = a.getAttribute('href') || '';
     if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; continue; }
+    if (/(^|\/)media\//.test(href)) { a.href = '/' + resolvePath(base, decodeURI(href)); a.target = '_blank'; continue; } // file trong media/ (video, credential...)
     const m = /^([^#?]+\.md)(#.*)?$/.exec(href);
     if (m) { const target = resolvePath(base, decodeURI(m[1])).replace(/^knowledge\//, ''); a.href = docHref(target); if (!S.byRel.has(target)) a.classList.add('broken'); }
   }
