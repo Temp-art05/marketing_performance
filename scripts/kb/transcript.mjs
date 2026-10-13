@@ -87,7 +87,7 @@ const CAPTURE_CMD_RE = /scripts\/kb\/cli\.mjs\s+(skip|commit|images\s+save|image
 const DATA_RE = /(^|[\s\/'"])(exports|raw)\/|\.(csv|tsv|xlsx?|pdf)\b/i;
 // Thông báo tự động / tin nhắn giữa các session / phản hồi hook — không phải user kể.
 const AUTOMATED_RE = /\[Cross-session [a-z ]*notice\]|<task-notification|\[SYSTEM NOTIFICATION|<cross-session-message|<agent-message|Stop hook feedback|\[KB\]/;
-const TRIVIAL_TOOLS = new Set(['TodoWrite', 'ToolSearch', 'Skill', 'AskUserQuestion', 'ExitPlanMode', 'EnterPlanMode', 'ListAgents', 'ScheduleWakeup']);
+const TRIVIAL_TOOLS = new Set(['TodoWrite', 'ToolSearch', 'Skill', 'AskUserQuestion', 'ExitPlanMode', 'EnterPlanMode', 'ListAgents', 'ScheduleWakeup', 'Monitor', 'TaskStop', 'SendMessage', 'TaskOutput']);
 
 function toolPath(input) {
   return String(input?.file_path ?? input?.path ?? input?.notebook_path ?? '');
