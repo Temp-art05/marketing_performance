@@ -42,6 +42,11 @@ tests/                  unit, hooks, web (API + Chrome), e2e (Claude thật)
   - Hook `Stop`: nếu đã làm việc thực chất mà chưa nạp → nhắc Claude rà và nạp trước khi dừng.
   - Hook `SessionEnd`/`PreCompact`: agent nền (`claude -p`) rà lại phần chưa nạp khi đóng session hoặc nén context.
   - Hook `PostToolUse`: lint tài liệu ngay khi ghi, sinh lại `INDEX.md`.
+- **Claude chủ động dùng knowledge**:
+  - Mỗi câu hỏi → hook `UserPromptSubmit` tìm bài học/quyết định liên quan và đưa cho Claude; Claude mở đầu bằng 1–3 lưu ý từ kinh nghiệm cũ (kèm file nguồn).
+  - **Mốc theo dõi** (`knowledge/00-overview/watchlist.md`): launch/đổi campaign → Claude tự đặt mốc xem lại (7 ngày, 1 tháng, 4 tháng, 6 tháng). Đến hạn → Claude nhắc ngay đầu session. CLI: `node scripts/kb/cli.mjs followup add|list|done`.
+  - `node scripts/kb/cli.mjs doctor`: mốc đến hạn, draft chờ duyệt, mâu thuẫn chưa xử lý, ảnh mồ côi, app thiếu hồ sơ.
+  - Hỏi Claude "nên làm gì tiếp / review app X" → skill `kb-advise` tổng hợp gợi ý từ roadmap + bài học + mốc.
 - **Xem / sửa trên web**: `npm install` (lần đầu) rồi `npm run web` → http://localhost:4321. Có tìm kiếm có/không dấu, duyệt theo chủ đề/app/GEO, gallery ảnh, timeline bài học, roadmap tick được, trình sửa có dán/kéo thả ảnh. Lưu là tự commit + push.
 - **CLI**: `node scripts/kb/cli.mjs help` (index, lint, search, new, images, commit, skip).
 - **Test**: `npm test` (unit + hooks + web; cần Chrome cho UI test). `npm run test:e2e -- --runs 3` chạy Claude thật trên bản sao tạm (tốn token).
