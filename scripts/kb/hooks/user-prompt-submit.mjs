@@ -5,7 +5,7 @@ import { recall } from '../recall.mjs';
 const input = await readInput();
 const prompt = String(input.prompt ?? input.user_prompt ?? '');
 // Bỏ qua: agent nền, lệnh slash, thông báo tự động của hệ thống / tin nhắn từ session khác (không phải câu hỏi của user).
-const AUTOMATED = /<task-notification|\[SYSTEM NOTIFICATION|<cross-session-message|<agent-message|Monitor event:/;
+const AUTOMATED = /\[Cross-session [a-z ]*notice\]|<task-notification|\[SYSTEM NOTIFICATION|<cross-session-message|<agent-message|Monitor event:/;
 if (isBackground() || !prompt || prompt.trim().startsWith('/') || AUTOMATED.test(prompt)) process.exit(0);
 
 let hits = [];
