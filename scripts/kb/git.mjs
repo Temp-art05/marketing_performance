@@ -52,7 +52,8 @@ export function commitKnowledge(message, { r = root(), push = process.env.KB_NO_
     const staged = git(['diff', '--cached', '--name-only', '--', ...paths], r);
     const res = { committed: false, pushed: false, sha: null, warnings: preexisting.length ? [`${preexisting.length} lỗi lint có sẵn ở file khác (không chặn commit): ${[...new Set(preexisting.map(e => e.file))].join(', ')}`] : [] };
     if (staged) {
-      git(['commit', '-m', message, '--', ...paths], r);
+      const withChanges = paths.filter(p => staged.split('\n').some(f => f === p || f.startsWith(p + '/')));
+      git(['commit', '-m', message, '--', ...withChanges], r);
       res.committed = true;
       res.sha = git(['rev-parse', '--short', 'HEAD'], r);
     }

@@ -180,3 +180,12 @@ test('commitKnowledge: lỗi lint có sẵn ở file KHÔNG đổi không chặn
   fs.writeFileSync(path.join(root, 'knowledge/lessons/2026-10-bad.md'), '# no frontmatter');
   assert.throws(() => commitKnowledge('kb: bad', { r: root, push: false }), /2026-10-bad\.md/);
 });
+
+test('commitKnowledge: thư mục assets/ rỗng chưa track không làm hỏng commit', () => {
+  const { root, git } = makeRepo();
+  fs.mkdirSync(path.join(root, 'assets/screenshots'), { recursive: true });
+  fs.mkdirSync(path.join(root, 'knowledge/00-overview'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'knowledge/00-overview/a.md'), doc());
+  assert.equal(commitKnowledge('kb: a', { r: root, push: false }).committed, true);
+  assert.equal(git('log', '-1', '--format=%s').trim(), 'kb: a');
+});
