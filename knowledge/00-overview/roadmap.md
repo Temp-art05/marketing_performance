@@ -6,7 +6,8 @@ tags: [roadmap, checklist]
 app: general
 status: draft
 confidence: medium
-sources: ["ROADMAP UA MARKETING.xlsx (thư mục cha của repo), đọc 2026-10-14"]
+sources:
+  - ROADMAP UA MARKETING.xlsx (thư mục cha của repo), đọc 2026-10-14
 created: 2026-10-14
 updated: 2026-10-14
 summary: Lộ trình 3 giai đoạn — Pre-Marketing (ASO, creative, Firebase) → Launch campaign (tCPA First_Open → ROAS) → Đo lường & tối ưu (Ads, AdMob, Firebase).
