@@ -81,6 +81,7 @@ App, GEO, kênh, thời gian, nguồn số liệu.
 ```
 
 Quy tắc:
+- **Số liệu/kết quả thật user kể là thứ quý nhất** — luôn ghi lại đầy đủ (app, campaign, ngày, cấu hình, con số, kết quả) vào `lessons/` hoặc `apps/<app>/campaigns.md`, kể cả khi việc chính là sửa một tài liệu khái niệm. Sửa tài liệu khái niệm thì link sang bằng chứng đó (`related`) và nêu nó trong phần lý do sửa.
 - Tên file kebab-case không dấu. Viết tiếng Việt, giữ thuật ngữ tiếng Anh (CPI, ROAS, eCPM…).
 - Số liệu luôn kèm nguồn + thời điểm + bối cảnh. Không bịa benchmark; không chắc → `confidence: low` và nói rõ.
 - **Mâu thuẫn với knowledge cũ**: không âm thầm ghi đè. Thêm mục "⚠️ Mâu thuẫn" nêu cả hai, nguồn mỗi bên; nếu chắc cái cũ sai → sửa và ghi lại lý do trong bài; nếu cả bài cũ lỗi thời → `status: outdated` + link bài mới trong `related`.

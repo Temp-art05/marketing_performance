@@ -112,6 +112,15 @@ test('Stop: đã nạp trong lượt (ghi knowledge/) → không chặn; có ả
   assert.match(JSON.parse(hook('stop', { session_id: 'w5', transcript_path: t2.file }, { root }).stdout).reason, /1 ảnh/);
 });
 
+test('Stop: agent nền không auto-commit (wrapper tự commit với message riêng)', async () => {
+  const { root, git } = makeRepo();
+  fs.mkdirSync(path.join(root, 'knowledge/00-overview'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'knowledge/00-overview/a.md'), doc());
+  hook('stop', { session_id: 'bgx', transcript_path: '/nope.jsonl' }, { root, env: { KB_BACKGROUND: '1' } });
+  await new Promise(r => setTimeout(r, 1500));
+  assert.equal(git('log', '-1', '--format=%s').trim(), 'init');
+});
+
 test('Stop: trong agent nền (KB_BACKGROUND=1) không bao giờ chặn', () => {
   const { root } = makeRepo();
   const t = workSession(root, { images: 2, tools: 5 });

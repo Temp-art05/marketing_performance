@@ -14,7 +14,9 @@ function autoCommit() {
   } catch (e) { log('hooks', `auto-commit lỗi: ${e.message}`); }
 }
 
-if (!transcript || isBackground()) { autoCommit(); process.exit(0); }
+// Agent nền: wrapper (background-capture.mjs) tự commit với message riêng → không auto-commit ở đây.
+if (isBackground()) process.exit(0);
+if (!transcript) { autoCommit(); process.exit(0); }
 
 const state = loadState(id);
 let a;
