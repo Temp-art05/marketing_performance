@@ -13,6 +13,7 @@ import {
 } from '../scripts/kb/lib.mjs';
 import { saveImage, mdImagePath } from '../scripts/kb/images.mjs';
 import { extraRoutes } from './api-extra.mjs';
+import { mediaRoutes } from './api-media.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(HERE, 'public');
@@ -246,6 +247,8 @@ const routes = {
 };
 // Gợi ý, mốc theo dõi, recall (site/api-extra.mjs)
 Object.assign(routes, extraRoutes({ scheduleCommit, readJsonBody }));
+// Trạng thái + export/import media (site/api-media.mjs)
+Object.assign(routes, mediaRoutes({ scheduleCommit }));
 
 // Hỗ trợ Range (video tua được trên Safari/Chrome).
 async function serveStatic(res, file, req) {
@@ -271,8 +274,9 @@ export function createServer() {
     try {
       const route = routes[`${req.method} ${p}`];
       if (route) {
-        const [status, body] = await route(url.searchParams, req);
-        return send(res, status, body);
+        const out = await route(url.searchParams, req, res);
+        if (!out) return; // route tự stream câu trả lời
+        return send(res, out[0], out[1]);
       }
       if (req.method !== 'GET') return send(res, 405, { error: 'Method not allowed' });
       if (p.startsWith('/vendor/')) {

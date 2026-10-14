@@ -213,9 +213,11 @@ function renderSidebar(active = '') {
       ${item('#/suggestions', 'tips_and_updates', 'Gợi ý', S.sugg ? (S.sugg.followups.due.length + S.sugg.issues.filter(i => i.severity === 'warn').length) || null : null)}
       ${item('#/browse', 'description', 'Tài liệu', S.docs.length)}
       ${item('#/browse?status=draft', 'edit_note', 'Draft cần duyệt', drafts)}
-      ${item('#/gallery', 'photo_library', 'Ảnh chụp', S.images.length)}
+      ${item('#/gallery', 'photo_library', 'Ảnh chụp', S.images.filter(s => s.kind !== 'video').length)}
+      ${item('#/gallery?kind=video', 'movie', 'Video', S.images.filter(s => s.kind === 'video').length || null)}
       ${item('#/timeline', 'timeline', 'Timeline')}
       ${item('#/roadmap', 'flag', 'Roadmap')}
+      ${item('#/media', 'swap_vert', 'Import / Export media')}
     </div>
     ${apps ? `<div class="side-group"><div class="side-label">Apps</div>${apps}</div>` : ''}
     <div class="side-group tree"><div class="side-label">Chủ đề</div>${renderNode(tree, '')}</div>`;
@@ -237,7 +239,7 @@ pages.home = () => {
   main.innerHTML = `
     ${head('UA Marketing Knowledge', { icon: 'menu_book', sub: 'Kho kiến thức UA cho app Android kiếm tiền bằng quảng cáo — Claude tự nạp sau mỗi session.' })}
     <div class="grid stats">
-      ${[['#/browse', 'description', S.docs.length, 'tài liệu'], ['#/browse?status=draft', 'edit_note', drafts.length, 'draft cần duyệt'], ['#/timeline', 'lightbulb', lessons.length, 'bài học'], ['#/gallery', 'photo_library', S.images.length, 'ảnh chụp màn hình']]
+      ${[['#/browse', 'description', S.docs.length, 'tài liệu'], ['#/browse?status=draft', 'edit_note', drafts.length, 'draft cần duyệt'], ['#/timeline', 'lightbulb', lessons.length, 'bài học'], ['#/gallery', 'photo_library', S.images.filter(s => s.kind !== 'video').length, 'ảnh chụp màn hình']]
         .map(([href, icon, n, l]) => `<a class="card stat" href="${href}"><span class="tile">${ic(icon, 'fill')}</span><div><div class="n">${n}</div><div class="l">${l}</div></div></a>`).join('')}
     </div>
     ${S.sugg?.followups.due.length ? `<a class="warn-box" href="#/suggestions">${ic('alarm')}<span><strong>${S.sugg.followups.due.length} mốc theo dõi đến hạn</strong> — ${S.sugg.followups.due.slice(0, 3).map(f => esc(`${f.app}: ${f.text}`)).join(' · ')}</span></a>` : ''}
@@ -247,9 +249,9 @@ pages.home = () => {
       <div class="card"><div class="card-head"><h2>Mới cập nhật</h2></div><ul class="doc-list">${S.docs.slice(0, 8).map(d => docItem(d)).join('') || '<li class="muted">Chưa có tài liệu</li>'}</ul></div>
     </div>
     ${drafts.length ? `<div class="section-title">Draft cần duyệt</div><div class="card"><ul class="doc-list">${drafts.slice(0, 10).map(d => docItem(d)).join('')}</ul>${drafts.length > 10 ? `<a href="#/browse?status=draft">Xem tất cả ${drafts.length} →</a>` : ''}</div>` : ''}
-    ${S.images.length ? `<div class="section-title">Ảnh mới</div><div class="grid gallery" id="home-shots"></div>` : ''}`;
+    ${S.images.some(s => s.kind !== 'video') ? `<div class="section-title">Ảnh mới</div><div class="grid gallery" id="home-shots"></div>` : ''}`;
   if (cs) $('#cs').append(renderMarkdown(cs.body.replace(/^\s*#\s.*\n/, ''), cs.rel));
-  if (S.images.length) renderShots($('#home-shots'), S.images.slice(0, 8));
+  if ($('#home-shots')) renderShots($('#home-shots'), S.images.filter(s => s.kind !== 'video').slice(0, 8));
 };
 
 pages.doc = async (rel) => {
@@ -349,18 +351,71 @@ function renderShots(container, shots) {
 pages.gallery = (params) => {
   const f = Object.fromEntries(params);
   const months = [...new Set(S.images.map(i => (i.date || '').slice(0, 7)).filter(Boolean))].sort().reverse();
-  let shots = S.images.filter(s => (!f.month || (s.date || '').startsWith(f.month))
+  const isVideo = f.kind === 'video';
+  const ofKind = S.images.filter(s => (s.kind === 'video') === isVideo);
+  let shots = ofKind.filter(s => (!f.month || (s.date || '').startsWith(f.month))
     && (!f.app || s.docs.some(d => d.app === f.app)) && (!f.topic || s.docs.some(d => String(d.topic || '').startsWith(f.topic)))
     && (f.orphan !== '1' || !s.docs.length));
-  main.innerHTML = `${head('Ảnh chụp màn hình', { icon: 'photo_library' })}
-    <div class="filters">${filterSelect(f, 'month', months, 'Mọi tháng')}${filterSelect(f, 'app', S.meta.apps, 'Mọi app')}${filterSelect(f, 'topic', Object.keys(S.meta.topics), 'Mọi chủ đề')}${filterSelect(f, 'orphan', [['1', 'Chưa gắn tài liệu']], 'Gắn/không gắn')}</div>
-    <div class="count-line">${shots.length} ảnh</div>
-    ${shots.length ? '<div class="grid gallery" id="shots"></div>' : empty('image', 'Chưa có ảnh. Dán ảnh vào chat với Claude hoặc kéo thả ảnh vào trình sửa tài liệu.')}`;
+  const nImg = S.images.length - S.images.filter(s => s.kind === 'video').length, nVid = S.images.length - nImg;
+  main.innerHTML = `${head(isVideo ? 'Video' : 'Ảnh chụp màn hình', { icon: isVideo ? 'movie' : 'photo_library' })}
+    <div class="filters">
+      <div class="seg" role="radiogroup" aria-label="Loại">${[['', `Ảnh (${nImg})`], ['video', `Video (${nVid})`]].map(([v, l]) => `<label><input type="radio" name="kind" value="${v}" ${(f.kind || '') === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div>
+      ${filterSelect(f, 'month', months, 'Mọi tháng')}${filterSelect(f, 'app', S.meta.apps, 'Mọi app')}${filterSelect(f, 'topic', Object.keys(S.meta.topics), 'Mọi chủ đề')}${filterSelect(f, 'orphan', [['1', 'Chưa gắn tài liệu']], 'Gắn/không gắn')}</div>
+    <div class="count-line">${shots.length} ${isVideo ? 'video — nằm ngoài git (media/), chuyển máy bằng <a href="#/media">Import / Export</a>' : 'ảnh'}</div>
+    ${shots.length ? `<div class="grid gallery${isVideo ? ' videos' : ''}" id="shots"></div>` : empty(isVideo ? 'movie' : 'image', isVideo ? 'Chưa có video.' : 'Chưa có ảnh. Dán ảnh vào chat với Claude hoặc kéo thả ảnh vào trình sửa tài liệu.')}`;
   if (shots.length) renderShots($('#shots'), shots);
+  $$('.filters input[name=kind]').forEach(r => r.addEventListener('change', () => {
+    const p = new URLSearchParams(params); if (r.value) p.set('kind', r.value); else p.delete('kind');
+    location.hash = `#/gallery${p.toString() ? '?' + p : ''}`;
+  }));
   $$('.filters select').forEach(sel => sel.addEventListener('change', () => {
     const p = new URLSearchParams(params); if (sel.value) p.set(sel.dataset.k, sel.value); else p.delete(sel.dataset.k);
     location.hash = `#/gallery${p.toString() ? '?' + p : ''}`;
   }));
+  renderSidebar();
+};
+
+const fmtBytes = b => b >= 1e9 ? `${(b / 1e9).toFixed(2)} GB` : b >= 1e6 ? `${(b / 1e6).toFixed(1)} MB` : `${Math.round(b / 1e3)} KB`;
+const KIND_LABEL = { video: 'Video', image: 'Ảnh lớn', file: 'File mẫu', secret: 'Credential nội bộ' };
+
+pages.media = async () => {
+  let st;
+  try { st = await api('GET', '/api/media/status'); } catch (e) { main.innerHTML = empty('error', esc(e.message)); renderSidebar(); return; }
+  const kinds = Object.entries(st.byKind);
+  main.innerHTML = `${head('Import / Export media', { icon: 'swap_vert', sub: 'Video, ảnh gốc, file mẫu và credential nội bộ nằm ở <code>media/</code> — không lên git. Chuyển sang máy khác bằng 1 file .tar.' })}
+    <div class="grid two-col">
+      <div class="card">
+        <div class="card-head"><h2>${ic('download')} Export (máy này → file)</h2></div>
+        <p class="muted">Đóng gói ${st.total - st.missing.length}/${st.total} file đang có (${fmtBytes(st.bytes)}) kèm manifest thành 1 file <code>.tar</code>. Chép file qua USB / Google Drive sang máy kia.</p>
+        <a class="btn primary" id="mx" href="/api/media/export" download>${ic('download')}Tải gói media</a>
+        <p class="muted small">CLI tương đương: <code>node scripts/kb/cli.mjs media export --out kb-media.tar</code></p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>${ic('upload')} Import (file → máy này)</h2></div>
+        <p class="muted">Chọn file <code>.tar</code> đã export ở máy khác. Chỉ chép file có trong manifest và đúng sha256, file đã có thì bỏ qua.</p>
+        <label class="btn" for="mi-file">${ic('upload_file')}Chọn file .tar…</label>
+        <input type="file" id="mi-file" accept=".tar,application/x-tar" hidden>
+        <div id="mi-out" class="muted"></div>
+        <p class="muted small">CLI tương đương: <code>node scripts/kb/cli.mjs media import kb-media.tar</code></p>
+      </div>
+    </div>
+    <div class="section-title">Trên máy này</div>
+    <div class="card"><ul class="doc-list">
+      ${kinds.map(([k, v]) => `<li><span>${esc(KIND_LABEL[k] || k)}</span> <span class="muted">— ${v.present}/${v.n} file có trên máy · ${fmtBytes(v.bytes)}</span>${v.present < v.n ? ' <span class="pill warn">thiếu ' + (v.n - v.present) + '</span>' : ' <span class="pill ok">đủ</span>'}</li>`).join('') || '<li class="muted">Chưa có media nào</li>'}
+    </ul>
+    ${st.missing.length ? `<details><summary>${st.missing.length} file thiếu</summary><ul>${st.missing.map(p => `<li><code>${esc(p)}</code></li>`).join('')}</ul></details>` : ''}
+    ${st.untracked.length ? `<details><summary>${st.untracked.length} file trong media/ chưa có trong manifest (sẽ không được export)</summary><ul>${st.untracked.map(p => `<li><code>${esc(p)}</code></li>`).join('')}</ul></details>` : ''}
+    </div>`;
+  $('#mi-file').addEventListener('change', async (e) => {
+    const file = e.target.files[0]; if (!file) return;
+    $('#mi-out').textContent = `Đang nhập ${file.name} (${fmtBytes(file.size)})…`;
+    try {
+      const r = await api('POST', '/api/media/import', file, { 'Content-Type': 'application/x-tar' });
+      toast(`Đã nhập ${r.copied} file${r.skipped ? `, bỏ qua ${r.skipped} file đã có` : ''}`);
+      if (r.bad.length) toast(`${r.bad.length} file sai sha256 — không chép`, true);
+      await refresh();
+    } catch (err) { $('#mi-out').textContent = ''; toast(err.message, true); }
+  });
   renderSidebar();
 };
 
@@ -714,6 +769,7 @@ async function route() {
     case 'browse': pages.browse(params); break;
     case 'search': pages.search(params); break;
     case 'gallery': pages.gallery(params); break;
+    case 'media': await pages.media(); break;
     case 'timeline': pages.timeline(); break;
     case 'roadmap': await pages.roadmap(); break;
     case 'suggestions': await pages.suggestions(params); break;

@@ -45,3 +45,28 @@ test('chặn đọc ngoài media/', async () => {
   const r = await fetch(`${base}/media/%2e%2e/package.json`);
   assert.ok(!(await r.text()).includes('"name"'));
 });
+
+test('/api/media/status, export .tar rồi import sang repo khác', async () => {
+  const st = await (await fetch(`${base}/api/media/status`)).json();
+  assert.equal(st.total, 1);
+  assert.equal(st.byKind.video.present, 1);
+  const ex = await fetch(`${base}/api/media/export`);
+  assert.equal(ex.status, 200);
+  assert.match(ex.headers.get('content-disposition'), /kb-media-.*\.tar/);
+  const tar = Buffer.from(await ex.arrayBuffer());
+  assert.ok(tar.length > 1000);
+  // Máy "mới": xoá video, import lại từ gói vừa tải
+  fs.rmSync(path.join(repo.root, vid));
+  assert.equal((await (await fetch(`${base}/api/media/status`)).json()).missing.length, 1);
+  const im = await (await fetch(`${base}/api/media/import`, { method: 'POST', body: tar, headers: { 'Content-Type': 'application/x-tar' } })).json();
+  assert.equal(im.copied, 1);
+  assert.deepEqual(im.bad, []);
+  assert.equal(im.status.missing.length, 0);
+  assert.equal(fs.statSync(path.join(repo.root, vid)).size, 1000);
+});
+
+test('import file rác → 400, không làm hỏng media', async () => {
+  const r = await fetch(`${base}/api/media/import`, { method: 'POST', body: 'không phải tar' });
+  assert.equal(r.status, 400);
+  assert.equal((await (await fetch(`${base}/api/media/status`)).json()).missing.length, 0);
+});
