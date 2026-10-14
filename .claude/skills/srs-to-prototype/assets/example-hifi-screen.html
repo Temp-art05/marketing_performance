@@ -1,0 +1,109 @@
+<!-- ============================================================
+  example-hifi-screen.html — GOLD REFERENCE
+  1 feature (Login) render hi-fi: 2 màn (default + error), đúng contract.
+  Token dưới là DS MẪU của "SampleApp" — khi chạy thật, thay bằng DS dự án.
+  Đối chiếu: figma-import-contract.md + hifi-fidelity-rules.md
+============================================================ -->
+<style>
+  :root{
+    --primary:#0060CF; --primary-hover:#004FA8;
+    --bg:#F8FAFE; --surface:#FFFFFF; --border:#E1E8F5;
+    --text:#0F1B2D; --text-2:#5A6B82;
+    --success:#2FBF71; --error:#E24B4A;
+    --radius:10px; --radius-card:12px;
+    --font-body:system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  .proto-stage{display:flex;flex-wrap:wrap;gap:24px;font-family:var(--font-body);align-items:flex-start;}
+  .proto-banner{width:100%;font-size:13px;font-weight:500;color:#7A4B00;background:#FDF0DE;
+    border:1px solid #F0C878;border-radius:8px;padding:8px 14px;margin:0 0 4px;text-align:center;}
+  .frame-label{font-size:12px;color:var(--text-2);margin:0 0 6px 4px;font-family:var(--font-body);}
+  .screen{width:300px;min-height:600px;background:var(--bg);border-radius:28px;
+    border:8px solid #1c1c1e;overflow:hidden;display:flex;flex-direction:column;}
+  .statusbar{height:26px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px;font-size:11px;color:var(--text);flex:0 0 auto;}
+  .screen-body{flex:1 1 auto;display:flex;flex-direction:column;gap:16px;padding:24px 20px;}
+  .brand{display:flex;flex-direction:column;align-items:center;gap:10px;margin:24px 0 12px;}
+  .brand-mark{width:64px;height:64px;border-radius:16px;background:var(--primary);
+    display:flex;align-items:center;justify-content:center;}
+  .h1{font-size:22px;font-weight:600;color:var(--text);text-align:center;margin:0;}
+  .sub{font-size:13px;color:var(--text-2);text-align:center;margin:0;}
+  .field-group{display:flex;flex-direction:column;gap:6px;}
+  .label{font-size:12px;color:var(--text-2);}
+  .input-field{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    height:48px;padding:0 14px;font-size:14px;color:var(--text);display:flex;align-items:center;}
+  .input-field.is-error{border-color:var(--error);}
+  .error-msg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--error);}
+  .btn-primary{background:var(--primary);color:#fff;border:none;border-radius:var(--radius);
+    padding:14px;font-weight:500;font-size:15px;text-align:center;}
+  .link{font-size:13px;color:var(--primary);text-align:center;}
+  .divider{display:flex;align-items:center;gap:10px;color:var(--text-2);font-size:12px;}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--border);}
+  .sso{display:flex;flex-direction:column;gap:10px;}
+  .sso-btn{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    height:48px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:var(--text);}
+</style>
+
+<div class="proto-stage">
+
+  <div class="proto-banner" role="note">
+    ⚠ Prototype — structural hi-fi, <b>not final visual design</b>. Dành cho Dev dựng &amp; UI/UX import Figma hoàn thiện.
+  </div>
+
+  <!-- ===== MÀN 1: default ===== -->
+  <div>
+    <p class="frame-label">screen-login · default</p>
+    <section class="screen" id="screen-login--default" data-fr="FR-01">
+      <div class="statusbar"><span>9:41</span><span>100%</span></div>
+      <main class="screen-body">
+        <div class="brand">
+          <div class="brand-mark"><i class="ti ti-message-chatbot" style="font-size:32px;color:#fff" aria-hidden="true"></i></div>
+          <h1 class="h1">Welcome back</h1>
+          <p class="sub">Sign in to continue learning</p>
+        </div>
+        <div class="field-group">
+          <span class="label">Email</span>
+          <div class="input-field">name@company.com</div>
+        </div>
+        <div class="field-group">
+          <span class="label">Password</span>
+          <div class="input-field">••••••••</div>
+        </div>
+        <button class="btn-primary">Sign in</button>
+        <a class="link">Forgot password?</a>
+        <div class="divider">or</div>
+        <div class="sso">
+          <div class="sso-btn"><i class="ti ti-brand-apple" aria-hidden="true"></i> Continue with Apple</div>
+          <div class="sso-btn"><i class="ti ti-brand-google" aria-hidden="true"></i> Continue with Google</div>
+        </div>
+      </main>
+    </section>
+  </div>
+
+  <!-- ===== MÀN 2: error state (AC nhắc invalid credential) ===== -->
+  <div>
+    <p class="frame-label">screen-login · error</p>
+    <section class="screen" id="screen-login--error" data-fr="FR-01">
+      <div class="statusbar"><span>9:41</span><span>100%</span></div>
+      <main class="screen-body">
+        <div class="brand">
+          <div class="brand-mark"><i class="ti ti-message-chatbot" style="font-size:32px;color:#fff" aria-hidden="true"></i></div>
+          <h1 class="h1">Welcome back</h1>
+          <p class="sub">Sign in to continue learning</p>
+        </div>
+        <div class="field-group">
+          <span class="label">Email</span>
+          <div class="input-field">name@company.com</div>
+        </div>
+        <div class="field-group">
+          <span class="label">Password</span>
+          <div class="input-field is-error">••••••••</div>
+          <span class="error-msg"><i class="ti ti-alert-circle" style="font-size:14px" aria-hidden="true"></i> Incorrect email or password. Try again.</span>
+        </div>
+        <button class="btn-primary">Sign in</button>
+        <a class="link">Forgot password?</a>
+      </main>
+    </section>
+  </div>
+
+</div>

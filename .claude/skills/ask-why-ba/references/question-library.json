@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "po-doc/question-library.json",
+  "version": "1.0.0",
+  "description": "Seed library câu hỏi elicitation theo domain cho sản phẩm mobile app. Adapt wording theo ngữ cảnh — đây là hạt giống, không phải script.",
+
+  "feature_request": [
+    "Business problem đang giải là gì — ai chịu pain nhiều nhất?",
+    "KPI nào bị ảnh hưởng nếu KHÔNG làm cái này?",
+    "Thành công trông thế nào sau 3 tháng launch?",
+    "Vì sao chọn solution này thay vì alternative?"
+  ],
+
+  "onboarding": [
+    "Bước nào trong onboarding có drop-off cao nhất hiện tại?",
+    "Aha moment mình muốn user chạm tới là gì, và ở bước thứ mấy?",
+    "User bỏ ngang onboarding thường vì thiếu thông tin hay vì friction?",
+    "Onboarding đang tối ưu cho activation hay cho thu data?"
+  ],
+
+  "subscription_paywall": [
+    "KPI nào cần cải thiện — trial start, trial-to-paid, hay ARPU?",
+    "Paywall hiện xuất hiện ở đâu trong flow, và vì sao ở đó?",
+    "User thấy value gì TRƯỚC khi gặp paywall?",
+    "Trial dài bao nhiêu, và dựa trên dữ liệu nào để chọn con số đó?",
+    "Điều gì khiến user hủy trong 24h đầu?"
+  ],
+
+  "engagement_retention": [
+    "Định nghĩa 'user active' của sản phẩm là gì (D1/D7/D30)?",
+    "Hành vi nào phân biệt user retain vs user churn?",
+    "User quay lại thường được kéo về bởi trigger nào (notification, streak, nội dung mới)?",
+    "Mất bao lâu từ lần dùng đầu đến lần thứ hai — và đâu là điểm can thiệp?"
+  ],
+
+  "notification": [
+    "Notification nhằm KPI gì — reactivation, feature adoption, hay retention?",
+    "Rule gửi hiện tại là gì (tần suất, thời điểm, điều kiện)?",
+    "Làm sao tránh spam khiến user tắt notification / gỡ app?",
+    "Đo thành công của 1 notification bằng gì (open, hành động sau đó)?"
+  ],
+
+  "payment_billing": [
+    "Rail thanh toán nào (store IAP, Stripe web, cả hai)?",
+    "Trạng thái entitlement nào cần hỗ trợ (trial/active/grace/expired...)?",
+    "Xử lý thế nào khi thanh toán fail / refund / chargeback?",
+    "Compliance nào áp dụng (store policy, thuế, PII)?"
+  ],
+
+  "auth_account": [
+    "Provider đăng nhập nào (SSO Apple/Google/Facebook, email)?",
+    "Có guest mode không, hay bắt buộc account?",
+    "Chính sách multi-device và session ra sao?",
+    "Account merge / deletion cần xử lý gì về data và payment history?"
+  ],
+
+  "reporting": [
+    "Ai đọc report này và ra quyết định gì từ nó?",
+    "Metric nào là bắt buộc, metric nào chỉ nice-to-have?",
+    "Data lấy real-time hay batch — độ trễ chấp nhận được?",
+    "Có yêu cầu export/segmentation nào không?"
+  ]
+}

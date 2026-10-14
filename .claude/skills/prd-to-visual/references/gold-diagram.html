@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Hub — 3 tính năng luyện tập từ kho từ vựng</title>
+<script>
+  (function () {
+    try {
+      var s = localStorage.getItem('ph-theme');
+      if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --ivory:    #FAF9F5;
+    --paper:    #FFFFFF;
+    --slate:    #141413;
+    --clay:     #D97757;
+    --oat:      #E3DACC;
+    --olive:    #788C5D;
+    --rust:     #B04A3F;
+    --violet:   #8466A8;
+    --blue:     #3E7CA8;
+    --gray-150: #F0EEE6;
+    --gray-300: #D1CFC5;
+    --gray-500: #87867F;
+    --gray-700: #3D3D3A;
+    --shadow:   0 1px 2px rgba(20,20,19,0.04), 0 8px 24px rgba(20,20,19,0.05);
+
+    --serif: ui-serif, Georgia, 'Times New Roman', serif;
+    --sans:  system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --mono:  ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+  }
+
+  html.dark {
+    --ivory:    #18181A;
+    --paper:    #202022;
+    --slate:    #F4F2EC;
+    --clay:     #E0916F;
+    --oat:      #3A352F;
+    --olive:    #9DB07C;
+    --rust:     #D77E70;
+    --violet:   #B295CE;
+    --blue:     #6FA8CF;
+    --gray-150: #26262A;
+    --gray-300: #3C3C40;
+    --gray-500: #9A988E;
+    --gray-700: #CDCBC1;
+    --shadow:   0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--ivory);
+    color: var(--gray-700);
+    line-height: 1.6;
+    padding: 56px 28px 140px;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .page { max-width: 1080px; margin: 0 auto; }
+
+  /* ---------- theme toggle ---------- */
+  .theme-toggle {
+    position: fixed; top: 20px; right: 20px; z-index: 100;
+    width: 40px; height: 40px; border-radius: 10px;
+    border: 1.5px solid var(--gray-300); background: var(--paper);
+    color: var(--gray-700); cursor: pointer; font-size: 17px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow); transition: all 0.15s;
+  }
+  .theme-toggle:hover { border-color: var(--clay); transform: translateY(-1px); }
+
+  /* ---------- header ---------- */
+  header.page-head { margin-bottom: 52px; max-width: 860px; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray-500); margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 500; font-size: 40px;
+    line-height: 1.12; color: var(--slate); margin-bottom: 20px; letter-spacing: -0.01em;
+  }
+  .lead { font-size: 16px; color: var(--gray-700); max-width: 760px; }
+  .lead strong { color: var(--slate); font-weight: 600; }
+
+  .scope {
+    margin-top: 22px; background: var(--gray-150);
+    border-left: 3px solid var(--clay); border-radius: 0 8px 8px 0;
+    padding: 13px 18px; font-size: 13.5px; color: var(--gray-700); max-width: 760px;
+  }
+  .scope .label {
+    font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--gray-500); display: block; margin-bottom: 4px;
+  }
+
+  /* ---------- summary strip ---------- */
+  .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 64px; }
+  @media (max-width: 760px) { .summary { grid-template-columns: 1fr; } }
+  .summary .cell {
+    background: var(--paper); border: 1.5px solid var(--gray-300);
+    border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow);
+  }
+  .summary .cell .tag {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 8px; display: inline-block;
+    padding: 2px 8px; border-radius: 6px;
+  }
+  .summary .cell h3 { font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--slate); margin-bottom: 6px; }
+  .summary .cell p { font-size: 13px; color: var(--gray-500); }
+  .tag.t-srs { background: rgba(217,119,87,0.14); color: var(--clay); }
+  .tag.t-loci { background: rgba(132,102,168,0.16); color: var(--violet); }
+  .tag.t-echo { background: rgba(62,124,168,0.15); color: var(--blue); }
+
+  /* ---------- section chrome ---------- */
+  section { margin-bottom: 72px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; }
+  .sec-head .num {
+    font-family: var(--mono); font-size: 12px; background: var(--oat); color: var(--slate);
+    padding: 3px 9px; border-radius: 8px; flex-shrink: 0;
+  }
+  .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; color: var(--slate); letter-spacing: -0.01em; }
+  .sec-intro { font-size: 15px; color: var(--gray-500); max-width: 740px; margin-bottom: 30px; }
+
+  h4 {
+    font-family: var(--sans); font-weight: 700; font-size: 13px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--gray-500); margin: 30px 0 14px;
+  }
+
+  p.body { font-size: 14.5px; color: var(--gray-700); max-width: 760px; margin-bottom: 14px; }
+  p.body strong { color: var(--slate); }
+  code {
+    font-family: var(--mono); font-size: 0.86em; background: var(--gray-150);
+    border: 1px solid var(--gray-300); border-radius: 5px; padding: 1px 6px; color: var(--slate);
+  }
+
+  /* ---------- canvas for diagrams ---------- */
+  .canvas {
+    background: var(--paper); border: 1.5px solid var(--gray-300);
+    border-radius: 14px; padding: 28px 24px; box-shadow: var(--shadow);
+    overflow-x: auto; margin-bottom: 8px;
+  }
+  svg.flow { display: block; width: 100%; height: auto; min-width: 520px; }
+  .flow text { font-family: var(--sans); fill: var(--slate); }
+  .flow .ttl { font-size: 13px; font-weight: 700; }
+  .flow .sub { font-size: 10.5px; fill: var(--gray-500); font-family: var(--mono); }
+  .flow .lbl { font-size: 10.5px; fill: var(--gray-500); }
+
+  .node rect, .node.box rect { fill: var(--paper); stroke: var(--gray-300); stroke-width: 1.5; }
+  .node.term rect { fill: var(--gray-150); }
+  .node.hub rect  { fill: rgba(120,140,93,0.12); stroke: var(--olive); stroke-width: 1.5; }
+  .node.srs rect  { fill: rgba(217,119,87,0.12); stroke: var(--clay); stroke-width: 1.5; }
+  .node.loci rect { fill: rgba(132,102,168,0.13); stroke: var(--violet); stroke-width: 1.5; }
+  .node.echo rect { fill: rgba(62,124,168,0.12); stroke: var(--blue); stroke-width: 1.5; }
+  .node.llm rect  { fill: rgba(176,74,63,0.10); stroke: var(--rust); stroke-width: 1.5; stroke-dasharray: 5 3; }
+  .node.gate path { fill: var(--paper); stroke: var(--gray-300); stroke-width: 1.5; }
+
+  .edge      { stroke: var(--gray-500); stroke-width: 1.5; fill: none; marker-end: url(#ar); }
+  .edge.yes  { stroke: var(--olive); marker-end: url(#ar-olive); }
+  .edge.no   { stroke: var(--rust); stroke-dasharray: 4 4; marker-end: url(#ar-rust); }
+  .edge.loop { stroke: var(--clay); stroke-dasharray: 3 3; marker-end: url(#ar-clay); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 12px; color: var(--gray-700); }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .chip { width: 20px; height: 13px; border: 1.5px solid var(--gray-300); border-radius: 4px; background: var(--paper); }
+  .chip.hub  { background: rgba(120,140,93,0.12); border-color: var(--olive); }
+  .chip.srs  { background: rgba(217,119,87,0.12); border-color: var(--clay); }
+  .chip.llm  { background: rgba(176,74,63,0.10); border-color: var(--rust); border-style: dashed; }
+
+  .caption { font-size: 12.5px; color: var(--gray-500); margin-top: 12px; font-style: italic; }
+
+  /* ---------- tables ---------- */
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--gray-300); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gray-500); font-weight: 600; }
+  td { color: var(--gray-700); }
+  td strong { color: var(--slate); }
+  tr:last-child td { border-bottom: none; }
+  .tbl-wrap { background: var(--paper); border: 1.5px solid var(--gray-300); border-radius: 12px; padding: 6px 8px; box-shadow: var(--shadow); margin-bottom: 16px; }
+
+  .pill { font-family: var(--mono); font-size: 10.5px; padding: 2px 7px; border-radius: 5px; white-space: nowrap; }
+  .pill.code { background: rgba(120,140,93,0.14); color: var(--olive); }
+  .pill.ai   { background: rgba(176,74,63,0.13); color: var(--rust); }
+  .pill.mix  { background: rgba(217,119,87,0.14); color: var(--clay); }
+
+  /* ---------- cards / json ---------- */
+  pre {
+    font-family: var(--mono); font-size: 12px; line-height: 1.6;
+    background: var(--gray-150); border: 1px solid var(--gray-300);
+    border-radius: 10px; padding: 16px 18px; white-space: pre; overflow-x: auto;
+    color: var(--slate); margin-bottom: 14px;
+  }
+  pre .k { color: var(--blue); }
+  pre .s { color: var(--olive); }
+  pre .c { color: var(--gray-500); font-style: italic; }
+
+  .note {
+    background: var(--gray-150); border-left: 3px solid var(--olive);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 13.5px;
+    color: var(--gray-700); margin: 6px 0 16px; max-width: 780px;
+  }
+  .note strong { color: var(--slate); }
+  .note.warn { border-left-color: var(--rust); }
+
+  hr { border: none; border-top: 1px solid var(--gray-300); margin: 0 0 30px; }
+
+  .feature-anchor { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.srs { background: var(--clay); } .dot.loci { background: var(--violet); } .dot.echo { background: var(--blue); }
+
+  .step-list { list-style: none; counter-reset: s; max-width: 780px; }
+  .step-list li {
+    counter-increment: s; position: relative; padding: 8px 0 8px 38px; font-size: 14px; color: var(--gray-700);
+    border-bottom: 1px dashed var(--gray-300);
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before {
+    content: counter(s); position: absolute; left: 0; top: 8px;
+    width: 24px; height: 24px; border-radius: 50%; background: var(--oat); color: var(--slate);
+    font-family: var(--mono); font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-list li strong { color: var(--slate); }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" onclick="(function(){var d=document.documentElement.classList.toggle('dark');try{localStorage.setItem('ph-theme',d?'dark':'light');}catch(e){}})()" aria-label="Đổi giao diện">◐</button>
+
+<div class="page">
+
+  <header class="page-head">
+    <div class="eyebrow">Interact / SUPERMINDS · Practice Hub · Feature Plan</div>
+    <h1>Practice Hub — luyện tập từ kho từ vựng của user</h1>
+    <p class="lead">
+      Một kho từ, một bộ lịch ôn (<strong>SRS</strong>) chạy ngầm, và <strong>3 chế độ luyện</strong> gắn lên trên:
+      Daily Review (Spaced Repetition), Memory Story (Loci), Echo (Shadowing). Cả ba cùng đọc và cập nhật một lịch ôn duy nhất.
+    </p>
+    <div class="scope">
+      <span class="label">Scope</span>
+      Tài liệu mô tả kiến trúc tổng + flow từng tính năng. Không bao gồm: visual design chi tiết, event schema analytics, paywall logic.
+    </div>
+  </header>
+
+  <div class="summary">
+    <div class="cell">
+      <span class="tag t-srs">01 · Spaced Repetition</span>
+      <h3>Daily Review</h3>
+      <p>Session kiểu Duolingo. SRS chọn từ tới hạn, mỗi từ random một dạng bài trong 8 dạng đã có.</p>
+    </div>
+    <div class="cell">
+      <span class="tag t-loci">02 · Method of Loci</span>
+      <h3>Memory Story</h3>
+      <p>LLM dệt các từ tới hạn thành truyện có lộ trình không gian, rồi ẩn từ và bắt nhớ lại theo chuỗi.</p>
+    </div>
+    <div class="cell">
+      <span class="tag t-echo">03 · Shadowing</span>
+      <h3>Echo</h3>
+      <p>Nghe câu mẫu → nhại lại → chấm phát âm. Lặp đến khi đạt ngưỡng khớp.</p>
+    </div>
+  </div>
+
+  <!-- ============ SECTION 1: ARCHITECTURE ============ -->
+  <section>
+    <div class="sec-head"><span class="num">01</span><h2>Kiến trúc tổng</h2></div>
+    <p class="sec-intro">
+      Nguyên tắc cốt lõi: <strong>SRS là engine, không phải tính năng.</strong> Nó chỉ trả lời câu hỏi
+      "hôm nay đưa từ nào ra". 3 chế độ luyện là các cách dùng đầu ra đó. Luyện ở chế độ nào cũng chấm ngược về cùng một lịch.
+    </p>
+
+    <div class="canvas">
+      <svg class="flow" viewBox="0 0 920 430">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#87867F"/></marker>
+          <marker id="ar-olive" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#788C5D"/></marker>
+          <marker id="ar-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B04A3F"/></marker>
+          <marker id="ar-clay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D97757"/></marker>
+        </defs>
+
+        <!-- Sources -->
+        <text class="sub" x="90" y="28" text-anchor="middle">3 NGUỒN</text>
+        <g class="node box"><rect x="20" y="40" width="140" height="34" rx="8"/><text class="lbl" x="90" y="61" text-anchor="middle" style="font-size:11px">Hoàn thành bài học</text></g>
+        <g class="node box"><rect x="20" y="86" width="140" height="34" rx="8"/><text class="lbl" x="90" y="107" text-anchor="middle" style="font-size:11px">Câu / ngữ pháp sai</text></g>
+        <g class="node box"><rect x="20" y="132" width="140" height="34" rx="8"/><text class="lbl" x="90" y="153" text-anchor="middle" style="font-size:11px">Từ user tự lưu</text></g>
+
+        <!-- Hub -->
+        <g class="node hub"><rect x="230" y="78" width="150" height="56" rx="10"/><text class="ttl" x="305" y="102" text-anchor="middle">Vocab Hub</text><text class="sub" x="305" y="120" text-anchor="middle">kho từ thống nhất</text></g>
+
+        <!-- SRS engine -->
+        <g class="node srs"><rect x="450" y="74" width="160" height="64" rx="10"/><text class="ttl" x="530" y="98" text-anchor="middle">SRS Engine</text><text class="sub" x="530" y="115" text-anchor="middle">interval · ease</text><text class="sub" x="530" y="129" text-anchor="middle">→ "due hôm nay?"</text></g>
+
+        <!-- 3 modes -->
+        <g class="node srs"><rect x="700" y="20" width="200" height="48" rx="10"/><text class="ttl" x="800" y="40" text-anchor="middle" style="fill:var(--clay)">① Daily Review</text><text class="sub" x="800" y="56" text-anchor="middle">flashcard / quiz</text></g>
+        <g class="node loci"><rect x="700" y="84" width="200" height="48" rx="10"/><text class="ttl" x="800" y="104" text-anchor="middle" style="fill:var(--violet)">② Memory Story</text><text class="sub" x="800" y="120" text-anchor="middle">truyện theo chuỗi</text></g>
+        <g class="node echo"><rect x="700" y="148" width="200" height="48" rx="10"/><text class="ttl" x="800" y="168" text-anchor="middle" style="fill:var(--blue)">③ Echo</text><text class="sub" x="800" y="184" text-anchor="middle">nghe → nhại</text></g>
+
+        <!-- edges sources -> hub -->
+        <path class="edge yes" d="M160,57 C195,57 200,100 228,100"/>
+        <path class="edge yes" d="M160,103 L228,104"/>
+        <path class="edge yes" d="M160,149 C195,149 200,112 228,108"/>
+        <!-- hub -> srs -->
+        <path class="edge" d="M380,106 L448,106"/>
+        <!-- srs -> modes -->
+        <path class="edge" d="M610,98 C650,98 655,46 698,44"/>
+        <path class="edge" d="M610,108 L698,108"/>
+        <path class="edge" d="M610,118 C650,118 655,170 698,172"/>
+
+        <!-- feedback loop modes -> srs -->
+        <path class="edge loop" d="M800,196 C800,300 530,300 530,140"/>
+        <text class="lbl" x="650" y="318" text-anchor="middle" style="fill:var(--clay)">kết quả luyện → cập nhật interval / ease</text>
+
+        <!-- LLM helper -->
+        <g class="node llm"><rect x="450" y="200" width="160" height="44" rx="10"/><text class="ttl" x="530" y="220" text-anchor="middle" style="fill:var(--rust)">LLM</text><text class="sub" x="530" y="235" text-anchor="middle">sinh đề · câu · truyện</text></g>
+        <path class="edge no" d="M530,200 L530,144"/>
+        <path class="edge no" d="M610,222 C660,222 690,200 720,196"/>
+      </svg>
+      <div class="legend">
+        <span><span class="chip hub"></span> Kho / nguồn dữ liệu</span>
+        <span><span class="chip srs"></span> SRS &amp; chế độ luyện</span>
+        <span><span class="chip llm"></span> LLM hỗ trợ runtime</span>
+      </div>
+      <p class="caption">Dữ liệu chảy một chiều vào kho; SRS là bộ lọc trung tâm; mọi kết quả luyện đều quay về cập nhật lịch.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: HUB ============ -->
+  <section>
+    <div class="sec-head"><span class="num">02</span><h2>Kho từ vựng — 3 loại item khác bản chất</h2></div>
+    <p class="sec-intro">
+      Kho gom 3 nguồn, nhưng đừng luyện giống nhau. Mỗi loại có dữ liệu sẵn khác nhau, nên cần xử lý khác nhau trước khi đẩy vào chế độ luyện.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Nguồn</th><th>Bản chất</th><th>Có sẵn gì</th><th>Cần luyện gì</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Từ trong bài học</strong></td><td>Đã học, có ngữ cảnh</td><td>từ · nghĩa · audio · câu mẫu</td><td>Duy trì / chống quên</td></tr>
+          <tr><td><strong>Câu / ngữ pháp sai</strong></td><td>Điểm yếu đã chứng minh — <em>giá trị cao nhất</em></td><td>câu gốc · loại lỗi · bản sửa</td><td>Sửa + sản sinh lại đúng</td></tr>
+          <tr><td><strong>Từ tự lưu</strong></td><td>Có chủ đích, app ít info</td><td>từ · nghĩa · audio</td><td>Làm giàu (sinh câu) rồi mới luyện</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Cấu trúc item đề xuất</h4>
+    <pre><span class="c">// một item trong hub — gộp cả nội dung lẫn trạng thái SRS</span>
+{
+  <span class="k">"id"</span>: <span class="s">"vh_8842"</span>,
+  <span class="k">"source"</span>: <span class="s">"lesson | mistake | saved"</span>,
+  <span class="k">"word"</span>: <span class="s">"diligent"</span>,
+  <span class="k">"meaning"</span>: <span class="s">"siêng năng, cần cù"</span>,
+  <span class="k">"audio_url"</span>: <span class="s">"…/diligent.mp3"</span>,
+  <span class="k">"example"</span>: <span class="s">"She is a diligent student."</span>,   <span class="c">// null nếu chưa có → LLM sinh</span>
+  <span class="k">"error_pattern"</span>: <span class="s">null</span>,                 <span class="c">// chỉ với source=mistake, vd "present_perfect_pp"</span>
+
+  <span class="c">// --- trạng thái SRS ---</span>
+  <span class="k">"interval_days"</span>: <span class="s">3</span>,
+  <span class="k">"ease"</span>: <span class="s">2.5</span>,
+  <span class="k">"next_review"</span>: <span class="s">"2026-06-29"</span>,
+  <span class="k">"streak"</span>: <span class="s">2</span>,
+  <span class="k">"status"</span>: <span class="s">"learning | review | graduated"</span>
+}</pre>
+
+    <div class="note">
+      <strong>Item số 2 (lỗi sai) là vàng.</strong> Đừng lưu để hiện lại y nguyên câu cũ — lưu <strong>loại lỗi</strong> (<code>error_pattern</code>),
+      để LLM đẻ câu mới cùng pattern mỗi lần ôn. Chi tiết ở §6.
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: SRS ENGINE ============ -->
+  <section>
+    <div class="sec-head"><span class="num">03</span><h2>SRS Engine — bộ lập lịch chung</h2></div>
+    <p class="sec-intro">
+      Mỗi item mang <code>interval</code>, <code>ease</code>, <code>next_review</code>. Trả lời đúng → giãn lịch ra xa; sai → kéo về gần.
+      Engine không quan tâm user luyện bằng chế độ nào — nó chỉ nhận tín hiệu đúng/sai và cập nhật.
+    </p>
+
+    <div class="canvas">
+      <svg class="flow" viewBox="0 0 900 330">
+        <!-- nodes -->
+        <g class="node term"><rect x="20" y="118" width="110" height="44" rx="22"/><text class="ttl" x="75" y="144" text-anchor="middle">Mở app</text></g>
+        <g class="node srs"><rect x="160" y="116" width="160" height="48" rx="10"/><text class="lbl" x="240" y="136" text-anchor="middle" style="font-size:11px">Quét item due</text><text class="sub" x="240" y="152" text-anchor="middle">next_review ≤ hôm nay</text></g>
+        <g class="node gate"><path d="M360,140 L408,112 L456,140 L408,168 Z"/><text class="lbl" x="408" y="144" text-anchor="middle">có due?</text></g>
+
+        <g class="node srs"><rect x="500" y="40" width="200" height="48" rx="10"/><text class="lbl" x="600" y="60" text-anchor="middle" style="font-size:11px">Đưa vào hàng đợi luyện</text><text class="sub" x="600" y="76" text-anchor="middle">chế độ ① ② ③</text></g>
+        <g class="node term"><rect x="500" y="256" width="200" height="42" rx="21"/><text class="lbl" x="600" y="282" text-anchor="middle">Gợi ý: học bài mới</text></g>
+
+        <!-- grade gate -->
+        <g class="node gate"><path d="M760,140 L808,112 L856,140 L808,168 Z"/><text class="lbl" x="808" y="138" text-anchor="middle">đúng?</text><text class="sub" x="808" y="152" text-anchor="middle">sau luyện</text></g>
+
+        <!-- edges -->
+        <path class="edge" d="M130,140 L158,140"/>
+        <path class="edge" d="M320,140 L358,140"/>
+        <path class="edge yes" d="M408,112 C408,78 460,66 498,64"/><text class="lbl" x="430" y="92" style="fill:var(--olive)">có</text>
+        <path class="edge no" d="M408,168 C408,277 440,277 498,277"/><text class="lbl" x="430" y="240" style="fill:var(--rust)">trống</text>
+        <!-- queue -> grade -->
+        <path class="edge" d="M700,68 C760,68 808,90 808,110"/>
+        <!-- loop back -->
+        <path class="edge loop" d="M808,168 C808,210 600,210 600,90"/><text class="lbl" x="690" y="205" style="fill:var(--clay)">cập nhật interval / ease → còn từ thì lặp</text>
+      </svg>
+      <p class="caption">Vòng đời mỗi ngày: quét due → nếu có thì đẩy vào chế độ luyện, nếu trống thì gợi ý học bài mới. Kết quả luyện quay lại chấm điểm.</p>
+    </div>
+
+    <h4>Quy tắc cập nhật (đơn giản hoá, kiểu SM-2)</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Kết quả</th><th>Tác động</th><th>Ví dụ interval</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Đúng, dễ</strong></td><td><code>interval × ease</code>, ease tăng nhẹ</td><td>3 → 7 ngày</td></tr>
+          <tr><td><strong>Đúng, vừa</strong></td><td><code>interval × ease</code></td><td>3 → 6 ngày</td></tr>
+          <tr><td><strong>Sai</strong></td><td>reset về 1 ngày, ease giảm, streak = 0</td><td>7 → 1 ngày</td></tr>
+          <tr><td><strong>Graduated</strong></td><td>interval ≥ 30 ngày <strong>và</strong> streak ≥ 5 (đúng liên tiếp) → rời hàng đợi ôn</td><td>kho không phình mãi</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <strong>Pattern-based, không count-based.</strong> Engine phản ứng theo tín hiệu đúng/sai từng lần, không đếm cứng số lần.
+      Việc "graduated" là điều kiện ngưỡng (interval + streak), không phải đếm thô.
+      Mốc <strong>30 ngày + 5 lần đúng liên tiếp</strong> bám theo nghiên cứu trí nhớ: cần ~5 lần nhớ lại thành công ở khoảng cách giãn dần
+      để từ vào trí nhớ dài hạn bền; sai một lần là streak reset, phải leo lại.
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: DAILY REVIEW ============ -->
+  <section>
+    <div class="feature-anchor"><span class="dot srs"></span><span class="eyebrow" style="margin:0">Feature 01 · Spaced Repetition</span></div>
+    <div class="sec-head"><span class="num">04</span><h2>Daily Review</h2></div>
+    <p class="sec-intro">
+      Session kiểu Duolingo nhưng học <strong>từ chính kho của user</strong>. SRS đẩy ra ~10–15 từ tới hạn; mỗi từ random một dạng bài
+      trong 8 dạng app đã có. Đáp án nhiễu (distractor) để LLM sinh — tự ra nhiễu hợp lý mà không cần gắn tag chủ đề/loại từ vào kho.
+    </p>
+
+    <h4>Map 8 dạng bài → dữ liệu cần &amp; cách sinh</h4>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Dạng bài (đã có)</th><th>Dùng gì trong item</th><th>Sinh bằng</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1 · Chọn cặp từ</strong></td><td>audio + nghĩa</td><td><span class="pill ai">LLM</span> sinh distractor nhiễu hợp lý</td></tr>
+          <tr><td><strong>2 · Viết lại bằng tiếng Anh</strong></td><td>nghĩa → từ/câu</td><td><span class="pill mix">mix</span> từ: code · câu: LLM</td></tr>
+          <tr><td><strong>3 · Viết lại bằng tiếng Việt</strong></td><td>câu mẫu + word bank</td><td><span class="pill ai">LLM</span> câu + chip nhiễu</td></tr>
+          <tr><td><strong>4 · Đọc và trả lời</strong></td><td>từ + nghĩa + đoạn văn</td><td><span class="pill ai">LLM</span> sinh passage chứa từ</td></tr>
+          <tr><td><strong>5 · Nghe và trả lời</strong></td><td>audio + nội dung</td><td><span class="pill ai">LLM</span> + TTS</td></tr>
+          <tr><td><strong>6 · Nghe và tìm từ còn thiếu</strong></td><td>audio + câu</td><td><span class="pill mix">mix</span></td></tr>
+          <tr><td><strong>7 · Hoàn thành hội thoại</strong></td><td>câu + đáp án</td><td><span class="pill ai">LLM</span> — hợp với lỗi sai (§6)</td></tr>
+          <tr><td><strong>8 · Điền vào chỗ trống</strong></td><td>câu + word bank</td><td><span class="pill ai">LLM</span> — hợp với lỗi ngữ pháp (§6)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <strong>Bắt đầu rẻ:</strong> dạng 1 + 2 (từ) cốt lõi vẫn nhẹ; chỉ phần distractor gọi LLM. Ship trước, thêm các dạng LLM-heavy sau.
+      <br><strong>Ràng buộc distractor (prompt + validate nhẹ):</strong> nhiễu phải sai rõ ràng — không trùng/gần nghĩa đáp án đúng, không để 2 đáp án cùng đúng.
+    </div>
+
+    <h4>Flow một session</h4>
+    <div class="canvas">
+      <svg class="flow" viewBox="0 0 900 320">
+        <g class="node term"><rect x="20" y="130" width="110" height="44" rx="22"/><text class="ttl" x="75" y="156" text-anchor="middle">Bắt đầu</text></g>
+        <g class="node srs"><rect x="160" y="128" width="150" height="48" rx="10"/><text class="lbl" x="235" y="148" text-anchor="middle" style="font-size:11px">SRS lấy 10–15 từ</text><text class="sub" x="235" y="164" text-anchor="middle">due hôm nay</text></g>
+        <g class="node box"><rect x="345" y="128" width="150" height="48" rx="10"/><text class="lbl" x="420" y="148" text-anchor="middle" style="font-size:11px">Chọn từ kế tiếp</text><text class="sub" x="420" y="164" text-anchor="middle">+ random dạng bài</text></g>
+        <g class="node llm"><rect x="345" y="40" width="150" height="42" rx="10"/><text class="lbl" x="420" y="60" text-anchor="middle" style="font-size:11px;fill:var(--rust)">LLM sinh đề</text><text class="sub" x="420" y="75" text-anchor="middle">+ distractor nhiễu</text></g>
+        <g class="node box"><rect x="530" y="128" width="120" height="48" rx="10"/><text class="lbl" x="590" y="153" text-anchor="middle" style="font-size:11px">User trả lời</text></g>
+        <g class="node gate"><path d="M700,152 L745,124 L790,152 L745,180 Z"/><text class="lbl" x="745" y="156" text-anchor="middle">đúng?</text></g>
+        <g class="node ok"><rect x="690" y="40" width="190" height="40" rx="10" style="fill:rgba(120,140,93,0.12);stroke:var(--olive)"/><text class="lbl" x="785" y="64" text-anchor="middle" style="font-size:11px">SRS: giãn interval</text></g>
+        <g class="node bad"><rect x="690" y="228" width="190" height="40" rx="10" style="fill:rgba(176,74,63,0.10);stroke:var(--rust)"/><text class="lbl" x="785" y="252" text-anchor="middle" style="font-size:11px">SRS: reset + xếp lại</text></g>
+
+        <path class="edge" d="M130,152 L158,152"/>
+        <path class="edge" d="M310,152 L343,152"/>
+        <path class="edge" d="M420,128 L420,84"/>
+        <path class="edge" d="M495,152 L528,152"/>
+        <path class="edge" d="M650,152 L698,152"/>
+        <path class="edge yes" d="M745,124 C745,90 760,84 786,82"/><text class="lbl" x="720" y="104" style="fill:var(--olive)">đúng</text>
+        <path class="edge no" d="M745,180 C745,215 760,224 786,228"/><text class="lbl" x="715" y="210" style="fill:var(--rust)">sai</text>
+        <!-- loop back to next word -->
+        <path class="edge loop" d="M785,80 C840,80 870,108 870,150 C870,195 600,200 420,178"/><text class="lbl" x="600" y="195" style="fill:var(--clay)">còn từ → từ kế tiếp</text>
+      </svg>
+      <p class="caption">Lặp đến khi hết hàng đợi. Mỗi từ chấm ngay về SRS — đúng giãn lịch, sai kéo gần và xếp lại trong session.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: MEMORY STORY ============ -->
+  <section>
+    <div class="feature-anchor"><span class="dot loci"></span><span class="eyebrow" style="margin:0">Feature 02 · Method of Loci</span></div>
+    <div class="sec-head"><span class="num">05</span><h2>Memory Story</h2></div>
+    <p class="sec-intro">
+      Gom ~8–10 từ tới hạn → LLM dệt thành một truyện ngắn <strong>có lộ trình không gian</strong> (đi qua từng phòng/địa điểm, mỗi nơi
+      cài một từ). User đọc/nghe → app ẩn từ → bắt nhớ lại <strong>theo đúng chuỗi vị trí</strong>.
+    </p>
+
+    <div class="note warn">
+      <strong>Mấu chốt:</strong> truyện phải có <em>lộ trình</em> (bước vào bếp → thấy X → ra vườn → gặp Y), không phải đoạn văn nhồi từ
+      ngẫu nhiên. Thứ tự không gian chính là cái làm nên Loci. Đây là điều khoản bắt buộc trong prompt, không phải gợi ý.
+    </div>
+
+    <div class="canvas">
+      <svg class="flow" viewBox="0 0 900 300">
+        <g class="node term"><rect x="20" y="118" width="110" height="44" rx="22"/><text class="ttl" x="75" y="144" text-anchor="middle">Bắt đầu</text></g>
+        <g class="node srs"><rect x="160" y="116" width="140" height="48" rx="10"/><text class="lbl" x="230" y="136" text-anchor="middle" style="font-size:11px">Gom 8–10 từ due</text><text class="sub" x="230" y="152" text-anchor="middle">SRS</text></g>
+        <g class="node llm"><rect x="330" y="110" width="170" height="60" rx="10"/><text class="lbl" x="415" y="130" text-anchor="middle" style="font-size:11px;fill:var(--rust)">LLM dệt truyện</text><text class="sub" x="415" y="146" text-anchor="middle">lộ trình theo địa điểm</text><text class="sub" x="415" y="159" text-anchor="middle">mỗi nơi = 1 từ</text></g>
+        <g class="node loci"><rect x="530" y="40" width="170" height="44" rx="10"/><text class="lbl" x="615" y="60" text-anchor="middle" style="font-size:11px">Pha 1: đọc / nghe</text><text class="sub" x="615" y="75" text-anchor="middle">từ hiện rõ trong truyện</text></g>
+        <g class="node loci"><rect x="530" y="116" width="170" height="48" rx="10"/><text class="lbl" x="615" y="136" text-anchor="middle" style="font-size:11px">Pha 2: ẩn từ</text><text class="sub" x="615" y="152" text-anchor="middle">nhớ lại theo chuỗi vị trí</text></g>
+        <g class="node gate"><path d="M770,140 L812,114 L854,140 L812,166 Z"/><text class="lbl" x="812" y="144" text-anchor="middle">nhớ?</text></g>
+
+        <path class="edge" d="M130,140 L158,140"/>
+        <path class="edge" d="M300,140 L328,140"/>
+        <path class="edge" d="M500,135 C515,100 515,80 528,68"/>
+        <path class="edge" d="M615,84 L615,114"/>
+        <path class="edge" d="M700,140 L768,140"/>
+        <path class="edge yes" d="M812,114 C812,90 820,250 760,250" style="stroke:var(--olive);stroke-dasharray:none" marker-end="url(#ar-olive)"/>
+        <text class="lbl" x="845" y="120" style="fill:var(--olive)">mỗi từ chấm về SRS</text>
+      </svg>
+      <p class="caption">Hai pha: tiếp xúc (đọc truyện hoàn chỉnh) rồi truy xuất (nhớ lại từng từ theo lộ trình). Từng từ vẫn cập nhật lịch SRS.</p>
+    </div>
+
+    <h4>Hợp đồng với LLM (map, không script)</h4>
+    <pre><span class="c">// đầu vào prompt</span>
+{
+  <span class="k">"words"</span>: [<span class="s">"diligent"</span>, <span class="s">"sink"</span>, <span class="s">"plot"</span>, …],   <span class="c">// 8–10 từ due, GIỮ NGUYÊN THỨ TỰ</span>
+  <span class="k">"level"</span>: <span class="s">"A2"</span>,
+  <span class="k">"contract"</span>: {
+    <span class="k">"must"</span>: <span class="s">"đi qua các địa điểm rõ ràng theo trình tự; mỗi địa điểm cài đúng 1 từ"</span>,
+    <span class="k">"order"</span>: <span class="s">"thứ tự từ trong truyện = thứ tự mảng words"</span>,
+    <span class="k">"avoid"</span>: <span class="s">"đoạn văn nhồi từ không có không gian"</span>
+  }
+}</pre>
+    <div class="note">
+      Gợi ý liên kết để <strong>tiếng Anh luôn</strong> (thành comprehensible input) — không cần build kho theo từng L1, nên không dính vấn đề đa ngôn ngữ.
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: ECHO ============ -->
+  <section>
+    <div class="feature-anchor"><span class="dot echo"></span><span class="eyebrow" style="margin:0">Feature 03 · Shadowing</span></div>
+    <div class="sec-head"><span class="num">06</span><h2>Echo</h2></div>
+    <p class="sec-intro">
+      Từ/câu có audio → user nghe câu mẫu → nhại lại ngay → app chấm độ khớp phát âm. Lặp đến khi đạt ngưỡng.
+      Ngôn ngữ-trung tính: chỉ cần audio tiếng Anh (đã có TTS), không phụ thuộc L1.
+    </p>
+
+    <div class="canvas">
+      <svg class="flow" viewBox="0 0 900 280">
+        <g class="node term"><rect x="20" y="110" width="110" height="44" rx="22"/><text class="ttl" x="75" y="136" text-anchor="middle">Bắt đầu</text></g>
+        <g class="node srs"><rect x="160" y="108" width="130" height="48" rx="10"/><text class="lbl" x="225" y="128" text-anchor="middle" style="font-size:11px">SRS chọn item</text><text class="sub" x="225" y="144" text-anchor="middle">có audio / câu</text></g>
+        <g class="node gate"><path d="M330,132 L378,104 L426,132 L378,160 Z"/><text class="lbl" x="378" y="129" text-anchor="middle">có câu?</text></g>
+        <g class="node llm"><rect x="320" y="200" width="170" height="42" rx="10"/><text class="lbl" x="405" y="220" text-anchor="middle" style="font-size:11px;fill:var(--rust)">LLM sinh câu + TTS</text><text class="sub" x="405" y="235" text-anchor="middle">cho từ tự lưu</text></g>
+        <g class="node echo"><rect x="460" y="40" width="150" height="44" rx="10"/><text class="lbl" x="535" y="60" text-anchor="middle" style="font-size:11px">Nghe câu mẫu</text><text class="sub" x="535" y="75" text-anchor="middle">🔊 (chậm / thường)</text></g>
+        <g class="node echo"><rect x="460" y="110" width="150" height="44" rx="10"/><text class="lbl" x="535" y="130" text-anchor="middle" style="font-size:11px">User nhại lại</text><text class="sub" x="535" y="145" text-anchor="middle">🎙️ ghi âm</text></g>
+        <g class="node box"><rect x="650" y="108" width="120" height="48" rx="10"/><text class="lbl" x="710" y="128" text-anchor="middle" style="font-size:11px">Chấm độ khớp</text><text class="sub" x="710" y="144" text-anchor="middle">STT / score</text></g>
+        <g class="node gate"><path d="M800,132 L840,108 L880,132 L840,156 Z" style="fill:var(--paper)"/><text class="lbl" x="840" y="135" text-anchor="middle">đạt?</text></g>
+
+        <path class="edge" d="M130,132 L158,132"/>
+        <path class="edge" d="M290,132 L328,132"/>
+        <path class="edge yes" d="M378,104 C378,75 440,66 458,64"/><text class="lbl" x="400" y="92" style="fill:var(--olive)">có</text>
+        <path class="edge no" d="M378,160 C378,200 350,205 348,210"/><text class="lbl" x="320" y="190" style="fill:var(--rust)">không</text>
+        <path class="edge" d="M490,221 C560,221 560,90 530,86"/>
+        <path class="edge" d="M535,84 L535,108"/>
+        <path class="edge" d="M610,132 L648,132"/>
+        <path class="edge" d="M770,132 L798,132"/>
+        <path class="edge no" d="M840,156 C840,200 535,200 535,156"/><text class="lbl" x="690" y="195" style="fill:var(--rust)">chưa đạt → nhại lại</text>
+      </svg>
+      <p class="caption">Vòng nghe → nhại → chấm lặp lại đến ngưỡng. Câu mẫu lấy từ <code>example</code>; lỗi sai dùng bản đã sửa; từ tự lưu sinh câu trước.</p>
+    </div>
+
+    <div class="note">
+      <strong>Chấm trên ý nghĩa, không string match.</strong> STT có nhiễu — so khớp cứng từng ký tự sẽ tái tạo lỗi đã fix ở chỗ khác.
+      Cho điểm theo độ gần phát âm / nội dung, có ngưỡng mềm.
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7: ERROR RESURRECTION ============ -->
+  <section>
+    <div class="sec-head"><span class="num">07</span><h2>Tái sinh từ lỗi sai — tính năng "đắt" nhất</h2></div>
+    <p class="sec-intro">
+      Cross-cutting cho cả 3 chế độ. Với item <code>source = mistake</code>, đừng hiện lại đúng câu cũ (user sẽ học vẹt nguyên câu).
+      Lưu <strong>loại lỗi</strong>, để LLM đẻ một câu <em>mới</em> test cùng pattern.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Lần</th><th>Cái gì xảy ra</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gốc</strong></td><td>User viết <code>"I have went there"</code> → app phát hiện lỗi quá khứ phân từ → lưu <code>error_pattern: present_perfect_pp</code></td></tr>
+          <tr><td><strong>Ôn lại</strong></td><td>LLM sinh câu khác cùng pattern: <code>"She has ___ home"</code> (go) → render dạng 8 (điền chỗ trống) hoặc dạng 7 (hoàn thành hội thoại)</td></tr>
+          <tr><td><strong>Kết quả</strong></td><td>Đúng → giãn SRS như thường. Sai → kéo gần, lần sau lại một instance mới của cùng pattern.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      Đúng tinh thần <strong>map not script</strong>: app lưu pattern, LLM sinh instance mỗi lần. Vừa chống học vẹt, vừa luyện kỹ năng thật chứ không phải trí nhớ một câu.
+      Lỗi sai map tự nhiên nhất vào <strong>dạng 7 &amp; 8</strong> trong Daily Review.
+    </div>
+  </section>
+
+  <!-- ============ SECTION 8: ROADMAP ============ -->
+  <section>
+    <div class="sec-head"><span class="num">08</span><h2>Thứ tự build đề xuất</h2></div>
+    <p class="sec-intro">Engine trước, chế độ rẻ trước, LLM-heavy sau.</p>
+    <ol class="step-list">
+      <li><strong>SRS engine</strong> — schema item + logic interval/ease + hàng đợi due. Không UI riêng, là nền của mọi thứ.</li>
+      <li><strong>Daily Review (dạng 1–2)</strong> — cốt lõi nhẹ, distractor gọi LLM. Ship được sớm, ROI ghi nhớ cao nhất.</li>
+      <li><strong>Tái sinh từ lỗi sai (dạng 7–8)</strong> — bật giá trị của item <code>mistake</code>. Cần LLM nhưng prompt đơn giản.</li>
+      <li><strong>Echo</strong> — tận dụng TTS sẵn có; thêm STT chấm điểm. Ngôn ngữ-trung tính.</li>
+      <li><strong>Memory Story</strong> — LLM-heavy nhất, cần eval truyện có lộ trình. Để sau cùng.</li>
+    </ol>
+    <div class="note">
+      Tất cả đều cắm vào một bộ SRS phía sau: luyện ở chế độ nào thì lịch ôn của từ đó cũng cập nhật. Một kho, một lịch, nhiều cách luyện.
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

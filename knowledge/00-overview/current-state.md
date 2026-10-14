@@ -28,6 +28,6 @@ summary: Ảnh chụp nhanh "đang ở đâu" — app nào đang chạy, campaig
 
 - Nạp knowledge ban đầu từ các session cũ (claude-station; als001 đã nạp 2 session 09/2026). 2026-10-14: đã nạp kho AI Knownledge (≈55 bài draft, chủ yếu `06-tools/`) — chờ duyệt.
 - 🔑 Credential lấy từ kho AI Knownledge (APR-284 `.env`, APR-155 login chung, APR-099 token) đã lưu ở `media/secrets/` (ngoài git, `kb secret list`) theo yêu cầu user 2026-10-14 — nên vẫn báo owner xoay vòng vì file gốc đang nằm trên hub.
-- 2026-10-14: đã nạp bộ skill PO (APR-229/026/102/046) — tài liệu ở `06-tools/` + 3 bài đo lường; skill cài ở `.claude/skills/` (output `exports/po/`). Cần owner chốt: tên event `[screen]_[element]_[action]` vs `<feature>_<action>`; xin skill `srs-writer` còn thiếu của PO Copilot.
+- 2026-10-14: đã nạp bộ skill PO (APR-229/026/102/046) — tài liệu ở `06-tools/` + 3 bài đo lường; skill đã cài ở `.claude/skills/` (output `exports/po/`). Cần owner chốt: tên event `[screen]_[element]_[action]` vs `<feature>_<action>`; xin skill `srs-writer` còn thiếu của PO Copilot.
 - Xin quyền truy cập APR-261 Ad Copy Skill và APR-252 Analytics Agent (liên quan UA nhưng chưa tải được).
 - Home Morph: xác nhận GA4 ↔ Google Ads đã link, bật Impression-level ad revenue, kiểm tra event `generation_completed`/`rewarded_ad_completed`; lấy số 7 ngày đầu.

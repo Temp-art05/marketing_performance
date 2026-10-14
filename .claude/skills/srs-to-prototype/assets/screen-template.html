@@ -1,0 +1,53 @@
+<!-- ============================================================
+  screen-template.html — khung mobile trống để nhân bản
+  Nhân bản block <section class="screen"> cho mỗi màn × state.
+  Thay token trong :root bằng token từ design system file của dự án.
+  Tuân thủ figma-import-contract.md: flexbox, named frame, data-fr.
+============================================================ -->
+<style>
+  :root{
+    /* === THAY BẰNG TOKEN TỪ DESIGN SYSTEM FILE === */
+    --primary:#0060CF; --primary-hover:#004FA8;
+    --bg:#F8FAFE; --surface:#FFFFFF; --border:#E1E8F5;
+    --text:#0F1B2D; --text-2:#5A6B82;
+    --success:#2FBF71; --error:#E24B4A; --warning:#C97A0C;
+    --radius:10px; --radius-card:12px;
+    --font-heading:"Space Grotesk", system-ui, sans-serif;
+    --font-body:"Figtree", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  .proto-stage{display:flex;flex-wrap:wrap;gap:24px;font-family:var(--font-body);}
+  /* mỗi màn = 1 frame Figma. KHÔNG dùng absolute cho layout. */
+  .screen{
+    width:320px;min-height:640px;background:var(--bg);
+    border-radius:28px;border:8px solid #1c1c1e;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .statusbar{height:28px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 16px;font-size:12px;color:var(--text);flex:0 0 auto;}
+  .appbar{display:flex;align-items:center;gap:8px;padding:12px 16px;color:var(--text);flex:0 0 auto;}
+  .screen-body{flex:1 1 auto;display:flex;flex-direction:column;gap:16px;padding:16px;}
+  .btn-primary{background:var(--primary);color:#fff;border:none;border-radius:var(--radius);
+    padding:14px;font-weight:500;font-size:15px;font-family:var(--font-body);}
+  .input-field{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    height:48px;padding:0 14px;font-size:15px;color:var(--text);}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);padding:16px;}
+</style>
+
+<div class="proto-stage">
+
+  <!-- ===== NHÂN BẢN KHỐI NÀY CHO MỖI MÀN × STATE ===== -->
+  <section class="screen" id="screen-NAME--default" data-fr="FR-XX">
+    <div class="statusbar"><span>9:41</span><span>▪▪▪</span></div>
+    <header class="appbar">
+      <i class="ti ti-arrow-left" aria-hidden="true"></i>
+      <span style="font-weight:500;">[Screen title]</span>
+    </header>
+    <main class="screen-body">
+      <!-- Element theo Acceptance Criteria của FR-XX -->
+      <!-- ... -->
+    </main>
+  </section>
+  <!-- ===== HẾT KHỐI NHÂN BẢN ===== -->
+
+</div>

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "po-doc/discovery-findings.schema.json",
+  "title": "Discovery Findings",
+  "description": "Cấu trúc output của workflow discovery. Mọi field required để PRD/SRS downstream có contract đầy đủ.",
+  "type": "object",
+  "version": "1.0.0",
+  "properties": {
+    "business_problem": { "type": "string", "description": "Một đoạn nêu vấn đề business gốc (KHÔNG phải solution đề xuất)." },
+    "business_goal":    { "type": "string", "description": "Mục tiêu đo được khi giải vấn đề. Gồm KPI + target + deadline nếu có." },
+    "stakeholders":     { "type": "array", "items": { "type": "string" }, "description": "Ai bị ảnh hưởng, ai quyết, ai trả tiền, ai vận hành. Role + tổ chức." },
+    "pain_points":      { "type": "array", "items": { "type": "string" }, "description": "Triệu chứng quan sát được hiện tại." },
+    "root_causes":      { "type": "array", "items": { "type": "string" }, "description": "Nguyên nhân gốc — sâu hơn pain_points 1 tầng (5-Whys)." },
+    "functional_requirements":     { "type": "array", "items": { "type": "string" }, "description": "Hệ thống phải LÀM gì. Mỗi item actionable cho dev/designer." },
+    "non_functional_requirements": { "type": "array", "items": { "type": "string" }, "description": "Tốt đến mức nào — performance, availability, security, scalability, compliance." },
+    "business_rules":   { "type": "array", "items": { "type": "string" }, "description": "Rule domain, ngưỡng, eligibility, validation. Mỗi rule testable." },
+    "constraints":      { "type": "array", "items": { "type": "string" }, "description": "Giới hạn cứng: regulatory, budget, timeline, tech stack." },
+    "risks":            { "type": "array", "items": { "type": "string" }, "description": "Điều có thể sai. Gồm gợi ý likelihood/impact nếu được." },
+    "assumptions":      { "type": "array", "items": { "type": "string" }, "description": "Điều coi là đúng mà chưa xác nhận. Bắt buộc surface để validate." },
+    "dependencies":     { "type": "array", "items": { "type": "string" }, "description": "Hệ thống/team/quy định/quyết định upstream mà việc này phụ thuộc." },
+    "open_questions":   { "type": "array", "items": { "type": "string" }, "description": "Còn chưa biết + ai cần trả lời. Không để rỗng trừ khi discovery thật sự xong." }
+  },
+  "required": [
+    "business_problem", "business_goal", "stakeholders", "pain_points", "root_causes",
+    "functional_requirements", "non_functional_requirements", "business_rules",
+    "constraints", "risks", "assumptions", "dependencies", "open_questions"
+  ]
+}

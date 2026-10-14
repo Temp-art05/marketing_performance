@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Hub — Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  (function(){try{var s=localStorage.getItem('wf-canvas');if(s==='dark')document.documentElement.classList.add('canvas-dark');}catch(e){}})();
+</script>
+<style>
+  /* ===== Frost design tokens (app screens) ===== */
+  :root{
+    --brand:#3B6CF5; --brand-light:#6BBFFF; --brand-soft:#EBF0FF; --brand-dark:#1E3A8A;
+    --reward:#F59E0B; --reward-hot:#FB923C; --reward-soft:#FFFBEB;
+    --review:#7C3AED; --review-light:#8B5CF6; --review-soft:#F3EEFF;
+    --success:#059669; --success-soft:#ECFDF5;
+    --warning:#D97706; --warning-soft:#FFFBEB;
+    --error:#DC2626; --error-soft:#FEF2F2;
+    --bg:#F8FAFE; --chat-bg:#F9FAFB; --surface:#FFFFFF; --surface-alt:#F0F4FA;
+    --border:#E0E6F0; --text:#111827; --text-2:#5B6578; --text-3:#9CA3B0;
+    --grad-brand:linear-gradient(135deg,#1E3A8A,#2563EB);
+    --grad-reward:linear-gradient(135deg,#F59E0B,#FB923C);
+    --grad-review:linear-gradient(135deg,#7C3AED,#8B5CF6);
+    --card-sh:0 1px 2px rgba(17,24,39,0.04),0 4px 16px rgba(17,24,39,0.05);
+    --disp:'Space Grotesk',system-ui,sans-serif;
+    --body:'Figtree',system-ui,sans-serif;
+    --mono:'Fira Code',ui-monospace,monospace;
+  }
+  /* ===== Deliverable canvas (doc chrome) ===== */
+  :root{ --canvas:#EAEEF6; --canvas-2:#DDE4EF; --doc-text:#1F2733; --doc-sub:#5B6578; --doc-line:#CDD6E4; --doc-surf:#FFFFFF; }
+  html.canvas-dark{ --canvas:#0E131C; --canvas-2:#161D29; --doc-text:#E8ECF3; --doc-sub:#9AA6B8; --doc-line:#27303F; --doc-surf:#161D29; }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--body);background:var(--canvas);color:var(--doc-text);padding:48px 24px 120px;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;}
+  .wrap{max-width:1180px;margin:0 auto;}
+
+  .toggle{position:fixed;top:18px;right:18px;z-index:200;width:40px;height:40px;border-radius:11px;border:1.5px solid var(--doc-line);background:var(--doc-surf);color:var(--doc-text);cursor:pointer;font-size:17px;box-shadow:var(--card-sh);}
+  .toggle:hover{border-color:var(--brand);}
+
+  /* doc header */
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--doc-sub);margin-bottom:12px;}
+  h1.doc{font-family:var(--disp);font-weight:700;font-size:38px;line-height:1.1;color:var(--doc-text);margin-bottom:16px;letter-spacing:-.01em;}
+  .lead{font-size:15.5px;color:var(--doc-sub);max-width:780px;line-height:1.6;}
+  .lead b{color:var(--doc-text);}
+  .scope{margin-top:20px;background:var(--canvas-2);border-left:3px solid var(--brand);border-radius:0 8px 8px 0;padding:13px 18px;font-size:13.5px;color:var(--doc-sub);max-width:780px;}
+  .scope b{color:var(--doc-text);}
+  header.doc{margin-bottom:46px;}
+
+  /* section heads */
+  section{margin-bottom:30px;}
+  .sec-head{display:flex;align-items:baseline;gap:13px;margin:42px 0 6px;}
+  .sec-head .num{font-family:var(--mono);font-size:12px;background:var(--canvas-2);color:var(--doc-text);padding:3px 9px;border-radius:8px;}
+  .sec-head h2{font-family:var(--disp);font-weight:600;font-size:25px;color:var(--doc-text);letter-spacing:-.01em;}
+  .sec-intro{font-size:14.5px;color:var(--doc-sub);max-width:760px;line-height:1.6;margin-bottom:22px;}
+  .sec-intro b{color:var(--doc-text);}
+
+  /* gallery row */
+  .row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;}
+  .flowstep{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;}
+  .caption{margin-top:12px;width:300px;font-size:12.5px;color:var(--doc-sub);line-height:1.45;}
+  .caption b{color:var(--doc-text);font-family:var(--disp);font-weight:600;display:block;font-size:13.5px;margin-bottom:3px;}
+  .arrow{align-self:center;color:var(--doc-sub);font-size:22px;padding:0 2px;margin-top:280px;flex-shrink:0;}
+
+  .annot{width:300px;margin-top:8px;font-size:11px;color:var(--doc-sub);font-family:var(--mono);line-height:1.5;}
+  .annot .pin{color:var(--brand);}
+
+  /* ============ PHONE ============ */
+  .phone{width:300px;height:600px;background:#0C0F14;border-radius:42px;padding:9px;box-shadow:0 12px 40px rgba(15,22,38,.28),0 2px 8px rgba(15,22,38,.2);flex-shrink:0;}
+  .screen{position:relative;width:100%;height:100%;background:var(--bg);border-radius:34px;overflow:hidden;font-family:var(--body);color:var(--text);display:flex;flex-direction:column;}
+  .island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:78px;height:20px;background:#0C0F14;border-radius:12px;z-index:30;}
+  .status{height:42px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 22px 6px;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--text);flex-shrink:0;}
+  .status .r{display:flex;gap:5px;align-items:center;font-size:11px;}
+  .body-scroll{flex:1;overflow:hidden;padding:6px 16px 0;}
+  .tabbar{height:62px;border-top:1px solid var(--border);background:var(--surface);display:flex;align-items:flex-start;justify-content:space-around;padding-top:9px;flex-shrink:0;}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:var(--text-3);font-family:var(--body);font-weight:500;}
+  .tab .ic{width:21px;height:21px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .tab.on{color:var(--brand);}
+  .tab.on .ic{background:var(--brand-soft);border-radius:8px;}
+
+  /* app type */
+  .h-title{font-family:var(--disp);font-weight:700;font-size:26px;color:var(--text);letter-spacing:-.02em;}
+  .h2{font-family:var(--disp);font-weight:600;font-size:18px;color:var(--text);}
+  .h3{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--text);}
+  .lbl{font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);}
+  .bd{font-size:13px;color:var(--text-2);line-height:1.5;}
+  .bd-s{font-size:11.5px;color:var(--text-3);}
+  .mono{font-family:var(--mono);font-size:11px;}
+
+  /* components */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--card-sh);}
+  .btn{height:46px;border-radius:11px;font-family:var(--disp);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;gap:7px;cursor:default;border:none;width:100%;}
+  .btn-pri{background:var(--brand);color:#fff;box-shadow:0 6px 16px rgba(59,108,245,.32);}
+  .btn-out{background:var(--surface);color:var(--brand);border:1.5px solid var(--brand);}
+  .btn-ghost{background:var(--surface-alt);color:var(--text-2);}
+  .btn-suc{background:var(--success);color:#fff;box-shadow:0 6px 16px rgba(5,150,105,.28);}
+  .btn-rev{background:var(--review);color:#fff;box-shadow:0 6px 16px rgba(124,58,237,.3);}
+  .btn-dis{background:var(--surface-alt);color:var(--text-3);}
+
+  .pill{display:inline-flex;align-items:center;gap:4px;font-family:var(--body);font-weight:600;font-size:10.5px;padding:4px 9px;border-radius:999px;}
+  .p-brand{background:var(--brand-soft);color:var(--brand);}
+  .p-reward{background:var(--grad-reward);color:#fff;}
+  .p-rev{background:var(--review-soft);color:var(--review);}
+  .p-suc{background:var(--success-soft);color:var(--success);}
+  .p-warn{background:var(--warning-soft);color:var(--warning);}
+
+  .chip{display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-weight:600;font-size:13px;padding:9px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface);color:var(--text);}
+  .chip.sel{border-color:var(--success);background:var(--success-soft);color:var(--success);}
+  .chip.bad{border-color:var(--error);background:var(--error-soft);color:var(--error);}
+
+  .opt{border:1.5px solid var(--border);background:var(--surface);border-radius:13px;padding:13px 15px;font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px;}
+  .opt.sel{border-color:var(--brand);background:var(--brand-soft);}
+  .opt.ok{border-color:var(--success);background:var(--success-soft);color:var(--success);font-weight:600;}
+  .opt.no{border-color:var(--error);background:var(--error-soft);color:var(--error);}
+  .opt .key{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--border);font-family:var(--mono);font-size:11px;display:flex;align-items:center;justify-content:center;color:var(--text-3);}
+
+  .feed{border-radius:14px;padding:12px 14px;font-size:12.5px;line-height:1.45;}
+  .f-suc{background:var(--success-soft);color:var(--success);}
+  .f-err{background:var(--error-soft);color:var(--error);}
+  .f-hint{background:var(--brand-soft);color:var(--brand-dark);}
+  .feed b{font-family:var(--disp);}
+
+  .audio{width:54px;height:54px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 16px rgba(59,108,245,.3);}
+  .audio.big{width:84px;height:84px;font-size:34px;}
+  .mic{width:84px;height:84px;border-radius:50%;background:var(--error);color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 0 0 8px rgba(220,38,38,.14),0 6px 18px rgba(220,38,38,.3);}
+
+  .pbar{height:7px;background:var(--surface-alt);border-radius:999px;overflow:hidden;flex:1;}
+  .pbar > i{display:block;height:100%;background:var(--brand);border-radius:999px;}
+
+  .ring{width:84px;height:84px;}
+  .lrow{display:flex;align-items:center;gap:12px;}
+  .ic-circle{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+
+  /* waveform */
+  .wave{display:flex;align-items:center;gap:2px;height:34px;}
+  .wave i{width:3px;background:var(--brand-light);border-radius:2px;}
+  .wave.you i{background:var(--success);}
+  .wave.muted i{background:var(--text-3);opacity:.5;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0 4px;font-size:12px;color:var(--doc-sub);}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .sw{width:16px;height:14px;border-radius:4px;border:1px solid var(--doc-line);}
+
+  .mapnote{background:var(--doc-surf);border:1px solid var(--doc-line);border-radius:12px;padding:16px 18px;font-size:13px;color:var(--doc-sub);line-height:1.6;max-width:820px;box-shadow:var(--card-sh);}
+  .mapnote b{color:var(--doc-text);}
+  .mapnote code{font-family:var(--mono);font-size:.85em;background:var(--canvas-2);padding:1px 6px;border-radius:5px;color:var(--doc-text);}
+</style>
+</head>
+<body>
+<button class="toggle" onclick="(function(){var d=document.documentElement.classList.toggle('canvas-dark');try{localStorage.setItem('wf-canvas',d?'dark':'light');}catch(e){}})()">◐</button>
+
+<div class="wrap">
+  <header class="doc">
+    <div class="eyebrow">Interact · Practice Hub · Wireframes v0.1 · Frost Design System</div>
+    <h1 class="doc">Practice Hub — Wireframes 3 tính năng</h1>
+    <p class="lead">Full flow cho <b>Daily Review</b> (Spaced Repetition), <b>Memory Story</b> (Loci), <b>Echo</b> (Shadowing) — dựng đúng token Frost: brand <code>#3B6CF5</code>, review <code>#7C3AED</code>, reward gradient cho celebration, font Space Grotesk + Figtree + Fira Code, khung iPhone 14 Pro. Nội dung từng màn suy ra từ pattern các app SRS/shadowing thực tế.</p>
+    <div class="scope"><b>Scope:</b> mid-fi wireframe — layout, flow, component &amp; copy thật theo design system. Chưa phải final visual; chưa gồm micro-animation, empty/error edge states ngoài các state minh hoạ, hay onboarding lần đầu. Nút bấm trong mockup không tương tác (đây là ảnh tĩnh). Toggle góc phải chỉ đổi nền trang trình bày — app MVP không có dark mode.</div>
+  </header>
+
+  <!-- ============ 00 NAV MAP ============ -->
+  <section>
+    <div class="sec-head"><span class="num">00</span><h2>Practice tab nằm ở đâu</h2></div>
+    <p class="sec-intro">Tab <b>Practice</b> hiện tại tổ chức theo <b>nguồn</b> (Words / Course Concept / Grammatical Mistake). Mình thêm một lớp trên: <b>Daily Review</b> làm CTA chính (SRS đẩy từ cần ôn), và 2 <b>chế độ luyện</b> Memory Story + Echo. Phần "Your words" giữ nguyên để duyệt/luyện có chủ đích theo nguồn.</p>
+    <div class="mapnote">
+      <b>Daily Review</b> = vào thẳng session SRS trộn nhiều dạng bài (xem §01).
+      <b>Memory Story / Echo</b> = chọn chế độ rồi mới chạy (§02, §03).
+      <b>Words / Course Concept / Grammatical Mistake</b> = 3 nguồn của kho — bấm vào để xem &amp; luyện riêng từng nhóm.
+      Cả 3 chế độ luyện đều chấm ngược về một lịch SRS chung.
+    </div>
+  </section>
+
+  <!-- ============ 01 DAILY REVIEW ============ -->
+  <section>
+    <div class="sec-head"><span class="num">01</span><h2>Daily Review · Spaced Repetition</h2></div>
+    <p class="sec-intro">SRS chọn ~10–15 từ tới hạn, mỗi từ random một dạng bài (trong 8 dạng đã có). User <b>nhớ trước → lật đáp án sau</b> (active recall). Đúng → giãn lịch; sai → kéo gần &amp; xếp lại trong session.</p>
+
+    <div class="row">
+      <!-- A1 HUB -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 14px;">
+              <span class="h-title">Practice</span>
+              <span class="pill p-reward">👑 Premium</span>
+            </div>
+            <!-- hero -->
+            <div style="background:var(--grad-brand);border-radius:18px;padding:16px;color:#fff;box-shadow:0 8px 22px rgba(30,58,138,.3);">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-family:var(--body);font-weight:700;font-size:9.5px;letter-spacing:.1em;opacity:.85;">DAILY REVIEW</span>
+                <span style="font-family:var(--body);font-weight:600;font-size:11px;background:rgba(255,255,255,.18);padding:3px 9px;border-radius:999px;">🔥 14</span>
+              </div>
+              <div style="font-family:var(--disp);font-weight:700;font-size:22px;margin:8px 0 2px;">12 words due</div>
+              <div style="font-size:12px;opacity:.9;margin-bottom:14px;">~5 min · keep your streak</div>
+              <div style="background:#fff;color:var(--brand);height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:14px;">Start review</div>
+            </div>
+            <!-- modes -->
+            <div class="lbl" style="margin:18px 0 9px;">Practice modes</div>
+            <div class="card" style="padding:12px;display:flex;gap:11px;align-items:center;margin-bottom:9px;">
+              <div class="ic-circle" style="background:var(--review-soft);">📖</div>
+              <div style="flex:1;"><div class="h3" style="color:var(--review);">Memory Story</div><div class="bd-s">Turn 8 due words into a story</div></div>
+              <span class="pill p-rev">8</span>
+            </div>
+            <div class="card" style="padding:12px;display:flex;gap:11px;align-items:center;">
+              <div class="ic-circle" style="background:var(--brand-soft);">🎙️</div>
+              <div style="flex:1;"><div class="h3" style="color:var(--brand);">Echo</div><div class="bd-s">Shadow &amp; score your speech</div></div>
+              <span class="pill p-brand">6</span>
+            </div>
+            <!-- sources -->
+            <div class="lbl" style="margin:18px 0 9px;">Your words</div>
+            <div class="card" style="padding:11px 13px;display:flex;align-items:center;gap:11px;margin-bottom:8px;">
+              <div class="ic-circle" style="background:var(--surface-alt);">📚</div>
+              <div style="flex:1;"><div class="h3">Words</div><div class="bd-s">12 words</div></div><span class="bd-s">›</span>
+            </div>
+            <div class="card" style="padding:11px 13px;display:flex;align-items:center;gap:11px;margin-bottom:8px;">
+              <div class="ic-circle" style="background:var(--surface-alt);">🎓</div>
+              <div style="flex:1;"><div class="h3">Course Concept</div><div class="bd-s">12 concepts · 3 lessons</div></div><span class="bd-s">›</span>
+            </div>
+            <div class="card" style="padding:11px 13px;display:flex;align-items:center;gap:11px;">
+              <div class="ic-circle" style="background:var(--surface-alt);">📝</div>
+              <div style="flex:1;"><div class="h3">Grammatical Mistake</div><div class="bd-s">8 sentences</div></div><span class="bd-s">›</span>
+            </div>
+          </div>
+          <div class="tabbar">
+            <div class="tab"><span class="ic">🏠</span>Home</div>
+            <div class="tab"><span class="ic">🎭</span>Role Play</div>
+            <div class="tab on"><span class="ic">📘</span>Practice</div>
+            <div class="tab"><span class="ic">📈</span>Progress</div>
+            <div class="tab"><span class="ic">👤</span>Profile</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>A1 · Practice hub (redesign)</b>Hero = Daily Review (SRS). Modes + sources phía dưới. Tab Practice active.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- B2 MC neutral -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;">
+              <span style="font-size:18px;color:var(--text-3);">✕</span>
+              <div class="pbar"><i style="width:17%;"></i></div>
+              <span class="mono" style="color:var(--text-3);">2/12</span>
+            </div>
+            <div class="lbl">Chọn nghĩa đúng</div>
+            <div class="card" style="padding:18px;text-align:center;margin:12px 0 18px;">
+              <div class="audio" style="margin:0 auto 12px;">🔊</div>
+              <div class="h2" style="font-size:24px;">diligent</div>
+              <div class="mono" style="color:var(--text-3);margin-top:4px;">/ˈdɪlɪdʒənt/</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <div class="opt sel"><span class="key">A</span>siêng năng, cần cù</div>
+              <div class="opt"><span class="key">B</span>lười biếng</div>
+              <div class="opt"><span class="key">C</span>trung thực</div>
+              <div class="opt"><span class="key">D</span>nhút nhát</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">Check</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>B2 · Câu hỏi (chọn nghĩa)</b>Active recall: nghe/đọc từ → tự nhớ → chọn. Distractor cùng loại từ (LLM sinh).</div>
+        <div class="annot"><span class="pin">⌖</span> progress bar + nút ✕ thoát · audio = TTS sẵn có · 4 đáp án dạng <code>.opt</code></div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- B3 correct -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;">
+              <span style="font-size:18px;color:var(--text-3);">✕</span>
+              <div class="pbar"><i style="width:17%;"></i></div>
+              <span class="mono" style="color:var(--text-3);">2/12</span>
+            </div>
+            <div class="lbl">Chọn nghĩa đúng</div>
+            <div class="card" style="padding:18px;text-align:center;margin:12px 0 18px;">
+              <div class="audio" style="margin:0 auto 12px;">🔊</div>
+              <div class="h2" style="font-size:24px;">diligent</div>
+              <div class="mono" style="color:var(--text-3);margin-top:4px;">/ˈdɪlɪdʒənt/</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <div class="opt ok"><span class="key" style="border-color:var(--success);color:var(--success);">✓</span>siêng năng, cần cù</div>
+              <div class="opt" style="opacity:.5;"><span class="key">B</span>lười biếng</div>
+              <div class="opt" style="opacity:.5;"><span class="key">C</span>trung thực</div>
+              <div class="opt" style="opacity:.5;"><span class="key">D</span>nhút nhát</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="feed f-suc" style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;">
+              <span><b>✓ Correct!</b> &nbsp;+15 XP</span><span class="mono">streak +1</span>
+            </div>
+            <div class="btn btn-suc" style="margin-bottom:16px;">Continue</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>B3 · Feedback đúng</b>Banner success + XP. SRS giãn interval từ này. Nút Continue màu success.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- B4 gap-fill error -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;">
+              <span style="font-size:18px;color:var(--text-3);">✕</span>
+              <div class="pbar"><i style="width:42%;"></i></div>
+              <span class="mono" style="color:var(--text-3);">5/12</span>
+            </div>
+            <div class="lbl">Điền vào chỗ trống</div>
+            <!-- exercise card amber -->
+            <div style="border:2px solid var(--reward);background:var(--surface);border-radius:14px;padding:14px;margin:12px 0 16px;box-shadow:var(--card-sh);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+                <span class="pill p-warn">Gap-filling</span><span class="mono" style="color:var(--text-3);">5/12</span>
+              </div>
+              <div style="font-size:16px;line-height:1.7;color:var(--text);">"I <span style="border-bottom:2px solid var(--error);color:var(--error);font-weight:600;padding:0 4px;">want</span> to have the spaghetti, please."</div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="chip bad">want</span>
+              <span class="chip">'d like</span>
+              <span class="chip">need</span>
+              <span class="chip">am</span>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="feed f-err" style="margin-bottom:10px;"><b>✗ Not quite</b> — ở nhà hàng, lịch sự hơn: dùng <b>"'d like"</b>. ("want" nghe hơi cộc.)</div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">Continue</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>B4 · Gap-fill + feedback sai</b>Dùng đúng exercise-card viền amber &amp; answer-chips của Frost. Sai → reset SRS, xếp lại.</div>
+        <div class="annot"><span class="pin">⌖</span> đây cũng là dạng dùng cho <code>error_pattern</code> — AI sinh câu mới cùng lỗi</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- B5 listen choose -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;">
+              <span style="font-size:18px;color:var(--text-3);">✕</span>
+              <div class="pbar"><i style="width:67%;"></i></div>
+              <span class="mono" style="color:var(--text-3);">8/12</span>
+            </div>
+            <div class="lbl">Nghe và chọn từ</div>
+            <div class="card" style="padding:22px 16px;text-align:center;margin:12px 0 18px;">
+              <div class="audio big" style="margin:0 auto 14px;">🔊</div>
+              <div class="wave" style="justify-content:center;">
+                <i style="height:8px;"></i><i style="height:18px;"></i><i style="height:30px;"></i><i style="height:14px;"></i><i style="height:26px;"></i><i style="height:10px;"></i><i style="height:22px;"></i><i style="height:32px;"></i><i style="height:12px;"></i><i style="height:20px;"></i><i style="height:8px;"></i>
+              </div>
+              <div class="bd-s" style="margin-top:10px;">Tap to replay</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;">
+              <div class="opt" style="justify-content:center;">harbor</div>
+              <div class="opt sel" style="justify-content:center;">harvest</div>
+              <div class="opt" style="justify-content:center;">harsh</div>
+              <div class="opt" style="justify-content:center;">hammer</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">Check</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>B5 · Nghe &amp; chọn</b>Audio lớn + waveform. Distractor gần âm (minimal pairs) để luyện nghe phân biệt.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- B6 type word -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;">
+              <span style="font-size:18px;color:var(--text-3);">✕</span>
+              <div class="pbar"><i style="width:83%;"></i></div>
+              <span class="mono" style="color:var(--text-3);">10/12</span>
+            </div>
+            <div class="lbl">Viết lại bằng tiếng Anh</div>
+            <div class="card" style="padding:16px;margin:12px 0 14px;">
+              <div class="bd-s" style="margin-bottom:6px;">Dịch sang tiếng Anh</div>
+              <div class="h2" style="font-size:19px;">siêng năng, cần cù</div>
+            </div>
+            <div style="border:1.5px solid var(--brand);background:var(--surface);border-radius:12px;padding:13px 14px;display:flex;align-items:center;gap:8px;">
+              <span style="color:var(--brand);">✏️</span>
+              <span style="font-size:15px;color:var(--text);">diligent<span style="color:var(--brand);">|</span></span>
+            </div>
+            <div class="feed f-hint" style="margin-top:12px;">💡 <b>AI Tutor Tip</b> — bắt đầu bằng "dili-", 9 chữ cái.</div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">Check</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>B6 · Gõ lại từ (recall mạnh nhất)</b>Input field focused theo Frost. Hint dạng AI Tutor Tip khi cần.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- B7 complete -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;text-align:center;">
+            <div style="background:var(--grad-reward);border-radius:18px;padding:24px 16px;color:#fff;margin:14px 0 18px;box-shadow:0 8px 22px rgba(245,158,11,.32);">
+              <div style="font-size:46px;">🎉</div>
+              <div style="font-family:var(--disp);font-weight:700;font-size:22px;margin-top:6px;">Review complete!</div>
+              <div style="font-size:12.5px;opacity:.95;margin-top:4px;">12 words reviewed</div>
+            </div>
+            <div style="display:flex;gap:10px;margin-bottom:10px;">
+              <div class="card" style="flex:1;padding:13px;"><div class="mono" style="color:var(--success);font-size:18px;">92%</div><div class="bd-s">accuracy</div></div>
+              <div class="card" style="flex:1;padding:13px;"><div class="mono" style="color:var(--reward);font-size:18px;">+180</div><div class="bd-s">XP</div></div>
+              <div class="card" style="flex:1;padding:13px;"><div class="mono" style="color:var(--text);font-size:18px;">🔥15</div><div class="bd-s">streak</div></div>
+            </div>
+            <div class="card" style="padding:13px;text-align:left;display:flex;align-items:center;gap:10px;">
+              <span style="font-size:18px;">📅</span>
+              <div class="bd" style="font-size:12px;">Lần ôn kế: <b style="color:var(--text);">8 từ</b> vào ngày mai.</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-out" style="margin-bottom:9px;">Practice more</div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">Done</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>B7 · Hoàn thành session</b>Reward gradient celebration. Stats + lịch ôn kế (gắn SRS). 2 nút thoát/luyện tiếp.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 MEMORY STORY ============ -->
+  <section>
+    <div class="sec-head"><span class="num">02</span><h2>Memory Story · Method of Loci</h2></div>
+    <p class="sec-intro">Gom ~8 từ tới hạn → LLM dệt thành truyện <b>có lộ trình không gian</b> (đi qua từng địa điểm, mỗi nơi cài 1 từ). Pha 1 đọc/nghe truyện đầy đủ → Pha 2 ẩn từ, nhớ lại <b>theo đúng chuỗi vị trí</b>.</p>
+
+    <div class="row">
+      <!-- C1 intro -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 16px;"><span style="font-size:18px;color:var(--text-3);">‹</span><span class="h2" style="color:var(--review);">Memory Story</span></div>
+            <div class="card" style="padding:16px;margin-bottom:16px;border-color:var(--review-light);">
+              <div class="bd" style="font-size:13px;">Mình sẽ ghép <b style="color:var(--text);">8 từ tới hạn</b> của bạn thành một chuyến đi qua các căn phòng. Mỗi nơi gắn một từ — nhớ theo đường đi sẽ dễ hơn nhớ rời.</div>
+            </div>
+            <div class="lbl" style="margin-bottom:9px;">8 words ready</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="chip" style="font-size:12px;">diligent</span><span class="chip" style="font-size:12px;">sink</span>
+              <span class="chip" style="font-size:12px;">harvest</span><span class="chip" style="font-size:12px;">plot</span>
+              <span class="chip" style="font-size:12px;">harbor</span><span class="chip" style="font-size:12px;">whisper</span>
+              <span class="chip" style="font-size:12px;">lantern</span><span class="chip" style="font-size:12px;">spill</span>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-rev" style="margin-bottom:16px;">✨ Create my story</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>C1 · Intro / preview</b>Xem trước 8 từ sẽ vào truyện. Accent review-purple cho cả tính năng.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- C2 story reading -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 12px;"><span style="font-size:18px;color:var(--text-3);">‹</span><span class="h2" style="color:var(--review);">The Quiet House</span><span style="flex:1;"></span><div class="audio" style="width:38px;height:38px;font-size:16px;">🔊</div></div>
+            <div style="display:flex;gap:6px;margin-bottom:12px;">
+              <span class="pill p-rev">📍 4 stops</span><span class="pill" style="background:var(--surface-alt);color:var(--text-2);">read</span>
+            </div>
+            <div class="card" style="padding:16px;overflow:hidden;">
+              <div style="font-size:13.5px;line-height:1.85;color:var(--text);">
+                <span class="pill p-rev" style="font-size:9px;">1 · KITCHEN</span><br>
+                You step into the <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">sink</b> area — a robot scrubs pans, so <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">diligent</b> it never stops.<br><br>
+                <span class="pill p-rev" style="font-size:9px;">2 · GARDEN</span><br>
+                Outside, farmers <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">harvest</b> a small <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">plot</b> of corn under the sun.<br><br>
+                <span class="pill p-rev" style="font-size:9px;">3 · HARBOR</span><br>
+                Down at the <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">harbor</b>, sailors <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">whisper</b> by a glowing <b style="background:var(--review-soft);color:var(--review);padding:0 3px;border-radius:3px;">lantern</b>…
+              </div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-rev" style="margin:14px 0 16px;">I'm ready to recall</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>C2 · Pha 1 — đọc truyện</b>Từ đích highlight review-soft, gắn vào địa điểm đánh số. Có nút nghe cả truyện.</div>
+        <div class="annot"><span class="pin">⌖</span> ràng buộc LLM: thứ tự địa điểm = thứ tự từ; mỗi stop đúng 1 từ</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- C3 recall -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 12px;">
+              <span style="font-size:18px;color:var(--text-3);">✕</span>
+              <div class="pbar"><i style="width:25%;background:var(--review);"></i></div>
+              <span class="mono" style="color:var(--text-3);">2/8</span>
+            </div>
+            <div class="pill p-rev" style="align-self:flex-start;margin-bottom:10px;">📍 Stop 1 · KITCHEN</div>
+            <div class="card" style="padding:16px;margin-bottom:16px;">
+              <div style="font-size:14.5px;line-height:1.8;color:var(--text);">A robot scrubs pans by the <b style="color:var(--review);">_____</b>, so <b style="background:var(--review-soft);color:var(--review);padding:0 4px;border-radius:4px;">_____</b> it never stops.</div>
+            </div>
+            <div class="bd-s" style="margin-bottom:8px;">Nhớ lại 2 từ ở căn bếp:</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="chip sel">sink</span>
+              <span class="chip" style="border-style:dashed;color:var(--text-3);">tap ô thứ 2…</span>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="feed f-hint" style="margin-bottom:10px;">💡 Cần gợi ý? Nghe lại đoạn này.</div>
+            <div class="btn btn-rev" style="margin-bottom:16px;">Next stop →</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>C3 · Pha 2 — nhớ lại theo chuỗi</b>Từ bị ẩn, đi từng stop theo lộ trình. Có escape valve "nghe lại".</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- C4 result -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;text-align:center;">
+            <div style="background:var(--grad-review);border-radius:18px;padding:22px 16px;color:#fff;margin:14px 0 16px;box-shadow:0 8px 22px rgba(124,58,237,.3);">
+              <div style="font-size:40px;">🧠</div>
+              <div style="font-family:var(--disp);font-weight:700;font-size:21px;margin-top:4px;">6 / 8 recalled</div>
+              <div style="font-size:12px;opacity:.95;margin-top:3px;">Nice walk through the house!</div>
+            </div>
+            <div class="card" style="padding:8px 14px;text-align:left;">
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;"><span>sink</span><span style="color:var(--success);">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;"><span>diligent</span><span style="color:var(--success);">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;"><span>harvest</span><span style="color:var(--success);">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;"><span>plot</span><span style="color:var(--error);">✗</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;font-size:13px;"><span>whisper</span><span style="color:var(--error);">✗</span></div>
+            </div>
+            <div class="feed f-hint" style="margin-top:12px;text-align:left;">2 từ chưa nhớ sẽ được <b>ôn lại sớm hơn</b>.</div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-rev" style="margin-bottom:16px;">Done</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>C4 · Kết quả</b>Điểm nhớ + danh sách ✓/✗. Từ sai → SRS kéo lịch gần lại.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 ECHO ============ -->
+  <section>
+    <div class="sec-head"><span class="num">03</span><h2>Echo · Shadowing</h2></div>
+    <p class="sec-intro">Nghe câu mẫu (chậm/thường) → nhại lại ngay sau ~1 nhịp → chấm độ khớp phát âm/nhịp điệu, highlight từ yếu. Lặp đến khi đạt. Câu lấy từ <code>example</code> trong kho; từ tự lưu thì AI sinh câu + TTS trước.</p>
+
+    <div class="row">
+      <!-- D1 intro -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;"><span style="font-size:18px;color:var(--text-3);">‹</span><span class="h2" style="color:var(--brand);">Echo</span></div>
+            <div class="bd" style="margin-bottom:14px;">Nhại theo người bản xứ, bám sát nhịp. 6 câu hôm nay:</div>
+            <div class="card" style="padding:6px 14px;">
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);"><span class="audio" style="width:32px;height:32px;font-size:13px;">▶</span><div style="flex:1;font-size:13px;">I'd like a coffee, please.</div><span class="bd-s">—</span></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);"><span class="audio" style="width:32px;height:32px;font-size:13px;">▶</span><div style="flex:1;font-size:13px;">She works very hard.</div><span class="p-suc pill">88%</span></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:11px 0;"><span class="audio" style="width:32px;height:32px;font-size:13px;">▶</span><div style="flex:1;font-size:13px;">The harbor was quiet.</div><span class="bd-s">—</span></div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">🎙️ Start shadowing</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>D1 · Danh sách câu</b>Mỗi câu có audio + điểm lần trước. Câu đã đạt hiện %.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- D2 listen -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;"><span style="font-size:18px;color:var(--text-3);">✕</span><div class="pbar"><i style="width:16%;"></i></div><span class="mono" style="color:var(--text-3);">1/6</span></div>
+            <div class="lbl">Bước 1 — Nghe</div>
+            <div class="card" style="padding:18px;margin:12px 0 16px;text-align:center;">
+              <div class="h2" style="font-size:19px;line-height:1.5;">"I'd like a coffee,<br>please."</div>
+              <div class="mono" style="color:var(--text-3);margin-top:8px;font-size:10px;">/aɪd laɪk ə ˈkɒf.i pliːz/</div>
+            </div>
+            <div class="card" style="padding:16px;text-align:center;">
+              <div class="wave" style="justify-content:center;margin-bottom:14px;">
+                <i style="height:10px;"></i><i style="height:24px;"></i><i style="height:34px;"></i><i style="height:16px;"></i><i style="height:28px;"></i><i style="height:12px;"></i><i style="height:30px;"></i><i style="height:20px;"></i><i style="height:8px;"></i><i style="height:22px;"></i><i style="height:14px;"></i><i style="height:26px;"></i>
+              </div>
+              <div style="display:flex;gap:9px;justify-content:center;align-items:center;">
+                <span class="chip" style="padding:7px 12px;font-size:11px;">0.75×</span>
+                <div class="audio big">▶</div>
+                <span class="chip" style="padding:7px 12px;font-size:11px;border-color:var(--brand);color:var(--brand);">1×</span>
+              </div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">My turn →</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>D2 · Nghe câu mẫu</b>Câu + phiên âm, waveform bản gốc, đổi tốc độ 0.75× / 1×.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- D3 record -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lrow" style="margin:4px 0 14px;"><span style="font-size:18px;color:var(--text-3);">✕</span><div class="pbar"><i style="width:16%;"></i></div><span class="mono" style="color:var(--text-3);">1/6</span></div>
+            <div class="lbl" style="color:var(--error);">Bước 2 — Nhại lại</div>
+            <div class="card" style="padding:18px;margin:12px 0 18px;text-align:center;">
+              <div class="h2" style="font-size:19px;line-height:1.5;">"I'd like a coffee,<br>please."</div>
+            </div>
+            <div style="text-align:center;">
+              <div class="wave" style="justify-content:center;margin-bottom:8px;">
+                <i style="height:14px;background:var(--error);"></i><i style="height:28px;background:var(--error);"></i><i style="height:20px;background:var(--error);"></i><i style="height:32px;background:var(--error);"></i><i style="height:12px;background:var(--error);"></i><i style="height:24px;background:var(--error);"></i><i style="height:18px;background:var(--error);"></i>
+              </div>
+              <div class="mono" style="color:var(--error);font-size:11px;margin-bottom:16px;">● REC 0:02</div>
+              <div class="mic" style="margin:0 auto;">⏹</div>
+              <div class="bd-s" style="margin-top:12px;">Bám ngay sau giọng mẫu — đừng dịch.</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-ghost" style="margin-bottom:16px;">Stop &amp; score</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>D3 · Ghi âm</b>Mic state đỏ pulse + waveform mình đang nói + timer. Stop để chấm.</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- D4 score -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;">
+            <div class="lbl" style="margin:4px 0 10px;">Kết quả</div>
+            <div class="card" style="padding:16px;text-align:center;margin-bottom:14px;">
+              <svg class="ring" viewBox="0 0 84 84" style="margin:0 auto;">
+                <circle cx="42" cy="42" r="36" fill="none" stroke="var(--surface-alt)" stroke-width="9"/>
+                <circle cx="42" cy="42" r="36" fill="none" stroke="var(--success)" stroke-width="9" stroke-linecap="round" stroke-dasharray="226" stroke-dashoffset="32" transform="rotate(-90 42 42)"/>
+                <text x="42" y="40" text-anchor="middle" font-family="Fira Code" font-size="17" font-weight="600" fill="var(--text)">86%</text>
+                <text x="42" y="55" text-anchor="middle" font-family="Figtree" font-size="8" fill="var(--text-3)">match</text>
+              </svg>
+              <div style="font-size:16px;margin-top:8px;line-height:1.6;">"I'd like a
+                <b style="background:var(--warning-soft);color:var(--warning);padding:0 4px;border-radius:4px;">coffee</b>, please."</div>
+              <div class="bd-s" style="margin-top:6px;">Compare native ↔ you</div>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+                <div class="wave muted" style="justify-content:center;"><i style="height:10px;"></i><i style="height:22px;"></i><i style="height:30px;"></i><i style="height:14px;"></i><i style="height:26px;"></i><i style="height:18px;"></i><i style="height:28px;"></i></div>
+                <div class="wave you" style="justify-content:center;"><i style="height:12px;"></i><i style="height:18px;"></i><i style="height:32px;"></i><i style="height:10px;"></i><i style="height:30px;"></i><i style="height:14px;"></i><i style="height:24px;"></i></div>
+              </div>
+            </div>
+            <div class="feed f-hint">💡 <b>"coffee"</b> — nhấn âm đầu: <b>CO</b>-ffee, đừng kéo dài âm cuối.</div>
+            <div style="flex:1;"></div>
+            <div style="display:flex;gap:9px;margin-bottom:16px;">
+              <div class="btn btn-out" style="flex:1;">↻ Try again</div>
+              <div class="btn btn-pri" style="flex:1;">Next →</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="caption"><b>D4 · Chấm điểm</b>Ring % + highlight từ yếu (amber) + so waveform native↔you + tip. Try again / Next.</div>
+        <div class="annot"><span class="pin">⌖</span> chấm theo độ gần phát âm, không string-match cứng</div>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <!-- D5 result -->
+      <div class="flowstep">
+        <div class="phone"><div class="screen">
+          <div class="island"></div>
+          <div class="status"><span>9:41</span><span class="r">📶 &nbsp;🔋</span></div>
+          <div class="body-scroll" style="display:flex;flex-direction:column;text-align:center;">
+            <div style="background:var(--grad-brand);border-radius:18px;padding:22px 16px;color:#fff;margin:14px 0 16px;box-shadow:0 8px 22px rgba(30,58,138,.3);">
+              <div style="font-size:40px;">🎙️</div>
+              <div style="font-family:var(--disp);font-weight:700;font-size:21px;margin-top:4px;">Echo done!</div>
+              <div style="font-size:12px;opacity:.95;margin-top:3px;">6 lines · avg 88%</div>
+            </div>
+            <div style="display:flex;gap:10px;margin-bottom:12px;">
+              <div class="card" style="flex:1;padding:13px;"><div class="mono" style="color:var(--success);font-size:18px;">88%</div><div class="bd-s">avg match</div></div>
+              <div class="card" style="flex:1;padding:13px;"><div class="mono" style="color:var(--reward);font-size:18px;">+120</div><div class="bd-s">XP</div></div>
+            </div>
+            <div class="card" style="padding:13px;text-align:left;display:flex;gap:10px;align-items:center;">
+              <span style="font-size:18px;">🎯</span>
+              <div class="bd" style="font-size:12px;">Âm cần luyện thêm: <b style="color:var(--text);">/f/ cuối từ</b> &amp; trọng âm 2 âm tiết.</div>
+            </div>
+            <div style="flex:1;"></div>
+            <div class="btn btn-pri" style="margin-bottom:16px;">Done</div>
+          </div>
+        </div></div>
+        <div class="caption"><b>D5 · Tổng kết</b>Điểm TB + XP + chẩn đoán âm yếu (gợi ý cho session sau). Bám nghiên cứu phụ âm cuối của người Việt.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- legend -->
+  <section style="margin-top:46px;">
+    <div class="legend">
+      <span><span class="sw" style="background:#3B6CF5;"></span> brand · Daily Review / chính</span>
+      <span><span class="sw" style="background:#7C3AED;"></span> review · Memory Story</span>
+      <span><span class="sw" style="background:#6BBFFF;"></span> brand-light · Echo audio</span>
+      <span><span class="sw" style="background:#059669;"></span> success · đúng / khớp</span>
+      <span><span class="sw" style="background:#DC2626;"></span> error · sai / recording</span>
+      <span><span class="sw" style="background:linear-gradient(135deg,#F59E0B,#FB923C);"></span> reward gradient · celebration</span>
+    </div>
+  </section>
+</div>
+</body>
+</html>
