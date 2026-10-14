@@ -14,6 +14,7 @@ sources:
   - "Google Ads Help — Best practices guide: Setting up your App campaigns: https://support.google.com/google-ads/answer/6167162 (truy cập 2026-10-14)"
   - "Google Ads Help — Set a recommended initial Target ROAS for your App campaigns: https://support.google.com/google-ads/answer/15995101 (truy cập 2026-10-14)"
   - "Google Ads Help — About tROAS for ad revenue (ARO): https://support.google.com/google-ads/answer/13799577 (truy cập 2026-10-14)"
+  - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -24,6 +25,8 @@ related:
   - 04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md
   - 05-optimization/danh-gia-hieu-qua-social-organic.md
   - 05-optimization/hau-kiem-version-app-nguong-verdict.md
+  - 04-measurement/tracking-spec-va-metrics-plan-cho-feature.md
+  - 05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md
 summary: Định nghĩa + công thức + cách đọc + bẫy của các chỉ số UA (CPI, CPA, CTR, CVR, IPM, ROAS, payback) và monetization (LTV, ARPU, ARPDAU, eCPM, match/show rate, imps/DAU, retention).
 ---
 
@@ -101,6 +104,15 @@ Công thức LTV là xấp xỉ (giả định ARPDAU của user mới ≈ ARPDA
 - **Retention bằng SQL trên GA4 BigQuery** (cohort `first_open`, active đúng ngày X+n — khớp định nghĩa classic ở mục 3), cùng DAU, engagement rate, DAU/MAU: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](../04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md).
 - **Churn D0** (mktpro nội bộ): tỉ lệ user mới không quay lại sau ngày cài — dùng khi so version, xem [hậu kiểm version app](../05-optimization/hau-kiem-version-app-nguong-verdict.md). Định nghĩa chính xác theo mktpro chưa có tài liệu.
 - **ER (engagement rate) social organic** — mỗi nền tảng một mẫu số: Facebook Page = (reactions + comments + shares) ÷ **reach**; LinkedIn = (… + clicks/follows) ÷ **impressions**; TikTok = (likes + comments + shares + saves) ÷ **views**. Không so ER giữa các kênh. Chi tiết và bẫy export Meta Business Suite: [đánh giá social organic](../05-optimization/danh-gia-hieu-qua-social-organic.md).
+- **Stickiness** = DAU ÷ MAU — user hằng tháng mở app bao nhiêu phần ngày.
+- **Habit rate (tuần đầu)** = % user mới mở app ở ≥ 3 (hoặc ≥ 5) ngày khác nhau trong 7 ngày đầu — tín hiệu thói quen sớm hơn D30.
+- **Tỉ lệ D7/D1** = D7 retention ÷ D1 retention — tách "onboarding tệ" (D1 thấp) khỏi "giá trị lâu dài tệ" (D7/D1 thấp).
+- **Activation rate (D0)** = % install làm đủ hành động cốt lõi trong session đầu (Home Morph: có thể là `generation_completed`).
+- **K-factor** = số lời mời/user × tỉ lệ chuyển đổi lời mời — cho feature referral.
+- **Counter-metric**: chỉ số theo dõi nhưng không tối ưu, đi kèm primary metric để tránh tối ưu một chiều (vd tăng ad load → theo dõi retention, `app_remove`).
+- **North Star Metric (NSM)**: một chỉ số đại diện giá trị dài hạn của sản phẩm. **Vanity metric**: tổng download/đăng ký/page view — tăng mãi, không nói lên giá trị.
+- Định nghĩa "quay lại" khác nhau giữa tool (bất kỳ event / `session_start` / `user_engagement`) → cùng "D7 classic" vẫn lệch số. Đọc retention cả hình dạng đường cong, xem [khung phân tích](../05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md).
+*(Nguồn mục này: skill po-metrics-analysis APR-102/APR-026, nội bộ. Benchmark game farming trong nguồn không có trích dẫn nên không chép.)*
 
 ## Việc tiếp theo
 

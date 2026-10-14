@@ -1,6 +1,6 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 76 tài liệu (0 draft), cập nhật gần nhất 2026-10-14.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 84 tài liệu (0 draft), cập nhật gần nhất 2026-10-14.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
@@ -41,12 +41,15 @@
 - `04-measurement/firebase-setup-link-google-ads-admob.md` — Các bước tích hợp Firebase SDK Android, link Firebase/GA4 với Google Ads và AdMob (quyền cần có, cả khi khác tài khoản Google), bật impression-level ad revenue, import first_open làm conversion và các lỗi hay gặp. `[playbook · verified · 2026-10-14]`
 - `04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md` — Cách tính DAU, new users, sessions, engagement rate, retention D1/D7 (cohort first_open), DAU/MAU từ bảng GA4 export events_*; quy tắc count→%, rate→pp; so d/7d/~2 tuần; ngưỡng cờ nội bộ. `[reference · verified · 2026-10-14]`
 - `04-measurement/mmp-tong-quan.md` — MMP là gì (attribution trung lập, dedup giữa các network, postback, ad revenue/ILRD, chống fraud), SAN/SRN hoạt động thế nào, khi nào cần MMP thay vì chỉ Firebase, và lưu ý khi dùng song song cho Google tROAS. `[concept · verified · 2026-10-14]`
+- `04-measurement/prd-success-metrics-va-yeu-cau-ua.md` — Cách PRD nội bộ định nghĩa success metric (SMART, baseline, counter-metric, ngưỡng Scale/Iterate/Kill chốt trước launch), và checklist những gì UA cần chen vào PRD trước khi build. `[concept · verified · 2026-10-14]`
+- `04-measurement/tracking-spec-va-metrics-plan-cho-feature.md` — Quy ước tên event Firebase nội bộ ([screen]_[element]_[action], 7 loại), catalog param, giới hạn, khung Metrics Plan (primary/secondary/counter, ngưỡng Scale/Iterate/Kill chốt trước launch) và checklist validate. `[reference · verified · 2026-10-14]`
 
 ## 05-optimization — Đọc chỉ số và tối ưu: ROAS/CPI/retention theo mốc, quy tắc scale/cut
 
 - `05-optimization/danh-gia-hieu-qua-social-organic.md` — Công thức ER theo mẫu số riêng của Facebook/LinkedIn/TikTok, cách chấm bài so trung vị 3 tháng (loại bài boosted), phễu chẩn đoán reach→tương tác→share/save, và bẫy cột export Meta Business Suite bị thổi ~3 lần. `[concept · verified · 2026-10-14]`
 - `05-optimization/doc-chi-so-theo-moc-thoi-gian.md` — Khung đọc Google Ads, AdMob, Firebase ở các mốc 7 ngày, 1, 4, 6 tháng — xem gì, hỏi gì, làm gì; ngưỡng để trống chờ số liệu thực tế của app. `[playbook · verified · 2026-10-14]`
 - `05-optimization/hau-kiem-version-app-nguong-verdict.md` — So 2 version app trước khi tăng rollout: chỉ số mktpro (LTV, R1, churn, crash, match/show rate), ngưỡng đủ số theo tier, ngưỡng P0/P1 ra verdict, và quy trình so ad unit AdMob tách user FO/Home. `[playbook · verified · 2026-10-14]` 🖼2
+- `05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md` — Chọn framework theo câu hỏi (AARRR, retention curve + cohort, funnel, A/B hoặc trước/sau), cách đọc từng loại, bẫy thống kê và checklist điều tra khi chỉ số biến động. `[concept · verified · 2026-10-14]`
 - `05-optimization/unit-economics-ads-only-theo-tier.md` — Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp). `[concept · verified · 2026-10-14]`
 
 ## 06-tools — Công cụ & workflow AI phục vụ marketing (nội bộ Apero + bên ngoài): làm gì, dùng ở bước nào, cách chạy
@@ -75,8 +78,11 @@
 - `06-tools/market-research-skill-va-research-deck.md` — Claude skill market-research (TAM/SAM/SOM, why-now, persona, benchmark, rubric Go/No-Go dùng SensorTower MCP) kèm bộ prompt GPT dựng slide báo cáo theo brandkit. `[reference · verified · 2026-10-14]`
 - `06-tools/meta-ads-dashboard.md` — Web app Next.js của UA Apero (Giang Nguyễn) gọi Meta Marketing API v21 — cây Product→Channel→Campaign→Country, cột ROAS×0.7 hôm nay và T-1/T-2/T-3, sửa budget/pause tại bảng, auto rules chạy mỗi 30 phút. `[reference · verified · 2026-10-14]`
 - `06-tools/omni-resize-anh-video-da-kenh.md` — Notebook Colab nhận nhiều ảnh/video, xuất đồng thời 3 tỉ lệ 1:1, 9:16, 16:9 bằng fit & pad (thu nhỏ + đệm nền trắng/đen, không crop), đặt hậu tố _1-1/_9-16/_16-9, gói 1 file ZIP. `[reference · verified · 2026-10-14]`
+- `06-tools/po-copilot-pipeline-tai-lieu-san-pham.md` — Bộ 6 Claude skill của Công Hồ Thành (APR-229) — orchestrator po-doc-pipeline chạy discovery → PRD → use case → US/AC → SRS → prototype HTML hi-fi, dừng duyệt sau mỗi chặng; srs-writer phải cài riêng. `[reference · verified · 2026-10-14]`
 - `06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md` — Template agent đọc GA4 export → BigQuery, tính DAU/new users/engagement/retention D1-D7/DAU-MAU/key events, so hôm qua·TB7·~2 tuần, gắn cờ và đẩy Discord 09:00; agent Claude trả lời "vì sao DAU tụt". `[reference · verified · 2026-10-14]`
 - `06-tools/policy-helper-tra-cuu-loi-policy.md` — Tool chat của team ASO Apero: gõ mô tả lỗi, mã guideline hoặc dán ảnh thông báo policy → trả loại lỗi, cách team đã fix, link policy gốc. Bản local 1 file HTML (OCR offline) và bản Apps Script + Gemini. `[reference · verified · 2026-10-14]`
+- `06-tools/prd-to-visual-wireframe-so-do.md` — Bộ skill Claude cho PO (Anh Trần Thế) — prd-to-visual dựng wireframe + sơ đồ SVG từ PRD, kiểm coverage FR bằng máy; kèm po-prd-writer (PRD 17 mục) và po-metrics-analysis (metrics plan, tracking spec). `[reference · verified · 2026-10-14]`
+- `06-tools/product-skills-artimind-vision-lab.md` — Skill Claude của PO Thịnh Đào Đức cho Apero Vision Lab — viết doc Confluence space VL (IIP###, release-page Artimind), frame feature, viết AC Given/When/Then + pre-rollout, UX flow của Artimind. `[reference · verified · 2026-10-14]`
 - `06-tools/render-pro-after-effects-render-hang-loat.md` — CEP extension AE — cấu hình Main Comp + Source Comps 1 lần, tự đổi layer head/body/tail theo Sequential/Mix để sinh 30–100 tổ hợp video và đẩy vào Media Encoder; tiết kiệm ~98% thao tác. `[reference · verified · 2026-10-14]`
 - `06-tools/social-tracker-tiktok.md` — Tool local (Flask + yt-dlp + Playwright) của UA Apero quét danh sách account TikTok chuyên content AI photo/video, lọc video mới theo view/ngôn ngữ, tự mở rộng account qua gợi ý TikTok, export Google Sheets/Excel. `[reference · verified · 2026-10-14]`
 - `06-tools/stum-weekly-report.md` — Tool Node.js + Playwright (My Nguyễn Thảo) chạy Chủ Nhật 15:00, lấy LTV D0, R1, churn D0, session, time, crash từ mktpro cho top 3 country theo revenue, lọc ngày "đủ số" theo tier, so 2 version rồi ghi vào Google Sheet. `[reference · verified · 2026-10-14]`
@@ -84,11 +90,12 @@
 - `06-tools/terasofts-graphic-pro-tao-screenshot-store.md` — Web Next.js chạy local — upload ≤10 ảnh UI + file mô tả .docx/.txt → Gemini 2.5 Flash viết headline/subtext theo mạch Hook→Solution→Features→Social Proof→CTA, Flux tạo nền, ghép mockup, xuất ZIP 1080×1920. `[reference · verified · 2026-10-14]`
 - `06-tools/tiktok-creative-mcp-avatar-dubbing-image-to-video.md` — MCP server gọi TikTok Business Creative API (Alpha) bằng câu lệnh tự nhiên — avatar AI đọc script, lồng tiếng 13 ngôn ngữ, ảnh → 1–5 video; submit-then-notify qua Discord DM. Cần API key MCP, URL public, consent. `[reference · verified · 2026-10-14]`
 - `06-tools/tiktok-trend-crawler-video-ai-viral.md` — Tool Python chạy local crawl video AI viral trên TikTok theo ~40 hashtag/ngôn ngữ (EN/ES/PT), giữ video 48h, xếp theo view, dashboard xem inline + Favorite. Cần ms_token cookie TikTok. `[reference · verified · 2026-10-14]`
-- `06-tools/tong-quan-cong-cu-ai-marketing.md` — Bản đồ ~40 tool AI nội bộ Apero theo bước roadmap (ASO/creative → launch → đo lường/tối ưu → monetization → policy/legal → research/social), mỗi tool 1 dòng, kèm hướng dẫn chọn tool nào khi nào. `[overview · verified · 2026-10-14]`
+- `06-tools/tong-quan-cong-cu-ai-marketing.md` — Bản đồ ~40 tool AI nội bộ Apero theo bước roadmap (ASO/creative → launch → đo lường/tối ưu → monetization → policy/legal → research/social → product/PO), mỗi tool 1 dòng, kèm hướng dẫn chọn tool nào khi nào. `[overview · verified · 2026-10-14]`
 - `06-tools/trend-research-engine-why-it-works.md` — Dashboard Next.js (MVP) — nhập ngành/từ khoá (VN/EN) → app trending từ App Store thật + 5 điểm số công thức minh bạch, ý tưởng nội dung, video/ảnh/social; khung 13 thẻ Why-It-Works và Creative Brief (còn mock). `[reference · verified · 2026-10-14]`
 - `06-tools/trendgrab-kham-pha-trend-tai-video.md` — Web nội bộ (Vercel + backend yt-dlp) — tìm video trend theo hashtag/từ khoá trên TikTok, YouTube, Dailymotion, Google Trends; xem inline; tải video/MP3 lẻ hoặc gói ZIP; phân tích insight từ transcript/comment. `[reference · verified · 2026-10-14]` 🖼1
 - `06-tools/urender-ghep-video-ugc.md` — App desktop ghép video AI tutor + learner thành MP4 1080×1920: chỉ co giãn khoảng lặng để khớp thoại, 5 layout, phụ đề 2 màu (cả Indic/CJK); cho video UGC app học ngôn ngữ. `[reference · verified · 2026-10-14]`
 - `06-tools/video-download-tai-video-hang-loat.md` — App desktop Python (Win/macOS) tải hàng loạt MP4 không watermark từ TikTok music/hashtag/search, Facebook Ads Library, thư mục Google Drive; resume, chống block; tuỳ chọn gắn watermark chữ động. `[reference · verified · 2026-10-14]`
+- `06-tools/viet-prd-agent-apero.md` — Bundle APR-026 (Hoài Nguyễn Thị Vĩnh) gồm agent điều phối và 2 skill — PRD hand-off 17 section có FR/BR/TC/AC ID, và metrics plan/tracking spec/analysis report Firebase+BigQuery; output tiếng Anh. `[reference · verified · 2026-10-14]`
 - `06-tools/visual-prompting-skill-anh-video.md` — Hai Claude skill (image, video) đọc tài liệu kỹ thuật từng model rồi xuất prompt hoàn chỉnh kèm model/quality/size — dùng cho ảnh quảng cáo, thumbnail, storyboard, cảnh video từ ý tưởng thô. `[reference · verified · 2026-10-14]`
 - `06-tools/xprompt.md` — App macOS/Windows (Lâm Hoàng Văn) chạy vòng phân tích ảnh ref → viết prompt → Qwen sinh ảnh với ảnh nhân vật → Claude chấm 4 tiêu chí → sửa prompt, dừng khi điểm ≥ ngưỡng; hợp làm ảnh concept cho creative app AI photo. `[reference · verified · 2026-10-14]`
 - `06-tools/youtube-auto-uploader.md` — Web tool nội bộ (yt-uploader-beta.vercel.app) đăng nhập Google, chọn thư mục video trên máy và upload hàng loạt lên kênh YouTube, trả link để gắn vào Google App campaign. `[reference · verified · 2026-10-14]`
@@ -109,5 +116,6 @@
 
 ## apps — Hồ sơ từng app: thông số, lịch sử campaign, kết quả
 
+- `apps/artimind/profile.md` — Artimind — app AI photo→video của Apero (Vision Lab, IIP032), subscription; định vị "Life Moments" (kỷ niệm, người thân đã mất), engine Seedance qua fal.ai, paywall sau khi user bấm Generate, rollout qua remote config. `[app-profile · verified · 2026-10-14 · artimind]`
 - `apps/home-morph/campaigns.md` — Nhật ký campaign Google Ads của Home Morph — campaign đầu "Home Morph 1" (ACi, ID+PH+VN, first_open, tCPI ₫2.125, ₫200k/ngày) dựng 17–18/09/2026; chưa có kết quả. `[app-profile · verified · 2026-10-14 · home-morph]` 🖼3
 - `apps/home-morph/profile.md` — Hồ sơ Home Morph (com.homemorph.app) — app AI thiết kế nội thất Android, ads-only; ID Firebase/GA4/AdMob/Google Ads, tài khoản nào giữ quyền gì, ngôn ngữ app hỗ trợ. `[app-profile · verified · 2026-10-14 · home-morph]`

@@ -10,6 +10,7 @@ sources:
   - AI Knownledge/APR-211 - Police-product/report/report.py (đọc 2026-10-14) — SQL và luật nhận xét
   - AI Knownledge/APR-211 - Police-product/PRD.md (đọc 2026-10-14)
   - AI Knownledge/APR-211 - Police-product/.claude/agents/police-product.md (đọc 2026-10-14)
+  - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -17,6 +18,8 @@ related:
   - 04-measurement/firebase-events-cho-ua.md
   - 06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md
   - 05-optimization/hau-kiem-version-app-nguong-verdict.md
+  - 04-measurement/tracking-spec-va-metrics-plan-cho-feature.md
+  - 05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md
 summary: Cách tính DAU, new users, sessions, engagement rate, retention D1/D7 (cohort first_open), DAU/MAU từ bảng GA4 export events_*; quy tắc count→%, rate→pp; so d/7d/~2 tuần; ngưỡng cờ nội bộ.
 ---
 
@@ -41,7 +44,11 @@ Lấy từ engine `report.py` của tool nội bộ Police-product (APR-211, 07/
 Lưu ý:
 - Ngày báo cáo = bảng **hoàn chỉnh** gần nhất — bỏ `events_intraday_*`.
 - Retention Dn của "hôm nay" là của cohort ngày (hôm nay − n) → trend so với cohort hôm trước và TB 7 cohort trước.
-- Với app ads-only nên thêm ARPDAU = tổng `value` của `ad_impression` ÷ DAU (Police-product chưa có).
+- Với app ads-only nên thêm ARPDAU (Police-product chưa có). Lưu ý `ad_impression` do AdMob tự log **không có trong BigQuery export** (Firebase Help 9234069) — chỉ tính được từ `events_*` khi event được log tay (vd ILRD từ MAX); còn lại lấy doanh thu AdMob report ÷ DAU.
+- "Retained" có nhiều cách định nghĩa: bất kỳ event (report.py), chỉ `session_start` (skill po-metrics-analysis), hoặc `user_engagement`. Event nền (`app_remove`, `os_update`, notification receive) có thể làm "active" giả. Ghi rõ đang dùng loại nào khi so số giữa 2 tool.
+- Cohort `first_open` phải lấy `MIN(event_date)` theo user — `first_open` bắn lại khi cài lại app, không gom thì một user rơi vào nhiều cohort.
+- Luôn giới hạn `_TABLE_SUFFIX` ở **mọi** lần đọc `events_*`, kể cả trong JOIN (SQL D7 mẫu trong tracking-spec-template của skill PO quên lọc → quét toàn dataset, tốn phí).
+- Bảng ngày cần ~24h mới đủ; báo cáo GA4/Console có thể bị sampling, BigQuery là dữ liệu thô. Console đủ cho DAU/funnel/retention chuẩn; cần BigQuery khi funnel tuỳ biến, cohort chi tiết, join chi phí UA/AdMob.
 
 ## Quy tắc đọc
 - **count → %**, **rate → điểm phần trăm (pp)**. Retention 8% → 6,4% là **−1,6 pp**, không phải −20%.

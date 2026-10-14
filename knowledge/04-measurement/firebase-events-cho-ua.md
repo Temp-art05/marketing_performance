@@ -15,6 +15,7 @@ sources:
   - "AppLovin MAX — Android advanced settings (Impression-Level User Revenue API): https://support.applovin.com/en/max/android/overview/advanced-settings (truy cập 2026-10-14)"
   - "Google Ads Help — Best practices for App campaigns: https://support.google.com/google-ads/answer/14104492 (truy cập 2026-10-14)"
   - "Google Ads Help — Choose a bid strategy for your App campaign: https://support.google.com/google-ads/answer/12073727 (truy cập 2026-10-14)"
+  - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
 created: 2026-10-14
 updated: 2026-10-14
 related:
@@ -27,6 +28,8 @@ related:
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
   - 04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md
   - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
+  - 04-measurement/tracking-spec-va-metrics-plan-cho-feature.md
+  - 06-tools/prd-to-visual-wireframe-so-do.md
 summary: Ý nghĩa và điều kiện của first_open, ad_impression (AdMob tự log / MAX log thủ công qua ILRD), app_remove, user_engagement, in_app_purchase và event nào dùng cho tCPI/tCPA/tROAS.
 ---
 
@@ -106,10 +109,21 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 
 ## 5. Tính chỉ số từ BigQuery export (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
 
-Khi đã bật GA4 → BigQuery export, các event ở trên (kể cả `first_open`, `ad_impression` có `value`) truy vấn được trực tiếp trên bảng `events_*`: DAU, new users, retention D1/D7 theo cohort `first_open`, engagement, và **ARPDAU = tổng `value` của `ad_impression` ÷ DAU** cho app ads-only. SQL và quy tắc đọc: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](ga4-bigquery-chi-so-suc-khoe-san-pham.md). Template agent tự báo cáo hằng ngày: [Police-product](../06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md).
+Khi đã bật GA4 → BigQuery export, các event ở trên truy vấn được trên bảng `events_*`: DAU, new users, retention D1/D7 theo cohort `first_open`, engagement. **Ngoại lệ: `ad_impression` do AdMob tự log KHÔNG có trong BigQuery export** (Firebase Help 9234069, kiểm lại 2026-10-14: "This event is not exported to BigQuery"). Vì vậy ARPDAU = tổng `value` của `ad_impression` ÷ DAU chỉ tính được trên BigQuery khi `ad_impression` được **log tay** (vd ILRD từ AppLovin MAX); với AdMob auto-log thì lấy doanh thu từ AdMob report rồi chia DAU. SQL và quy tắc đọc: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](ga4-bigquery-chi-so-suc-khoe-san-pham.md). Template agent tự báo cáo hằng ngày: [Police-product](../06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md).
+
+## 4b. Đặt tên event custom (quy ước nội bộ)
+
+Quy ước company-wide của các skill PO (APR-102/APR-026): `[screen]_[element]_[action]` (7 loại: `_scr`, `_display`, `_btn_click`, `_click`, `[action]`, `_success`, `_fail`), success/fail là 2 event riêng, `_fail` bắt buộc có `failure_reason`. Chi tiết, giới hạn tên/param và checklist validate: [tracking spec & metrics plan](tracking-spec-va-metrics-plan-cho-feature.md).
+
+- Khi chọn event tCPA, ưu tiên event `_success` của core feature (vd `generation_success`) thay vì `_btn_click` — bấm nút chưa phải là nhận giá trị. *(Gợi ý, chưa kiểm chứng hiệu quả.)*
+- Event Home Morph đang theo dõi (`generation_completed`, `rewarded_ad_completed`) không theo quy ước này. Không đổi tên khi campaign đang dùng nó để bid (reset learning); chỉ áp quy ước cho event mới.
 
 ## Bẫy hay gặp
 
+- Một số tài liệu nội bộ (skill po-metrics-analysis) ghi `in_app_purchase` "chỉ iOS, Android dùng `purchase`" — sai: Firebase Help 9234069 thu event này cho cả app Android và iOS. Đừng log tay thêm `purchase` cho Android, sẽ trùng.
+- Đặt event custom trùng tên event tự động/dành riêng (`screen_view`, `ad_impression`, `first_open`, `app_remove`…) hoặc dùng tiền tố `firebase_`/`google_`/`ga_` → event bị bỏ hoặc ghi đè dữ liệu tự động.
+- Bắn event màn hình mỗi lần re-render → thổi phồng số. Bắn 1 lần mỗi lần vào màn.
+- `dynamic_link_app_open` (còn trong vài tài liệu nội bộ) thuộc Firebase Dynamic Links — dịch vụ đã ngừng, không dùng làm event acquisition.
 - Gửi value bằng micros (AdMob paid event trả `valueMicros`) mà không chia 1.000.000 nên ROAS bị phóng đại 10^6. *(Chỉ gặp khi tự log.)*
 - Gửi currency sai hoặc thiếu, Google Ads bỏ qua event.
 - Đổi tên event tối ưu hoặc đổi conversion window khi campaign đang học thì reset learning (14104492).

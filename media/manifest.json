@@ -168,6 +168,13 @@
       "kind": "secret",
       "source": "AI Knownledge/APR-099/Stum-Tool.zip → src/config.js dòng 9–12, 56–61",
       "addedAt": "2026-10-13T19:50:01.356Z"
+    },
+    "media/secrets/apr-046-artimind-rollout-history-login.md": {
+      "sha256": "e2020b0430703f17663300e34d84f44e01e9ba7f323f89383e98d297206611a8",
+      "bytes": 395,
+      "kind": "secret",
+      "source": "AI Knownledge/APR-046 - Product/skills/apero-vision-lab-docs/iip032-artimind.md:226",
+      "addedAt": "2026-10-14T04:53:15.074Z"
     }
   }
 }

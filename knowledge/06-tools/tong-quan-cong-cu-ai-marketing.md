@@ -19,7 +19,11 @@ related:
   - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
   - 01-pre-marketing/nghien-cuu-trend-cho-creative.md
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
-summary: Bản đồ ~40 tool AI nội bộ Apero theo bước roadmap (ASO/creative → launch → đo lường/tối ưu → monetization → policy/legal → research/social), mỗi tool 1 dòng, kèm hướng dẫn chọn tool nào khi nào.
+  - 06-tools/po-copilot-pipeline-tai-lieu-san-pham.md
+  - 06-tools/viet-prd-agent-apero.md
+  - 06-tools/prd-to-visual-wireframe-so-do.md
+  - 06-tools/product-skills-artimind-vision-lab.md
+summary: Bản đồ ~40 tool AI nội bộ Apero theo bước roadmap (ASO/creative → launch → đo lường/tối ưu → monetization → policy/legal → research/social → product/PO), mỗi tool 1 dòng, kèm hướng dẫn chọn tool nào khi nào.
 ---
 
 # Tổng quan công cụ AI marketing
@@ -88,6 +92,16 @@ Quy trình ghép các tool: [playbook sản xuất creative hàng loạt](../pla
 - [Apero Social Report Agent](apero-social-report-agent.md) 🤖🔑 — báo cáo social tuần/tháng, ER đúng mẫu số ([phương pháp đo](../05-optimization/danh-gia-hieu-qua-social-organic.md)).
 - Trend/đối thủ: xem mục 1 — creative (Social Tracker, TikTok Trend Tool, TrendGrab, Video Download) và mục 0.
 
+## 7. Product (PO) — PRD, metrics, tracking spec
+
+Skill của PO đã cài sẵn trong repo (`.claude/skills/`), output ghi vào `exports/po/<app>/` (gitignore). Chỉ lấy bộ dành cho PO; skill QA/Dev (APR-168, 242, 043) không cài.
+
+- [PO Copilot](po-copilot-pipeline-tai-lieu-san-pham.md) 🤖 — `po-doc-pipeline`: ý tưởng → discovery (`ask-why-ba`) → PRD → use case → user story/AC → prototype hi-fi, duyệt sau mỗi bước.
+- [Viết PRD (APR-026)](viet-prd-agent-apero.md) 🤖 — `po-prd-writer` (PRD hand-off 17 section), `po-metrics-analysis` (metrics plan, tracking spec, phân tích sau release), `po-prd-metrics-agent` điều phối.
+- [PRD → Visual](prd-to-visual-wireframe-so-do.md) 🤖 — `prd-to-visual`: PRD ra wireframe + sơ đồ luồng, kiểm coverage FR bằng máy.
+- [Skill Product Artimind / Vision Lab](product-skills-artimind-vision-lab.md) 🤖 — doc Confluence chuẩn VL, product thinking, AC + pre-rollout theo remote config, UX flow app AI generate.
+- Kiến thức đi kèm: [PRD & những gì UA cần](../04-measurement/prd-success-metrics-va-yeu-cau-ua.md), [tracking spec & metrics plan](../04-measurement/tracking-spec-va-metrics-plan-cho-feature.md), [khung phân tích AARRR/cohort/funnel](../05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md).
+
 ## Chọn tool nào khi nào
 
 | Bạn cần… | Dùng | Đừng dùng / lưu ý |
@@ -105,8 +119,9 @@ Quy trình ghép các tool: [playbook sản xuất creative hàng loạt](../pla
 | Số dashboard nội bộ bất thường | Agent QC Data pipeline trước, rồi mới kết luận về campaign | Không kiểm số gốc Google Ads/AdMob |
 | App bị báo lỗi policy | Policy Helper → policy gốc → team ASO | Kho là kinh nghiệm nội bộ, có thể cũ |
 | Bật/tắt ads hàng loạt theo phase | Firebase RC MCP + rc_apply.js | Luôn duyệt diff; ghi ngày đổi phase |
+| Viết PRD/tracking cho feature mới của app | `po-prd-metrics-agent` (PRD + metrics) hoặc `po-doc-pipeline` (từ ý tưởng thô) | Đòi thêm event conversion + counter-metric UA ([checklist](../04-measurement/prd-success-metrics-va-yeu-cau-ua.md)); benchmark trong skill là game farming, không dùng |
 
 ## Không có trong KB
 
 - **APR-261 Ad Copy Skill** và **APR-252 Analytics Agent** — liên quan UA trực tiếp nhưng không tải được (thiếu quyền); đã ghi ở [trạng thái hiện tại](../00-overview/current-state.md).
-- Các project không liên quan marketing (slide, QA test case, catalog dịch vụ nội bộ, reverse-engineer APK…) không đưa vào.
+- Các project không liên quan marketing/PO (slide, QA test case, chia task Jira, áp feature Android, catalog dịch vụ nội bộ, reverse-engineer APK…) không đưa vào.
