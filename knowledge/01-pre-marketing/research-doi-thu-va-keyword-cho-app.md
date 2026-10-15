@@ -26,7 +26,7 @@ related:
   - 01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md
   - 06-tools/video-download-tai-video-hang-loat.md
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
-summary: Checklist nhận app mới (cài thử, liệt kê tính năng, persona) → keyword theo tính năng bằng Keyword Planner (kèm bẫy đọc số) và Sensor Tower free → spy ads đối thủ qua Transparency Center, Meta Ads Library, TikTok Top Ads.
+summary: "Nhận app mới: cài thử, liệt kê tính năng, persona → keyword bằng Keyword Planner (bẫy: giá thầu là CPC Search) và Sensor Tower free → spy ads qua Transparency Center, Meta Ads Library, TikTok Top Ads."
 ---
 
 # Research đối thủ và keyword khi nhận app mới

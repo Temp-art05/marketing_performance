@@ -9,9 +9,13 @@ confidence: medium
 sources:
   - AI Knownledge/ (kho asset Apero Knowledge Hub, 127 project triage, 38 tài liệu tool) (đọc 2026-10-14)
   - "KB: 00-overview/roadmap.md"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), chương 1–3 — video ~11–12/2024, transcribe 2026-10-15 (nhóm tool bên ngoài)"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - 06-tools/creatify-ai-video-ads-tu-link-app.md
+  - 01-pre-marketing/research-doi-thu-va-keyword-cho-app.md
   - 00-overview/roadmap.md
   - playbooks/san-xuat-creative-hang-loat-bang-ai.md
   - 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md
@@ -102,6 +106,15 @@ Skill của PO đã cài sẵn trong repo (`.claude/skills/`), output ghi vào `
 - [Skill Product Artimind / Vision Lab](product-skills-artimind-vision-lab.md) 🤖 — doc Confluence chuẩn VL, product thinking, AC + pre-rollout theo remote config, UX flow app AI generate.
 - Kiến thức đi kèm: [PRD & những gì UA cần](../04-measurement/prd-success-metrics-va-yeu-cau-ua.md), [tracking spec & metrics plan](../04-measurement/tracking-spec-va-metrics-plan-cho-feature.md), [khung phân tích AARRR/cohort/funnel](../05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md).
 
+## 8. Tool bên ngoài miễn phí/rẻ (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+Không phải tool nội bộ; khoá Quocmedia dùng để làm UA "tay không". Giá/giao diện theo video (~11–12/2024 hoặc muộn hơn), cần kiểm lại.
+
+- Research: Google Ads **Keyword Planner** (keyword theo tính năng — cột giá thầu là CPC Search, không phải CPI) · **Sensor Tower** bản free (keyword ranking organic của đối thủ) · **Google Ads Transparency Center**, **Meta Ads Library**, **TikTok Creative Center Top Ads** (spy ads) — cách dùng: [research đối thủ & keyword](../01-pre-marketing/research-doi-thu-va-keyword-cho-app.md).
+- Text: **ChatGPT** viết description ASO và text asset — thêm ràng buộc không superlative/không emoji ([ASO](../01-pre-marketing/aso-google-play-store-listing.md) mục 7, [creative assets](../01-pre-marketing/creative-assets-google-app-campaigns.md) mục 6).
+- Thiết kế: **Canva** (screenshot, ảnh ads 3 tỉ lệ, video 3 cảnh) · **CapCut** (ghép video theo voice) · TTS **ttsopenai.com** (bên thứ ba, kiểm điều khoản) — quy trình: [đường làm tay](../playbooks/san-xuat-creative-hang-loat-bang-ai.md).
+- Video avatar/UGC từ link app: [Creatify](creatify-ai-video-ads-tu-link-app.md) 🌐🔑 (trả phí, $39–99/tháng theo video).
+
 ## Chọn tool nào khi nào
 
 | Bạn cần… | Dùng | Đừng dùng / lưu ý |
@@ -110,6 +123,7 @@ Skill của PO đã cài sẵn trong repo (`.claude/skills/`), output ghi vào `
 | Screenshot theo từng use case/ad group | CPP generator (ý tưởng) + **custom store listing** của Play | Bỏ slide "social proof" kiểu #1/award ([policy](../01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md)) |
 | Idea creative app AI photo/video | Social Tracker (account) + TikTok Trend Tool (hashtag 48h) | Tab TikTok của TrendGrab có thể hỏng sau 09/2026 (Video Download đo được hashtag feed trả rỗng) — chưa kiểm chứng |
 | Video đối thủ đang chạy ads | Video Download (Facebook Ads Library) | Chỉ để nghiên cứu, không dùng lại làm asset |
+| Creative đối thủ trên Google App campaign / TikTok trả phí | Transparency Center (+ My Ad Center) / TikTok Top Ads ([research](../01-pre-marketing/research-doi-thu-va-keyword-cho-app.md)) | Lọc nền tảng Google Play chỉ thấy ads từ 04/09/2023 |
 | Nhiều biến thể cùng 1 nhân vật | Hạnh Creative | Tốn credit Flow; giá gói cần xác minh |
 | Cùng 1 hiệu ứng cho nhiều ảnh | KA Tool Bulk | PRD nhiều giả định |
 | Video 9:16 hàng loạt từ ảnh AI | Genius Easy Creative | Fake UI phải giống app thật |

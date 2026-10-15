@@ -26,7 +26,7 @@ related:
   - 06-tools/genius-easy-creative.md
   - 06-tools/creatify-ai-video-ads-tu-link-app.md
   - apps/home-morph/profile.md
-summary: Mindset creative (audience → insight → creative quan trọng hơn kỹ thuật/budget), cấu trúc Hook ~3s → Content 8–12s → CTA ~3s, 6 style video ads kèm rủi ro policy (Fake Choice, Shock), A/B liên tục; gợi ý Before→After cho app AI nội thất.
+summary: Kim tự tháp audience → insight → creative, cấu trúc Hook ~3s → Content 8–12s → CTA ~3s, 6 style video ads kèm rủi ro policy (Fake Choice, Shock), A/B liên tục; gợi ý Before→After cho app AI nội thất.
 ---
 
 # Style video creative ads và công thức Hook → Content → CTA

@@ -7,7 +7,7 @@ app: general
 status: draft
 confidence: medium
 sources:
-  - "Khoá UA Marketing Mobile App 2026 Phát Triển Ứng Dụng — Quocmedia, giảng viên Quốc Anh, learn.quocmedia.com/learn/ua-marketing (38 bài, video quay ~11–12/2024)"
+  - "Khoá UA Marketing Mobile App 2026 Phát Triển Ứng Dụng — Quocmedia, giảng viên Quốc Anh, learn.quocmedia.com/learn/ua-marketing (38 bài; video quay rải rác: chương 4 ~12/2024, chương 2 có màn hình Play Console/Sensor Tower 01–03/2026, chương 3 nhắc Veo 3 → ≥ 2025)"
   - "Session 2026-10-15: tải 20 bài đã mở, transcribe Whisper large-v3-turbo + đọc khung hình; ghi chú chi tiết ở raw/quocmedia-ua/notes/ (ngoài git)"
 created: 2026-10-15
 updated: 2026-10-15
@@ -29,7 +29,8 @@ summary: Khoá UA của Quocmedia (nguồn gốc roadmap của user) — 38 bài
 
 - Khoá online của Quocmedia (giảng viên Quốc Anh), user đang học (tiến độ 19/38 bài ở 2026-10-15). Bài mở tuần tự: bài sau chỉ mở khi đánh dấu xong bài trước.
 - **Roadmap trong knowledge ([roadmap.md](roadmap.md), file `ROADMAP UA MARKETING.xlsx` của user) chính là checklist của khoá này** (bài 1.2 và 4.1) — khi thấy roadmap lệch Google, gốc là ở đây.
-- Demo của khoá: app Android "Max Volume Booster" (ads-only, AdMob), tài khoản Google Ads VND, quay khoảng 11–12/2024. Số trên màn hình đã ghi thành lesson: [tCPI thấp và tROAS cao không spend](../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md).
+- Video không quay cùng lúc: chương 4 (Google Ads) khoảng 12/2024, chương 2 có màn hình đầu 2026, chương 3 sau khi có Veo 3. UI Google Ads/Play có thể đã đổi so với video.
+- Demo Google Ads của khoá: app Android "Max Volume Booster" (ads-only, AdMob), tài khoản Google Ads VND, 12/2024. Số trên màn hình đã ghi thành lesson: [tCPI thấp và tROAS cao không spend](../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md).
 - Cách nạp: video là YouTube nhúng → `scripts/course/video-to-notes.sh raw/quocmedia-ua` (tải, Whisper, cắt khung hình), Claude đọc transcript + khung hình rồi đối chiếu knowledge. Khi mở khoá thêm bài: cập nhật `raw/quocmedia-ua/lessons.tsv` rồi chạy lại.
 
 ## Nội dung theo chương

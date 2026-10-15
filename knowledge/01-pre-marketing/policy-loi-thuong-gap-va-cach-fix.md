@@ -11,9 +11,12 @@ sources:
   - AI Knownledge/APR-107 - Policy Killer Tool-Tra & Fix lỗi Policy trên Google Play Console & Apple App Sto/Policy-Helper-San-Pham.zip → index.html, mảng KB 45 lỗi + DOCS link gốc (đọc 2026-10-14)
   - https://support.google.com/googleplay/android-developer/topic/9858052
   - https://developer.apple.com/app-store/review/guidelines/
+  - "Play Console Help — Ratings, Reviews & Installs: https://support.google.com/googleplay/android-developer/answer/9898684 (WebFetch 2026-10-15)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 2.1 — video ~11–12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
   - 01-pre-marketing/aso-google-play-store-listing.md
   - 03-monetization/admob-co-ban.md
   - 03-monetization/quy-tac-dat-quang-cao-in-app-apero.md
@@ -122,6 +125,12 @@ Trang tổng: [Developer Program Policy Center](https://support.google.com/googl
 - Malware/fraud: [Ad Fraud](https://support.google.com/googleplay/android-developer/answer/9969955) · [SDK Requirements](https://support.google.com/googleplay/android-developer/answer/13323374)
 - Thực thi: [Enforcement Process](https://support.google.com/googleplay/android-developer/answer/9899234) · [Managing Violations & Appeals](https://support.google.com/googleplay/android-developer/answer/9899142) · [Policy Deadlines](https://support.google.com/googleplay/android-developer/table/12921780)
 - Apple: [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+
+## 6. Cảnh báo phòng ngừa: "đẩy" review và install theo chủ đích (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+- **Khoá/ngành hay dạy**: khoá Quocmedia bài 2.1 mô tả chủ động tăng lượt cài qua keyword search và tăng **review 4–5 sao** theo chủ đích (tỉ lệ giảng viên đưa: ~3–5 review/1.000 download ads/ngày), chỉ dặn "đừng làm quá tay kẻo bị đánh dấu spam".
+- **Policy Google Play** (Ratings, Reviews & Installs, [9898684](https://support.google.com/googleplay/android-developer/answer/9898684), WebFetch 2026-10-15): *"We prohibit any manipulation of ratings, reviews, or install counts."* Cấm *"inflating product ratings, reviews, or install counts by illegitimate means, such as fraudulent or incentivized reviews and ratings"*; ví dụ vi phạm gồm hỏi rating kèm phần thưởng và *"Repeatedly submitting ratings posing as users"*; *"Don't offer rewards or incentives for ratings or reviews"*, *"Don't use automated services to inflate installs or ratings"*.
+- **Kết luận**: không làm, kể cả "ít thôi" — đây là thao túng, rủi ro gỡ app/suspend tài khoản (🔴 theo thang của bài này). Cách hợp lệ: **Play In-App Review API** hỏi user thật sau một lần dùng thành công, không lọc trước người sẽ cho 5 sao, không thưởng. Trả lời review đúng quy trình: [trả lời review Google Play](tra-loi-review-google-play.md).
 
 ## Bài học / Kết luận
 
