@@ -50,7 +50,7 @@ Ví dụ minh hoạ (giả định của session, không phải số đo): T1 CP
 
 - "ROAS 25%" trong UA mobile thường là **ROAS sớm (D0 hoặc D7)**, không phải lifetime. Đừng so ROAS D0/D7 với ngưỡng 100%.
 - Hệ số nhân D0 → D180 phụ thuộc retention của từng app. Session đưa ra đường cong "điển hình" cho app ads (D0 ≈ 15–25% của LTV D180) nhưng **không có nguồn** — phải đo bằng cohort thật. Xem [glossary](../00-overview/glossary-chi-so.md) mục ROAS.
-- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, chưa duyệt) ⚠️ Khoá Quocmedia coi *All conv. value / cost* của Google Ads **≥ 1,0 (hoặc 0,9) là hoà vốn**. Value đó là doanh thu `ad_impression` trong conversion window khoá đặt **7 ngày** → là ROAS ~D7 attributed, không phải lifetime. Dùng 1,0 làm ranh giới lãi/lỗ là quá khắt khe nếu retention tốt, và vô nghĩa nếu app bị gỡ nhanh (case demo ~93% user gỡ). Hoà vốn thật = LTV cohort / CPI ([lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md)).
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6) ⚠️ Khoá Quocmedia coi *All conv. value / cost* của Google Ads **≥ 1,0 (hoặc 0,9) là hoà vốn**. Value đó là doanh thu `ad_impression` trong conversion window khoá đặt **7 ngày** → là ROAS ~D7 attributed, không phải lifetime. Dùng 1,0 làm ranh giới lãi/lỗ là quá khắt khe nếu retention tốt, và vô nghĩa nếu app bị gỡ nhanh (case demo ~93% user gỡ). Hoà vốn thật = LTV cohort / CPI ([lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md)).
 - CPI trung bình toàn cầu trong các bài blog ($2,5–4) bị kéo bởi game và Tier 1 → không dùng để tính Tier 3.
 - Organic uplift (paid kéo thêm organic) làm CPI hiệu dụng thấp hơn CPI báo cáo — session ước organic/paid 0,8–1,5× cho app utility, **không có nguồn**.
 
@@ -80,6 +80,6 @@ Số CPI theo từng nước Tier 3 mà Claude đưa ra trong session (vd India 
 
 - Thay bảng benchmark bằng eCPM theo country/format từ AdMob và D0/D7 ROAS thật khi Home Morph có ≥ 7 ngày data.
 
-## Ghi chú về bảng tier (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## Ghi chú về bảng tier (bổ sung 2026-10-14 từ AI Knownledge)
 
 "Tier" trong bài này là cách chia theo eCPM/CPI để quyết định GEO. Báo cáo nội bộ Apero dùng một bảng tier khác (cho ngưỡng "đủ số" khi so version; ID/PH/PT ở Tier 2, VN/IN ở Tier 3) — xem [hậu kiểm version app](hau-kiem-version-app-nguong-verdict.md). Không trộn hai bảng.

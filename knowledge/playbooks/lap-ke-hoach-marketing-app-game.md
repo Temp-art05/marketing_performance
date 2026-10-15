@@ -4,7 +4,7 @@ type: playbook
 topic: playbooks
 tags: [plan, ke-hoach, google-ads, troas, soft-launch, game, quocmedia]
 app: general
-status: draft
+status: verified
 confidence: low
 sources:
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 6.1 (plan cho ứng dụng) và 6.2 (plan cho game) — transcribe + đọc khung hình Google Sheets 2026-10-15; ghi chú chi tiết raw/quocmedia-ua/notes/ch4c-ch6.md"

@@ -81,7 +81,7 @@ Bid khác: iOS nên bid cao hơn Android 1,5× (12073727). Không áp dụng cho
 - Chuyển từ tCPA cần **3 đến 4 tuần dữ liệu conversion value**.
 - Tính tROAS khởi điểm: bật cột *Conv. value/cost* của campaign tương đương trong khoảng bằng conversion window, rồi dùng làm target. Nếu tCPA được đặt cao hơn hẳn CPA thực tế thì nhân hệ số điều chỉnh (ví dụ Google: CPA thực $3 / tCPA $6 thì áp modifier 50%).
 - Conversion source phải là **Firebase hoặc Google Play codeless**. Bên thứ 3 có thể bị giới hạn.
-- ⚠️ (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt) Khoá Quocmedia — nguồn gốc roadmap — dạy chuyển sau 2–3 ngày, đổi tại chỗ, target cố định 50–60% rồi ~1 tháng sau nhảy 90–100%. Mâu thuẫn với các mục trên; bảng so sánh và gợi ý dung hoà ở [playbook bước 3](../../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
+- ⚠️ (bổ sung 2026-10-15 từ khoá Quocmedia) Khoá Quocmedia — nguồn gốc roadmap — dạy chuyển sau 2–3 ngày, đổi tại chỗ, target cố định 50–60% rồi ~1 tháng sau nhảy 90–100%. Mâu thuẫn với các mục trên; bảng so sánh và gợi ý dung hoà ở [playbook bước 3](../../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
 
 ## 3. Budget: quy tắc chính thức
 
@@ -106,8 +106,8 @@ Chính thức:
 - Tránh dao động bid lên xuống liên tục, nên **đổi một lần**. Không đổi conversion settings (window, counting), event tối ưu, GEO lớn, asset đang tốt (14104492).
 - Không chạy 2 App campaign cùng app **trùng GEO** vì chúng cạnh tranh nhau (9176652).
 - Conversion về trễ nên CPI những ngày đầu có thể cao. Đánh giá cần tính đến độ trễ (9176652).
-- (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt) Ngoại lệ 🧪 cho quy tắc 20%: campaign **gần như không phân phối** (bid-constrained, chưa có data để học) thì nâng một lần về mức bid guidance là hợp lý — khoá Quocmedia nâng tCPI ₫800 → ₫2.000 và campaign tiêu đủ budget sau 1–2 ngày ([lesson](../../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md)).
-- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.9, chưa duyệt) Nhịp scale tROAS của khoá **khớp** các quy tắc trên: chỉ scale khi ROAS ≥ target ổn định 7–14 ngày và tiêu đều ≥ budget; target **+5–10%/lần mỗi tuần**, budget **+10–20%/tuần**, không đổi quá **20%/lần** (tăng ×3–×5 budget một lúc thì "máy học reset"). Lệch nhẹ: khoá đổi target và budget **cùng lúc** — xem dung hoà ở [vận hành & scale tROAS](../../playbooks/van-hanh-va-scale-troas-google-app-campaign.md).
+- (bổ sung 2026-10-15 từ khoá Quocmedia) Ngoại lệ 🧪 cho quy tắc 20%: campaign **gần như không phân phối** (bid-constrained, chưa có data để học) thì nâng một lần về mức bid guidance là hợp lý — khoá Quocmedia nâng tCPI ₫800 → ₫2.000 và campaign tiêu đủ budget sau 1–2 ngày ([lesson](../../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md)).
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.9) Nhịp scale tROAS của khoá **khớp** các quy tắc trên: chỉ scale khi ROAS ≥ target ổn định 7–14 ngày và tiêu đều ≥ budget; target **+5–10%/lần mỗi tuần**, budget **+10–20%/tuần**, không đổi quá **20%/lần** (tăng ×3–×5 budget một lúc thì "máy học reset"). Lệch nhẹ: khoá đổi target và budget **cùng lúc** — xem dung hoà ở [vận hành & scale tROAS](../../playbooks/van-hanh-va-scale-troas-google-app-campaign.md).
 
 ## 5. Ad group
 
@@ -116,11 +116,11 @@ Chính thức:
 - Ad group nên theo **chủ đề/thông điệp** (vd mỗi tính năng chính 1 ad group) để đọc được asset report. Deep link trả về đúng màn hình theo chủ đề ad group (14104492).
 - Thêm ad group mới là "composition change" nên có thể kích hoạt learning (13020501). Tránh thêm khi campaign chưa ổn định.
 - Chi tiết asset: [creative-assets-google-app-campaigns](../../01-pre-marketing/creative-assets-google-app-campaigns.md).
-- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, chưa duyệt) Đọc hiệu quả theo ad group/asset/network/GEO trên UI: Ad groups sort theo *All conv. value / cost*; **Segment → Network (with search partners)** tách Google search / Search partners / Display / YouTube (chỉ để chẩn đoán — App campaign không chọn được network); Assets có nhãn **Best/Good/Low/Learning**; GEO ở **Insights and reports → When and where ads showed → Matched locations**. Quy tắc giữ/pause/tách: [vận hành & scale tROAS](../../playbooks/van-hanh-va-scale-troas-google-app-campaign.md).
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6) Đọc hiệu quả theo ad group/asset/network/GEO trên UI: Ad groups sort theo *All conv. value / cost*; **Segment → Network (with search partners)** tách Google search / Search partners / Display / YouTube (chỉ để chẩn đoán — App campaign không chọn được network); Assets có nhãn **Best/Good/Low/Learning**; GEO ở **Insights and reports → When and where ads showed → Matched locations**. Quy tắc giữ/pause/tách: [vận hành & scale tROAS](../../playbooks/van-hanh-va-scale-troas-google-app-campaign.md).
 
 ## 5b. Các setting khi tạo campaign: VTC, Data feed, ngày, bidding UI
 
-(Bổ sung 2026-10-14 từ việc setup Home Morph 1 ngày 18/09/2026, chưa duyệt.)
+(Bổ sung 2026-10-14 từ việc setup Home Morph 1 ngày 18/09/2026.)
 
 ![Campaign settings: View-through conversion optimization đang tick, Data feed trống, Start date Sep 17 2026, End date None](../../../assets/screenshots/2026-09/2026-09-18-google-ads-app-vtc-datafeed-dates-1.png)
 
@@ -134,7 +134,7 @@ Chính thức:
 - **Bidding UI (focus Install volume)**: chọn "How do you want to track install volume?" = Firebase **First open** thay vì Google Play install để chỉ trả cho user thật sự mở app (xem [firebase-events-cho-ua](../../04-measurement/firebase-events-cho-ua.md)). Ô *Target cost per install* có gợi ý "A typical cost per install for other apps targeting your selected area is …" + nút APPLY; UI báo campaign dùng bid strategy **Target CPA** (tCPI là biến thể của tCPA). Ví dụ thật: [Home Morph 1](../../apps/home-morph/campaigns.md).
 - 🧪 Đặt tCPI thấp hơn nhiều so với gợi ý để "tiết kiệm" thì dễ không tiêu hết budget, ít conversion, kẹt learning.
 
-### Thêm từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+### Thêm từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 UI Google Ads khoảng 12/2024 quay trong khoá "UA Marketing Mobile App 2026" (bài 4.3, 4.5):
 
@@ -160,5 +160,5 @@ UI Google Ads khoảng 12/2024 quay trong khoá "UA Marketing Mobile App 2026" (
 
 ## Chưa xác minh được
 
-- Ngưỡng conversion/ngày "chuẩn" (vd "10 conversion/ngày" hay "50 install/ngày") hay lưu truyền: **không tìm thấy trên trang chính thức** đã đọc. (bổ sung 2026-10-15, chưa duyệt) Khoá Quocmedia bài 4.6 dùng "~10 install/ngày" làm điều kiện để tách 1 nước ra campaign riêng — vẫn là rule-of-thumb 🧪.
+- Ngưỡng conversion/ngày "chuẩn" (vd "10 conversion/ngày" hay "50 install/ngày") hay lưu truyền: **không tìm thấy trên trang chính thức** đã đọc. (bổ sung 2026-10-15) Khoá Quocmedia bài 4.6 dùng "~10 install/ngày" làm điều kiện để tách 1 nước ra campaign riêng — vẫn là rule-of-thumb 🧪.
 - Hệ số budget cho tROAS: Google không công bố.

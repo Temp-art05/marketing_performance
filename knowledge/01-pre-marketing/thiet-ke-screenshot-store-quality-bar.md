@@ -119,7 +119,7 @@ Ví dụ output của Screenshot Studio (slide hook 1 điện thoại, headline 
 - [ ] Chữ không-Latin (Arabic RTL, Devanagari, Thai…) được người đọc được duyệt.
 - [ ] Mockup thiết bị không gây hiểu nhầm (nhận định: listing Android nên dùng khung Android hoặc không khung; Terasofts dùng Samsung S25 Ultra).
 
-## 9. Làm thủ công nhanh bằng Canva (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## 9. Làm thủ công nhanh bằng Canva (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Khi chưa có tool nội bộ hoặc cần phác thảo để truyền ý cho designer (khoá nhấn mạnh người làm UA nên tự sketch được, đỡ phụ thuộc designer). Theo bài 2.4 của khoá:
 

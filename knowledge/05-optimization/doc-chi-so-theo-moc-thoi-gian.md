@@ -68,7 +68,7 @@ Mục tiêu: phát hiện lỗi setup/tracking và tín hiệu sớm. **Chưa** 
 
 Hành động điển hình: sửa tracking, thêm asset thay asset Low, xử lý crash, sửa placement có show rate thấp. **Không** đổi bid/target lớn nếu chưa đủ ~100 conversion (14104492).
 
-**Bổ sung cho mốc 7 ngày (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.4, chưa duyệt)**
+**Bổ sung cho mốc 7 ngày (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.4)**
 - Bộ cột Google Ads cho campaign CPI theo khoá: **Impr., Clicks, Installs, Cost/Install, CTR, Cost, Conv. rate**; tắt các cột trùng (Conversions trùng Installs, Cost/conv. trùng Cost/Install) và Optimization score, View-through conv. Đọc phễu: impression → click (CTR) → install (conv. rate) → CPI.
   - ⚠️ *Conv. rate* của Google = conversions / **interactions**, không phải installs/clicks (case khoá: 5,21% vs 157/1.970 = 7,97%). Muốn CR click→install thì tự chia.
 - 🧪 Ngưỡng AdMob của khoá (không phải Google): **Impressions/Requests ≥ 50%**, **match rate ≥ 80%** (≥ 90% tốt); dưới ngưỡng thì kiểm SDK/code với dev trước khi lên tROAS. Chi tiết và chỗ lệch với thang nội bộ Apero: [AdMob cơ bản](../03-monetization/admob-co-ban.md). Có thể dùng tạm cho ô "Ngưỡng" hàng AdMob ở trên cho tới khi có số thật của app.
@@ -88,7 +88,7 @@ Mục tiêu: có ROAS D7 trọn vẹn cho các cohort tuần 1 và 2, D30 cho co
 
 Hành động điển hình: chuyển/khởi tạo tROAS, cắt GEO lỗ rõ, chỉnh ad load/placement, làm creative mới theo asset Best.
 
-**Bổ sung khi campaign tROAS đã chạy (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, 4.8, 4.9, chưa duyệt)**
+**Bổ sung khi campaign tROAS đã chạy (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, 4.8, 4.9)**
 - Google Ads: lọc **từ ngày bật tROAS**, không All time; bộ cột Target ROAS, Impr., CTR, Avg. CPC, Clicks, Cost, Installs, Cost/Install, *All conv. value / cost* (thêm *Conv. value / cost*), Conv. rate. Đọc 4 tầng campaign → ad group → asset → GEO (Matched locations): [vận hành & scale tROAS](../playbooks/van-hanh-va-scale-troas-google-app-campaign.md).
 - Tín hiệu scale của khoá: ROAS ≥ target ổn định **7–14 ngày** + tiêu đều ≥ budget → target +5–10% hoặc budget +10–20%, ≤ 20%/lần (khớp nguyên tắc 4 ở trên).
 - 🧪 Ngưỡng của khoá (không nguồn, độ tin thấp): conv. rate click→install **≥ 20–25%**; ad group ROAS (7 ngày) **< ~0,3 → pause**, **≥ 1,0 (0,9) → "hoà vốn"**; Firebase **D1 retention 15% "khá ok", ≥ 10% "ok"**; avg engagement time **~4 phút "khá ok"**. Lưu ý: con số 15% trên màn hình khoá thực ra là **Week 1** cohort, không phải D1.
@@ -131,7 +131,7 @@ Thay đổi đã làm trong kỳ (ngày, nội dung):
 Kết luận + việc tiếp theo:
 ```
 
-## Bổ sung (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## Bổ sung (bổ sung 2026-10-14 từ AI Knownledge)
 
 - Ngoài đọc theo mốc thời gian campaign, khi app ra **version mới** hãy so 2 version theo ngưỡng nội bộ Apero (P0/P1: R1 −5pp, churn D0 +10pp, LTV D7 −20%, match rate < 50%…) trước khi tăng rollout: [hậu kiểm version app](hau-kiem-version-app-nguong-verdict.md). Các ngưỡng này là quy ước nội bộ, có thể dùng làm điểm khởi đầu cho các ô ngưỡng đang để trống ở trên.
 - Ghi lại **phase Remote Config** đang chạy (build/normal/2-floor) và ngày đổi phase — đổi phase làm đổi eCPM/ARPDAU, nếu không ghi sẽ đọc sai trước/sau ([Remote Config theo phase](../03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md)).

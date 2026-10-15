@@ -110,7 +110,7 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 - Conversion window khuyến nghị **7 đến 30 ngày**.
 - Cột Conversions của `ad_impression` mặc định hiển thị **0**. Xem bằng segment theo conversion action + cột "Conversion value".
 
-### Thực hành từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.5, chưa duyệt)
+### Thực hành từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.5)
 
 - **App mới chưa có `ad_impression` trong Firebase → Events.** Event chỉ xuất hiện sau khi có user thật xem ad (app demo của khoá lúc đầu chỉ có `app_clear_data`, `app_remove`, `first_open`, `screen_view`, `session_start`). Vì vậy phải chạy campaign CPI trước vài ngày rồi mới bật key event + import được — đây là lý do thực tế của mốc "~3 ngày" trong [roadmap](../00-overview/roadmap.md).
 - Đường import trên UI 12/2024: Firebase Events → bật toggle *Mark as key event* cho `ad_impression` → Google Ads **Goals → Conversions → Summary → + Create conversion action → App → Google Analytics (Firebase) → tick `ad_impression` (đúng app) → Import and continue → Done**.
@@ -120,7 +120,7 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 
 Ảnh trên: trang chi tiết conversion `ad_impression` trong Google Ads (12/2024) sau khi đổi window về 1 tuần; Count, view-through và attribution ghi "Not editable".
 
-**Đọc event trên Firebase/GA4 (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8, chưa duyệt)**
+**Đọc event trên Firebase/GA4 (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8)**
 - Khoá coi `ad_impression` và `first_open` là 2 event quan trọng nhất cho app kiếm tiền bằng ads, kèm `app_remove` để xem gỡ cài đặt. Xem ở Firebase → **Key events** (count + % đổi so cùng kỳ) hoặc GA4 → Engagement → **Events**.
 - GA4 Events có cột **Total revenue**: với AdMob đã link, toàn bộ doanh thu ads hiện ở dòng `ad_impression` (demo 01/01–10/12/2024: 56.937 event, 7.178 user, $375,92). Đây là cách kiểm nhanh ad revenue đã vào GA4 trước khi tin cột Conv. value của Google Ads.
 - Cùng màn hình đọc được tỉ lệ thô `app_remove` users / `first_open` users (demo 8.770 / 9.462 ≈ 93%) và imps/user (demo 7,93) — xem [lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md).
@@ -130,7 +130,7 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 - Event đánh dấu "user đã trải nghiệm core feature" (vd `feature_used`, `level_complete`). Có thể dùng làm tCPA event chất lượng hơn `first_open` khi volume đủ. Google khuyên tCPA ACe đủ cao để "drive more than 100 conversions".
 - Event về ad placement (vd `ad_show_failed`) để soi show rate theo màn hình.
 
-## 5. Tính chỉ số từ BigQuery export (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## 5. Tính chỉ số từ BigQuery export (bổ sung 2026-10-14 từ AI Knownledge)
 
 Khi đã bật GA4 → BigQuery export, các event ở trên truy vấn được trên bảng `events_*`: DAU, new users, retention D1/D7 theo cohort `first_open`, engagement. **Ngoại lệ: `ad_impression` do AdMob tự log KHÔNG có trong BigQuery export** (Firebase Help 9234069, kiểm lại 2026-10-14: "This event is not exported to BigQuery"). Vì vậy ARPDAU = tổng `value` của `ad_impression` ÷ DAU chỉ tính được trên BigQuery khi `ad_impression` được **log tay** (vd ILRD từ AppLovin MAX); với AdMob auto-log thì lấy doanh thu từ AdMob report rồi chia DAU. SQL và quy tắc đọc: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](ga4-bigquery-chi-so-suc-khoe-san-pham.md). Template agent tự báo cáo hằng ngày: [Police-product](../06-tools/police-product-bao-cao-suc-khoe-app-hang-ngay.md).
 
@@ -150,4 +150,4 @@ Quy ước company-wide của các skill PO (APR-102/APR-026): `[screen]_[elemen
 - Gửi value bằng micros (AdMob paid event trả `valueMicros`) mà không chia 1.000.000 nên ROAS bị phóng đại 10^6. *(Chỉ gặp khi tự log.)*
 - Gửi currency sai hoặc thiếu, Google Ads bỏ qua event.
 - Đổi tên event tối ưu hoặc đổi conversion window khi campaign đang học thì reset learning (14104492).
-- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8, chưa duyệt) **GA4 gán gần hết user mới cho Organic Search dù đang chạy Google Ads**: demo có 9,2K/9,5K new user "Organic Search" và thẻ *Sessions by Google Ads campaign* = No data, trong khi Google Ads báo 2.671 install. Đừng dùng báo cáo acquisition GA4 để so UA vs organic khi chưa kiểm link Google Ads ↔ GA4 và cách GA4 gán nguồn cho install từ Play Store (chưa xác minh nguyên nhân).
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8) **GA4 gán gần hết user mới cho Organic Search dù đang chạy Google Ads**: demo có 9,2K/9,5K new user "Organic Search" và thẻ *Sessions by Google Ads campaign* = No data, trong khi Google Ads báo 2.671 install. Đừng dùng báo cáo acquisition GA4 để so UA vs organic khi chưa kiểm link Google Ads ↔ GA4 và cách GA4 gán nguồn cho install từ Play Store (chưa xác minh nguyên nhân).

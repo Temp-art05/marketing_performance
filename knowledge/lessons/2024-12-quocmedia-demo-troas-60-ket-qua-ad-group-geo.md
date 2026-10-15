@@ -5,7 +5,7 @@ topic: lessons
 tags: [google-ads, app-campaigns, troas, ad-group, geo, asset, firebase, quocmedia, mau-nho]
 app: general
 geo: [Global]
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.6 và 4.8 — video quay ~13/12/2024 (màn hình Google Ads lọc All time 14/07/2023–13/12/2024; Firebase/GA4 lọc 01/01–10/12/2024), transcribe 2026-10-15. Ghi chú chi tiết: raw/quocmedia-ua/notes/ch4b.md (ngoài git)"

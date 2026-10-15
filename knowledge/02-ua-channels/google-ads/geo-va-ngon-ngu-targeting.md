@@ -61,7 +61,7 @@ Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden
 - 🧪 Đọc kết quả ở **cấp country** (report tách theo location), không chỉ cấp campaign; ~100 install/nước trở lên mới đủ để quyết định cắt/scale.
 - 🧪 Target xuống cấp thành phố (vd Jakarta, Surabaya) có thể dùng ở vòng tối ưu sau; không nên làm khi budget nhỏ vì thu hẹp volume.
 
-### Phương án "Global test" của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+### Phương án "Global test" của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Khoá "UA Marketing Mobile App 2026" (bài 4.3, 4.5) — nguồn gốc của chữ "global" trong [roadmap](../../00-overview/roadmap.md) — chạy **1 campaign duy nhất, Locations = All countries and territories, Languages = English**, cho cả campaign CPI lẫn campaign ROAS (đổi tại chỗ nên không có 2 campaign trùng GEO).
 - Mục đích: chỉ cần **install rẻ để test** SDK AdMob, retention, cho `ad_impression` xuất hiện — không cần đọc theo nước. Với mục đích đó, việc Google dồn budget vào nước rẻ là chấp nhận được.

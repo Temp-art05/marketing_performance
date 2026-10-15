@@ -25,7 +25,7 @@ summary: Lộ trình 3 giai đoạn — Pre-Marketing (ASO, creative, Firebase) 
 
 Nguồn: file `ROADMAP UA MARKETING.xlsx` do user lập. Mỗi mục trỏ tới tài liệu chi tiết; web hiển thị trang này như checklist.
 
-> Nguồn gốc (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt): checklist này trùng gần nguyên văn với sheet "ROADMAP UA MARKETING" và file "Checklist Pre-Marketing UA Mobile App" của khoá **UA Marketing Mobile App 2026** (Quocmedia, giảng viên Quốc Anh, bài 1.2 và 4.1) — xem [tổng quan khoá học](khoa-hoc-quocmedia-ua-marketing-2026.md). Chỗ khoá học khác Google Help (thời điểm chuyển tROAS, target ROAS) được ghi ở [playbook launch](../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
+> Nguồn gốc (bổ sung 2026-10-15 từ khoá Quocmedia): checklist này trùng gần nguyên văn với sheet "ROADMAP UA MARKETING" và file "Checklist Pre-Marketing UA Mobile App" của khoá **UA Marketing Mobile App 2026** (Quocmedia, giảng viên Quốc Anh, bài 1.2 và 4.1) — xem [tổng quan khoá học](khoa-hoc-quocmedia-ua-marketing-2026.md). Chỗ khoá học khác Google Help (thời điểm chuyển tROAS, target ROAS) được ghi ở [playbook launch](../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
 
 ## 1. Pre-Marketing
 
@@ -59,7 +59,7 @@ Mốc theo dõi campaign ROAS: **7 ngày · 1 tháng · 4 tháng · 6 tháng**.
 - [ ] AdMob: request/impression, eCPM, match rate, theo ad unit, top quốc gia
 - [ ] Firebase: retention, `first_open`, `app_remove`, nguồn traffic, crash/bug
 
-## Chi tiết thêm từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## Chi tiết thêm từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Khoá học (bài 1.1, 1.2, 4.1) giải thích thêm từng giai đoạn; phần nào là ý giảng viên, chưa kiểm chứng, đánh 🧪.
 
@@ -74,7 +74,7 @@ Khoá học (bài 1.1, 1.2, 4.1) giải thích thêm từng giai đoạn; phần
 - **Thêm ad group** cho campaign ROAS là để test nhóm nào có chỉ số tốt rồi phát triển nhóm đó; mỗi ad group content/ảnh/video khác nhau.
 - **Đo lường**: nhịp đọc chỉ số và thay đổi **hằng ngày hoặc hằng tuần**; lời giảng có lúc nói mốc "3 tháng" nhưng sheet ghi 4 tháng — giữ theo sheet. Khung đọc: [đọc chỉ số theo mốc](../05-optimization/doc-chi-so-theo-moc-thoi-gian.md).
 
-### 5 yếu tố thành công UA theo khoá (bài 4.10) — bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt
+### 5 yếu tố thành công UA theo khoá (bài 4.10) — bổ sung 2026-10-15 từ khoá Quocmedia
 
 Giảng viên tóm 5 yếu tố. Không có số liệu đi kèm. Các yếu tố khớp với 3 giai đoạn ở trên, riêng yếu tố 5 nằm ngoài roadmap.
 
@@ -88,6 +88,6 @@ Giảng viên tóm 5 yếu tố. Không có số liệu đi kèm. Các yếu t�
 
 Khung plan đầy đủ theo giai đoạn của khoá (thời gian, ngân sách, chiến lược, mục tiêu, tình huống), có phân biệt app và game: [lập kế hoạch marketing app/game](../playbooks/lap-ke-hoach-marketing-app-game.md).
 
-## Công cụ hỗ trợ từng bước (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## Công cụ hỗ trợ từng bước (bổ sung 2026-10-14 từ AI Knownledge)
 
 Bản đồ ~40 tool AI nội bộ Apero xếp theo đúng 3 giai đoạn trên (ASO, creative, launch, đo lường, monetization, policy): [tổng quan công cụ AI marketing](../06-tools/tong-quan-cong-cu-ai-marketing.md). Quy trình ghép tool cho creative: [sản xuất creative hàng loạt](../playbooks/san-xuat-creative-hang-loat-bang-ai.md).

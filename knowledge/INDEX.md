@@ -1,6 +1,6 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 92 tài liệu (3 draft), cập nhật gần nhất 2026-10-15.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 92 tài liệu (0 draft), cập nhật gần nhất 2026-10-15.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
@@ -106,15 +106,15 @@
 
 ## playbooks — Checklist từng bước cho các việc lặp lại
 
-- `playbooks/lap-ke-hoach-marketing-app-game.md` — Khung plan marketing theo giai đoạn của khoá Quocmedia (6 cột thời gian/giai đoạn/ngân sách/chiến lược/mục tiêu/tình huống) cho app, bản 3 tab cho game; mọi số là ví dụ giảng viên, kèm chỗ lệch Google. `[playbook · draft · 2026-10-15]` 🖼3
+- `playbooks/lap-ke-hoach-marketing-app-game.md` — Khung plan marketing theo giai đoạn của khoá Quocmedia (6 cột thời gian/giai đoạn/ngân sách/chiến lược/mục tiêu/tình huống) cho app, bản 3 tab cho game; mọi số là ví dụ giảng viên, kèm chỗ lệch Google. `[playbook · verified · 2026-10-15]` 🖼3
 - `playbooks/launch-google-app-campaign-tcpa-den-roas.md` — Checklist theo roadmap — campaign install tối ưu first_open → import ad_impression (~ngày 3) → campaign tROAS → thêm ad group, kèm điều kiện chuyển bước chính thức của Google và chỗ nào là kinh nghiệm chưa kiểm chứng. `[playbook · verified · 2026-10-15]` 🖼1
 - `playbooks/san-xuat-creative-hang-loat-bang-ai.md` — Dây chuyền 9 bước ghép tool AI nội bộ — trend → concept → ảnh/video nguồn → render hàng loạt → hậu kỳ outro → localize → đủ tỉ lệ → soát spec/policy → upload YouTube; kèm chỗ tool còn thiếu. `[playbook · verified · 2026-10-15]`
-- `playbooks/van-hanh-va-scale-troas-google-app-campaign.md` — Sau khi chạy tROAS — đọc kết quả 4 tầng (campaign, ad group, asset, GEO), khi nào và nâng target/budget bao nhiêu (≤ 20%/lần, mỗi 1–2 tuần), khi nào thêm ad group/campaign/GEO; theo khoá Quocmedia đối chiếu Google Help. `[playbook · draft · 2026-10-15]` 🖼1
+- `playbooks/van-hanh-va-scale-troas-google-app-campaign.md` — Sau khi chạy tROAS — đọc kết quả 4 tầng (campaign, ad group, asset, GEO), khi nào và nâng target/budget bao nhiêu (≤ 20%/lần, mỗi 1–2 tuần), khi nào thêm ad group/campaign/GEO; theo khoá Quocmedia đối chiếu Google Help. `[playbook · verified · 2026-10-15]` 🖼1
 
 ## lessons — Bài học rút ra từ data/việc thật (có ngày, bối cảnh)
 
 - `lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md` — Số trên màn hình khoá Quocmedia (12/2024, app demo Android, global, EN) — tCPI ₫800 chọn theo Keyword Planner gần như không spend, nâng ₫2.000 ra 157 install CPI ₫1.708; campaign tROAS 80% gần như không spend. `[lesson · verified · 2026-10-15]` 🖼2
-- `lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md` — Số trên màn hình khoá Quocmedia (12/2024, app volume booster Android, global) — campaign tROAS 60% có ROAS 0,24 (all-time), ad group "lời" chỉ ₫14k/7 install, GEO "lời" < ₫18k; Firebase revenue $376/năm, 93% user gỡ app. `[lesson · draft · 2026-10-15]` 🖼4
+- `lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md` — Số trên màn hình khoá Quocmedia (12/2024, app volume booster Android, global) — campaign tROAS 60% có ROAS 0,24 (all-time), ad group "lời" chỉ ₫14k/7 install, GEO "lời" < ₫18k; Firebase revenue $376/năm, 93% user gỡ app. `[lesson · verified · 2026-10-15]` 🖼4
 - `lessons/2026-09-google-ads-ad-group-trong-do-adblock.md` — 18/09/2026 khi tạo App campaign, bước Ad group hiện trang trắng (URL kẹt ở ProductGroupsComponent); nguyên nhân là extension AdBlock — tắt cho ads.google.com và reload là hết. `[lesson · verified · 2026-10-14 · home-morph]` 🖼1
 - `lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md` — 17/09/2026 link AdMob và Google Ads của Home Morph nằm ở 2 tài khoản Google — không có link trực tiếp cho tROAS; phải đi AdMob→Firebase/GA4→Google Ads, và "Firebase Owner" không có nghĩa là có quyền GA4. `[lesson · verified · 2026-10-14 · home-morph]` 🖼1
 

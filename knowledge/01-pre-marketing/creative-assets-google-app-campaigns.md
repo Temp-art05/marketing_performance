@@ -77,7 +77,7 @@ App campaigns không cho dựng từng quảng cáo. Ta nạp **asset** (text, �
 
 | Roadmap yêu cầu | Spec Google | Đánh giá |
 |---|---|---|
-| 15 keywords + description cho từng từ | 5 headline (≤30) + 5 description (≤90) **mỗi ad group** | *(bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt: keyword lấy từ Keyword Planner theo từng tính năng app — [research keyword](research-doi-thu-va-keyword-cho-app.md); khoá chia 3 nhóm × 5 keyword, mỗi nhóm 1 ad group — xem mục 6.)* App campaigns **không có keyword targeting**. "15 keywords" nên hiểu là 15 *chủ đề/thông điệp*, chuyển thành headline ≤30 và description ≤90, rồi chia cho các ad group (mỗi ad group 5+5). Có thể dùng lại khi khai audience signal (tuỳ chọn khi tạo ad group, xem answer/12575501). |
+| 15 keywords + description cho từng từ | 5 headline (≤30) + 5 description (≤90) **mỗi ad group** | *(bổ sung 2026-10-15 từ khoá Quocmedia: keyword lấy từ Keyword Planner theo từng tính năng app — [research keyword](research-doi-thu-va-keyword-cho-app.md); khoá chia 3 nhóm × 5 keyword, mỗi nhóm 1 ad group — xem mục 6.)* App campaigns **không có keyword targeting**. "15 keywords" nên hiểu là 15 *chủ đề/thông điệp*, chuyển thành headline ≤30 và description ≤90, rồi chia cho các ad group (mỗi ad group 5+5). Có thể dùng lại khi khai audience signal (tuỳ chọn khi tạo ad group, xem answer/12575501). |
 | 5 ảnh vuông 1200×1200 | 1:1, khuyến nghị 1200×1200 | Khớp. |
 | 5 ảnh ngang 1200×628 | 1.91:1, khuyến nghị 1200×628 | Khớp. |
 | 5 ảnh dọc 1200×1500 | 4:5, khuyến nghị 1200×1500 | Khớp. |
@@ -97,17 +97,17 @@ Kết luận: bộ creative trong roadmap **đủ để đạt mức đa dạng 
 
 ## 4. Gợi ý sản xuất (kinh nghiệm, chưa kiểm chứng)
 
-- *Chưa kiểm chứng*: 3 giây đầu video nên là hook (kết quả hoặc vấn đề), sau đó demo tính năng. Text trên video đặt trong vùng an toàn vì UI YouTube/Play che mép. *(bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt: khoá đề xuất cụ thể Hook ~3s → Content tính năng 8–12s → CTA ~3s — vẫn là ý kiến chuyên gia, chưa có data; chi tiết và 6 style ở [style video & hook](style-video-creative-ads-va-cong-thuc-hook.md).)*
+- *Chưa kiểm chứng*: 3 giây đầu video nên là hook (kết quả hoặc vấn đề), sau đó demo tính năng. Text trên video đặt trong vùng an toàn vì UI YouTube/Play che mép. *(bổ sung 2026-10-15 từ khoá Quocmedia: khoá đề xuất cụ thể Hook ~3s → Content tính năng 8–12s → CTA ~3s — vẫn là ý kiến chuyên gia, chưa có data; chi tiết và 6 style ở [style video & hook](style-video-creative-ads-va-cong-thuc-hook.md).)*
 - *Chưa kiểm chứng*: mỗi đợt làm creative nên giữ 1 biến, ví dụ cùng hook khác nhạc, để đọc được asset report.
 - Đặt tên file/asset có quy ước (ngày_chủ-đề_tỉ-lệ_độ-dài) để sau tra lại được trong asset report.
 
-## 5. Công cụ nội bộ để làm đủ bộ asset (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## 5. Công cụ nội bộ để làm đủ bộ asset (bổ sung 2026-10-14 từ AI Knownledge)
 
 - Dây chuyền tool AI nội bộ (trend → ảnh/video nguồn → render hàng loạt → outro → localize → resize → upload): [sản xuất creative hàng loạt](../playbooks/san-xuat-creative-hang-loat-bang-ai.md). Kỹ thuật viết prompt ảnh/video: [viết prompt AI](prompt-ai-tao-anh-video-quang-cao.md).
 - **Lỗ hổng tỉ lệ**: [OmniResize](../06-tools/omni-resize-anh-video-da-kenh.md) chỉ xuất 1:1 / 9:16 / 16:9 — **thiếu 1.91:1 (1200×628) và 4:5 (1200×1500)** mà App campaigns cần cho ảnh; 16:9 không thay được 1.91:1. Ảnh 2 tỉ lệ này phải crop/dựng riêng. [Outro Tool](../06-tools/cat-outro-watermark-video-hang-loat.md) có 4:5 cho video (pad viền đen).
 - Video phải lên YouTube: [YouTube Auto Uploader](../06-tools/youtube-auto-uploader.md) upload hàng loạt; kiểm video không ở chế độ Private.
 
-## 6. Bổ sung từ khoá Quocmedia (bổ sung 2026-10-15, chưa duyệt)
+## 6. Bổ sung từ khoá Quocmedia (bổ sung 2026-10-15)
 
 ### Viết text asset bằng ChatGPT (bài 3.1)
 

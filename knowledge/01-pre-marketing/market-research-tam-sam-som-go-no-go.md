@@ -50,7 +50,7 @@ Phương pháp lấy từ skill `market-research` trong asset APR-017 (owner Đ�
 
 Kết luận: **≥ 4,0 → GO**; **3,0–3,9 → GO có điều kiện / PIVOT** (thu hẹp phân khúc, đổi góc); **< 3,0 → NO-GO**. Đổi trọng số thì tổng vẫn phải bằng 1,0 và nêu rõ đã đổi. Mỗi điểm cần 1 câu lý do truy ngược được về dữ liệu.
 
-> Với app **ads-only** của Apero, tiêu chí WTP gần như không áp dụng. *Đề xuất (chưa duyệt)*: thay bằng "eCPM/khả năng monetization bằng ads ở GEO mục tiêu", hoặc hạ trọng số WTP và tăng trọng số "Dễ acquisition".
+> Với app **ads-only** của Apero, tiêu chí WTP gần như không áp dụng. *Đề xuất*: thay bằng "eCPM/khả năng monetization bằng ads ở GEO mục tiêu", hoặc hạ trọng số WTP và tăng trọng số "Dễ acquisition".
 
 ## Quy tắc nguồn
 

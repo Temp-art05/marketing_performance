@@ -45,9 +45,9 @@ summary: Khoá UA của Quocmedia (nguồn gốc roadmap của user) — 38 bài
 | 2. ASO | 2.1 Tổng quan ASO · 2.2 Các bước tối ưu · 2.3 AI viết full description · 2.4 Screenshot · 2.5 Video app promotion | ✅ đã nạp | [ASO store listing](../01-pre-marketing/aso-google-play-store-listing.md), [screenshot](../01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md) |
 | 3. Creative ads bằng AI | 3.1 AI viết headline/description · 3.2 Mindset creative · 3.3 Style video · 3.4 Nhiều video từ link app (Creatify) · 3.5 Ảnh ads · 3.6 Video ads | ✅ đã nạp | [creative assets](../01-pre-marketing/creative-assets-google-app-campaigns.md), [style video & hook](../01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md), [Creatify](../06-tools/creatify-ai-video-ads-tu-link-app.md) |
 | 4. Google Ads | 4.1 Checklist pre-marketing · 4.2 Link Firebase↔Ads↔AdMob · 4.3 Setup CPI toàn cầu · 4.4 Chỉ số & lỗi thường gặp khi chạy CPI · 4.5 Setup ROAS | ✅ đã nạp | [playbook launch](../playbooks/launch-google-app-campaign-tcpa-den-roas.md), [App campaigns](../02-ua-channels/google-ads/app-campaigns-tong-quan.md), [Firebase setup](../04-measurement/firebase-setup-link-google-ads-admob.md) |
-| 4. (tiếp) | 4.6 Phân tích chỉ số ROAS · 4.7 Thuật ngữ · 4.8 Firebase đọc chỉ số sản phẩm · 4.9 Scale ROAS · 4.10 Yếu tố thành công · 4.11 Chỉ số ASO trên Play | ✅ đã nạp (bổ sung 2026-10-15, chưa duyệt) | [vận hành & scale tROAS](../playbooks/van-hanh-va-scale-troas-google-app-campaign.md), [lesson tROAS 60%](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md), [glossary](glossary-chi-so.md), [ASO](../01-pre-marketing/aso-google-play-store-listing.md), [GA4 sức khoẻ sản phẩm](../04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md) |
+| 4. (tiếp) | 4.6 Phân tích chỉ số ROAS · 4.7 Thuật ngữ · 4.8 Firebase đọc chỉ số sản phẩm · 4.9 Scale ROAS · 4.10 Yếu tố thành công · 4.11 Chỉ số ASO trên Play | ✅ đã nạp (bổ sung 2026-10-15) | [vận hành & scale tROAS](../playbooks/van-hanh-va-scale-troas-google-app-campaign.md), [lesson tROAS 60%](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md), [glossary](glossary-chi-so.md), [ASO](../01-pre-marketing/aso-google-play-store-listing.md), [GA4 sức khoẻ sản phẩm](../04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md) |
 | 5. Apple Ads | 5 bài (giới thiệu, cấu trúc, thuật ngữ, setup, tối ưu) | ⏭ bỏ qua (chỉ cho iOS, user chưa cần) — đã đánh dấu hoàn thành để mở khoá | — |
-| 6. Plan marketing | Plan cho app · Plan cho game | ✅ đã nạp (bổ sung 2026-10-15, chưa duyệt) | [lập kế hoạch marketing app/game](../playbooks/lap-ke-hoach-marketing-app-game.md) |
+| 6. Plan marketing | Plan cho app · Plan cho game | ✅ đã nạp (bổ sung 2026-10-15) | [lập kế hoạch marketing app/game](../playbooks/lap-ke-hoach-marketing-app-game.md) |
 | 7. Social free traffic | YouTube (3 bài), Instagram (2 bài) | ⏭ bỏ qua (user quyết 2026-10-15; xem lại khi làm organic Tier 1) | — |
 
 ### Ý chính đáng nhớ
@@ -59,7 +59,7 @@ summary: Khoá UA của Quocmedia (nguồn gốc roadmap của user) — 38 bài
   - 3 ad group × (5 headline + 5 description, ảnh 3 tỉ lệ, video 3 hướng). Mỗi ad group là 1 bộ content khác nhau.
   - Video theo cấu trúc hook 3s → content → CTA.
   - 6 style video: fake choice, POV, meme, UGC, before/after, shock.
-- **Đọc và scale tROAS (4.6, 4.9; bổ sung 2026-10-15, chưa duyệt):**
+- **Đọc và scale tROAS (4.6, 4.9; bổ sung 2026-10-15):**
   - Đọc theo 4 tầng campaign → ad group → asset → GEO (Matched locations).
   - Pause ad group ROAS thấp. Gom asset tốt thành ad group mới. Nước có ROAS > 1 và khoảng 10 install/ngày thì tách ra campaign riêng.
   - Nâng target **5–10%/tuần** khi ROAS ≥ target ổn định 7–14 ngày và campaign tiêu hết budget. Budget tăng 10–20%/tuần.

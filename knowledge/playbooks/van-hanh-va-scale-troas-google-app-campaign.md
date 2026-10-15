@@ -4,7 +4,7 @@ type: playbook
 topic: playbooks
 tags: [google-ads, app-campaigns, troas, scale, ad-group, asset, geo, budget, quocmedia]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.6 (phân tích chỉ số ROAS), 4.8 (Firebase), 4.9 (scale ROAS) — video quay ~13/12/2024, transcribe 2026-10-15. Ghi chú: raw/quocmedia-ua/notes/ch4b.md (ngoài git)"

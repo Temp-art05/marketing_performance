@@ -102,7 +102,7 @@ ROAS Dn = LTV Dn / CPI
 
 Công thức LTV là xấp xỉ (giả định ARPDAU của user mới ≈ ARPDAU trung bình). Dùng để biết cần kéo cần gạt nào (CPI ↓, retention ↑, ad load ↑, eCPM ↑), không dùng thay số đo cohort.
 
-## 5. Bổ sung (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## 5. Bổ sung (bổ sung 2026-10-14 từ AI Knownledge)
 
 - **% hay điểm %**: với chỉ số dạng tỉ lệ (retention, match rate, show rate, churn, crash-free) nói thay đổi bằng **điểm phần trăm (pp)**; với số đếm/tiền (DAU, installs, LTV, eCPM) dùng **% tương đối**. Retention 8% → 6,4% là **−1,6 pp**, không phải −20%. Đây là quy ước của các tool nội bộ (Police-product, App Performance Checker) và cũng là cách đọc đúng nói chung.
 - **Retention bằng SQL trên GA4 BigQuery** (cohort `first_open`, active đúng ngày X+n — khớp định nghĩa classic ở mục 3), cùng DAU, engagement rate, DAU/MAU: [chỉ số sức khoẻ sản phẩm từ GA4 BigQuery](../04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md).
@@ -118,7 +118,7 @@ Công thức LTV là xấp xỉ (giả định ARPDAU của user mới ≈ ARPDA
 - Định nghĩa "quay lại" khác nhau giữa tool (bất kỳ event / `session_start` / `user_engagement`) → cùng "D7 classic" vẫn lệch số. Đọc retention cả hình dạng đường cong, xem [khung phân tích](../05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md).
 *(Nguồn mục này: skill po-metrics-analysis APR-102/APR-026, nội bộ. Benchmark game farming trong nguồn không có trích dẫn nên không chép.)*
 
-## 6. Thuật ngữ khoá Quocmedia và chỗ dễ đọc sai (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## 6. Thuật ngữ khoá Quocmedia và chỗ dễ đọc sai (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Bài 4.7 của [khoá Quocmedia](khoa-hoc-quocmedia-ua-marketing-2026.md) ôn thuật ngữ theo 4 nhóm: Google Ads, chỉ số campaign, AdMob, Firebase. Phần lớn **khớp** mục 1–2. Ví dụ, công thức eCPM, match rate và show rate trên slide trùng với AdMob glossary. Dưới đây chỉ ghi phần chưa có ở trên và những chỗ slide định nghĩa lệch.
 

@@ -90,7 +90,7 @@ Requests ──match rate──> Matched requests ──show rate──> Impress
 
 Các chiều nên xem: **ad unit**, **format**, **country (top GEO)**, **ad source**, **app version**. Đây cũng là các chiều roadmap yêu cầu ở bước đo lường.
 
-### 🧪 Ngưỡng rule-of-thumb của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.4, chưa duyệt)
+### 🧪 Ngưỡng rule-of-thumb của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.4)
 
 Nguồn: giảng viên Quốc Anh, khoá "UA Marketing Mobile App 2026" — **không phải Google**, AdMob Help không công bố ngưỡng nào. Dùng để kiểm SDK AdMob trên lượng user từ campaign CPI **trước khi** chuyển sang tROAS:
 
@@ -133,7 +133,7 @@ Nguồn: giảng viên Quốc Anh, khoá "UA Marketing Mobile App 2026" — **kh
 ### Chung (6128543)
 - AdMob áp dụng AdSense Program policies + Google Publisher Policies. Google có quyền tắt ad serving hoặc đóng tài khoản khi vi phạm.
 
-## 4. Chuẩn nội bộ Apero và chỗ lệch với policy (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## 4. Chuẩn nội bộ Apero và chỗ lệch với policy (bổ sung 2026-10-14 từ AI Knownledge)
 
 - Chuẩn đặt ad chi tiết theo format (49 rule của QA Apero), mô hình ad unit **primary + 2ID (high floor)** bật/tắt bằng Remote Config: [quy tắc đặt quảng cáo in-app Apero](quy-tac-dat-quang-cao-in-app-apero.md). Template ~50 key RC theo phase build/normal/2-floor: [Remote Config theo phase](remote-config-ads-theo-phase-build-normal-2floor.md).
 - Khi đọc report theo ad unit, tách unit high floor (`_2ID`, `_2fl`, `_high`) khỏi unit thường; so 2 app version theo ad unit (tách user First Open/Home): [hậu kiểm version app](../05-optimization/hau-kiem-version-app-nguong-verdict.md).

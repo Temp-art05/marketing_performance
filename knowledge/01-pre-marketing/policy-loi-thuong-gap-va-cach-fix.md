@@ -126,7 +126,7 @@ Trang tổng: [Developer Program Policy Center](https://support.google.com/googl
 - Thực thi: [Enforcement Process](https://support.google.com/googleplay/android-developer/answer/9899234) · [Managing Violations & Appeals](https://support.google.com/googleplay/android-developer/answer/9899142) · [Policy Deadlines](https://support.google.com/googleplay/android-developer/table/12921780)
 - Apple: [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
 
-## 6. Cảnh báo phòng ngừa: "đẩy" review và install theo chủ đích (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## 6. Cảnh báo phòng ngừa: "đẩy" review và install theo chủ đích (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 - **Khoá/ngành hay dạy**: khoá Quocmedia bài 2.1 mô tả chủ động tăng lượt cài qua keyword search và tăng **review 4–5 sao** theo chủ đích (tỉ lệ giảng viên đưa: ~3–5 review/1.000 download ads/ngày), chỉ dặn "đừng làm quá tay kẻo bị đánh dấu spam".
 - **Policy Google Play** (Ratings, Reviews & Installs, [9898684](https://support.google.com/googleplay/android-developer/answer/9898684), WebFetch 2026-10-15): *"We prohibit any manipulation of ratings, reviews, or install counts."* Cấm *"inflating product ratings, reviews, or install counts by illegitimate means, such as fraudulent or incentivized reviews and ratings"*; ví dụ vi phạm gồm hỏi rating kèm phần thưởng và *"Repeatedly submitting ratings posing as users"*; *"Don't offer rewards or incentives for ratings or reviews"*, *"Don't use automated services to inflate installs or ratings"*.

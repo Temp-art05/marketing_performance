@@ -93,14 +93,14 @@ Roadmap muốn "nhấn mạnh main keywords (chức năng app) trong full descri
 - [ ] Localize text + screenshot cho các GEO chính sẽ chạy UA.
 - [ ] Sau khi có traffic: dùng Store listing experiments / custom store listings của Play Console để A/B test. *Chưa tổng hợp chi tiết, cần bổ sung.*
 
-## 5. Bổ sung (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## 5. Bổ sung (bổ sung 2026-10-14 từ AI Knownledge)
 
 - **Metadata policy áp cho cả screenshot và ảnh quảng bá** (WebFetch 9898842, 2026-10-14): cấm ảnh/chữ thể hiện xếp hạng/thành tích ("App of the year", "Best of Play", "Popular", icon giải thưởng), giá/khuyến mãi ("10% off"), chương trình Google Play ("Editor's choice"); screenshot/video phải *"reflect your app's actual experience"*. Tool AI nội bộ hay sinh slide "social proof" vi phạm — xem mục 4 của [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md).
 - **Ảnh iOS 1242×2688 không upload được lên Play** (tỉ lệ 2,16 > 2:1). Hai tool nội bộ mặc định xuất kích thước này — luôn xuất 1080×1920 cho Android.
 - **Custom store listings**: tối đa 50 listing; target theo quốc gia, Google Ads campaign, URL, search keyword, user không hoạt động/đã gỡ (Play Console Help 9867158). Dùng để khớp screenshot với thông điệp từng ad group — xem mục 7 của [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md).
 - Cách dựng bộ screenshot (narrative arc, quality bar) và chọn tool AI: [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md). Rating/review và trả lời review: [trả lời review Google Play](tra-loi-review-google-play.md). Lỗi policy listing đã gặp (Metadata, Impersonation, Misleading Claims): [lỗi policy thường gặp](policy-loi-thuong-gap-va-cach-fix.md). Check trademark tên app trước khi đặt title: [Super Legal](../06-tools/super-legal-check-trademark-ten-app.md).
 
-## 6. Đo CVR store listing trong Play Console (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## 6. Đo CVR store listing trong Play Console (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Nguồn: khoá Quocmedia bài 2.1 (đường đi menu thấy trên màn hình demo, Play Console giao diện ~02/2026).
 
@@ -120,7 +120,7 @@ Nguồn: khoá Quocmedia bài 2.1 (đường đi menu thấy trên màn hình de
 
 Keyword ranking organic của đối thủ (Sensor Tower free) và Keyword Planner: xem [research đối thủ & keyword](research-doi-thu-va-keyword-cho-app.md).
 
-### 6.1 Đọc báo cáo conversion của listing: peers, traffic source, install state (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.11 + Play Console Help 9859173, chưa duyệt)
+### 6.1 Đọc báo cáo conversion của listing: peers, traffic source, install state (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.11 + Play Console Help 9859173)
 
 Bài 4.11 xếp chỉ số đánh giá ASO thành 4 nhóm:
 
@@ -168,7 +168,7 @@ Hệ quả:
 - Khi ghi CVR trước/sau đổi asset vào `lessons/`, phải ghi rõ đang dùng metric nào.
 - Đường menu trong ảnh ở mục 6 có thể đã khác.
 
-## 7. Viết description bằng AI và các ý bổ sung từ khoá Quocmedia (bổ sung 2026-10-15, chưa duyệt)
+## 7. Viết description bằng AI và các ý bổ sung từ khoá Quocmedia (bổ sung 2026-10-15)
 
 **Chuỗi prompt (khoá bài 2.3, tóm cấu trúc)**: input = title đã chốt + danh sách tính năng chính → P1 giao vai chuyên gia viết description chuẩn ASO Play Store → P2 viết full description tiếng Anh cho app *[tên]* với tính năng *[A, B, C, D]* → P3 viết short description ≤ 80 ký tự, câu mở bắt tai. Hậu kiểm: dịch ngược để kiểm nghĩa, heading "Main features" (game: "How to play").
 

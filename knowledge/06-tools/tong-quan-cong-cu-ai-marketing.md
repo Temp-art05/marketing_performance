@@ -106,7 +106,7 @@ Skill của PO đã cài sẵn trong repo (`.claude/skills/`), output ghi vào `
 - [Skill Product Artimind / Vision Lab](product-skills-artimind-vision-lab.md) 🤖 — doc Confluence chuẩn VL, product thinking, AC + pre-rollout theo remote config, UX flow app AI generate.
 - Kiến thức đi kèm: [PRD & những gì UA cần](../04-measurement/prd-success-metrics-va-yeu-cau-ua.md), [tracking spec & metrics plan](../04-measurement/tracking-spec-va-metrics-plan-cho-feature.md), [khung phân tích AARRR/cohort/funnel](../05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md).
 
-## 8. Tool bên ngoài miễn phí/rẻ (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## 8. Tool bên ngoài miễn phí/rẻ (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Không phải tool nội bộ; khoá Quocmedia dùng để làm UA "tay không". Giá/giao diện theo video (~11–12/2024 hoặc muộn hơn), cần kiểm lại.
 

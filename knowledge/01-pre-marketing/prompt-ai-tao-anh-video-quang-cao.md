@@ -107,7 +107,7 @@ Nguyên tắc tách vai (XPrompt, APR-114): ảnh **Reference** cho concept (b�
 
 **⚠️ Khác biệt nhỏ giữa hai nguồn nội bộ — số tiêu cự**: khung APR-146 yêu cầu ghi "số tiêu cự cụ thể" (vd 50mm); skill APR-015 nói Nano Banana **bỏ qua** số ống kính và nên tả bằng chữ ("shallow depth of field"), còn GPT Image 2 hiểu kiểu "50mm feel". Cả hai đều là kinh nghiệm, không có tài liệu chính thức của model. Cách dung hoà: tả hiệu ứng bằng chữ, có thể thêm số tiêu cự như gợi ý phụ; với Nano Banana đừng dựa vào con số.
 
-## 6. Brief hook từ insight (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+## 6. Brief hook từ insight (bổ sung 2026-10-15 từ khoá Quocmedia)
 
 Trước khi viết prompt cho cảnh hook, đi theo chuỗi **tính năng → insight (cảm xúc/kết quả user muốn) → hình ảnh**, không lấy thẳng tên tính năng làm hình. Ví dụ của khoá: Music Player → "tận hưởng âm nhạc" → cảnh người đeo headphone nhảy (khoá lấy stock Canva; cùng ý đó có thể đưa vào slot Scene/Subject của prompt ở mục 2/4). Cấu trúc video và style: [style video & hook](style-video-creative-ads-va-cong-thuc-hook.md). Stock video/nhạc của Canva cần kiểm license dùng cho quảng cáo.
 

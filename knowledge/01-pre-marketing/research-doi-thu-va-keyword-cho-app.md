@@ -47,7 +47,7 @@ summary: "Nhận app mới: cài thử, liệt kê tính năng, persona → keyw
 
 Nguồn chính: khoá Quocmedia bài 1.3–1.4 (ví dụ xuyên suốt là app utility Android "Max Volume Booster"), quay khoảng 11–12/2024 nên giao diện tool có thể đã đổi. Đây là bước **nhận một app đã có sẵn để chạy UA**, khác với [market research go/no-go](market-research-tam-sam-som-go-no-go.md) (quyết định có làm app hay không). Output của playbook này đi vào: headline/description App campaign ([creative assets](creative-assets-google-app-campaigns.md)), ASO ([store listing](aso-google-play-store-listing.md)) và brief creative ([style video & hook](style-video-creative-ads-va-cong-thuc-hook.md)).
 
-Toàn bộ là chưa duyệt (draft). Các nhận định "đang win" là kinh nghiệm của giảng viên, chưa kiểm chứng.
+Các nhận định "đang win" là kinh nghiệm của giảng viên, chưa kiểm chứng.
 
 ## 1. Checklist khi nhận app mới
 

@@ -66,7 +66,7 @@ Các ngưỡng dưới đây do tác giả tool đặt, **không phải benchmar
 - DAU/MAU < 10% → rất thấp; < 20% → thấp.
 - `iap_view` giảm > 15% so hôm qua → tín hiệu doanh thu; event phễu khác giảm > 25% → phễu yếu.
 
-## Ngưỡng của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8, chưa duyệt)
+## Ngưỡng của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8)
 
 Khoá đọc các chỉ số này trên **giao diện Firebase/GA4** (không BigQuery) và chỉ đưa 2 ngưỡng, đều 🧪 rule-of-thumb của giảng viên, không có nguồn, không nói GEO/thể loại:
 - **Retention D1: 15% "khá ok", ≥ 10% "ok"**. Trên màn hình minh hoạ, 15,3% thực ra là **Week 1** của cohort tuần (Firebase overview → "User activity by cohort"), không phải D1 → khi dùng, ghi rõ đang so D1 hay Week 1.

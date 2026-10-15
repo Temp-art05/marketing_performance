@@ -54,7 +54,7 @@ summary: Quyết định 18/09/2026 cho Home Morph — giữ ads-only, paid UA c
 - Sau 7 ngày chạy: nếu cả 3 nước D0 ROAS < 15% → tắt, sửa app trước. Nếu có số thật (ARPDAU, D1/D7, imps/user) → tính lại toàn bộ và cập nhật quyết định này.
 - Khi có IAP/sub → xem lại Tier 1.
 
-## Ghi chú: có hai bảng tier khác nhau (bổ sung 2026-10-14 từ AI Knownledge, chưa duyệt)
+## Ghi chú: có hai bảng tier khác nhau (bổ sung 2026-10-14 từ AI Knownledge)
 
 Quyết định ở trên **không đổi**. Ghi chú để tránh nhầm khi bàn GEO:
 - Bảng tier của quyết định này (Tier 1 = US, CA, UK, AU, NZ, IE, DE, AT, CH, FR, BE, NL, ES, **PT**, IT, Nordics; ID+PH+VN gọi chung "Tier 2/3") là bảng **định giá GEO cho UA**, dựa trên benchmark eCPM/CPI.
