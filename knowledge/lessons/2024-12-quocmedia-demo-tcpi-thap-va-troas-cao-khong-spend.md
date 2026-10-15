@@ -5,10 +5,10 @@ topic: lessons
 tags: [google-ads, app-campaigns, tcpi, troas, bid, khong-spend, quocmedia]
 app: general
 geo: [Global]
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.3 và 4.4 — video ~12/2024, transcribe 2026-10-15 (số đọc từ màn hình tài khoản demo 251-796-5672)"
+  - Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.3 và 4.4 — video ~12/2024, transcribe 2026-10-15 (số đọc từ màn hình tài khoản demo 251-796-5672)
   - "Google Ads Help — Best practices for App campaigns: https://support.google.com/google-ads/answer/14104492 (truy cập 2026-10-14)"
   - "Google Ads Help — Tips for maximizing your App campaign: https://support.google.com/google-ads/answer/9176652 (truy cập 2026-10-14)"
   - "Google Ads Help — Set a recommended initial Target ROAS for your App campaigns: https://support.google.com/google-ads/answer/15995101 (truy cập 2026-10-14)"

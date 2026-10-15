@@ -1,6 +1,6 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 89 tài liệu (4 draft), cập nhật gần nhất 2026-10-15.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 89 tài liệu (3 draft), cập nhật gần nhất 2026-10-15.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
@@ -111,7 +111,7 @@
 
 ## lessons — Bài học rút ra từ data/việc thật (có ngày, bối cảnh)
 
-- `lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md` — Số trên màn hình khoá Quocmedia (12/2024, app demo Android, global, EN) — tCPI ₫800 chọn theo Keyword Planner gần như không spend, nâng ₫2.000 ra 157 install CPI ₫1.708; campaign tROAS 80% gần như không spend. `[lesson · draft · 2026-10-15]` 🖼2
+- `lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md` — Số trên màn hình khoá Quocmedia (12/2024, app demo Android, global, EN) — tCPI ₫800 chọn theo Keyword Planner gần như không spend, nâng ₫2.000 ra 157 install CPI ₫1.708; campaign tROAS 80% gần như không spend. `[lesson · verified · 2026-10-15]` 🖼2
 - `lessons/2026-09-google-ads-ad-group-trong-do-adblock.md` — 18/09/2026 khi tạo App campaign, bước Ad group hiện trang trắng (URL kẹt ở ProductGroupsComponent); nguyên nhân là extension AdBlock — tắt cho ads.google.com và reload là hết. `[lesson · verified · 2026-10-14 · home-morph]` 🖼1
 - `lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md` — 17/09/2026 link AdMob và Google Ads của Home Morph nằm ở 2 tài khoản Google — không có link trực tiếp cho tROAS; phải đi AdMob→Firebase/GA4→Google Ads, và "Firebase Owner" không có nghĩa là có quyền GA4. `[lesson · verified · 2026-10-14 · home-morph]` 🖼1
 
