@@ -18,8 +18,9 @@ sources:
   - "Google Ads Help — Set up an App campaign for installs: https://support.google.com/google-ads/answer/12575501 (truy cập 2026-10-14)"
   - "Google Ads Help — Set a recommended initial Target ROAS for your App campaigns: https://support.google.com/google-ads/answer/15995101 (truy cập 2026-10-14)"
   - "session 2026-09-17 (als001 e3e3ea4c): link AdMob ↔ Google Ads của Home Morph khi 2 bên khác tài khoản Google"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.2 — video ~12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
   - 00-overview/roadmap.md
   - 04-measurement/firebase-events-cho-ua.md
@@ -29,6 +30,7 @@ related:
   - lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md
   - 04-measurement/mmp-tong-quan.md
   - 06-tools/firebase-remote-config-mcp-rc-apply.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Các bước tích hợp Firebase SDK Android, link Firebase/GA4 với Google Ads và AdMob (quyền cần có, cả khi khác tài khoản Google), bật impression-level ad revenue, import first_open làm conversion và các lỗi hay gặp.
 ---
 
@@ -70,6 +72,7 @@ Nên thêm **Crashlytics** ngay từ đầu, vì roadmap cần theo dõi crash �
 - **Enable Personalized Advertising**: mặc định bật. Giữ bật để dùng audience cho remarketing/ACe.
 - **Auto-tagging**: bật (Google Ads best practices 14104492 cũng yêu cầu bật).
 - Sau khi link, dữ liệu Google Ads xuất hiện trong GA4 trong vòng **48 giờ**. Key events và audience của GA4 được chia sẻ sang Google Ads.
+- **Đường thứ hai, đi từ phía Google Ads** (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.2, chưa duyệt; UI 12/2024): Google Ads → **Tools → Data manager → Google Analytics → Manage link → (+) → "Link a Google Analytics (GA4) or Firebase property"** → chọn property của app → Next → Link → Done. Quyền cần có vẫn như trên.
 
 ## Bước 3: Link AdMob ↔ Firebase
 
@@ -93,6 +96,12 @@ AdMob → **Settings → Linked services** → mở dòng app → bật toggle F
 - **Firebase Owner không tự có quyền trên GA4 property.** Kiểm tra ở GA4 → Admin → Property access management.
 - Lấy đúng Property ID từ Firebase → Project settings → **Integrations → Google Analytics** (tài khoản kia có thể có property rỗng khác mặc định hiện ra).
 - Hướng mời gọn nhất: mời tài khoản đang giữ AdMob/Firebase/GA4 làm **Admin** Google Ads (Admin → Access and security → Users → +). Google Ads có thể bắt xác nhận danh tính (2FA) trước khi gửi lời mời.
+- **Cách khoá Quocmedia làm** (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.2, chưa duyệt) — cấp quyền cho chính email của tài khoản AdMob rồi link từ AdMob:
+  1. Firebase → Project settings → **Users and permissions → Add member** → email tài khoản AdMob → role **Owner**.
+  2. Firebase → Analytics Dashboard → *View more in Google Analytics* → GA4 **Admin → Property access management → + → Add users** → email AdMob → role **Administrator**.
+  3. Mở hộp mail của tài khoản AdMob → mail mời của Firebase → *See pending invitation* → **Accept**.
+  4. AdMob → Settings → **Linked services** → dòng app → bật toggle Firebase → *Link to an existing Firebase app and project* → chọn project → **Link app** → trạng thái "linked".
+  - Khớp yêu cầu quyền ở Bước 3 (Owner có `firebase.links.create`; GA4 Administrator) và khớp [lesson](../lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md). Lưu ý: bước 2 là bắt buộc riêng — Firebase Owner không tự có quyền GA4.
 - Mục **Google Ads** trong AdMob → Settings → Linked services là để chạy *house ads / direct sold*, **không** phải đường đi ad revenue cho tROAS.
 - Nếu trang Google Ads/AdMob hiện trắng hoặc thiếu nút: tắt ad blocker cho domain đó ([lesson AdBlock](../lessons/2026-09-google-ads-ad-group-trong-do-adblock.md)).
 
@@ -102,6 +111,11 @@ AdMob → **Settings → Linked services** → mở dòng app → bật toggle F
 2. Trong Google Ads: **Tools → Measurement → Conversions → + New conversion action → App → Google Analytics 4 properties (Firebase)** → tick `first_open` (Android) → Import.
 3. Đặt conversion action làm **Primary** để dùng cho bidding (Google Ads 15995101 yêu cầu action dùng để tối ưu phải là Primary).
 4. Kiểm tra trạng thái conversion chuyển sang "Recording conversions" sau khi có install thật.
+
+(bổ sung 2026-10-15 từ khoá Quocmedia bài 4.2, chưa duyệt)
+- Đường đi trên UI 12/2024: **Goals → Conversions → Summary → + Create conversion action → App → Google Analytics (Firebase) → Continue → tick `first_open` → Import and continue → Done**; màn xác nhận "You've imported 1 app conversion action from Google Analytics (GA4)". Danh sách import gồm event của **mọi app** trong tài khoản (khoá thấy 112 event) — kiểm đúng tên app trước khi tick.
+- Khoá dạy vào Firebase → Events **bật "Mark as key event" cho tất cả event** đang có. 🧪 Không cần: chỉ `first_open` (thường đã là key event sẵn) và sau này `ad_impression` cần đánh dấu; bật hết làm danh sách conversion để import rối và dễ tick nhầm.
+- Khoá **không nhắc** Primary/Secondary, conversion "Android installs (Google Play)" tự tạo, auto-tagging, và **Impression-level ad revenue** — các bước đó vẫn phải làm theo bài này.
 
 ### Lưu ý / bẫy
 

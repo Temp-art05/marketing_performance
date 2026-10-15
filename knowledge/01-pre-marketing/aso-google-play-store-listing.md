@@ -11,9 +11,16 @@ sources:
   - "Play Console Help — Best practice for your store listing: https://support.google.com/googleplay/android-developer/answer/13393723 (truy cập 2026-10-14)"
   - "Play Console Help — Metadata policy: https://support.google.com/googleplay/android-developer/answer/9898842 (truy cập 2026-10-14)"
   - "Play Console Help — Custom store listings: https://support.google.com/googleplay/android-developer/answer/9867158 (truy cập 2026-10-14)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 2.1–2.5 — video ~11–12/2024 theo ghi chú khoá (màn hình Play Console/Sensor Tower ở bài 2.1 cho thấy dữ liệu 01–03/2026), transcribe 2026-10-15"
+  - "Play Console Help — Ratings, Reviews & Installs policy: https://support.google.com/googleplay/android-developer/answer/9898684 (WebFetch 2026-10-15)"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
+images:
+  - assets/screenshots/2026-10/2026-10-15-quocmedia-play-console-listing-conversion-analysis-1.jpg
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - 01-pre-marketing/research-doi-thu-va-keyword-cho-app.md
+  - 01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md
   - 00-overview/roadmap.md
   - 01-pre-marketing/creative-assets-google-app-campaigns.md
   - 01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md
@@ -89,6 +96,50 @@ Roadmap muốn "nhấn mạnh main keywords (chức năng app) trong full descri
 - **Ảnh iOS 1242×2688 không upload được lên Play** (tỉ lệ 2,16 > 2:1). Hai tool nội bộ mặc định xuất kích thước này — luôn xuất 1080×1920 cho Android.
 - **Custom store listings**: tối đa 50 listing; target theo quốc gia, Google Ads campaign, URL, search keyword, user không hoạt động/đã gỡ (Play Console Help 9867158). Dùng để khớp screenshot với thông điệp từng ad group — xem mục 7 của [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md).
 - Cách dựng bộ screenshot (narrative arc, quality bar) và chọn tool AI: [thiết kế screenshot store](thiet-ke-screenshot-store-quality-bar.md). Rating/review và trả lời review: [trả lời review Google Play](tra-loi-review-google-play.md). Lỗi policy listing đã gặp (Metadata, Impersonation, Misleading Claims): [lỗi policy thường gặp](policy-loi-thuong-gap-va-cach-fix.md). Check trademark tên app trước khi đặt title: [Super Legal](../06-tools/super-legal-check-trademark-ten-app.md).
+
+## 6. Đo CVR store listing trong Play Console (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+Nguồn: khoá Quocmedia bài 2.1 (đường đi menu thấy trên màn hình demo, Play Console giao diện ~02/2026).
+
+- **Visitors và Conversion rate theo listing**: Grow users → Store presence → **Store listings** → bảng "Default store listing" có cột Visitors, Conversion rate. Play Console còn tự gợi ý tạo **custom store listing** cho search keyword mang nhiều traffic (ví dụ trên màn hình: "Your app receives significant traffic from searches for '…'. Use Gemini to generate a custom store listing").
+- **Phân tích chi tiết**: Grow users → Store performance → **Listing conversion analysis** → "View by": App install state, Country/region, Custom audience, Language, **Search term**, Store listing, **Traffic source**, UTM campaign, UTM source. Xem theo Search term để biết keyword nào mang install; theo Traffic source để tách organic search/explore/ads.
+
+![Play Console "Store listing conversion analysis" với menu View by mở (Search term, Traffic source, UTM…)](../../assets/screenshots/2026-10/2026-10-15-quocmedia-play-console-listing-conversion-analysis-1.jpg)
+
+Ảnh cho thấy vị trí trang trong menu trái (Grow users → Store performance → Listing conversion analysis) và các chiều có thể tách CVR.
+
+**Ngưỡng CR của giảng viên** — 🧪 `confidence: low`, ý kiến 1 người trên 1 app utility của mình, không rõ GEO/kênh:
+- CR store listing ≥ 25% là tối thiểu, ≥ 30% là ổn, > 50% là cao; < 20% thì làm lại product page (mục 1–3).
+- Ví dụ trên màn hình: 13.629 visitors, CR 39,3% (1 tháng); listing khác 2.107 visitors, CR 51,3% (08/2024). Giảng viên nói mỗi app một khác, chỉ là định hướng.
+- **Không lẫn 2 loại CR**: CR ở đây = người cài / người vào trang store listing (Play Console). CR của Google Ads = conversions / interactions (xem [glossary](../00-overview/glossary-chi-so.md)). Hai số không so trực tiếp được.
+
+**Khung ASO 4 giai đoạn của khoá** (để định vị việc đang làm): (1) Product page — icon, title, package ID, screenshot, feature graphic, short/full description, video → (2) Store CVR → (3) Social proof & ranking (download, rating, review, keyword ranking) → (4) App quality (crash rate — khoá đặt < 1% trong Firebase Crashlytics, khác ngưỡng Vitals của Google ở [trả lời review](tra-loi-review-google-play.md); app size; retention D1/D7; LTV). Package/Application ID không đổi được sau khi publish → chốt trước khi lên store; ảnh hưởng ranking của package name thì không có nguồn chính thức.
+
+Keyword ranking organic của đối thủ (Sensor Tower free) và Keyword Planner: xem [research đối thủ & keyword](research-doi-thu-va-keyword-cho-app.md).
+
+## 7. Viết description bằng AI và các ý bổ sung từ khoá Quocmedia (bổ sung 2026-10-15, chưa duyệt)
+
+**Chuỗi prompt (khoá bài 2.3, tóm cấu trúc)**: input = title đã chốt + danh sách tính năng chính → P1 giao vai chuyên gia viết description chuẩn ASO Play Store → P2 viết full description tiếng Anh cho app *[tên]* với tính năng *[A, B, C, D]* → P3 viết short description ≤ 80 ký tự, câu mở bắt tai. Hậu kiểm: dịch ngược để kiểm nghĩa, heading "Main features" (game: "How to play").
+
+**Thêm ràng buộc vào prompt** (vì output demo của khoá dính lỗi và giảng viên dùng nguyên): không superlative ("ultimate", "best", "#1"), không chữ khuyến mãi ("free", "new", "discount"), không CTA kiểu "download now" trong short description, không liệt kê/lặp keyword, kiểm ≤ 80 / ≤ 4.000 ký tự. Output demo có short description chứa "ultimate" và full description kết bằng "Download … now" — đúng nhóm mục 1 khuyên tránh.
+
+**Ý khác của khoá, chưa xác minh chính thức**:
+- Title chứa main keyword; mỗi tính năng = 1 keyword rải trong short/full; 3 trường đồng bộ thông tin — khớp mục 1, vẫn phải viết tự nhiên.
+- In đậm keyword bằng thẻ `<b>…</b>` trong full description — chưa có nguồn chính thức nói thẻ nào được hỗ trợ hay có ảnh hưởng ranking; đừng lạm dụng (policy cấm định dạng để thao túng ranking).
+- Thêm FAQ/contact/email/link help center cuối full description để tăng tin cậy — rủi ro thấp; link không được dẫn sang app khác/quảng cáo.
+- Screenshot: 1–3 ảnh **ngang 16:9** đầu + 4–6 ảnh dọc, giảng viên nói "Google khuyến dùng gần đây" nhưng không đưa nguồn → giả thuyết, chỉ đổi sau Store listing experiment (xem [thiết kế screenshot](thiet-ke-screenshot-store-quality-bar.md) mục 9).
+- Con số "Top 3 ưu tiên trên Play Store: Video 24%, Screenshot 13%, Mô tả 8%" — không nguồn, không rõ đo gì → **không dùng làm benchmark**.
+
+### ⚠️ Mâu thuẫn với spec/policy chính thức
+
+| Khoá Quocmedia | Chính thức (nguồn) | Theo |
+|---|---|---|
+| "Feature graphic = screenshot = thumbnail": dùng chung ảnh ngang **1920×1080** (bài 2.2, 2.4) | Feature graphic **1024×500** (~2,05:1), JPEG/PNG 24-bit (9866151, mục 2). Ảnh 16:9 không dùng thẳng được, phải dựng/crop lại. Việc feature graphic có làm thumbnail video hay không: chưa xác nhận | Chính thức. Ý "đồng bộ thông điệp giữa feature graphic và screenshot" vẫn dùng được |
+| Video preview: đầu tư **voice-over** là tiêu chí chính, "ít text" (bài 2.2, 2.5) | Chỉ 30s đầu autoplay và **tắt tiếng**; nên có caption (9866151, mục 3) | Chính thức: thông điệp phải hiểu được bằng hình + caption; voice-over là phần thêm |
+| Video preview dựng chủ yếu từ stock footage + mockup nhỏ (bài 2.5) | ≥ ~80% video nên là trải nghiệm thật trong app; Metadata policy: video phải *"reflect your app's actual experience"* (mục 3, mục 5) | Chính thức: ưu tiên quay màn hình UI thật |
+| Prompt kịch bản voice "≤ 30 giây" nhưng LLM viết dài 36s, khoá giãn video 0,7x cho khớp (bài 2.5) | 30s đầu là phần autoplay | Kiểm độ dài kịch bản theo số từ trước khi TTS (ước lượng của mình ~2,5 từ/giây tiếng Anh, không phải số chính thức); thông điệp chính trong 30s đầu |
+| Giai đoạn 3: chủ động "đẩy" lượt cài theo keyword search và **review 4–5 sao** theo chủ đích, ~3–5 review/1.000 download ads/ngày, "đừng làm quá tay" (bài 2.1) | Ratings, Reviews & Installs policy (9898684, WebFetch 2026-10-15): *"We prohibit any manipulation of ratings, reviews, or install counts"*; cấm *"inflating product ratings, reviews, or install counts by illegitimate means, such as fraudulent or incentivized reviews and ratings"*; *"Don't offer rewards or incentives for ratings or reviews"*, *"Don't use automated services to inflate installs or ratings"* | **Chính thức — không làm.** Rủi ro gỡ app/khoá tài khoản. Cách hợp lệ: Play In-App Review API hỏi user thật sau khi dùng thành công, không chọn trước số sao. Xem [lỗi policy](policy-loi-thuong-gap-va-cach-fix.md) mục 6 |
+| Emoji ở từng tính năng trong full description (output demo) | Metadata policy cấm emoji ở **title**/icon/tên developer (mục 1); full description không có quy định rõ trong tài liệu đã đọc | Không cấm rõ — dùng tiết chế, không dùng emoji thay keyword hay lặp ký tự |
 
 ## Việc tiếp theo
 

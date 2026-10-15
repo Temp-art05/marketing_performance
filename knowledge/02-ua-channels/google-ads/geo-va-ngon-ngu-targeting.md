@@ -12,8 +12,9 @@ sources:
   - "Google Ads Help — About advanced location options: https://support.google.com/google-ads/answer/1722038 (truy cập 2026-10-14)"
   - "Google Ads Help — Tips for maximizing your App campaign: https://support.google.com/google-ads/answer/9176652 (truy cập 2026-10-14)"
   - "session 2026-09-17→18 (als001 def570ce): setup GEO EU/US rồi chuyển sang ID+PH+VN cho Home Morph"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.3, 4.5 — video ~12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 images:
   - assets/screenshots/2026-09/2026-09-17-google-ads-app-locations-europe-vs-eu-1.png
 related:
@@ -22,6 +23,9 @@ related:
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
   - apps/home-morph/campaigns.md
   - 06-tools/global-holiday-map-lich-ngay-le.md
+  - lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md
+  - 00-overview/roadmap.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Cách nhập danh sách nước hàng loạt, EU-27 vs "Europe", gom nước theo CPI vào campaign, Location options (Presence), chọn ngôn ngữ khớp asset và ad group theo ngôn ngữ cho App campaigns.
 ---
 
@@ -56,6 +60,13 @@ Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden
 - 🧪 Budget nhỏ (vd ~$7–8/ngày) → chỉ chạy **1 campaign**; chia nhiều campaign thì không cái nào đủ conversion để thoát learning.
 - 🧪 Đọc kết quả ở **cấp country** (report tách theo location), không chỉ cấp campaign; ~100 install/nước trở lên mới đủ để quyết định cắt/scale.
 - 🧪 Target xuống cấp thành phố (vd Jakarta, Surabaya) có thể dùng ở vòng tối ưu sau; không nên làm khi budget nhỏ vì thu hẹp volume.
+
+### Phương án "Global test" của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+Khoá "UA Marketing Mobile App 2026" (bài 4.3, 4.5) — nguồn gốc của chữ "global" trong [roadmap](../../00-overview/roadmap.md) — chạy **1 campaign duy nhất, Locations = All countries and territories, Languages = English**, cho cả campaign CPI lẫn campaign ROAS (đổi tại chỗ nên không có 2 campaign trùng GEO).
+- Mục đích: chỉ cần **install rẻ để test** SDK AdMob, retention, cho `ad_impression` xuất hiện — không cần đọc theo nước. Với mục đích đó, việc Google dồn budget vào nước rẻ là chấp nhận được.
+- Số thật trong khoá (app demo Android, 05–07/12/2024): 157 install, CPI ₫1.708 ([lesson](../../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md)) — là CPI trung bình của mix nước Google tự chọn, không suy ra được CPI từng nước.
+- ⚠️ Đánh đổi so với gom theo tier ở trên: không mâu thuẫn tài liệu chính thức, nhưng trái khuyến nghị 🧪 "không gom nước có CPI chênh nhiều". Data global khó đọc theo nước, ROAS bị kéo bởi nước rẻ eCPM thấp, và campaign tROAS chạy global sẽ học trên mix đó. 🧪 Global hợp cho bước test kỹ thuật ngắn ngày; khi chuyển sang tối ưu ROAS thì nên tách GEO theo CPI/eCPM. Home Morph đã chọn hướng khác (ID+PH+VN): [quyết định](../../decisions/2026-09-home-morph-geo-ua-ads-only.md).
 
 ## 3. Location options
 

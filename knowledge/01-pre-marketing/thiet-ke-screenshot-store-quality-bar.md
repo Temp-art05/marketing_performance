@@ -15,10 +15,12 @@ sources:
   - "Play Console Help — Metadata policy: https://support.google.com/googleplay/android-developer/answer/9898842 (WebFetch 2026-10-14)"
   - "Play Console Help — Custom store listings: https://support.google.com/googleplay/android-developer/answer/9867158 (truy cập 2026-10-14)"
   - "Apple — Screenshot specifications: https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications/ (truy cập 2026-10-14)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 2.2 và 2.4 — video ~11–12/2024 theo ghi chú khoá, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 images: [assets/screenshots/2026-10/2026-10-14-screenshot-studio-demo-slide1-1.png]
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
   - 01-pre-marketing/aso-google-play-store-listing.md
   - 01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md
   - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
@@ -116,3 +118,19 @@ Ví dụ output của Screenshot Studio (slide hook 1 điện thoại, headline 
 - [ ] Screenshot **phản ánh trải nghiệm thật** — AI không được vẽ thêm UI/tính năng không có (rủi ro Deceptive Behavior / Misleading Claims, xem [lỗi policy thường gặp](policy-loi-thuong-gap-va-cach-fix.md)).
 - [ ] Chữ không-Latin (Arabic RTL, Devanagari, Thai…) được người đọc được duyệt.
 - [ ] Mockup thiết bị không gây hiểu nhầm (nhận định: listing Android nên dùng khung Android hoặc không khung; Terasofts dùng Samsung S25 Ultra).
+
+## 9. Làm thủ công nhanh bằng Canva (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+Khi chưa có tool nội bộ hoặc cần phác thảo để truyền ý cho designer (khoá nhấn mạnh người làm UA nên tự sketch được, đỡ phụ thuộc designer). Theo bài 2.4 của khoá:
+
+- **Dọc 1080×1920**: Canva → Cỡ tuỳ chỉnh → ghép 3 lớp: nền ảnh theo keyword tính năng (lọc ảnh dọc) → element "phone frame" → **UI thật** của app. Tiêu đề = tên tính năng, chữ trắng. Nhân bản trang để giữ vị trí thống nhất; **mỗi ảnh 1 tính năng**.
+- **Ngang 1920×1080** (banner): template "Mobile App", tên app ở trên, 3 mockup điện thoại chứa UI thật, nền minh hoạ tính năng.
+- Xuất JPG chất lượng 100 (JPG không alpha — khớp yêu cầu 24-bit của Play).
+- Khung máy: demo dùng khung giống iPhone — listing Android nên chọn khung Android hoặc không khung (mục 8).
+
+Đánh giá so với bài này: khoá chỉ đặt tiêu đề 1–2 từ (tên tính năng), không có slide hook/lợi ích → coi là **mức tối thiểu cho app tiện ích**; narrative arc ở mục 1–2 chặt hơn. 4 quy tắc screenshot của khoá (điểm nhấn ở giữa, tagline ≤ 20%, không "best/Top/#1") khớp mục 3–4 và 8.
+
+**Giả thuyết chưa có nguồn**: khoá khuyên đặt **1–3 screenshot ngang 16:9 ở đầu** rồi 4–6 ảnh dọc ("Google khuyến dùng gần đây" — không đưa nguồn). Spec Play cho phép cả hai hướng ([ASO](aso-google-play-store-listing.md) mục 2), tổng ≤ 8 ảnh vẫn hợp lệ. Không đổi checklist mặc định (dọc) cho tới khi có nguồn chính thức hoặc kết quả **Store listing experiment** — chạy thì ghi vào `lessons/`.
+
+**⚠️ Mâu thuẫn**: khoá dùng chung ảnh ngang 1920×1080 làm feature graphic ("Feature graphic = screenshot = thumbnail"); spec feature graphic là **1024×500** — xem bảng mâu thuẫn ở [ASO](aso-google-play-store-listing.md) mục 7.
+

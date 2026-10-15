@@ -15,8 +15,11 @@ sources:
   - "AdMob Help — Disallowed interstitial implementations: https://support.google.com/admob/answer/6201362 (truy cập 2026-10-14)"
   - "AdMob Help — Rewarded ads policy: https://support.google.com/admob/answer/7313578 (truy cập 2026-10-14)"
   - "AI Knownledge/APR-108 - Tester Workflow Toolkit (ad-policy.md), APR-007 (Remote Config template), APR-161 (PRD hậu kiểm ads 2 ver) (đọc 2026-10-14)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.4 — video ~12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
+images:
+  - assets/screenshots/2026-10/2026-10-15-quocmedia-admob-nguong-imp-request-match-rate-1.jpg
 related:
   - 00-overview/glossary-chi-so.md
   - 03-monetization/mediation-admob-vs-applovin-max.md
@@ -28,6 +31,7 @@ related:
   - 03-monetization/paywall-subscription-checklist-policy.md
   - 01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md
   - 06-tools/admob-revenue-report-so-sanh-version.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: 6 ad format của AdMob và khi nào dùng, định nghĩa chính thức requests/match rate/show rate/impressions/eCPM/ARPU/imps per user, cách đọc phễu, và các policy dễ bị phạt (invalid traffic, interstitial, rewarded).
 ---
 
@@ -85,6 +89,23 @@ Requests ──match rate──> Matched requests ──show rate──> Impress
 | Partner bidding | AdMob tính matched requests khác nên **match rate có thể giảm, show rate tăng mà doanh thu không đổi**. Không kết luận vội. |
 
 Các chiều nên xem: **ad unit**, **format**, **country (top GEO)**, **ad source**, **app version**. Đây cũng là các chiều roadmap yêu cầu ở bước đo lường.
+
+### 🧪 Ngưỡng rule-of-thumb của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.4, chưa duyệt)
+
+Nguồn: giảng viên Quốc Anh, khoá "UA Marketing Mobile App 2026" — **không phải Google**, AdMob Help không công bố ngưỡng nào. Dùng để kiểm SDK AdMob trên lượng user từ campaign CPI **trước khi** chuyển sang tROAS:
+
+![Slide khoá học: thẻ "Ads activity performance" của AdMob (828 requests, 221 impressions, match rate 93,12%, eCPM $1.33) cạnh ngưỡng "impression/request > 50%" và "Match Rate > 80%"](../../assets/screenshots/2026-10/2026-10-15-quocmedia-admob-nguong-imp-request-match-rate-1.jpg)
+
+Ảnh trên: slide ngưỡng của khoá; chính ví dụ trên slide (221/828 = 27%) lại **dưới** ngưỡng impression/request.
+
+| Chỉ số | Ngưỡng 🧪 | Dưới ngưỡng thì |
+|---|---|---|
+| Impressions / Requests | **≥ 50%** (100–200 imp / 1.000 request là "rất đáng báo động") | Làm lại với dev: SDK, hàm load ad, logic show |
+| Match rate | **≥ 80%** (≥ 90% là tốt) | Xem lại cấu hình ad unit / mediation / floor |
+
+- Impressions / Requests = **match rate × show rate** (theo định nghĩa ở bảng trên). Nên tách ra xem từng vế: match rate thấp → nghi demand/floor; match rate cao mà tỉ lệ thấp → show rate thấp → nghi code/placement.
+- Ví dụ số khoá đưa ra (không rõ app/kỳ): 46 req → 25 imp (54%), match 100%, eCPM $3.39; 766 → 351 (46%), match 99,61%, eCPM $3.84; 828 → 221 (27%), match 93,12%, eCPM $1.33.
+- ⚠️ Lệch với thang nội bộ Apero ở [hậu kiểm version](../05-optimization/hau-kiem-version-app-nguong-verdict.md): tool nội bộ coi match rate **≥ 70% là tốt**, 50–70% trung bình, < 50% xấu (khoá: ≥ 80%); show rate ≥ 80% tốt. Cả hai đều là rule-of-thumb, không phải Google; chưa có số thật của app mình để chọn. Match rate còn phụ thuộc GEO và mediation (partner bidding làm match rate giảm mà doanh thu không đổi — bảng trên).
 
 ## 3. Policy dễ dính
 

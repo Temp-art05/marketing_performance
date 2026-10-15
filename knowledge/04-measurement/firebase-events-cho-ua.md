@@ -16,8 +16,11 @@ sources:
   - "Google Ads Help — Best practices for App campaigns: https://support.google.com/google-ads/answer/14104492 (truy cập 2026-10-14)"
   - "Google Ads Help — Choose a bid strategy for your App campaign: https://support.google.com/google-ads/answer/12073727 (truy cập 2026-10-14)"
   - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.5 — video ~12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
+images:
+  - assets/screenshots/2026-10/2026-10-15-quocmedia-ad-impression-conversion-window-1-week-1.jpg
 related:
   - 04-measurement/firebase-setup-link-google-ads-admob.md
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
@@ -30,6 +33,8 @@ related:
   - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
   - 04-measurement/tracking-spec-va-metrics-plan-cho-feature.md
   - 06-tools/prd-to-visual-wireframe-so-do.md
+  - 00-overview/roadmap.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Ý nghĩa và điều kiện của first_open, ad_impression (AdMob tự log / MAX log thủ công qua ILRD), app_remove, user_engagement, in_app_purchase và event nào dùng cho tCPI/tCPA/tROAS.
 ---
 
@@ -101,6 +106,16 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 - Chỉ hỗ trợ attribution qua Google Analytics. **Không** hỗ trợ log server-to-server (Measurement Protocol).
 - Conversion window khuyến nghị **7 đến 30 ngày**.
 - Cột Conversions của `ad_impression` mặc định hiển thị **0**. Xem bằng segment theo conversion action + cột "Conversion value".
+
+### Thực hành từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.5, chưa duyệt)
+
+- **App mới chưa có `ad_impression` trong Firebase → Events.** Event chỉ xuất hiện sau khi có user thật xem ad (app demo của khoá lúc đầu chỉ có `app_clear_data`, `app_remove`, `first_open`, `screen_view`, `session_start`). Vì vậy phải chạy campaign CPI trước vài ngày rồi mới bật key event + import được — đây là lý do thực tế của mốc "~3 ngày" trong [roadmap](../00-overview/roadmap.md).
+- Đường import trên UI 12/2024: Firebase Events → bật toggle *Mark as key event* cho `ad_impression` → Google Ads **Goals → Conversions → Summary → + Create conversion action → App → Google Analytics (Firebase) → tick `ad_impression` (đúng app) → Import and continue → Done**.
+- Conversion window: mặc định khi import là post-install **90 ngày** / click-through 90 ngày / engaged-view 3 ngày / view-through 1 ngày, Last click. Khoá đổi post-install và click-through về **1 tuần** cho "kết quả về nhanh hơn" — nằm trong khoảng 7–30 ngày ở trên ✅.
+
+![Conversion action ad_impression (Android) sau khi sửa: Count Every conversion, Post-install 1 week, Click-through 1 week, Engaged-view 3 days, View-through 1 day, Attribution Last click](../../assets/screenshots/2026-10/2026-10-15-quocmedia-ad-impression-conversion-window-1-week-1.jpg)
+
+Ảnh trên: trang chi tiết conversion `ad_impression` trong Google Ads (12/2024) sau khi đổi window về 1 tuần; Count, view-through và attribution ghi "Not editable".
 
 ## 4. Event tuỳ chỉnh nên có (gợi ý, chưa kiểm chứng hiệu quả)
 

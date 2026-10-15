@@ -15,8 +15,9 @@ sources:
   - "Google Ads Help — About tROAS for ad revenue (ARO): https://support.google.com/google-ads/answer/13799577 (truy cập 2026-10-14)"
   - "AdMob Help — Reports glossary: https://support.google.com/admob/table/9462111 (truy cập 2026-10-14)"
   - "Firebase Help — Automatically collected events: https://support.google.com/firebase/answer/9234069 (truy cập 2026-10-14)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 1.2 và 4.4 — video ~11–12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
   - 00-overview/roadmap.md
   - 00-overview/glossary-chi-so.md
@@ -28,6 +29,8 @@ related:
   - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
   - 06-tools/tong-quan-cong-cu-ai-marketing.md
   - 06-tools/agent-qc-data-pipeline.md
+  - lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Khung đọc Google Ads, AdMob, Firebase ở các mốc 7 ngày, 1, 4, 6 tháng — xem gì, hỏi gì, làm gì; ngưỡng để trống chờ số liệu thực tế của app.
 ---
 
@@ -61,6 +64,13 @@ Mục tiêu: phát hiện lỗi setup/tracking và tín hiệu sớm. **Chưa** 
 | Chéo | ROAS D0, D3 sơ bộ | Chỉ để so giữa các campaign/GEO với nhau, **không** để kết luận lãi/lỗ | cần số liệu thực tế của app |
 
 Hành động điển hình: sửa tracking, thêm asset thay asset Low, xử lý crash, sửa placement có show rate thấp. **Không** đổi bid/target lớn nếu chưa đủ ~100 conversion (14104492).
+
+**Bổ sung cho mốc 7 ngày (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.4, chưa duyệt)**
+- Bộ cột Google Ads cho campaign CPI theo khoá: **Impr., Clicks, Installs, Cost/Install, CTR, Cost, Conv. rate**; tắt các cột trùng (Conversions trùng Installs, Cost/conv. trùng Cost/Install) và Optimization score, View-through conv. Đọc phễu: impression → click (CTR) → install (conv. rate) → CPI.
+  - ⚠️ *Conv. rate* của Google = conversions / **interactions**, không phải installs/clicks (case khoá: 5,21% vs 157/1.970 = 7,97%). Muốn CR click→install thì tự chia.
+- 🧪 Ngưỡng AdMob của khoá (không phải Google): **Impressions/Requests ≥ 50%**, **match rate ≥ 80%** (≥ 90% tốt); dưới ngưỡng thì kiểm SDK/code với dev trước khi lên tROAS. Chi tiết và chỗ lệch với thang nội bộ Apero: [AdMob cơ bản](../03-monetization/admob-co-ban.md). Có thể dùng tạm cho ô "Ngưỡng" hàng AdMob ở trên cho tới khi có số thật của app.
+- Campaign gần như không spend sau 3–7 ngày → xem mục "Campaign không tiêu tiền" trong [playbook](../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
+- Khoá giữ cùng ma trận mốc 7 ngày/1/4/6 tháng của roadmap và nhịp đọc chỉ số **hằng ngày hoặc hằng tuần** (bài 1.2); các bài 4.1–4.5 không nói gì thêm về mốc.
 
 ## Mốc 1 tháng: "Unit economics có triển vọng không?"
 

@@ -12,9 +12,13 @@ sources:
   - AI Knownledge/APR-255 - TrendGrab/PRD.md (đọc 2026-10-14)
   - AI Knownledge/APR-231 - reseach sản phẩm/tai-lieu-san-pham/PRD.md, TECHNICAL.md (đọc 2026-10-14)
   - AI Knownledge/APR-258 - Video Download/repo/README.md (đọc 2026-10-14)
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 1.4 — video ~11–12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - 01-pre-marketing/research-doi-thu-va-keyword-cho-app.md
+  - 01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md
   - 01-pre-marketing/creative-assets-google-app-campaigns.md
   - 06-tools/tiktok-trend-crawler-video-ai-viral.md
   - 06-tools/trendgrab-kham-pha-trend-tai-video.md
@@ -38,6 +42,8 @@ Tổng hợp từ 4 tool nội bộ (07–09/2026) do team Marketing/Data Apero 
 | Nội dung AI nào đang viral 48h qua? | TikTok hashtag | [TikTok Trend Tool](../06-tools/tiktok-trend-crawler-video-ai-viral.md), [TrendGrab](../06-tools/trendgrab-kham-pha-trend-tai-video.md) |
 | Sound/hashtag này có bao nhiêu video, format gì? | TikTok music page, hashtag | [Video Download](../06-tools/video-download-tai-video-hang-loat.md) |
 | Đối thủ đang chạy ad gì? | Facebook/Meta Ads Library | Video Download (tải MP4 từng ad) |
+| Đối thủ chạy creative gì trên Google App campaign? *(bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)* | Google Ads Transparency Center (+ mẹo My Ad Center lấy tên advertiser) | Thủ công — [research đối thủ](research-doi-thu-va-keyword-cho-app.md) mục 3.1 |
+| Ad trả phí nào trên TikTok có CTR cao? *(bổ sung 2026-10-15, chưa duyệt)* | TikTok Creative Center → Top Ads (CTR percentile, mức budget) | Thủ công — [research đối thủ](research-doi-thu-va-keyword-cho-app.md) mục 3.3 |
 | Chủ đề nào đang lên theo khu vực? | Google Trends, YouTube autocomplete | TrendGrab |
 | App nào trong ngách đang mạnh, vì sao? | App Store (iTunes Search API), review | [Trend Research Engine](../06-tools/trend-research-engine-why-it-works.md) |
 
@@ -68,6 +74,6 @@ opportunity = 0,40·ratingScore + 0,35·popularity + 0,25·freshness
 Giới hạn: không có time-series nên "trend" thực chất là độ phổ biến tích luỹ, **không đo tăng trưởng**; dữ liệu là App Store (iOS). Với Android cần nguồn khác (Sensor Tower, AppMagic… — trả phí).
 
 ## 6. Nguyên tắc sử dụng
-- Học **format, hook, nhịp, angle**; không sao chép hay dùng lại video người khác làm asset ("công khai không có nghĩa là được dùng miễn phí").
+- Học **format, hook, nhịp, angle**; không sao chép hay dùng lại video người khác làm asset ("công khai không có nghĩa là được dùng miễn phí"). *(bổ sung 2026-10-15, chưa duyệt)* Khoá Quocmedia bài 1.4 có gợi ý "lấy content ad iOS trên TikTok, edit lại chạy cho Android" — giữ nguyên tắc này: chỉ lấy ý tưởng, không lấy video.
 - Không vượt rào đăng nhập/CAPTCHA; cookie `ms_token` là credential cá nhân.
 - Ghi lại trend nào đã biến thành creative và kết quả (CTR/IPM/CPI) vào `lessons/` để biết phương pháp có hiệu quả không.

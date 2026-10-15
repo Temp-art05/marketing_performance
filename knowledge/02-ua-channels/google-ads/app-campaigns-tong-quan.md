@@ -19,10 +19,12 @@ sources:
   - "Google Ads Help — Duration of the learning period: https://support.google.com/google-ads/answer/13020501 (truy cập 2026-10-14)"
   - "Google Ads Help — About view-through conversion optimized bidding for App campaigns: https://support.google.com/google-ads/answer/16257907 (truy cập 2026-10-14)"
   - "session 2026-09-18 (als001 def570ce): setup campaign Home Morph 1 — màn VTC/Data feed/Dates và Bidding"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.3, 4.4, 4.5 — video ~12/2024, transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 images:
   - assets/screenshots/2026-09/2026-09-18-google-ads-app-vtc-datafeed-dates-1.png
+  - assets/screenshots/2026-10/2026-10-15-quocmedia-tcpi-800-vs-typical-cpi-1.jpg
 related:
   - 00-overview/roadmap.md
   - playbooks/launch-google-app-campaign-tcpa-den-roas.md
@@ -33,6 +35,8 @@ related:
   - apps/home-morph/campaigns.md
   - 04-measurement/firebase-setup-link-google-ads-admob.md
   - lessons/2026-09-google-ads-ad-group-trong-do-adblock.md
+  - lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Tổng quan App campaigns (ACi/ACe/ACpre), các bid strategy tCPI/tCPA/tROAS, tỉ lệ budget/bid chính thức (50×/10×/15×), learning period, quy tắc đổi bid/budget, cấu trúc ad group.
 ---
 
@@ -74,6 +78,7 @@ Bid khác: iOS nên bid cao hơn Android 1,5× (12073727). Không áp dụng cho
 - Chuyển từ tCPA cần **3 đến 4 tuần dữ liệu conversion value**.
 - Tính tROAS khởi điểm: bật cột *Conv. value/cost* của campaign tương đương trong khoảng bằng conversion window, rồi dùng làm target. Nếu tCPA được đặt cao hơn hẳn CPA thực tế thì nhân hệ số điều chỉnh (ví dụ Google: CPA thực $3 / tCPA $6 thì áp modifier 50%).
 - Conversion source phải là **Firebase hoặc Google Play codeless**. Bên thứ 3 có thể bị giới hạn.
+- ⚠️ (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt) Khoá Quocmedia — nguồn gốc roadmap — dạy chuyển sau 2–3 ngày, đổi tại chỗ, target cố định 50–60% rồi ~1 tháng sau nhảy 90–100%. Mâu thuẫn với các mục trên; bảng so sánh và gợi ý dung hoà ở [playbook bước 3](../../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
 
 ## 3. Budget: quy tắc chính thức
 
@@ -98,6 +103,7 @@ Chính thức:
 - Tránh dao động bid lên xuống liên tục, nên **đổi một lần**. Không đổi conversion settings (window, counting), event tối ưu, GEO lớn, asset đang tốt (14104492).
 - Không chạy 2 App campaign cùng app **trùng GEO** vì chúng cạnh tranh nhau (9176652).
 - Conversion về trễ nên CPI những ngày đầu có thể cao. Đánh giá cần tính đến độ trễ (9176652).
+- (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt) Ngoại lệ 🧪 cho quy tắc 20%: campaign **gần như không phân phối** (bid-constrained, chưa có data để học) thì nâng một lần về mức bid guidance là hợp lý — khoá Quocmedia nâng tCPI ₫800 → ₫2.000 và campaign tiêu đủ budget sau 1–2 ngày ([lesson](../../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md)).
 
 ## 5. Ad group
 
@@ -122,6 +128,19 @@ Chính thức:
 - **Start/End date**: 🧪 không đặt End date cho campaign UA chạy liên tục (tránh campaign tự tắt giữa lúc đo).
 - **Bidding UI (focus Install volume)**: chọn "How do you want to track install volume?" = Firebase **First open** thay vì Google Play install để chỉ trả cho user thật sự mở app (xem [firebase-events-cho-ua](../../04-measurement/firebase-events-cho-ua.md)). Ô *Target cost per install* có gợi ý "A typical cost per install for other apps targeting your selected area is …" + nút APPLY; UI báo campaign dùng bid strategy **Target CPA** (tCPI là biến thể của tCPA). Ví dụ thật: [Home Morph 1](../../apps/home-morph/campaigns.md).
 - 🧪 Đặt tCPI thấp hơn nhiều so với gợi ý để "tiết kiệm" thì dễ không tiêu hết budget, ít conversion, kẹt learning.
+
+### Thêm từ khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+UI Google Ads khoảng 12/2024 quay trong khoá "UA Marketing Mobile App 2026" (bài 4.3, 4.5):
+
+![Bidding Install volume: tracking (Android) First open – Firebase, All users, Target cost per install ₫800, Google gợi ý "A typical cost per install for other apps is ₫8,993", UI báo dùng bid strategy Target CPA](../../../assets/screenshots/2026-10/2026-10-15-quocmedia-tcpi-800-vs-typical-cpi-1.jpg)
+
+Ảnh trên: khoá học đặt tCPI ₫800 (lấy từ Keyword Planner) trong khi gợi ý của Google là ₫8.993 — campaign sau đó gần như không spend ([lesson](../../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md)). Khẳng định lại 🧪 ở trên bằng một case cụ thể; **Keyword Planner top-of-page bid là CPC Search, không dùng để chọn tCPI**.
+
+- **App engagement (ACe)**: UI ghi subtype này cần app có **tối thiểu 50K installs** (đọc từ màn hình, chưa đối chiếu Help).
+- **tCPI và audience signal**: với focus Install volume + tCPI, UI báo *"Audience signals won't be used in this campaign with this bid strategy"* → không mất công soạn audience signal cho campaign tCPI.
+- **Đổi bidding focus trên campaign có sẵn**: Campaign → Settings → Bidding ("Bạn muốn tập trung vào điều gì?") → đổi *Số lượt cài đặt* sang *Giá trị hành động trong ứng dụng* → giữ install tracking First open, tick `ad_impression` → nhập target ROAS → UI báo chuyển sang bid strategy **ROAS mục tiêu**. UI cho phép, nhưng ⚠️ Google khuyên tránh đổi loại campaign sau launch (9176652) và đổi focus/bid strategy là thay đổi lớn, learning 7–14 ngày (15995101). Xem bảng mâu thuẫn ở [playbook bước 3](../../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
+- **Giá trị mặc định conversion action `ad_impression` khi import** (UI 12/2024): Count = Every conversion; Post-install window **90 ngày**; Click-through **90 ngày**; Engaged-view 3 ngày; View-through 1 ngày; Attribution Last click (Google paid channels). Count, view-through, attribution không sửa được. Khoá đổi post-install + click-through về **1 tuần**, khớp khuyến nghị 7–30 ngày ✅ (13799577). Đổi **trước** khi gắn vào campaign tROAS (đổi giữa chừng reset learning, 14104492).
 
 ### Targeting: cái không điều khiển được
 

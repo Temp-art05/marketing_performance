@@ -13,9 +13,15 @@ sources:
   - "Google Ads Help — Best practices for App campaigns: https://support.google.com/google-ads/answer/14104492 (truy cập 2026-10-14)"
   - "Google Ads Help — Set up an App campaign for installs: https://support.google.com/google-ads/answer/12575501 (truy cập 2026-10-14)"
   - "Google Ads Help — Asset requirements for App campaigns for engagement: https://support.google.com/google-ads/answer/9234183 (truy cập 2026-10-14)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 1.2, 1.3, 3.1, 3.5, 3.6 — video ~11–12/2024, transcribe 2026-10-15"
+  - "Google Ads Help — Punctuation and symbols (editorial): https://support.google.com/adspolicy/answer/14847994 (WebFetch 2026-10-15)"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - 01-pre-marketing/research-doi-thu-va-keyword-cho-app.md
+  - 01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md
+  - 06-tools/creatify-ai-video-ads-tu-link-app.md
   - 00-overview/roadmap.md
   - 01-pre-marketing/aso-google-play-store-listing.md
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
@@ -71,7 +77,7 @@ App campaigns không cho dựng từng quảng cáo. Ta nạp **asset** (text, �
 
 | Roadmap yêu cầu | Spec Google | Đánh giá |
 |---|---|---|
-| 15 keywords + description cho từng từ | 5 headline (≤30) + 5 description (≤90) **mỗi ad group** | App campaigns **không có keyword targeting**. "15 keywords" nên hiểu là 15 *chủ đề/thông điệp*, chuyển thành headline ≤30 và description ≤90, rồi chia cho các ad group (mỗi ad group 5+5). Có thể dùng lại khi khai audience signal (tuỳ chọn khi tạo ad group, xem answer/12575501). |
+| 15 keywords + description cho từng từ | 5 headline (≤30) + 5 description (≤90) **mỗi ad group** | *(bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt: keyword lấy từ Keyword Planner theo từng tính năng app — [research keyword](research-doi-thu-va-keyword-cho-app.md); khoá chia 3 nhóm × 5 keyword, mỗi nhóm 1 ad group — xem mục 6.)* App campaigns **không có keyword targeting**. "15 keywords" nên hiểu là 15 *chủ đề/thông điệp*, chuyển thành headline ≤30 và description ≤90, rồi chia cho các ad group (mỗi ad group 5+5). Có thể dùng lại khi khai audience signal (tuỳ chọn khi tạo ad group, xem answer/12575501). |
 | 5 ảnh vuông 1200×1200 | 1:1, khuyến nghị 1200×1200 | Khớp. |
 | 5 ảnh ngang 1200×628 | 1.91:1, khuyến nghị 1200×628 | Khớp. |
 | 5 ảnh dọc 1200×1500 | 4:5, khuyến nghị 1200×1500 | Khớp. |
@@ -91,7 +97,7 @@ Kết luận: bộ creative trong roadmap **đủ để đạt mức đa dạng 
 
 ## 4. Gợi ý sản xuất (kinh nghiệm, chưa kiểm chứng)
 
-- *Chưa kiểm chứng*: 3 giây đầu video nên là hook (kết quả hoặc vấn đề), sau đó demo tính năng. Text trên video đặt trong vùng an toàn vì UI YouTube/Play che mép.
+- *Chưa kiểm chứng*: 3 giây đầu video nên là hook (kết quả hoặc vấn đề), sau đó demo tính năng. Text trên video đặt trong vùng an toàn vì UI YouTube/Play che mép. *(bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt: khoá đề xuất cụ thể Hook ~3s → Content tính năng 8–12s → CTA ~3s — vẫn là ý kiến chuyên gia, chưa có data; chi tiết và 6 style ở [style video & hook](style-video-creative-ads-va-cong-thuc-hook.md).)*
 - *Chưa kiểm chứng*: mỗi đợt làm creative nên giữ 1 biến, ví dụ cùng hook khác nhạc, để đọc được asset report.
 - Đặt tên file/asset có quy ước (ngày_chủ-đề_tỉ-lệ_độ-dài) để sau tra lại được trong asset report.
 
@@ -100,6 +106,30 @@ Kết luận: bộ creative trong roadmap **đủ để đạt mức đa dạng 
 - Dây chuyền tool AI nội bộ (trend → ảnh/video nguồn → render hàng loạt → outro → localize → resize → upload): [sản xuất creative hàng loạt](../playbooks/san-xuat-creative-hang-loat-bang-ai.md). Kỹ thuật viết prompt ảnh/video: [viết prompt AI](prompt-ai-tao-anh-video-quang-cao.md).
 - **Lỗ hổng tỉ lệ**: [OmniResize](../06-tools/omni-resize-anh-video-da-kenh.md) chỉ xuất 1:1 / 9:16 / 16:9 — **thiếu 1.91:1 (1200×628) và 4:5 (1200×1500)** mà App campaigns cần cho ảnh; 16:9 không thay được 1.91:1. Ảnh 2 tỉ lệ này phải crop/dựng riêng. [Outro Tool](../06-tools/cat-outro-watermark-video-hang-loat.md) có 4:5 cho video (pad viền đen).
 - Video phải lên YouTube: [YouTube Auto Uploader](../06-tools/youtube-auto-uploader.md) upload hàng loạt; kiểm video không ở chế độ Private.
+
+## 6. Bổ sung từ khoá Quocmedia (bổ sung 2026-10-15, chưa duyệt)
+
+### Viết text asset bằng ChatGPT (bài 3.1)
+
+- Chia bộ keyword (từ [research keyword](research-doi-thu-va-keyword-cho-app.md)) thành **nhóm 5 keyword cùng tính năng → 1 ad group**. 5 keyword dùng làm 5 headline (chọn keyword ngắn vì ≤ 30 ký tự).
+- 2 prompt (tóm cấu trúc): P1 giao vai chuyên gia viết content ads App Promotion trên Google Ads, mục tiêu doanh thu; P2 dựa trên 5 keyword viết 5 description cho ad group, tiếng Anh (hoặc ngôn ngữ GEO), mỗi description chứa 1 keyword, không dùng từ vi phạm policy.
+- Ràng buộc nên thêm vào P2 (theo spec mục 1 và editorial policy): **≤ 90 ký tự**, **không emoji**, không lặp ký tự ("!!"), tối đa 1 "!", mỗi câu đứng một mình, độ dài khác nhau.
+- Headline chỉ là keyword trơn (vd "Equalizer audio") là cách của khoá; chưa có số so với headline nêu lợi ích — nên A/B cả hai.
+
+### ⚠️ Mâu thuẫn
+
+| Khoá Quocmedia | Chính thức | Theo |
+|---|---|---|
+| Prompt yêu cầu description **≤ 80 ký tự** | Description App campaign ≤ **90** ký tự (9948381, mục 1). 80 là giới hạn *short description* của Play ([ASO](aso-google-play-store-listing.md)) — có lẽ khoá lẫn | 90. Viết 80 không sai nhưng phí 10 ký tự |
+| Output ChatGPT mở đầu mỗi description bằng **1 emoji** (🎛 🔊 🎧), giảng viên dùng nguyên | Google Ads editorial — Punctuation and symbols (14847994, WebFetch 2026-10-15): "Invalid or unsupported characters" ví dụ *"Emoji"* không được phép; cấm *"Punctuation or symbols repeated consecutively, like 'flowers!!'"* và ký hiệu không chuẩn (bullet, *…*) | Chính thức: **bỏ emoji** khỏi headline/description |
+| Video ads "8–25 giây", "Google Ads chỉ cần 15 giây" | 10–30 giây, dùng nhiều độ dài (6167162, mục 1) | Chính thức — xem [style video](style-video-creative-ads-va-cong-thuc-hook.md) mục 2 |
+| Ảnh ads đặt headline tính năng to trên ảnh (bài 3.5) | Ảnh ít text đè (mục 1 Image) | Chính thức là khuyến nghị, không cấm; giữ text ngắn (1 tên tính năng) |
+
+### Ảnh và video làm tay bằng Canva (bài 3.5, 3.6)
+
+- **Ảnh**: Canva cỡ tuỳ chỉnh 1200×1200 → nhân bản sang 1200×1500 và 1200×628; mỗi ảnh 1 tính năng, **tái dùng mockup + nền từ bộ screenshot store**, thêm 1 dòng tên tính năng; xuất JPG (Canva mặc định gợi ý PNG — cả hai đều hợp lệ). 5 idea × 3 tỉ lệ = 15 ảnh. Không chèn logo/nút CTA lên ảnh (Google tự thêm) — khoá cũng không làm.
+- **Video**: Canva loại Video, 3 cảnh hook (~3s) → content tính năng (~8s) → CTA end-card (icon + tên app + badge Google Play); làm đủ 1080×1920, 1920×1080, 1080×1080. End-card tự làm trong video không trái spec (câu "Google tự thêm" ở mục 1 chỉ nói về ảnh). Cấu trúc và style: [style video & hook](style-video-creative-ads-va-cong-thuc-hook.md). Video avatar/UGC hàng loạt từ link app: [Creatify](../06-tools/creatify-ai-video-ads-tu-link-app.md).
+- **Upload YouTube** (bài 3.6): Visibility **Unlisted** — lý do khoá nêu: không Public để đối thủ khó thấy idea (video vẫn chạy qua Google Ads); Audience đặt **"No, it's not made for kids"** (theo khoá; video "made for kids" bị YouTube giới hạn một số tính năng — *chưa kiểm ảnh hưởng cụ thể tới Google Ads*); copy link vào bảng 3 cột ngang/dọc/vuông để gắn vào ad group.
 
 ## Việc tiếp theo
 
