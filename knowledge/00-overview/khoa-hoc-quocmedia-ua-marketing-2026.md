@@ -4,7 +4,7 @@ type: reference
 topic: 00-overview
 tags: [khoa-hoc, quocmedia, google-ads, aso, creative, roadmap, troas, tcpi]
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
   - "Khoá UA Marketing Mobile App 2026 Phát Triển Ứng Dụng — Quocmedia, giảng viên Quốc Anh, learn.quocmedia.com/learn/ua-marketing (38 bài; video quay rải rác: chương 4 ~12/2024, chương 2 có màn hình Play Console/Sensor Tower 01–03/2026, chương 3 nhắc Veo 3 → ≥ 2025)"
