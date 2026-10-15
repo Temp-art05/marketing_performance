@@ -2,13 +2,25 @@
 title: Research đối thủ và keyword khi nhận app mới — Transparency Center, Meta Ads Library, TikTok Top Ads, Keyword Planner, Sensor Tower
 type: playbook
 topic: 01-pre-marketing
-tags: [research, competitor, spy-ads, keyword, keyword-planner, ads-transparency, tiktok-creative-center, meta-ads-library, sensor-tower, persona, khoa-hoc, quocmedia]
+tags:
+  - research
+  - competitor
+  - spy-ads
+  - keyword
+  - keyword-planner
+  - ads-transparency
+  - tiktok-creative-center
+  - meta-ads-library
+  - sensor-tower
+  - persona
+  - khoa-hoc
+  - quocmedia
 app: general
-status: draft
+status: verified
 confidence: medium
 sources:
-  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 1.3 và 1.4 — video ~11–12/2024 (Keyword Planner tạo plan 27/11/2024, Transparency Center 'Last shown Dec 16, 2024'), transcribe 2026-10-15"
-  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 2.1 (Sensor Tower Keyword Rankings) — màn hình trong video cho thấy dữ liệu 02–03/2026, transcribe 2026-10-15"
+  - Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 1.3 và 1.4 — video ~11–12/2024 (Keyword Planner tạo plan 27/11/2024, Transparency Center 'Last shown Dec 16, 2024'), transcribe 2026-10-15
+  - Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 2.1 (Sensor Tower Keyword Rankings) — màn hình trong video cho thấy dữ liệu 02–03/2026, transcribe 2026-10-15
   - "Google Ads Help — Use Keyword Planner / định nghĩa cột: https://support.google.com/google-ads/answer/3022575 (WebFetch 2026-10-15)"
 created: 2026-10-15
 updated: 2026-10-15

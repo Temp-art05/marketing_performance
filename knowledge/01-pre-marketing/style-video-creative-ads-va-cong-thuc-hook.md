@@ -4,10 +4,10 @@ type: concept
 topic: 01-pre-marketing
 tags: [creative, video-ads, hook, cta, style, ugc, before-after, ab-test, policy, khoa-hoc, quocmedia]
 app: general
-status: draft
+status: verified
 confidence: low
 sources:
-  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 3.2, 3.3, 3.6 — video ~11–12/2024 (ngày quay chương 3 không ghi trên màn hình), transcribe 2026-10-15"
+  - Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 3.2, 3.3, 3.6 — video ~11–12/2024 (ngày quay chương 3 không ghi trên màn hình), transcribe 2026-10-15
   - "Google Ads Help — Best practices guide: Setting up your App campaigns (video 10–30s): https://support.google.com/google-ads/answer/6167162 (truy cập 2026-10-14, theo creative-assets-google-app-campaigns.md)"
   - "Play Console Help — Add preview assets (30s đầu autoplay tắt tiếng): https://support.google.com/googleplay/android-developer/answer/9866151 (truy cập 2026-10-14, theo aso-google-play-store-listing.md)"
 created: 2026-10-15

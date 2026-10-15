@@ -4,11 +4,11 @@ type: reference
 topic: 06-tools
 tags: [tool, external, creative, video-ads, ai-avatar, ugc, link-to-video, khoa-hoc, quocmedia]
 app: general
-status: draft
+status: verified
 confidence: low
 sources:
-  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 3.4 — video ~11–12/2024 theo ghi chú khoá (giao diện có mục 'Veo 3 Ads' nên có thể quay muộn hơn, ≥2025), transcribe 2026-10-15"
-  - "https://app.creatify.ai (chưa truy cập lại để kiểm giá/điều khoản, 2026-10-15)"
+  - Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 3.4 — video ~11–12/2024 theo ghi chú khoá (giao diện có mục 'Veo 3 Ads' nên có thể quay muộn hơn, ≥2025), transcribe 2026-10-15
+  - https://app.creatify.ai (chưa truy cập lại để kiểm giá/điều khoản, 2026-10-15)
 created: 2026-10-15
 updated: 2026-10-15
 related:

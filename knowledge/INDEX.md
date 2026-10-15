@@ -1,6 +1,6 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 89 tài liệu (3 draft), cập nhật gần nhất 2026-10-15.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 89 tài liệu (0 draft), cập nhật gần nhất 2026-10-15.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
@@ -20,8 +20,8 @@
 - `01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md` — Checklist policy Apple/Google cho app AI chỉnh ảnh chân dung gửi data sang ad SDK (consent, Data safety, report nội dung AI, photo picker, license ảnh stock, trẻ em) và rule rủi ro trademark khi đặt tên app. `[reference · verified · 2026-10-14]`
 - `01-pre-marketing/policy-loi-thuong-gap-va-cach-fix.md` — Kho 45 loại lỗi policy (Android, iOS, Facebook) team ASO Apero đã gặp — mô tả, cách fix đã dùng, link policy gốc; nhóm lỗi đụng trực tiếp UA/ASO: Deceptive Ads, Metadata, Impersonation, App Promotion. `[reference · verified · 2026-10-15]`
 - `01-pre-marketing/prompt-ai-tao-anh-video-quang-cao.md` — Chọn model và cấu trúc prompt ảnh (GPT Image 2 5-slot, Nano Banana văn xuôi) và video (skeleton, quy tắc 3 chi tiết, clip 5s), khung tái tạo concept từ ảnh ref (APR-146), template story ad và screenshot. `[reference · verified · 2026-10-15]`
-- `01-pre-marketing/research-doi-thu-va-keyword-cho-app.md` — Nhận app mới: cài thử, liệt kê tính năng, persona → keyword bằng Keyword Planner (bẫy: giá thầu là CPC Search) và Sensor Tower free → spy ads qua Transparency Center, Meta Ads Library, TikTok Top Ads. `[playbook · draft · 2026-10-15]` 🖼3
-- `01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md` — Kim tự tháp audience → insight → creative, cấu trúc Hook ~3s → Content 8–12s → CTA ~3s, 6 style video ads kèm rủi ro policy (Fake Choice, Shock), A/B liên tục; gợi ý Before→After cho app AI nội thất. `[concept · draft · 2026-10-15]` 🖼2
+- `01-pre-marketing/research-doi-thu-va-keyword-cho-app.md` — Nhận app mới: cài thử, liệt kê tính năng, persona → keyword bằng Keyword Planner (bẫy: giá thầu là CPC Search) và Sensor Tower free → spy ads qua Transparency Center, Meta Ads Library, TikTok Top Ads. `[playbook · verified · 2026-10-15]` 🖼3
+- `01-pre-marketing/style-video-creative-ads-va-cong-thuc-hook.md` — Kim tự tháp audience → insight → creative, cấu trúc Hook ~3s → Content 8–12s → CTA ~3s, 6 style video ads kèm rủi ro policy (Fake Choice, Shock), A/B liên tục; gợi ý Before→After cho app AI nội thất. `[concept · verified · 2026-10-15]` 🖼2
 - `01-pre-marketing/thiet-ke-screenshot-store-quality-bar.md` — Dựng bộ 4–8 screenshot bán hàng (hook → khác biệt → tính năng → chốt), quality bar, chọn tool AI nội bộ, checklist Play (2:1, text ≤20%, cấm `[playbook · verified · 2026-10-15]` 🖼1
 - `01-pre-marketing/tra-loi-review-google-play.md` — Quy tắc reply review Play — routing P1–P4 theo sao + nội dung, 5 nhóm review rủi ro tài khoản (refund/scam/privacy/ad/false-ad), cấu trúc reply 4 bước, điều cấm, giới hạn API và ngưỡng Vitals. `[playbook · verified · 2026-10-14]`
 
@@ -68,7 +68,7 @@
 - `06-tools/aso-screenshot-google-flow.md` — Shared tool Google Flow (Nano Banana Pro) — raw screenshot + caption → bộ 5–10 screenshot có khung thiết bị, headline, đúng kích thước App Store/Play, localize nhiều ngôn ngữ. `[reference · verified · 2026-10-14]`
 - `06-tools/cat-outro-watermark-video-hang-loat.md` — Ba tool nội bộ cùng làm hậu kỳ video ads hàng loạt — Creative Editor (Windows, cắt outro đối thủ + chèn outro mình + watermark), Video Studio (web local, detect outro), Outro Tool (ghép outro + resize 4 tỉ lệ). `[reference · verified · 2026-10-14]`
 - `06-tools/cpp-generator-screenshot-tool.md` — Tool UA/ASO của NgocLM — chọn 1 trong 8 template, upload ảnh UI, nhập brief TA; Claude viết copy theo arc hero→closer, Gemini phân tích style, fal.ai dựng 5 screenshot iOS 1242×2688 trong khoảng 1–2 phút. `[reference · verified · 2026-10-14]`
-- `06-tools/creatify-ai-video-ads-tu-link-app.md` — SaaS bên ngoài — dán link Play Store, chọn tỉ lệ, 15/30/60s, ngôn ngữ, script AI, avatar → ~16 video UGC/avatar mỗi lượt; giá thấy trong video (Starter $39, Pro $99/tháng) cần kiểm lại. `[reference · draft · 2026-10-15]`
+- `06-tools/creatify-ai-video-ads-tu-link-app.md` — SaaS bên ngoài — dán link Play Store, chọn tỉ lệ, 15/30/60s, ngôn ngữ, script AI, avatar → ~16 video UGC/avatar mỗi lượt; giá thấy trong video (Starter $39, Pro $99/tháng) cần kiểm lại. `[reference · verified · 2026-10-15]`
 - `06-tools/datacr3wl-va-mdnow-cao-du-lieu-research.md` — Hai công cụ local — DataCr3wl (Claude skill trên Crawl4AI cào trang JS/anti-bot/cần login, capture XHR, nén token ~54%) và mdnow (URL/site/PDF/Office/YouTube → Markdown sạch, crawl cả site ra llms.txt). `[reference · verified · 2026-10-14]`
 - `06-tools/firebase-remote-config-mcp-rc-apply.md` — Claude Code + Firebase MCP đọc template Remote Config live, rc_apply.js merge an toàn theo phase (build/normal/twofloor) hoặc từng key, hiện diff để duyệt rồi publish; không cần service account key. `[reference · verified · 2026-10-14]` 🖼1
 - `06-tools/flow-ghep-nhac-slideshow-video.md` — Shared tool Google Flow — ghép nhạc từ video này sang video khác, loop âm thanh khớp độ dài, ghép folder ảnh thành nhiều video slideshow thứ tự ngẫu nhiên. PRD là bản nháp suy luận, nhiều điểm chưa xác nhận. `[reference · verified · 2026-10-14]`
