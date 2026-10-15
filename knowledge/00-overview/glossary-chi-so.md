@@ -15,9 +15,13 @@ sources:
   - "Google Ads Help — Set a recommended initial Target ROAS for your App campaigns: https://support.google.com/google-ads/answer/15995101 (truy cập 2026-10-14)"
   - "Google Ads Help — About tROAS for ad revenue (ARO): https://support.google.com/google-ads/answer/13799577 (truy cập 2026-10-14)"
   - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.7 — transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
+images:
+  - assets/screenshots/2026-10/2026-10-15-quocmedia-google-ads-ctr-cr-all-conv-value-1.jpg
 related:
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
   - 00-overview/roadmap.md
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
   - 03-monetization/admob-co-ban.md
@@ -113,6 +117,38 @@ Công thức LTV là xấp xỉ (giả định ARPDAU của user mới ≈ ARPDA
 - **North Star Metric (NSM)**: một chỉ số đại diện giá trị dài hạn của sản phẩm. **Vanity metric**: tổng download/đăng ký/page view — tăng mãi, không nói lên giá trị.
 - Định nghĩa "quay lại" khác nhau giữa tool (bất kỳ event / `session_start` / `user_engagement`) → cùng "D7 classic" vẫn lệch số. Đọc retention cả hình dạng đường cong, xem [khung phân tích](../05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md).
 *(Nguồn mục này: skill po-metrics-analysis APR-102/APR-026, nội bộ. Benchmark game farming trong nguồn không có trích dẫn nên không chép.)*
+
+## 6. Thuật ngữ khoá Quocmedia và chỗ dễ đọc sai (bổ sung 2026-10-15 từ khoá Quocmedia, chưa duyệt)
+
+Bài 4.7 của [khoá Quocmedia](khoa-hoc-quocmedia-ua-marketing-2026.md) ôn thuật ngữ theo 4 nhóm: Google Ads, chỉ số campaign, AdMob, Firebase. Phần lớn **khớp** mục 1–2. Ví dụ, công thức eCPM, match rate và show rate trên slide trùng với AdMob glossary. Dưới đây chỉ ghi phần chưa có ở trên và những chỗ slide định nghĩa lệch.
+
+**⚠️ Ba chỗ slide định nghĩa lệch:**
+
+- **"CPI = giá thầu trên lượt cài"**: slide gộp hai thứ khác nhau.
+  - **tCPI** là bid/target mình đặt.
+  - **Cost / Install** là CPI thực tế trung bình, tức số Google Ads báo về.
+  - Khi đọc số phải tách hai thứ này ra. Ví dụ ở [lesson tCPI thấp](../lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md): đặt tCPI ₫800 nhưng CPI thực khác hẳn.
+- **"CR = Installs / Clicks"**: slide vẽ CR là đoạn từ Clicks sang Installs. Nhưng cột "Conv. rate" của Google Ads tính bằng **conversions ÷ interactions** (mục 1).
+  - Ngay trên ảnh: 2.671 / 10.468 = 25,5%, còn cột Conv. rate ghi 19,51%.
+  - Vì vậy đừng tự chia Installs/Clicks rồi so với cột Conv. rate.
+- **"All conv. value / cost = kết quả ROAS"**:
+  - Cột *All conv.* gồm cả conversion action phụ (secondary).
+  - tROAS bid theo **Conv. value / cost**, tức chỉ tính action primary, ví dụ `ad_impression`.
+  - Khi đánh giá campaign tROAS, đọc cột không có "All". *Định nghĩa All conversions theo hiểu biết chung về Google Ads, chưa dẫn trang Help trong session này.*
+
+![Bảng Google Ads all-time của tài khoản demo khoá Quocmedia, có mũi tên CTR/CR và ô "All conv. value / cost" được gọi là "Kết quả ROAS"](../../assets/screenshots/2026-10/2026-10-15-quocmedia-google-ads-ctr-cr-all-conv-value-1.jpg)
+
+Ảnh lấy từ slide bài 4.7 (số all-time của tài khoản demo đến ~12/2024, app Max Volume Booster). Mũi tên CR nối Clicks → Installs, nhưng 19,51% ở cột Conv. rate không bằng Installs/Clicks. Số trên ảnh là ví dụ của khoá, không phải benchmark.
+
+**Thuật ngữ Firebase/GA4 chưa có ở trên** (slide 4.7). Định nghĩa diễn giải theo hiểu biết chung về GA4, chưa đối chiếu Help:
+
+| Thuật ngữ | Nghĩa | Ghi chú cho UA |
+|---|---|---|
+| **Realtime** | Báo cáo user/event trong ~30 phút gần nhất | Dùng để kiểm event (`first_open`, `ad_impression`) có bắn không ngay sau khi tích hợp. Không dùng để đánh giá hiệu quả |
+| **Crashlytics** | Báo cáo crash/ANR theo version | Khoá dùng crash-free > 98% làm điều kiện qua giai đoạn test (🧪, xem [plan marketing](../playbooks/lap-ke-hoach-marketing-app-game.md)). Ngưỡng Vitals chính thức của Play ở [trả lời review](../01-pre-marketing/tra-loi-review-google-play.md) |
+| **User acquisition** vs **Traffic acquisition** | Báo cáo GA4: user mới được gán theo nguồn **lần đầu** (first user source) vs session được gán theo nguồn **của session** | Muốn biết campaign mang về bao nhiêu user mới thì xem User acquisition |
+| **Average engagement time per active user** | Thời gian app ở foreground trung bình mỗi active user | Chỉ số sức khoẻ sản phẩm, xem [GA4 BigQuery](../04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md) |
+| **Audiences** | Nhóm user định nghĩa theo điều kiện | Lời giảng nói nhầm thành "nhóm quảng cáo". Audience có thể đẩy sang Google Ads làm signal hoặc remarketing |
 
 ## Việc tiếp theo
 

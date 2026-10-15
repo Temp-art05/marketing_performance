@@ -16,6 +16,7 @@ sources:
   - "AdMob Help — Reports glossary: https://support.google.com/admob/table/9462111 (truy cập 2026-10-14)"
   - "Firebase Help — Automatically collected events: https://support.google.com/firebase/answer/9234069 (truy cập 2026-10-14)"
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 1.2 và 4.4 — video ~11–12/2024, transcribe 2026-10-15"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.6, 4.8, 4.9 — video quay ~13/12/2024 (màn hình Google Ads tới 13/12/2024, Firebase tới 10–11/12/2024), transcribe 2026-10-15"
 created: 2026-10-14
 updated: 2026-10-15
 related:
@@ -31,6 +32,8 @@ related:
   - 06-tools/agent-qc-data-pipeline.md
   - lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md
   - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - playbooks/van-hanh-va-scale-troas-google-app-campaign.md
+  - lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md
 summary: Khung đọc Google Ads, AdMob, Firebase ở các mốc 7 ngày, 1, 4, 6 tháng — xem gì, hỏi gì, làm gì; ngưỡng để trống chờ số liệu thực tế của app.
 ---
 
@@ -84,6 +87,12 @@ Mục tiêu: có ROAS D7 trọn vẹn cho các cohort tuần 1 và 2, D30 cho co
 | Chéo | **ROAS D7 cohort**, LTV D7, ước tính payback | ROAS D7 hiện tại so với mức cần để hoàn vốn ở D30/D90/D180 (đường cong của app) |
 
 Hành động điển hình: chuyển/khởi tạo tROAS, cắt GEO lỗ rõ, chỉnh ad load/placement, làm creative mới theo asset Best.
+
+**Bổ sung khi campaign tROAS đã chạy (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, 4.8, 4.9, chưa duyệt)**
+- Google Ads: lọc **từ ngày bật tROAS**, không All time; bộ cột Target ROAS, Impr., CTR, Avg. CPC, Clicks, Cost, Installs, Cost/Install, *All conv. value / cost* (thêm *Conv. value / cost*), Conv. rate. Đọc 4 tầng campaign → ad group → asset → GEO (Matched locations): [vận hành & scale tROAS](../playbooks/van-hanh-va-scale-troas-google-app-campaign.md).
+- Tín hiệu scale của khoá: ROAS ≥ target ổn định **7–14 ngày** + tiêu đều ≥ budget → target +5–10% hoặc budget +10–20%, ≤ 20%/lần (khớp nguyên tắc 4 ở trên).
+- 🧪 Ngưỡng của khoá (không nguồn, độ tin thấp): conv. rate click→install **≥ 20–25%**; ad group ROAS (7 ngày) **< ~0,3 → pause**, **≥ 1,0 (0,9) → "hoà vốn"**; Firebase **D1 retention 15% "khá ok", ≥ 10% "ok"**; avg engagement time **~4 phút "khá ok"**. Lưu ý: con số 15% trên màn hình khoá thực ra là **Week 1** cohort, không phải D1.
+- Firebase theo khoá (bài 4.8): Key events (`ad_impression`, `first_open`, `app_remove`), Crashlytics crash-free users, User retention (ngày + cohort tuần), Audiences, GA4 Acquisition (active/new users theo nguồn), Engagement (thời gian TB), Events (count + *Total revenue* của `ad_impression`). Khoá chỉ "xem để hiểu insight", không có quy trình hành động — ví dụ số thật và cách đọc ra vấn đề (93% user gỡ app, $0,04/user) ở [lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md).
 
 ## Mốc 4 tháng: "Đường cong LTV và scale"
 

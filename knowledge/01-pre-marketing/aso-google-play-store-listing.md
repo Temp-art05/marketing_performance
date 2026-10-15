@@ -13,10 +13,13 @@ sources:
   - "Play Console Help — Custom store listings: https://support.google.com/googleplay/android-developer/answer/9867158 (truy cập 2026-10-14)"
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 2.1–2.5 — video ~11–12/2024 theo ghi chú khoá (màn hình Play Console/Sensor Tower ở bài 2.1 cho thấy dữ liệu 01–03/2026), transcribe 2026-10-15"
   - "Play Console Help — Ratings, Reviews & Installs policy: https://support.google.com/googleplay/android-developer/answer/9898684 (WebFetch 2026-10-15)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.11 — transcribe 2026-10-15 (màn hình Play Console dữ liệu 13/11–11/12/2024)"
+  - "Play Console Help — Store listing performance / acquisition reports: https://support.google.com/googleplay/android-developer/answer/9859173 (WebFetch 2026-10-15)"
 created: 2026-10-14
 updated: 2026-10-15
 images:
   - assets/screenshots/2026-10/2026-10-15-quocmedia-play-console-listing-conversion-analysis-1.jpg
+  - assets/screenshots/2026-10/2026-10-15-quocmedia-play-console-cvr-theo-traffic-source-1.jpg
 related:
   - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
   - 01-pre-marketing/research-doi-thu-va-keyword-cho-app.md
@@ -116,6 +119,54 @@ Nguồn: khoá Quocmedia bài 2.1 (đường đi menu thấy trên màn hình de
 **Khung ASO 4 giai đoạn của khoá** (để định vị việc đang làm): (1) Product page — icon, title, package ID, screenshot, feature graphic, short/full description, video → (2) Store CVR → (3) Social proof & ranking (download, rating, review, keyword ranking) → (4) App quality (crash rate — khoá đặt < 1% trong Firebase Crashlytics, khác ngưỡng Vitals của Google ở [trả lời review](tra-loi-review-google-play.md); app size; retention D1/D7; LTV). Package/Application ID không đổi được sau khi publish → chốt trước khi lên store; ảnh hưởng ranking của package name thì không có nguồn chính thức.
 
 Keyword ranking organic của đối thủ (Sensor Tower free) và Keyword Planner: xem [research đối thủ & keyword](research-doi-thu-va-keyword-cho-app.md).
+
+### 6.1 Đọc báo cáo conversion của listing: peers, traffic source, install state (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.11 + Play Console Help 9859173, chưa duyệt)
+
+Bài 4.11 xếp chỉ số đánh giá ASO thành 4 nhóm:
+
+- **Hiển thị**: store listing visitors, traffic source breakdown, search term.
+- **Chuyển đổi**: CR = install ÷ visitors.
+- **Chất lượng**: rating & review, retention.
+- **Hiệu suất**: crash, app size.
+
+Bốn nhóm này khớp với khung 4 giai đoạn ở trên. Giảng viên khuyên đọc sau khi campaign đã chạy **3–7 ngày** để có đủ traffic. Ví dụ demo của khoá (app nhóm Personalization, 13/11–11/12/2024): 3.464 visitors, 719 acquisitions, CR 20,76%, thấp hơn peers 11,63%. Theo nước: Brazil 35,3%, India 15,4%, Bangladesh 11,0%. Giảng viên coi **< 20% là đáng báo động** (🧪, cùng nhóm ngưỡng ở trên).
+
+**Cách đọc nên dùng.** Phần này lấy từ Play Console Help 9859173 (WebFetch 2026-10-15); khoá đọc sai 2 chỗ.
+
+1. **So với peers trước, ngưỡng cố định sau.**
+   - Trang listing conversion analysis có đường **peers' median** cùng P25/P75 của peer set (chọn theo category, vd "Personalization").
+   - Có cột *Conversion rate vs. peers (28-day)*.
+   - Đây là mốc tham chiếu chính thức theo category, tốt hơn con số 20/25/30% chung chung.
+   - Benchmark chỉ hiện khi peer set có đủ dữ liệu.
+2. **Tách theo traffic source trước khi kết luận listing tệ.**
+   - Trong demo, *Ads and referrals* có CR 13,8% (−12,9 so với peers), còn *Google Play explore* có 27,0% (≈ peers).
+   - Như vậy CR tổng thấp chủ yếu do traffic quảng cáo, không chắc do listing.
+   - Cần xem cả độ khớp giữa creative ads và listing (xem [custom store listing](thiet-ke-screenshot-store-quality-bar.md) mục 7).
+3. **⚠️ "Google Play search" không phải search keyword chung.**
+   - Help định nghĩa: user tìm **tên app hoặc thương hiệu gần**.
+   - User tìm theo danh mục hoặc từ chung (vd "racing game") được tính vào **Google Play explore**.
+   - Khoá thấy "search 1 visitor / 1 install = 100%" rồi kết luận "keyword search convert rất cao, cần tối ưu keyword". Mẫu chỉ có n = 1 và là search brand, nên **không rút ra được gì**.
+   - Muốn đánh giá keyword thì xem chiều **Search term**. Search term ít traffic bị gộp vào "Other".
+4. **⚠️ "Returning users" là user từng cài rồi gỡ** khỏi mọi thiết bị, không phải "người chưa tải quay lại xem" như khoá giải thích.
+   - Visitors và acquisitions chỉ đếm user **hiện chưa có app** trên thiết bị nào.
+   - Acquisitions < installs vì cài nhiều máy chỉ tính 1.
+
+![Play Console listing conversion analysis theo traffic source: Google Play explore 26,96%, Ads and referrals 13,82%, Google Play search 1/1 = 100%](../../assets/screenshots/2026-10/2026-10-15-quocmedia-play-console-cvr-theo-traffic-source-1.jpg)
+
+Ảnh từ demo bài 4.11 (~12/2024). Nó cho thấy CR traffic quảng cáo thấp hơn organic explore khoảng một nửa. Dòng Google Play search chỉ có 1 visitor nên không dùng để kết luận.
+
+**⚠️ Platform đã đổi metric (06–07/2026, theo Help 9859173):**
+
+- Chỉ số chính của store listing performance giờ tính theo **unique clicks**: user bấm Install/Open/Pre-register.
+- **CTR** = % visitors bấm nút, *"replaces the legacy "Conversion Rate" metric"*.
+- Acquisitions (cài xong) vẫn xem được ở Grow users overview và Statistics.
+
+Hệ quả:
+
+- Các ngưỡng CR 20/25/30% của khoá (và ví dụ ở trên) đo bằng metric cũ, là install hoàn tất ÷ visitors.
+- Không so thẳng các ngưỡng đó với CTR mới.
+- Khi ghi CVR trước/sau đổi asset vào `lessons/`, phải ghi rõ đang dùng metric nào.
+- Đường menu trong ảnh ở mục 6 có thể đã khác.
 
 ## 7. Viết description bằng AI và các ý bổ sung từ khoá Quocmedia (bổ sung 2026-10-15, chưa duyệt)
 

@@ -19,6 +19,7 @@ sources:
   - "Google Ads Help — Acquire high-value app users at scale with Target ROAS bidding: https://support.google.com/google-ads/answer/10617884 (truy cập 2026-10-14)"
   - "Google Ads Help — Duration of the learning period: https://support.google.com/google-ads/answer/13020501 (truy cập 2026-10-14)"
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.1, 4.3, 4.4, 4.5 — video ~12/2024, transcribe 2026-10-15"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.6, 4.9 — video quay ~13/12/2024 (màn hình Google Ads lọc tới 13/12/2024), transcribe 2026-10-15"
 created: 2026-10-14
 updated: 2026-10-15
 images:
@@ -32,6 +33,8 @@ related:
   - 05-optimization/doc-chi-so-theo-moc-thoi-gian.md
   - lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md
   - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - playbooks/van-hanh-va-scale-troas-google-app-campaign.md
+  - lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md
 summary: Checklist theo roadmap — campaign install tối ưu first_open → import ad_impression (~ngày 3) → campaign tROAS → thêm ad group, kèm điều kiện chuyển bước chính thức của Google và chỗ nào là kinh nghiệm chưa kiểm chứng.
 ---
 
@@ -121,7 +124,7 @@ Khoá "UA Marketing Mobile App 2026" (bài 4.5) — nguồn gốc của roadmap 
 | Khi nào chuyển | Sau **2–3 ngày** chạy CPI, khi có **~30–300 install** và `ad_impression` đã hiện | Volume ổn định, **"typically 30+ conversions in 30 days"**; từ tCPA cần **3–4 tuần dữ liệu conversion value** ✅ (15995101) |
 | Cách chuyển | **Đổi tại chỗ** campaign CPI đang chạy sang In-app action value | Tạo campaign **mới**; tránh đổi campaign type sau launch ✅ (9176652); đổi focus/bid strategy là thay đổi lớn, learning 7–14 ngày ✅ (15995101) |
 | Target khởi điểm | Cố định **50–60%** cho app mới ("dễ tối ưu, học content nhanh hơn") | = **Conv. value/cost thực** của campaign tCPA/tCPI tương đương (cùng app, event, GEO, ngôn ngữ) trong khoảng bằng conversion window; xem Bid guidance ✅ (15995101, 13799577) |
-| Nâng target | Tối ưu ~**1 tháng** rồi nhảy lên **90–100%** (+50–67%), không có quy tắc bước | Mỗi lần **±15–20%**, không đổi lớn quá 1 lần mỗi **1–2 tuần**, đánh giá cửa sổ 14–30 ngày ✅ (15995101) |
+| Nâng target | Bài 4.5: tối ưu ~**1 tháng** rồi nhảy lên **90–100%** (+50–67%). **Bài 4.9 tự sửa lại**: khi ROAS ≥ target ổn định 7–14 ngày thì **+5–10%/lần, mỗi tuần**, budget **+10–20%**, không đổi quá **20%/lần** (bổ sung 2026-10-15, chưa duyệt) | Mỗi lần **±15–20%**, không đổi lớn quá 1 lần mỗi **1–2 tuần**, đánh giá cửa sổ 14–30 ngày ✅ (15995101) → **bài 4.9 khớp Google**, chỉ bài 4.5 mâu thuẫn |
 | Conversion window `ad_impression` | Đổi mặc định 90 ngày → **1 tuần** | 7–30 ngày ✅ (13799577) → **khớp** (7 ngày là cận dưới) |
 | Budget | Giữ ₫200k/ngày như campaign CPI | Không công bố hệ số → **không mâu thuẫn** |
 
@@ -129,7 +132,7 @@ Bằng chứng ngay trong khoá: app demo trước khi chuyển chỉ có DAU 23
 
 **Gợi ý dung hoà (🧪, chờ data thật):**
 1. **Target khởi điểm = ROAS thực (Conv. value/cost) của campaign CPI** trong khoảng bằng conversion window. Nếu chưa đủ số để tính (vài ngày, vài chục install) thì 50–60% chỉ là **điểm thử**: theo dõi spend 3–5 ngày, campaign không phân phối thì **hạ target**.
-2. Nâng target **từng bước 15–20%** (vd 60 → ~70 → ~80 → ~95), mỗi bước cách 1–2 tuần, chỉ nâng khi ROAS đạt ổn định ≥ target và còn volume. Không nhảy thẳng lên 90–100%.
+2. Nâng target **từng bước 15–20%** (vd 60 → ~70 → ~80 → ~95), mỗi bước cách 1–2 tuần, chỉ nâng khi ROAS đạt ổn định ≥ target và còn volume. Không nhảy thẳng lên 90–100%. (bổ sung 2026-10-15, chưa duyệt) Chính khoá ở bài 4.9 cũng dạy vậy (+5–10%/tuần, ≤ 20%/lần) — chi tiết ở [vận hành & scale tROAS](van-hanh-va-scale-troas-google-app-campaign.md).
 3. Ưu tiên tạo campaign tROAS **mới** (GEO không trùng campaign CPI, hoặc giảm/dừng campaign CPI ở GEO trùng). Nếu đổi tại chỗ cho nhanh như khoá học thì ghi ngày đổi và chấp nhận learning lại 7–14 ngày; lưu kết quả vào `lessons/`.
 
 ### Setup
@@ -143,6 +146,7 @@ Bằng chứng ngay trong khoá: app demo trước khi chuyển chỉ có DAU 23
 - ✅ Thay đổi lớn kích hoạt learning **7 đến 14 ngày**. Không đổi budget/target lớn quá 1 lần mỗi **1 đến 2 tuần**. Mỗi lần chỉnh target trong khoảng **±15 đến 20%**.
 - ✅ Đánh giá trên cửa sổ **14 đến 30 ngày**, bỏ những ngày gần nhất (conversion trễ).
 - ✅ Không đạt volume: hạ target ROAS. Bị "Limited by budget": tăng budget (14104492).
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6/4.9, chưa duyệt) Đọc kết quả 4 tầng (campaign → ad group → asset → GEO), tín hiệu scale, mức nâng target/budget, khi nào tách GEO/thêm kênh, và đo "lãi": [vận hành & scale tROAS](van-hanh-va-scale-troas-google-app-campaign.md). Số thật của demo (ROAS 0,24 với target 60%, đọc all-time): [lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md).
 
 ## Bước 4: Thêm ad group cho campaign tROAS
 
@@ -150,6 +154,7 @@ Bằng chứng ngay trong khoá: app demo trước khi chuyển chỉ có DAU 23
 - [ ] Mỗi ad group mới = **1 chủ đề/thông điệp** khác (tính năng khác, đối tượng khác), với bộ asset riêng (5+5 text, ảnh 3 tỉ lệ, video 3 hướng), deep link phù hợp chủ đề ✅ (14104492).
 - [ ] Ad Strength ≥ Good cho mỗi ad group ✅.
 - [ ] Ghi tên ad group + chủ đề + ngày tạo vào `apps/<app>/campaigns.md`.
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, chưa duyệt) Cách khoá tạo ad group mới: lấy asset **Best/Good có ROAS cao** từ các ad group đang chạy gom thành 1 ad group mới; ad group ROAS thấp thì pause. ⚠️ Demo ra quyết định trên mẫu 7 install — đặt ngưỡng mẫu trước ([vận hành & scale tROAS](van-hanh-va-scale-troas-google-app-campaign.md) mục 3).
 
 ## Sau launch
 

@@ -10,14 +10,17 @@ sources:
   - "session 2026-09-17→18 (als001 def570ce): Claude dựng công thức + bảng ước lượng cho Home Morph"
   - "RevenueLab — AdMob eCPM Benchmarks 2026: Rewarded, Interstitial, Banner (https://www.revenuelab.fyi/blog/admob-ecpm-benchmarks-2026), trích qua WebFetch trong session 2026-09-17, chưa kiểm lại"
   - "Mapendo — 2025 Cost per Install by Country (https://mapendo.co/blog/cost-per-install-by-country-2025), trích trong session 2026-09-17"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.6 — video quay ~13/12/2024 (màn hình Google Ads tới 13/12/2024, Firebase tới 10–11/12/2024), transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
   - 00-overview/glossary-chi-so.md
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
   - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
   - 05-optimization/hau-kiem-version-app-nguong-verdict.md
   - 01-pre-marketing/market-research-tam-sam-som-go-no-go.md
+  - playbooks/van-hanh-va-scale-troas-google-app-campaign.md
+  - lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md
 summary: Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp).
 ---
 
@@ -47,6 +50,7 @@ Ví dụ minh hoạ (giả định của session, không phải số đo): T1 CP
 
 - "ROAS 25%" trong UA mobile thường là **ROAS sớm (D0 hoặc D7)**, không phải lifetime. Đừng so ROAS D0/D7 với ngưỡng 100%.
 - Hệ số nhân D0 → D180 phụ thuộc retention của từng app. Session đưa ra đường cong "điển hình" cho app ads (D0 ≈ 15–25% của LTV D180) nhưng **không có nguồn** — phải đo bằng cohort thật. Xem [glossary](../00-overview/glossary-chi-so.md) mục ROAS.
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, chưa duyệt) ⚠️ Khoá Quocmedia coi *All conv. value / cost* của Google Ads **≥ 1,0 (hoặc 0,9) là hoà vốn**. Value đó là doanh thu `ad_impression` trong conversion window khoá đặt **7 ngày** → là ROAS ~D7 attributed, không phải lifetime. Dùng 1,0 làm ranh giới lãi/lỗ là quá khắt khe nếu retention tốt, và vô nghĩa nếu app bị gỡ nhanh (case demo ~93% user gỡ). Hoà vốn thật = LTV cohort / CPI ([lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md)).
 - CPI trung bình toàn cầu trong các bài blog ($2,5–4) bị kéo bởi game và Tier 1 → không dùng để tính Tier 3.
 - Organic uplift (paid kéo thêm organic) làm CPI hiệu dụng thấp hơn CPI báo cáo — session ước organic/paid 0,8–1,5× cho app utility, **không có nguồn**.
 

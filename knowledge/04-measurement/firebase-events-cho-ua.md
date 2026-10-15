@@ -17,6 +17,7 @@ sources:
   - "Google Ads Help — Choose a bid strategy for your App campaign: https://support.google.com/google-ads/answer/12073727 (truy cập 2026-10-14)"
   - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.5 — video ~12/2024, transcribe 2026-10-15"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.8 — video quay ~12/2024 (màn hình Firebase/GA4 lọc 01/01–10/12/2024), transcribe 2026-10-15"
 created: 2026-10-14
 updated: 2026-10-15
 images:
@@ -33,6 +34,8 @@ related:
   - 03-monetization/remote-config-ads-theo-phase-build-normal-2floor.md
   - 04-measurement/tracking-spec-va-metrics-plan-cho-feature.md
   - 06-tools/prd-to-visual-wireframe-so-do.md
+  - lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
   - 00-overview/roadmap.md
   - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Ý nghĩa và điều kiện của first_open, ad_impression (AdMob tự log / MAX log thủ công qua ILRD), app_remove, user_engagement, in_app_purchase và event nào dùng cho tCPI/tCPA/tROAS.
@@ -117,6 +120,11 @@ Ràng buộc chính thức riêng cho **`ad_impression` / tROAS for ad revenue (
 
 Ảnh trên: trang chi tiết conversion `ad_impression` trong Google Ads (12/2024) sau khi đổi window về 1 tuần; Count, view-through và attribution ghi "Not editable".
 
+**Đọc event trên Firebase/GA4 (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8, chưa duyệt)**
+- Khoá coi `ad_impression` và `first_open` là 2 event quan trọng nhất cho app kiếm tiền bằng ads, kèm `app_remove` để xem gỡ cài đặt. Xem ở Firebase → **Key events** (count + % đổi so cùng kỳ) hoặc GA4 → Engagement → **Events**.
+- GA4 Events có cột **Total revenue**: với AdMob đã link, toàn bộ doanh thu ads hiện ở dòng `ad_impression` (demo 01/01–10/12/2024: 56.937 event, 7.178 user, $375,92). Đây là cách kiểm nhanh ad revenue đã vào GA4 trước khi tin cột Conv. value của Google Ads.
+- Cùng màn hình đọc được tỉ lệ thô `app_remove` users / `first_open` users (demo 8.770 / 9.462 ≈ 93%) và imps/user (demo 7,93) — xem [lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md).
+
 ## 4. Event tuỳ chỉnh nên có (gợi ý, chưa kiểm chứng hiệu quả)
 
 - Event đánh dấu "user đã trải nghiệm core feature" (vd `feature_used`, `level_complete`). Có thể dùng làm tCPA event chất lượng hơn `first_open` khi volume đủ. Google khuyên tCPA ACe đủ cao để "drive more than 100 conversions".
@@ -142,3 +150,4 @@ Quy ước company-wide của các skill PO (APR-102/APR-026): `[screen]_[elemen
 - Gửi value bằng micros (AdMob paid event trả `valueMicros`) mà không chia 1.000.000 nên ROAS bị phóng đại 10^6. *(Chỉ gặp khi tự log.)*
 - Gửi currency sai hoặc thiếu, Google Ads bỏ qua event.
 - Đổi tên event tối ưu hoặc đổi conversion window khi campaign đang học thì reset learning (14104492).
+- (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8, chưa duyệt) **GA4 gán gần hết user mới cho Organic Search dù đang chạy Google Ads**: demo có 9,2K/9,5K new user "Organic Search" và thẻ *Sessions by Google Ads campaign* = No data, trong khi Google Ads báo 2.671 install. Đừng dùng báo cáo acquisition GA4 để so UA vs organic khi chưa kiểm link Google Ads ↔ GA4 và cách GA4 gán nguồn cho install từ Play Store (chưa xác minh nguyên nhân).

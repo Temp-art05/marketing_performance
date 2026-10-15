@@ -22,6 +22,7 @@ related:
   - 02-ua-channels/google-ads/app-campaigns-tong-quan.md
   - 02-ua-channels/google-ads/geo-va-ngon-ngu-targeting.md
   - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
+  - lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md
 summary: Số trên màn hình khoá Quocmedia (12/2024, app demo Android, global, EN) — tCPI ₫800 chọn theo Keyword Planner gần như không spend, nâng ₫2.000 ra 157 install CPI ₫1.708; campaign tROAS 80% gần như không spend.
 ---
 
@@ -72,6 +73,10 @@ Giảng viên chẩn đoán "giá thầu thấp" (nguyên nhân thứ hai có th
 - **Campaign gần như không spend là "bid-constrained" → nâng bid là đúng hướng** (14104492). Quy tắc "không đổi CPI > 20% một lần" (9176652) nhằm tránh làm rối campaign đang học; khi campaign chưa có data nào thì nâng mạnh một lần là ngoại lệ chấp nhận được (🧪, case này cho kết quả nhanh). Vẫn chỉ đổi **một lần** rồi đợi 1–2 ngày, không cycle lên xuống.
 - **Target ROAS cao trên app chưa có ROAS thực thì campaign gần như không phân phối.** "ROAS 80" chỉ tiêu ~₫6k/3 ngày. Đây là bằng chứng cho khuyến nghị của Google: target khởi điểm = Conv. value/cost thực của campaign CPI/tCPA (15995101), không đặt con số cố định — xem mục ⚠️ Mâu thuẫn ở [playbook bước 3](../playbooks/launch-google-app-campaign-tcpa-den-roas.md).
 - Budget ₫200k/ngày với tCPI ₫800 = 250× và ₫2.000 = 100× đều thoả quy tắc ≥ 50× tCPI (14104492) — vấn đề là bid, không phải budget.
+
+## Diễn tiếp (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.6, chưa duyệt)
+
+Sau khi campaign CPI được đổi sang tROAS 60% (04/12/2024), bài 4.6 đọc kết quả tới 13/12/2024: *All conv. value / cost* = **0,24** với target 60% — nhưng bộ lọc là All time từ 07/2023 nên lẫn lịch sử cũ. Chi tiết ad group, network, GEO, Firebase: [case tROAS 60%](2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md).
 
 ## Giới hạn của case
 

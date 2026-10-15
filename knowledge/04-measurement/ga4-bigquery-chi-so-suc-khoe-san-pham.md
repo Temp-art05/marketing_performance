@@ -11,8 +11,9 @@ sources:
   - AI Knownledge/APR-211 - Police-product/PRD.md (đọc 2026-10-14)
   - AI Knownledge/APR-211 - Police-product/.claude/agents/police-product.md (đọc 2026-10-14)
   - "AI Knownledge/APR-102 - PRD → Visual (Claude-powered)/prd-to-visual-tool-full.zip → po-metrics-analysis/{firebase-analytics-guide.md, analysis-frameworks.md, farming-app-metrics.md} (đọc 2026-10-14; nội bộ — mâu thuẫn với Firebase Help thì theo Firebase Help)"
+  - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.8 — video quay ~13/12/2024 (màn hình Google Ads tới 13/12/2024, Firebase tới 10–11/12/2024), transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-14
+updated: 2026-10-15
 related:
   - 00-overview/glossary-chi-so.md
   - 04-measurement/firebase-events-cho-ua.md
@@ -20,6 +21,8 @@ related:
   - 05-optimization/hau-kiem-version-app-nguong-verdict.md
   - 04-measurement/tracking-spec-va-metrics-plan-cho-feature.md
   - 05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md
+  - lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md
+  - 00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md
 summary: Cách tính DAU, new users, sessions, engagement rate, retention D1/D7 (cohort first_open), DAU/MAU từ bảng GA4 export events_*; quy tắc count→%, rate→pp; so d/7d/~2 tuần; ngưỡng cờ nội bộ.
 ---
 
@@ -62,3 +65,11 @@ Các ngưỡng dưới đây do tác giả tool đặt, **không phải benchmar
 - Retention D7 < 2% → điểm nghẽn lớn nhất.
 - DAU/MAU < 10% → rất thấp; < 20% → thấp.
 - `iap_view` giảm > 15% so hôm qua → tín hiệu doanh thu; event phễu khác giảm > 25% → phễu yếu.
+
+## Ngưỡng của khoá Quocmedia (bổ sung 2026-10-15 từ khoá Quocmedia bài 4.8, chưa duyệt)
+
+Khoá đọc các chỉ số này trên **giao diện Firebase/GA4** (không BigQuery) và chỉ đưa 2 ngưỡng, đều 🧪 rule-of-thumb của giảng viên, không có nguồn, không nói GEO/thể loại:
+- **Retention D1: 15% "khá ok", ≥ 10% "ok"**. Trên màn hình minh hoạ, 15,3% thực ra là **Week 1** của cohort tuần (Firebase overview → "User activity by cohort"), không phải D1 → khi dùng, ghi rõ đang so D1 hay Week 1.
+- **Average engagement time per active user ~4 phút: "khá ok"** (app utility tăng âm lượng, 2024).
+- Khoá liệt kê thêm `app_remove` ("gỡ khá nhiều") nhưng không có ngưỡng. Gợi ý của mình: theo dõi tỉ lệ `app_remove` users / `first_open` users theo cohort tuần — case demo thô ~93% cả năm ([lesson](../lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md)).
+- So với cờ nội bộ ở trên (D7 < 2% là điểm nghẽn): hai bộ ngưỡng khác tầng (D1 vs D7), không mâu thuẫn.

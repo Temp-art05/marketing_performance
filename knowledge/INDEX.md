@@ -1,19 +1,19 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 89 tài liệu (0 draft), cập nhật gần nhất 2026-10-15.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 92 tài liệu (3 draft), cập nhật gần nhất 2026-10-15.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
 
 - `00-overview/current-state.md` — Ảnh chụp nhanh "đang ở đâu" — app nào đang chạy, campaign nào, vấn đề đang mở. Cập nhật mỗi khi có thay đổi lớn. `[overview · verified · 2026-10-14]`
-- `00-overview/glossary-chi-so.md` — Định nghĩa + công thức + cách đọc + bẫy của các chỉ số UA (CPI, CPA, CTR, CVR, IPM, ROAS, payback) và monetization (LTV, ARPU, ARPDAU, eCPM, match/show rate, imps/DAU, retention). `[reference · verified · 2026-10-14]`
-- `00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md` — Khoá UA của Quocmedia (nguồn gốc roadmap của user) — 38 bài, đã nạp 20 bài (chương 1–3, 4.1–4.5); tóm từng chương, nơi nội dung đã nạp, và bảng chỗ khoá dạy khác tài liệu chính thức Google. `[reference · verified · 2026-10-15]`
+- `00-overview/glossary-chi-so.md` — Định nghĩa + công thức + cách đọc + bẫy của các chỉ số UA (CPI, CPA, CTR, CVR, IPM, ROAS, payback) và monetization (LTV, ARPU, ARPDAU, eCPM, match/show rate, imps/DAU, retention). `[reference · verified · 2026-10-15]` 🖼1
+- `00-overview/khoa-hoc-quocmedia-ua-marketing-2026.md` — Khoá UA của Quocmedia (nguồn gốc roadmap của user) — 38 bài, đã nạp 28 bài (chương 1–4, 6; bỏ 5 Apple Ads và 7 social); tóm từng chương, nơi nội dung đã nạp, và bảng chỗ khoá dạy khác tài liệu chính thức Google. `[reference · verified · 2026-10-15]`
 - `00-overview/roadmap.md` — Lộ trình 3 giai đoạn — Pre-Marketing (ASO, creative, Firebase) → Launch campaign (tCPA First_Open → ROAS) → Đo lường & tối ưu (Ads, AdMob, Firebase). `[overview · verified · 2026-10-15]`
 - `00-overview/watchlist.md` — Danh sách mốc cần xem lại (ROAS D7, 1 tháng, 4 tháng…) theo app — Claude nhắc khi đến hạn. `[overview · verified · 2026-10-14]`
 
 ## 01-pre-marketing — Chuẩn bị trước khi chạy: ASO, store listing, creative, Firebase/SDK
 
-- `01-pre-marketing/aso-google-play-store-listing.md` — Giới hạn ký tự title/short/full description, spec icon, feature graphic, screenshot, preview video và quy tắc keyword/metadata của Google Play, kèm checklist ASO theo roadmap. `[reference · verified · 2026-10-15]` 🖼1
+- `01-pre-marketing/aso-google-play-store-listing.md` — Giới hạn ký tự title/short/full description, spec icon, feature graphic, screenshot, preview video và quy tắc keyword/metadata của Google Play, kèm checklist ASO theo roadmap. `[reference · verified · 2026-10-15]` 🖼2
 - `01-pre-marketing/creative-assets-google-app-campaigns.md` — Spec asset cho Google App campaigns (headline 30/description 90 ký tự, ảnh 1:1·1.91:1·4:5, video YouTube 3 hướng, HTML5 zip ≤5MB), số lượng tối đa mỗi ad group và đối chiếu với yêu cầu creative trong roadmap. `[reference · verified · 2026-10-15]`
 - `01-pre-marketing/market-research-tam-sam-som-go-no-go.md` — Quy trình 7 bước đánh giá thị trường trước khi làm app — sizing top-down và bottom-up (SensorTower), why-now, persona/beachhead, benchmark CPI/retention, rubric 6 tiêu chí có trọng số ra GO/PIVOT/NO-GO. `[playbook · verified · 2026-10-14]`
 - `01-pre-marketing/nghien-cuu-trend-cho-creative.md` — Phương pháp nội bộ tìm idea creative — crawl TikTok theo hashtag AI (EN/ES/PT) lọc 48h xếp theo view, gom video đối thủ từ Ads Library, phân tích 13 chiều Why-It-Works, chấm điểm app bằng công thức App Store minh bạch. `[concept · verified · 2026-10-15]`
@@ -42,7 +42,7 @@
 
 - `04-measurement/firebase-events-cho-ua.md` — Ý nghĩa và điều kiện của first_open, ad_impression (AdMob tự log / MAX log thủ công qua ILRD), app_remove, user_engagement, in_app_purchase và event nào dùng cho tCPI/tCPA/tROAS. `[reference · verified · 2026-10-15]` 🖼1
 - `04-measurement/firebase-setup-link-google-ads-admob.md` — Các bước tích hợp Firebase SDK Android, link Firebase/GA4 với Google Ads và AdMob (quyền cần có, cả khi khác tài khoản Google), bật impression-level ad revenue, import first_open làm conversion và các lỗi hay gặp. `[playbook · verified · 2026-10-15]`
-- `04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md` — Cách tính DAU, new users, sessions, engagement rate, retention D1/D7 (cohort first_open), DAU/MAU từ bảng GA4 export events_*; quy tắc count→%, rate→pp; so d/7d/~2 tuần; ngưỡng cờ nội bộ. `[reference · verified · 2026-10-14]`
+- `04-measurement/ga4-bigquery-chi-so-suc-khoe-san-pham.md` — Cách tính DAU, new users, sessions, engagement rate, retention D1/D7 (cohort first_open), DAU/MAU từ bảng GA4 export events_*; quy tắc count→%, rate→pp; so d/7d/~2 tuần; ngưỡng cờ nội bộ. `[reference · verified · 2026-10-15]`
 - `04-measurement/mmp-tong-quan.md` — MMP là gì (attribution trung lập, dedup giữa các network, postback, ad revenue/ILRD, chống fraud), SAN/SRN hoạt động thế nào, khi nào cần MMP thay vì chỉ Firebase, và lưu ý khi dùng song song cho Google tROAS. `[concept · verified · 2026-10-14]`
 - `04-measurement/prd-success-metrics-va-yeu-cau-ua.md` — Cách PRD nội bộ định nghĩa success metric (SMART, baseline, counter-metric, ngưỡng Scale/Iterate/Kill chốt trước launch), và checklist những gì UA cần chen vào PRD trước khi build. `[concept · verified · 2026-10-14]`
 - `04-measurement/tracking-spec-va-metrics-plan-cho-feature.md` — Quy ước tên event Firebase nội bộ ([screen]_[element]_[action], 7 loại), catalog param, giới hạn, khung Metrics Plan (primary/secondary/counter, ngưỡng Scale/Iterate/Kill chốt trước launch) và checklist validate. `[reference · verified · 2026-10-14]`
@@ -53,7 +53,7 @@
 - `05-optimization/doc-chi-so-theo-moc-thoi-gian.md` — Khung đọc Google Ads, AdMob, Firebase ở các mốc 7 ngày, 1, 4, 6 tháng — xem gì, hỏi gì, làm gì; ngưỡng để trống chờ số liệu thực tế của app. `[playbook · verified · 2026-10-15]`
 - `05-optimization/hau-kiem-version-app-nguong-verdict.md` — So 2 version app trước khi tăng rollout: chỉ số mktpro (LTV, R1, churn, crash, match/show rate), ngưỡng đủ số theo tier, ngưỡng P0/P1 ra verdict, và quy trình so ad unit AdMob tách user FO/Home. `[playbook · verified · 2026-10-14]` 🖼2
 - `05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md` — Chọn framework theo câu hỏi (AARRR, retention curve + cohort, funnel, A/B hoặc trước/sau), cách đọc từng loại, bẫy thống kê và checklist điều tra khi chỉ số biến động. `[concept · verified · 2026-10-14]`
-- `05-optimization/unit-economics-ads-only-theo-tier.md` — Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp). `[concept · verified · 2026-10-14]`
+- `05-optimization/unit-economics-ads-only-theo-tier.md` — Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp). `[concept · verified · 2026-10-15]`
 
 ## 06-tools — Công cụ & workflow AI phục vụ marketing (nội bộ Apero + bên ngoài): làm gì, dùng ở bước nào, cách chạy
 
@@ -106,12 +106,15 @@
 
 ## playbooks — Checklist từng bước cho các việc lặp lại
 
+- `playbooks/lap-ke-hoach-marketing-app-game.md` — Khung plan marketing theo giai đoạn của khoá Quocmedia (6 cột thời gian/giai đoạn/ngân sách/chiến lược/mục tiêu/tình huống) cho app, bản 3 tab cho game; mọi số là ví dụ giảng viên, kèm chỗ lệch Google. `[playbook · draft · 2026-10-15]` 🖼3
 - `playbooks/launch-google-app-campaign-tcpa-den-roas.md` — Checklist theo roadmap — campaign install tối ưu first_open → import ad_impression (~ngày 3) → campaign tROAS → thêm ad group, kèm điều kiện chuyển bước chính thức của Google và chỗ nào là kinh nghiệm chưa kiểm chứng. `[playbook · verified · 2026-10-15]` 🖼1
 - `playbooks/san-xuat-creative-hang-loat-bang-ai.md` — Dây chuyền 9 bước ghép tool AI nội bộ — trend → concept → ảnh/video nguồn → render hàng loạt → hậu kỳ outro → localize → đủ tỉ lệ → soát spec/policy → upload YouTube; kèm chỗ tool còn thiếu. `[playbook · verified · 2026-10-15]`
+- `playbooks/van-hanh-va-scale-troas-google-app-campaign.md` — Sau khi chạy tROAS — đọc kết quả 4 tầng (campaign, ad group, asset, GEO), khi nào và nâng target/budget bao nhiêu (≤ 20%/lần, mỗi 1–2 tuần), khi nào thêm ad group/campaign/GEO; theo khoá Quocmedia đối chiếu Google Help. `[playbook · draft · 2026-10-15]` 🖼1
 
 ## lessons — Bài học rút ra từ data/việc thật (có ngày, bối cảnh)
 
 - `lessons/2024-12-quocmedia-demo-tcpi-thap-va-troas-cao-khong-spend.md` — Số trên màn hình khoá Quocmedia (12/2024, app demo Android, global, EN) — tCPI ₫800 chọn theo Keyword Planner gần như không spend, nâng ₫2.000 ra 157 install CPI ₫1.708; campaign tROAS 80% gần như không spend. `[lesson · verified · 2026-10-15]` 🖼2
+- `lessons/2024-12-quocmedia-demo-troas-60-ket-qua-ad-group-geo.md` — Số trên màn hình khoá Quocmedia (12/2024, app volume booster Android, global) — campaign tROAS 60% có ROAS 0,24 (all-time), ad group "lời" chỉ ₫14k/7 install, GEO "lời" < ₫18k; Firebase revenue $376/năm, 93% user gỡ app. `[lesson · draft · 2026-10-15]` 🖼4
 - `lessons/2026-09-google-ads-ad-group-trong-do-adblock.md` — 18/09/2026 khi tạo App campaign, bước Ad group hiện trang trắng (URL kẹt ở ProductGroupsComponent); nguyên nhân là extension AdBlock — tắt cho ads.google.com và reload là hết. `[lesson · verified · 2026-10-14 · home-morph]` 🖼1
 - `lessons/2026-09-link-admob-google-ads-khac-tai-khoan.md` — 17/09/2026 link AdMob và Google Ads của Home Morph nằm ở 2 tài khoản Google — không có link trực tiếp cho tROAS; phải đi AdMob→Firebase/GA4→Google Ads, và "Firebase Owner" không có nghĩa là có quyền GA4. `[lesson · verified · 2026-10-14 · home-morph]` 🖼1
 
