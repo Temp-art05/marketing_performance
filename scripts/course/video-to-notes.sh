@@ -17,9 +17,13 @@ PY=~/.venvs/whisper/bin/python
 HERE="$(cd "$(dirname "$0")" && pwd)"
 mkdir -p "$D/video" "$D/transcript" "$D/frames"
 
-while IFS=$'\t' read -r i id _ title; do
+while IFS=$'\t' read -r -u 3 i id _ title; do
   [ -z "$id" ] || [ "$id" = "-" ] && continue
   n=$(printf "%02d" "$i"); b="${n}_${id}"
+  # đã có transcript + khung hình → xong (video gốc có thể đã xoá cho nhẹ ổ)
+  [ -s "$D/transcript/$b.txt" ] && [ -d "$D/frames/$b" ] && continue
+  # SKIP="26 27 ..." để bỏ qua bài không cần nạp
+  case " ${SKIP:-} " in *" $i "*) continue;; esac
   if [ ! -f "$D/video/$b.mp4" ]; then
     echo "↓ $b $title"
     yt-dlp -q --no-warnings --extractor-args "youtube:player_client=web_embedded" --referer "$REFERER" \
@@ -47,4 +51,4 @@ while IFS=$'\t' read -r i id _ title; do
     rm -rf "$f/tmp"
   fi
   echo "✓ $b: $(wc -l < "$D/transcript/$b.txt" | tr -d ' ') dòng transcript, $(ls "$f"/*.jpg 2>/dev/null | wc -l | tr -d ' ') khung — $title"
-done < "$D/lessons.tsv"
+done 3< "$D/lessons.tsv"
