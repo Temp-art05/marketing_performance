@@ -53,7 +53,7 @@
 - `05-optimization/doc-chi-so-theo-moc-thoi-gian.md` — Khung đọc Google Ads, AdMob, Firebase ở các mốc 7 ngày, 1, 4, 6 tháng — xem gì, hỏi gì, làm gì; ngưỡng để trống chờ số liệu thực tế của app. `[playbook · verified · 2026-10-15]`
 - `05-optimization/hau-kiem-version-app-nguong-verdict.md` — So 2 version app trước khi tăng rollout: chỉ số mktpro (LTV, R1, churn, crash, match/show rate), ngưỡng đủ số theo tier, ngưỡng P0/P1 ra verdict, và quy trình so ad unit AdMob tách user FO/Home. `[playbook · verified · 2026-10-14]` 🖼2
 - `05-optimization/khung-phan-tich-metrics-aarrr-cohort-funnel.md` — Chọn framework theo câu hỏi (AARRR, retention curve + cohort, funnel, A/B hoặc trước/sau), cách đọc từng loại, bẫy thống kê và checklist điều tra khi chỉ số biến động. `[concept · verified · 2026-10-14]`
-- `05-optimization/unit-economics-ads-only-theo-tier.md` — Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp). `[concept · verified · 2026-10-15]`
+- `05-optimization/unit-economics-ads-only-theo-tier.md` — Công thức quyết định GEO cho app thuần ads (imps cần ở D0 = CPI × D0 ROAS target / eCPM×1000), các bẫy khi so ROAS D0/D7 với lifetime, và benchmark eCPM theo tier của bên thứ ba (độ tin thấp). `[concept · verified · 2026-10-20]`
 
 ## 06-tools — Công cụ & workflow AI phục vụ marketing (nội bộ Apero + bên ngoài): làm gì, dùng ở bước nào, cách chạy
 

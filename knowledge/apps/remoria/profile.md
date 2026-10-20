@@ -49,6 +49,11 @@ summary: Remoria (IIP707) — app AI chat nhân vật kiểu PolyBuzz; iOS đã 
 
 - Google (25/08/2026) nhắc lại yêu cầu tăng cường cho app GenAI theo Sexual Content Policy và AI-Generated Content Policy; yêu cầu cho reviewer truy cập đủ tính năng AI kể cả phần sau paywall. Định vị "dating/waifu" của bản web là vùng rủi ro cao khi lên Play. Checklist chung: [policy app AI](../../01-pre-marketing/policy-app-ai-anh-va-dat-ten-app.md).
 
+## Nếu làm Android thiên về ads (bàn 2026-10-20)
+
+- BE cấu hình model theo assistant; model nhắc nhiều nhất trong repo BE là `gpt-4o-mini`, có `gpt-4.1-mini` (chưa xác minh model đang chạy prod).
+- Ads-mainly chỉ có lãi khi doanh thu ad / tin nhắn > chi phí LLM / tin nhắn — công thức và ước lượng ở [unit economics](../../05-optimization/unit-economics-ads-only-theo-tier.md#app-có-chi-phí-ai-theo-lượt-dùng-bổ-sung-2026-10-20-case-remoria). Nội dung romance/mature còn có thể bị AdMob giới hạn quảng cáo (fill thấp).
+
 ## Việc tiếp theo
 
 - Lấy số thật của bản iOS (nếu đã phát hành): D1/D7 retention, trial→paid, ARPPU, % user mua coin, số tin nhắn/user/ngày, chi phí LLM/user.

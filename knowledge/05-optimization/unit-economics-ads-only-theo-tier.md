@@ -12,7 +12,7 @@ sources:
   - "Mapendo — 2025 Cost per Install by Country (https://mapendo.co/blog/cost-per-install-by-country-2025), trích trong session 2026-09-17"
   - "Khoá UA Marketing Mobile App 2026 (Quocmedia, Quốc Anh), bài 4.6 — video quay ~13/12/2024 (màn hình Google Ads tới 13/12/2024, Firebase tới 10–11/12/2024), transcribe 2026-10-15"
 created: 2026-10-14
-updated: 2026-10-15
+updated: 2026-10-20
 related:
   - 00-overview/glossary-chi-so.md
   - decisions/2026-09-home-morph-geo-ua-ads-only.md
@@ -75,6 +75,20 @@ Số CPI theo từng nước Tier 3 mà Claude đưa ra trong session (vd India 
 - Tăng ad density ở session đầu (rewarded cho download HD / bỏ watermark / tạo biến thể, app-open khi resume, native trong grid) — tăng LTV mà không tốn tiền UA. Phải tuân policy ad placement (xem [admob-co-ban](../03-monetization/admob-co-ban.md)).
 - Retention: app tần suất thấp cần lý do quay lại (nhiều phòng, credit hằng ngày, style mới).
 - IAP/subscription là thứ mở khoá paid UA ở Tier 1.
+
+## App có chi phí AI theo lượt dùng (bổ sung 2026-10-20, case Remoria)
+
+Với app chat AI / gen ảnh, mỗi lượt dùng tốn tiền API, nên retention cao **không tự động** thành lãi khi kiếm tiền bằng ads:
+
+```
+Lãi gộp / tin nhắn = (imps / tin nhắn × eCPM / 1000) − chi phí LLM / tin nhắn
+LTV ròng = Σ tin nhắn × lãi gộp / tin nhắn  (+ rewarded/gen ảnh tính riêng)
+```
+
+Ước lượng của Claude 2026-10-20 (không phải số đo; giá OpenAI theo hiểu biết của Claude, cần kiểm lại; giả định ~3.000 token input gồm persona + lịch sử, ~150 token output):
+- gpt-4o-mini ($0,15/$0,60 per 1M token) ≈ **$0,0005/tin**; gpt-4.1-mini ($0,40/$1,60) ≈ **$0,0014/tin**.
+- 1 interstitial Tier 3 (eCPM $1–2 theo bảng trên) ≈ $0,0015 → chỉ đủ bù ~3 tin gpt-4o-mini. Inter mỗi 8 tin ở Tier 3 thì **lỗ trên mỗi tin**; ở Tier 1 (eCPM $9–14) thì có lãi.
+- Hệ quả: app ads-mainly có LLM phải (1) dùng model rẻ + rút gọn context, (2) giới hạn tin free/ngày và cho rewarded để mở thêm, (3) chọn GEO theo eCPM chứ không chỉ theo CPI. Xem [Remoria](../apps/remoria/profile.md).
 
 ## Việc tiếp theo
 
