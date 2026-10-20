@@ -1,6 +1,6 @@
 # Knowledge Index
 
-> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 92 tài liệu (0 draft), cập nhật gần nhất 2026-10-15.
+> AUTO-GENERATED bởi `npm run kb:index` — không sửa tay. 93 tài liệu (0 draft), cập nhật gần nhất 2026-10-20.
 > Mỗi dòng: `đường dẫn trong knowledge/` — tóm tắt `[type · status · updated · app]`. Mở file khi cần chi tiết.
 
 ## 00-overview — Tổng quan: roadmap, glossary chỉ số, trạng thái hiện tại
@@ -127,3 +127,4 @@
 - `apps/artimind/profile.md` — Artimind — app AI photo→video của Apero (Vision Lab, IIP032), subscription; định vị "Life Moments" (kỷ niệm, người thân đã mất), engine Seedance qua fal.ai, paywall sau khi user bấm Generate, rollout qua remote config. `[app-profile · verified · 2026-10-14 · artimind]`
 - `apps/home-morph/campaigns.md` — Nhật ký campaign Google Ads của Home Morph — campaign đầu "Home Morph 1" (ACi, ID+PH+VN, first_open, tCPI ₫2.125, ₫200k/ngày) dựng 17–18/09/2026; chưa có kết quả. `[app-profile · verified · 2026-10-14 · home-morph]` 🖼3
 - `apps/home-morph/profile.md` — Hồ sơ Home Morph (com.homemorph.app) — app AI thiết kế nội thất Android, ads-only; ID Firebase/GA4/AdMob/Google Ads, tài khoản nào giữ quyền gì, ngôn ngữ app hỗ trợ. `[app-profile · verified · 2026-10-14 · home-morph]`
+- `apps/remoria/profile.md` — Remoria (IIP707) — app AI chat nhân vật kiểu PolyBuzz; iOS đã build (sub 3 tier RevenueCat + coin + AdMob từ v1.1.1), BE NestJS dùng lại được; Android mới là base trống, chưa có số thật. `[app-profile · verified · 2026-10-20 · remoria]`
